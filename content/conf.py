@@ -17,10 +17,10 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
-copyright = "2021, The contributors"
-author = "The contributors"
-github_user = "ENCCS"
+project = "ColonyOS"
+copyright = "2021, RISE"
+author = "Johan Kristiansson"
+github_user = "colonyos"
 github_repo_name = ""  # auto-detected from dirname if blank
 github_version = "main"
 conf_py_path = "/content/"  # with leading and trailing slash
