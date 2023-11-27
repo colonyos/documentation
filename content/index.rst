@@ -3,25 +3,22 @@ LESSON NAME
 
 Intro
 
-
-
 .. prereq::
-
    prerequisites
-
-
 
 .. csv-table::
    :widths: auto
    :delim: ;
 
-   20 min ; :doc:`filename`
+.. toctree::
+   :maxdepth: 1
+   :caption: Colonies CLI
 
+   colonies-cli 
 
 .. toctree::
    :maxdepth: 1
    :caption: The lesson
-
 
 .. toctree::
    :maxdepth: 1
@@ -29,7 +26,6 @@ Intro
 
    quick-reference
    guide
-
 
 
 .. _learner-personas:
