@@ -1,5 +1,5 @@
-LESSON NAME
-===========
+ColonyOS
+========
 
 Intro
 
@@ -18,48 +18,28 @@ Intro
 
 .. toctree::
    :maxdepth: 1
+   :caption: Colonies Filesystem
+
+   cfs 
+
+.. toctree::
+   :maxdepth: 1
    :caption: The lesson
 
 .. toctree::
    :maxdepth: 1
    :caption: Reference
 
-   quick-reference
-   guide
-
-
-.. _learner-personas:
-
-Who is the course for?
-----------------------
-
-
-
-
-
-About the course
-----------------
-
-
-
-
-
-
-See also
---------
-
-
-
-
 
 Credits
 -------
 
-The lesson file structure and browsing layout is inspired by and derived from
+This documentation structure and browsing layout is inspired by and derived from
 `work <https://github.com/coderefinery/sphinx-lesson>`__ by `CodeRefinery
 <https://coderefinery.org/>`__ licensed under the `MIT license
 <http://opensource.org/licenses/mit-license.html>`__. We have copied and adapted
 most of their license text.
+
 
 Instructional Material
 ^^^^^^^^^^^^^^^^^^^^^^

@@ -18,34 +18,19 @@ Keep in mind that the private key is sensitive and should be kept confidential.
     export COLONIES_SERVER_TLS="true"
     export COLONIES_SERVER_HOST="server.colonyos.io"
     export COLONIES_SERVER_PORT="443"
-    export COLONIES_COLONY_ID="bc05fea3354ad8b1740b8dcf1c39f076f0c1e18d5bdb5da3390ccf0e0bc57846"
-    export COLONIES_USER_ID="4dcccd0ecf01106b3b5da6081933843dc37d1f776dd1eb79d2488df688e61925"
-    export COLONIES_USER_PRVKEY="a499fddafe51fabb405dae13c33daa9d63fe262ee92e6fff52c82b4a72e36f6d"
-
-To setup an Executor, you need to set an Executor Id and the corresponding private key.
-      
-.. code-block:: console
-
-    export COLONIES_TLS="true"
-    export COLONIES_SERVER_TLS="true"
-    export COLONIES_SERVER_HOST="server.colonyos.io"
-    export COLONIES_SERVER_PORT="443"
-    export COLONIES_COLONY_ID="bc05fea3354ad8b1740b8dcf1c39f076f0c1e18d5bdb5da3390ccf0e0bc57846"
-    export COLONIES_EXECUTOR_ID="4dcccd0ecf01106b3b5da6081933843dc37d1f776dd1eb79d2488df688e61925"
-    export COLONIES_EXECUTOR_PRVKEY="a499fddafe51fabb405dae13c33daa9d63fe262ee92e6fff52c82b4a72e36f6d"
+    export COLONIES_COLONY_NAME="dev"
+    export COLONIES_PRVKEY="a499fddafe51fabb405dae13c33daa9d63fe262ee92e6fff52c82b4a72e36f6d"
 
 If you are a Colony administrator, you may also want to set: 
 
 .. code-block:: console
 
-    export COLONIES_COLONY_ID="90b3e03a61ef0e844ac04193db080fe6165e0c5f0ed3ff5308a455d820c18257"
     export COLONIES_COLONY_PRVKEY="29ddccc9e2825378b9055e2667c2fcf0ceffc4e8744ad0e97dd37f8a20750820"
 
 To be able to create a new Colony, you need to be a Colonies server administrator and set the following variables:
 
 .. code-block:: console
 
-    export COLONIES_SERVER_ID="45c5adbdea61f11ffc0315090b1d3e748f8983e32e9482dbca7e126ff06f5248"
     export COLONIES_SERVER_PRVKEY="74b1e2168600ef0186b43515747ac0020698b1dab2d6eb868e329122727353c4"
 
 Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S3 configuration and credentials:
@@ -121,7 +106,10 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
     
-    INFO[0000] Generated new private key and stored in keychain  Id=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 PrvKey=4e7e012894601adb804061724757860f316e342146f3794f90ce14e527d7bac7
+    INFO[0000] Generated new private key and stored in keychain  
+    
+    Id=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5
+    PrvKey=4e7e012894601adb804061724757860f316e342146f3794f90ce14e527d7bac7
 
 
 .. code-block:: console
@@ -134,7 +122,12 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
        
-    INFO[0000] User added   ColonyName=dev Email=johan.kristiansson@ri.se Phone=+467011122233 UserId=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 Username=johan2
+    INFO[0000] User added   
+
+    ColonyName=dev Email=johan.kristiansson@ri.se 
+    Phone=+467011122233 
+    UserId=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 
+    Username=johan2
 
 
 List Users 
@@ -163,7 +156,9 @@ Remove a User
 
 .. code-block:: console
 
-    INFO[0000] User removed   ColonyName=dev Username=johan
+    INFO[0000] User removed   
+
+    ColonyName=dev Username=johan
 
 
 
