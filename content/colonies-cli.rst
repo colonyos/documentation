@@ -46,49 +46,89 @@ Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S
     export AWS_S3_SKIPVERIFY=""
 
 
-Manage a Colony
+Manage Colonies
 ===============
 
 Create a new Colony
 -------------------
+First generate a new ECDSA private key. To use the new Colony, you need to export the key as ``COLONIES_COLONY_PRVKEY``.
 
- .. code-block:: console
+.. code-block:: console
+    
+    $ colonies key generate
+   
+.. code-block:: console
 
-      $ export OMP_NUM_THREADS=1
-      $ python omp_test.py
+    INFO[0000] Generated new private key  
 
-      $ export OMP_NUM_THREADS=4
-      $ python omp_test.py
+    Id=f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f 
+    PrvKey=4a8739fab821a394d5c4f215e525c8d908d010b9618a700e51739286869dc8e1
 
-ggg
- .. code-block:: json
+.. code-block:: console
 
-      {
-          "executorname": "ml_executor",
-          "executortype": "ml",
-          "location": {
-              "long": 65.61204640586546,
-              "lat": 22.132275667285477,
-              "desc": "ICE Datacenter"
-          },
-          "capabilities": {
-              "hardware": {
-                  "model": "AMD Ryzen 9 5950X 16-Core Processor",
-                  "cpu": "4000m",
-                  "mem": "16Gi",
-                  "storage": "100Ti",
-                  "gpu": {
-                      "name": "nvidia_3080ti",
-                      "count": 1
-                  }
-              },
-              "software": {
-                  "name": "colonyos/ml:latest",
-                  "type": "k8s",
-                  "version": "latest"
-              }
-          }
-      }
+    $ colonies colony add \ 
+    --name test_colony \ 
+    --colonyid f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f
+
+
+.. code-block:: console
+
+    INFO[0000] Colony added   
+
+    ColonyID=f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f
+    ColonyName=test_colony
+
+
+List all registered Colonies
+----------------------------
+To list all registered colonies, you must be server administrator and the ``COLONIES_SERVER_PRVKEY`` must be set.
+
+.. code-block:: console
+
+   $ colonies colony ls
+
+.. code-block:: console
+
+    +-------------+
+    |    NAME     |
+    +-------------+
+    | dev         |
+    | test_colony |
+    +-------------+
+
+Remove a Colony
+---------------
+Only a Colony owner can remove a Colony and you need to have a valid ``COLONIES_COLONY_PRVKEY`` private key.
+
+.. code-block:: console
+    
+    $ colonies colony remove --name test_colony  
+
+Get Colony statistics
+---------------------
+All valid users and executors can get statistics on a Colony.
+
+.. code-block:: console
+
+    $ colonies colony stats --name dev
+
+.. code-block:: console
+
+    Process statistics:
+    +----------------------+-----+
+    | Executors            | 3   |
+    | Waiting processes    | 10  |
+    | Running processes    | 3   |
+    | Successful processes | 131 |
+    | Failed processes     | 10  |
+    | Waiting workflows    | 0   |
+    | Running workflows    | 0   |
+    | Successful workflows | 5   |
+    | Failed workflows     | 1   |
+    +----------------------+-----+
+
+Manage Users
+============
 
 Add a new User
 --------------
@@ -101,20 +141,19 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
     
-    $ colonies keychain generate
+    $ colonies key generate
 
 
 .. code-block:: console
     
-    INFO[0000] Generated new private key and stored in keychain  
+    INFO[0000] Generated new private key
     
     Id=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5
     PrvKey=4e7e012894601adb804061724757860f316e342146f3794f90ce14e527d7bac7
 
-
 .. code-block:: console
     
-    $ colonies user add \
+    $ colonies users add \
     --username="johan" \
     --email="johan.kristiansson@ri.se" \
     --phone="+467011122233" \
@@ -129,6 +168,7 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
     UserId=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 
     Username=johan2
 
+Note that both username and userid must be unique.
 
 List Users 
 ----------
@@ -136,38 +176,112 @@ To list all users member of a Colony.
 
 .. code-block:: console
 
-   $ colonies user ls
+   $ colonies users ls
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+----------+--------------------------+---------------+
-    |                              USERID                              | USERNAME |          EMAIL           |     PHONE     |
-    +------------------------------------------------------------------+----------+--------------------------+---------------+
-    | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 | johan    | johan.kristiansson@ri.se | +467011122233 |
-    +------------------------------------------------------------------+----------+--------------------------+---------------+
-
+    +----------+--------------------------+---------------+
+    | USERNAME |          EMAIL           |     PHONE     |
+    +----------+--------------------------+---------------+
+    | johan    | johan.kristiansson@ri.se | +467011122233 |
+    +----------+--------------------------+---------------+
 
 Remove a User 
 -------------
 
 .. code-block:: console
 
-   $ colonies user remove --username johan
+   $ colonies users remove --username johan
 
 .. code-block:: console
 
     INFO[0000] User removed   
 
-    ColonyName=dev Username=johan
+    ColonyName=dev 
+    Username=johan
 
+Manage Executors
+================
 
+Register an new Executor 
+------------------------
+Copy the JSON object below to a file, e.g. executor.json. Only **executorname** and **executortype** are mandatory fields. 
+And only a Colony owner can register a new Executor.
+
+.. code-block:: json
+
+    { 
+        "executorname": "ml_executor",
+        "executortype": "ml",
+        "location": {
+            "long": 65.61204640586546,
+            "lat": 22.132275667285477,
+            "desc": "ICE Datacenter"
+        },
+        "capabilities": {
+            "hardware": {
+                "model": "AMD Ryzen 9 5950X 16-Core Processor",
+                "cpu": "4000m",
+                "mem": "16Gi",
+                "storage": "100Ti",
+                "gpu": {
+                    "name": "nvidia_3080ti",
+                    "count": 1
+                }
+            },
+            "software": {
+                "name": "colonyos/ml:latest",
+                "type": "k8s",
+                "version": "latest"
+            }
+        }
+    }
+
+Below is a minimal Executor spec.
+
+.. code-block:: json
+
+    { 
+        "executorname": "ml_executor",
+        "executortype": "ml"
+    }
+
+.. code-block:: console 
+
+    $ executors add --spec examples/executors/executor.json  \
+    --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
+    --approve
+
+It is also possible to override **executorname** and **executortype** fields.
+
+.. code-block:: console
+
+    $ executors add --spec examples/executors/executor.json  \
+    --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
+    --name my_name \ 
+    --type my_type \
+    --approve
+
+Or simply skip the **--spec** argument, but then **executorname** and **executortype** must be specified. 
+
+.. code-block:: console
+
+    $ executors add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
+    --name my_name \ 
+    --type my_type \
+    --approve
+
+If **--approve** is not specified, the Executor will be registered, but is not allowed to get process assignments.
+
+TODO!!!!!!! 
+Show approve executor
 
 List Executors
 --------------
  
 .. code-block:: console
        
-       colonies executor ls 
+       colonies executors ls 
 
 .. code-block:: console
 
@@ -181,5 +295,5 @@ List Executors
        +-------------------------------------------+------------------------------+----------------+
 
 
-Manage processes
+Manage Processes
 ================
