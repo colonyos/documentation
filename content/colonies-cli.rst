@@ -594,7 +594,46 @@ It is possible to submit a Function Specification without specifying a JSON file
 
 .. code-block:: console
 
+    colonies function exec --func helloworld --targettype helloworld-executor
+
+It also possible to provide *args*. Note that *kwargs* is currently not support by the **exec** function.
+
+.. code-block:: console
+
     colonies function exec --func fibonacci --args 10 --targettype cli 
+
+Registering a Function
+----------------------
+The primary role of Executors is to execute tasks. Executors can register a **Function**, thereby indicating to other Executors or users their ability to execute a specific function. Importantly, only the Executor itself can register Functions to itself; this task cannot be performed by Users or other Executors. To register a Function, access to the Executor's ECDSA private key is required.
+
+.. code-block:: console
+
+    colonies function register --name helloworld-executor \ 
+    --func helloworld \
+    --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 
+
+List all registered Functions
+-----------------------------
+To list all registered Function in a Colony and get some basic statistics, type: 
+
+.. code-block:: console
+
+    colonies function ls
+
+.. code-block:: console
+
+    Function:
+    +-------------+-------------+
+    | FuncName    | helloworld  |
+    | Calls       | 1           |
+    | Served by   | 1 executors |
+    | MinWaitTime | 10.410566 s |
+    | MaxWaitTime | 10.410566 s |
+    | AvgWaitTime | 10.410566 s |
+    | MinExecTime | 27.459162 s |
+    | MaxExecTime | 27.459162 s |
+    | AvgExecTime | 27.459162 s |
+    +-------------+-------------+
 
 Manage Processes
 ================
