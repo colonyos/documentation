@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "ColonyOS"
-copyright = "2021, RISE"
+copyright = "2023, RISE"
 author = "Johan Kristiansson"
 github_user = "colonyos"
 github_repo_name = ""  # auto-detected from dirname if blank
