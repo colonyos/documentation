@@ -1,6 +1,8 @@
 Getting started
 ===============
 
+Installation
+------------
 Download the Colonies CLI binary `here <https://github.com/colonyos/colonies/releases>`_.
 
 On Windows, it is recommended to use Unix alike shell, e.g. `Git BASH <https://gitforwindows.org>`_, 
@@ -45,8 +47,106 @@ Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S
     export AWS_S3_TLS=""
     export AWS_S3_SKIPVERIFY=""
 
+Getting help
+------------
 
-Manage Colonies
+To use the Colonies CLI tool, just type **colonies**. 
+
+.. code-block:: console
+
+    colonies
+
+
+.. code-block:: console
+    
+    Colonies CLI tool
+    
+    Usage:
+      colonies [command]
+    
+    Available Commands:
+      attribute   Manage process attributes
+      cluster     Manage clusters
+      colony      Manage colonies
+      completion  Generate the autocompletion script for the specified shell
+      config      Show currently used configuration
+      cron        Manage cron
+      database    Manage internal database
+      dev         Start a development server
+      executors   Manage executors
+      fs          Manage file storage
+      function    Manage functions
+      generator   Manage generators
+      help        Help about any command
+      key         Manage private keys
+      log         Manage logging
+      monitor     Manage Prometheus monitoring
+      process     Manage processes
+      server      Manage production server
+      users       Manage users
+      workflow    Manage workflows
+    
+    Flags:
+      -h, --help              help for colonies
+          --insecure          Disable TLS and use HTTP
+          --skip-tls-verify   Skip TLS certificate verification
+      -v, --verbose           Verbose (debugging)
+    
+    Use "colonies [command] --help" for more information about a command.
+
+To get help about a certain subcommand, e.g. type: **colonies process --help**
+
+.. code-block:: console
+
+    Manage processes
+    
+    Usage:
+      colonies process [command]
+    
+    Available Commands:
+      assign      Assign a process to a executor
+      close       Close a process as successful
+      delete      Delete a process
+      deleteall   Delete all processes
+      fail        Close a process as failed
+      get         Get info about a process
+      ps          List all running processes
+      psf         List all failed processes
+      pss         List all successful processes
+      psw         List all waiting processes
+    
+    Flags:
+      -h, --help          help for process
+          --host string   Server host (default "localhost")
+          --port int      Server HTTP port (default -1)
+    
+    Global Flags:
+          --insecure          Disable TLS and use HTTP
+          --skip-tls-verify   Skip TLS certificate verification
+      -v, --verbose           Verbose (debugging)
+    
+    Use "colonies process [command] --help" for more information about a command.
+    
+
+Show current configuration
+--------------------------
+
+To get info about current configuration type:
+
+.. code-block:: console
+
+    colonies config
+
+.. code-block:: console
+
+    Current configurations:
+    +--------+-----------------+
+    | Colony | dev             |
+    | Server | localhost:50080 |
+    | TLS    | false           |
+    +--------+-----------------+
+
+Manage a Colony
 ===============
 
 Create a new Colony
@@ -55,7 +155,7 @@ First generate a new ECDSA private key. To use the new Colony, you need to expor
 
 .. code-block:: console
     
-    $ colonies key generate
+    colonies key generate
    
 .. code-block:: console
 
@@ -66,7 +166,7 @@ First generate a new ECDSA private key. To use the new Colony, you need to expor
 
 .. code-block:: console
 
-    $ colonies colony add \ 
+    colonies colony add \ 
     --name test_colony \ 
     --colonyid f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f
 
@@ -85,7 +185,7 @@ To list all registered colonies, you must be server administrator and the ``COLO
 
 .. code-block:: console
 
-   $ colonies colony ls
+    colonies colony ls
 
 .. code-block:: console
 
@@ -102,15 +202,15 @@ Only a Colony owner can remove a Colony and you need to have a valid ``COLONIES_
 
 .. code-block:: console
     
-    $ colonies colony remove --name test_colony  
+    colonies colony remove --name test_colony  
 
-Get Colony statistics
----------------------
+Get statistics
+--------------
 All valid users and executors can get statistics on a Colony.
 
 .. code-block:: console
 
-    $ colonies colony stats --name dev
+    colonies colony stats --name dev
 
 .. code-block:: console
 
@@ -141,7 +241,7 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
     
-    $ colonies key generate
+    colonies key generate
 
 
 .. code-block:: console
@@ -153,8 +253,8 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
     
-    $ colonies users add \
-    --username="johan" \
+    colonies users add \
+    --name="johan" \
     --email="johan.kristiansson@ri.se" \
     --phone="+467011122233" \
     --userid="b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5"
@@ -176,7 +276,7 @@ To list all users member of a Colony.
 
 .. code-block:: console
 
-   $ colonies users ls
+   colonies users ls
 
 .. code-block:: console
 
@@ -186,12 +286,29 @@ To list all users member of a Colony.
     | johan    | johan.kristiansson@ri.se | +467011122233 |
     +----------+--------------------------+---------------+
 
+Get info about a User 
+---------------------
+
+.. code-block:: console
+
+    colonies users get --name johan
+
+.. code-block:: console
+
+    +------------+------------------------------------------------------------------+
+    | Name       | johan                                                            |
+    | ID         | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |
+    | ColonyName | dev                                                              |
+    | Email      | johan.kristiansson@ri.se                                         |
+    | Phone      | +467011122233                                                    |
+    +------------+------------------------------------------------------------------+
+
 Remove a User 
 -------------
 
 .. code-block:: console
 
-   $ colonies users remove --username johan
+    colonies users remove --name johan
 
 .. code-block:: console
 
@@ -211,7 +328,7 @@ And only a Colony owner can register a new Executor.
 .. code-block:: json
 
     { 
-        "executorname": "ml_executor",
+        "executorname": "ml-executor",
         "executortype": "ml",
         "location": {
             "long": 65.61204640586546,
@@ -242,13 +359,13 @@ Below is a minimal Executor spec.
 .. code-block:: json
 
     { 
-        "executorname": "ml_executor",
+        "executorname": "ml-executor",
         "executortype": "ml"
     }
 
 .. code-block:: console 
 
-    $ executors add --spec examples/executors/executor.json  \
+    colonies executors add --spec examples/executors/executor.json  \
     --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --approve
 
@@ -256,7 +373,7 @@ It is also possible to override **executorname** and **executortype** fields.
 
 .. code-block:: console
 
-    $ executors add --spec examples/executors/executor.json  \
+    colonies executors add --spec examples/executors/executor.json  \
     --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --name my_name \ 
     --type my_type \
@@ -266,7 +383,7 @@ Or simply skip the **--spec** argument, but then **executorname** and **executor
 
 .. code-block:: console
 
-    $ executors add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
+    colonies executors add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --name my_name \ 
     --type my_type \
     --approve
@@ -280,7 +397,7 @@ The following command will approve an Executor:
 
 .. code-block:: console
     
-    executors approve --name my_executor
+    colonies executors approve --name my_executor
 
 .. code-block:: console
 
@@ -294,7 +411,7 @@ The following command will reject an Executor and prevent it from taking part of
 
 .. code-block:: console
     
-    executors reject --name my_executor
+    colonies executors reject --name my_executor
 
 .. code-block:: console
 
@@ -307,20 +424,177 @@ List Executors
 --------------
  
 .. code-block:: console
-       
-       colonies executors ls 
+      
+    colonies executors ls
 
 .. code-block:: console
 
-       +-------------------------------------------+------------------------------+----------------+
-       |                     ID                    |             TYPE             |    LOCATION    |
-       +-------------------------------------------+------------------------------+----------------+
-       | cc170701bab47ecb730c91a4209e45687359a7... | lumi-standard-hpcexecutor    | CSC, Finland   |
-       | 8ba7a06ae12f351a63baae8792b8f98e26b78e... | lumi-small-hpcexecutor       | CSC, Finland   |
-       | 972aaadefabcbf12aeffb5aacf76822a6b645a... | leonardo-booster-hpcexecutor | Cineca, Italy  |
-       | 930af29477792d1dd2863d74645a69156569c8... | ice-kubeexecutor             | ICE Datacenter |
-       +-------------------------------------------+------------------------------+----------------+
+    +-------------+------+----------------+
+    |    NAME     | TYPE |    LOCATION    |
+    +-------------+------+----------------+
+    | myexecutor  | cli  |                |
+    | ml-executor | ml   | ICE Datacenter |
+    +-------------+------+----------------+
 
+Get info about an Executor
+--------------------------
+
+.. code-block:: console
+
+    colonies executors get --name ml-executor
+
+.. code-block:: console
+
+     Executor:
+     +-------------------------+------------------------------------------------------------------+
+     | Name                    | ml-executor                                                      |
+     | ID                      | 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 |
+     | Type                    | ml                                                               |
+     | ColonyName              | dev                                                              |
+     | State                   | Approved                                                         |
+     | RequireFuncRegistration | False                                                            |
+     | CommissionTime          | 2023-11-29 15:05:25                                              |
+     | LastHeardFrom           | 0001-01-01 00:53:28                                              |
+     +-------------------------+------------------------------------------------------------------+
+     
+     Location:
+     +-------------+----------------+
+     | Longitude   | 65.612046      |
+     | Latitude    | 22.132276      |
+     | Description | ICE Datacenter |
+     +-------------+----------------+
+     
+     Hardware:
+     +-----------+--------------------------------+
+     | Model     | AMD Ryzen 9 5950X 16-Core      |
+     |           | Processor                      |
+     | CPU       | 4000m                          |
+     | Nodes     | 0                              |
+     | Memory    | 16Gi                           |
+     | Storage   | 100Ti                          |
+     | GPU       | nvidia_3080ti                  |
+     | GPUMem    |                                |
+     | GPUs      | 1                              |
+     | GPUs/Node | 0                              |
+     +-----------+--------------------------------+
+     
+     Software:
+     +---------+--------------------+
+     | Name    | colonyos/ml:latest |
+     | Type    | k8s                |
+     | Version | latest             |
+     +---------+--------------------+
+     
+     Functions:
+     No functions found
+
+Calling Functions on a Colony
+=============================
+
+Submitting Function Specs
+-------------------------
+
+ColonyOS operates on the principle of submitting **Functions Specifications** to a Colony, which are then executed by various Executors, members of that Colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **Process**, which is subsequently assigned to an Executor. Each Executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
+
+Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target Executor type. Note that a **Function Specification** can be submitted even if there are no matching Executors currently in the Colony. These functions will be executed in the future when an Executor of matching **executortype** becomes available.
+
+.. code-block:: json
+
+    {
+        "conditions": {
+            "executortype": "helloworld-executor"
+        },
+        "funcname": "helloworld"
+    }
+
+.. code-block:: console
+
+    colonies function submit --spec ./examples/functions/helloworld.json
+
+.. code-block:: console
+    INFO[0000] Process submitted
+
+    ProcessId=99962477b295c4058b0a54929b79dbc0d7f57699ca0a0385df1a41dfa473a04d
+
+The command will block until the process is executed by an Executor. First, we need to generate a new ECDSA private key that will be used by the Executor. 
+
+.. code-block:: console
+    
+    colonies key generate
+
+.. code-block:: console
+
+    INFO[0000] Generated new private key
+
+    Id=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
+    PrvKey=8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
+    
+.. code-block:: console
+
+    colonies executors add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \ 
+    --name helloworld-executor \ 
+    --type helloworld-executor \
+    --approve
+
+.. code-block:: console
+
+    INFO[0000] Executor added
+
+    ColonyName=dev 
+    ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 
+    ExecutorName=helloworld-executor ExecutorType=helloworld-executor
+
+To assign a process to an Executor, the command **colonies process assign** can be used and also specify the **helloworld-executor** Executor's private key. Typically, the assign operation is carried out by specialized Executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.
+
+.. code-block:: console
+
+    colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 
+
+.. code-block:: console
+
+    INFO[0000] Assigned process to executor
+
+    ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
+    ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c
+
+The Helloworld Executor is now assigned to the process, which means that it have exclusive access to it. No other Executors can hence be 
+assigned this particular process. Only the assigned Executor can manipulate the process, such as closint it. 
+Now close the process with a result string (Hej).  
+
+.. code-block:: console
+
+    colonies process close \
+    -p 0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c \ 
+    --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 \
+    --out Hej
+
+.. code-block:: console
+    INFO[0000] Process closed as Successful
+
+    ProcessId=055a9e1c93ea6e252cab7f2b45eaec78f4f87e540352d10636d88e944b6bfb85
+
+Alternatively, we can close the process as *failed*.
+    
+.. code-block:: console
+    
+    colonies process close \
+    -p 0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c \ 
+    --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 \
+    --out Hej
+
+.. code-block:: console
+
+    INFO[0000] Process closed as Failed
+
+    ProcessId=46a0b33933a68ebfc0da722461b8c13bb1a170ee678ecd1ccede9ae1b01fcc91
+
+Alternative method to execute a Function
+----------------------------------------
+It is possible to submit a Function Specification without specifying a JSON file, which can be suitable for simpler use cases.
+
+.. code-block:: console
+
+    colonies function exec --func fibonacci --args 10 --targettype cli 
 
 Manage Processes
 ================
