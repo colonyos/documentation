@@ -273,8 +273,35 @@ Or simply skip the **--spec** argument, but then **executorname** and **executor
 
 If **--approve** is not specified, the Executor will be registered, but is not allowed to get process assignments.
 
-TODO!!!!!!! 
-Show approve executor
+Approve Executors
+-----------------
+Not approved Executors do not take part of process brokering and will not get any processassignments. 
+The following command will approve an Executor:
+
+.. code-block:: console
+    
+    executors approve --name my_executor
+
+.. code-block:: console
+
+    INFO[0000] Executor approved
+
+    ColonyName=dev ExecutorName=my_executor
+
+Reject Executors
+-----------------
+The following command will reject an Executor and prevent it from taking part of process brokering:
+
+.. code-block:: console
+    
+    executors reject --name my_executor
+
+.. code-block:: console
+
+    INFO[0000] Executor rejected
+
+    ColonyName=dev ExecutorName=my_executor
+
 
 List Executors
 --------------
