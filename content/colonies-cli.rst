@@ -505,7 +505,7 @@ Functions
 Submitting Function Specs
 -------------------------
 
-ColonyOS operates on the principle of submitting **Functions Specifications** to a Colony, which are then executed by various Executors, members of that Colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **Process**, which is subsequently assigned to an Executor. Each Executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
+ColonyOS operates on the principle of submitting **Functions Specifications** to a Colony, which are then executed by various Executors, members of that Colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **process**, which is subsequently assigned to an Executor. Each Executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
 
 Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target Executor type. Note that a **Function Specification** can be submitted even if there are no matching Executors currently in the Colony. These functions will be executed in the future when an Executor of matching **executortype** becomes available.
 
@@ -914,7 +914,83 @@ Or *Failed* processes, type:
 Note that it is not possible to remove processes if it is part of a workflows.
 
 Logs
-==========
+====
+Colonies provides logging functionality, allowing Executors to add log messages to processes, e.g. stdout ot stderr logs. These logs are stored in a PostgreSQL database. If TimescaleDB is used, the logs will be stored in a timeseries hypertable; otherwise, they will be indexed and stored in a regular PostgreSQL table. If retention is enabled, log data will be automatically purged upon reaching its expiration date. This automated process ensures that logs are systematically removed from the server once they become outdated.
+
+Adding Logs to a Process
+------------------------
+Let's demonstrate how to manage logs using the Colonies CLI. First submit a process.
+
+.. code-block:: console
+
+    colonies function submit --spec ./examples/functions/helloworld.json
+
+To add a log to a process, the process be running and be assigned to an Executor. Only the assigned Executor can add logs. 
+Let's register an Executor and assign the process we just submitted.
+
+.. code-block:: console
+    
+    colonies key generate
+
+.. code-block:: console
+
+    INFO[0000] Generated new private key
+
+    Id=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
+    PrvKey=8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
+    
+.. code-block:: console
+
+    colonies executor add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \ 
+    --name helloworld-executor \ 
+    --type helloworld-executor \
+    --approve
+
+.. code-block:: console
+
+    INFO[0000] Executor added
+
+    ColonyName=dev 
+    ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 
+    ExecutorName=helloworld-executor ExecutorType=helloworld-executor
+
+.. code-block:: console
+
+    colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 
+
+.. code-block:: console
+
+    INFO[0000] Assigned process to executor
+
+    ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
+    ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c
+
+Now, the process is assign to the Executor. Let's add log to it.
+
+.. code-block:: console
+
+    colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \n
+    -m "helloworld" \n
+    --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
+
+.. code-block:: console
+
+    INFO[0000] Adding log
+
+    LogMsg=helloworld ProcessID=511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34
+
+Getting Logs
+------------
+
+.. code-block:: console
+   
+    colonies log get -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34
+
+.. code-block:: console
+
+    helloworld
+
+It is possible to use flag **-follow** to follow a process and print all logs until the process is concludes. 
 
 Attributes
 ==========
@@ -1336,8 +1412,8 @@ Let's add a **Cron** and run this workflow every 5 seconds.
 
     CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
 
-We can now see that new Processes starting to appear every 5 seconds. Use the flag **--waitprevious** to only spawn a new Process if the current 
-Process in the queue has finised or failed.
+We can now see that new Processes starting to appear every 5 seconds. Use the flag **--waitprevious** to only spawn a new process if the current 
+process in the queue has finised or failed.
 
 .. code-block:: console
 
@@ -1522,7 +1598,7 @@ Remove a Cron
 
 Generators
 ==========
-Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the Process.
+Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the process.
 
 .. code-block:: console
 
