@@ -49,7 +49,6 @@ Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S
 
 Getting help
 ------------
-
 To use the Colonies CLI tool, just type **colonies**. 
 
 .. code-block:: console
@@ -73,7 +72,7 @@ To use the Colonies CLI tool, just type **colonies**.
       cron        Manage cron
       database    Manage internal database
       dev         Start a development server
-      executors   Manage executors
+      executor    Manage executors
       fs          Manage file storage
       function    Manage functions
       generator   Manage generators
@@ -106,8 +105,8 @@ To get help about a certain subcommand, e.g. type: **colonies process --help**
     Available Commands:
       assign      Assign a process to a executor
       close       Close a process as successful
-      delete      Delete a process
-      deleteall   Delete all processes
+      remove      Remove a process
+      removeall   Remove all processes
       fail        Close a process as failed
       get         Get info about a process
       ps          List all running processes
@@ -130,7 +129,6 @@ To get help about a certain subcommand, e.g. type: **colonies process --help**
 
 Show current configuration
 --------------------------
-
 To get info about current configuration type:
 
 .. code-block:: console
@@ -146,8 +144,8 @@ To get info about current configuration type:
     | TLS    | false           |
     +--------+-----------------+
 
-Manage Colonies
-================
+Colony
+======
 
 Create a new Colony
 -------------------
@@ -227,8 +225,8 @@ All valid users and executors can get statistics on a Colony.
     | Failed workflows     | 1   |
     +----------------------+-----+
 
-Manage Users
-============
+User
+====
 
 Add a new User
 --------------
@@ -253,7 +251,7 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 .. code-block:: console
     
-    colonies users add \
+    colonies user add \
     --name="johan" \
     --email="johan.kristiansson@ri.se" \
     --phone="+467011122233" \
@@ -276,7 +274,7 @@ To list all users member of a Colony.
 
 .. code-block:: console
 
-   colonies users ls
+   colonies user ls
 
 .. code-block:: console
 
@@ -291,7 +289,7 @@ Get info about a User
 
 .. code-block:: console
 
-    colonies users get --name johan
+    colonies user get --name johan
 
 .. code-block:: console
 
@@ -308,7 +306,7 @@ Remove a User
 
 .. code-block:: console
 
-    colonies users remove --name johan
+    colonies user remove --name johan
 
 .. code-block:: console
 
@@ -317,11 +315,11 @@ Remove a User
     ColonyName=dev 
     Username=johan
 
-Manage Executors
-================
+Executors
+=========
 
-Register an new Executor 
-------------------------
+Register a new Executor 
+-----------------------
 Copy the JSON object below to a file, e.g. executor.json. Only **executorname** and **executortype** are mandatory fields. 
 And only a Colony owner can register a new Executor.
 
@@ -365,7 +363,7 @@ Below is a minimal Executor spec.
 
 .. code-block:: console 
 
-    colonies executors add --spec examples/executors/executor.json  \
+    colonies executor add --spec examples/executors/executor.json  \
     --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --approve
 
@@ -373,7 +371,7 @@ It is also possible to override **executorname** and **executortype** fields.
 
 .. code-block:: console
 
-    colonies executors add --spec examples/executors/executor.json  \
+    colonies executor add --spec examples/executors/executor.json  \
     --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --name my_name \ 
     --type my_type \
@@ -383,21 +381,21 @@ Or simply skip the **--spec** argument, but then **executorname** and **executor
 
 .. code-block:: console
 
-    colonies executors add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
+    colonies executor add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \ 
     --name my_name \ 
     --type my_type \
     --approve
 
 If **--approve** is not specified, the Executor will be registered, but is not allowed to get process assignments.
 
-Approve Executors
------------------
+Approve an Executor
+-------------------
 Not approved Executors do not take part of process brokering and will not get any processassignments. 
 The following command will approve an Executor:
 
 .. code-block:: console
     
-    colonies executors approve --name my_executor
+    colonies executor approve --name my_executor
 
 .. code-block:: console
 
@@ -405,13 +403,13 @@ The following command will approve an Executor:
 
     ColonyName=dev ExecutorName=my_executor
 
-Reject Executors
------------------
+Reject an Executor
+------------------
 The following command will reject an Executor and prevent it from taking part of process brokering:
 
 .. code-block:: console
     
-    colonies executors reject --name my_executor
+    colonies executor reject --name my_executor
 
 .. code-block:: console
 
@@ -419,13 +417,26 @@ The following command will reject an Executor and prevent it from taking part of
 
     ColonyName=dev ExecutorName=my_executor
 
+Remove an Executor
+------------------
+
+.. code-block:: console
+    
+    colonies executor remove --name  ml-executor
+
+.. code-block:: console
+
+    INFO[0000] Executor removed
+
+    ColonyName=dev ExecutorName=ml-executor
+
 
 List Executors
 --------------
  
 .. code-block:: console
       
-    colonies executors ls
+    colonies executor ls
 
 .. code-block:: console
 
@@ -441,7 +452,7 @@ Get info about an Executor
 
 .. code-block:: console
 
-    colonies executors get --name ml-executor
+    colonies executor get --name ml-executor
 
 .. code-block:: console
 
@@ -488,8 +499,8 @@ Get info about an Executor
      Functions:
      No functions found
 
-Calling Functions
-=================
+Functions
+=========
 
 Submitting Function Specs
 -------------------------
@@ -531,7 +542,7 @@ The command will block until the process is executed by an Executor. First, we n
     
 .. code-block:: console
 
-    colonies executors add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \ 
+    colonies executor add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \ 
     --name helloworld-executor \ 
     --type helloworld-executor \
     --approve
@@ -637,8 +648,8 @@ To list all registered Function in a Colony and get some basic statistics, type:
 
 If two or more Executors provide the same Function, they will compete for process assignments, effectively load-balancing requests between Executors.
 
-Manage Processes
-================
+Process
+=======
 
 List Waiting Processes
 ----------------------
@@ -851,8 +862,62 @@ Or as JSON instead of tables.
        ]
     }
 
-Using Attributes
-================
+Remove a Process
+----------------
+
+.. code-block:: console
+
+    colonies process remove -p  0bcca3064a6619f91770b9e49c77f7537020a63d7c5b5d693756a2231aa2ad72
+
+.. code-block:: console
+
+    INFO[0000] Process removed
+
+    ProcessId=0bcca3064a6619f91770b9e49c77f7537020a63d7c5b5d693756a2231aa2ad72
+
+Note that it is not possible to remove a process if it is part of a workflows.
+
+Remove all Processes
+--------------------
+
+.. code-block:: console
+
+    colonies process removeall
+
+.. code-block:: console
+
+    WARNING!!! Are you sure you want to remove all all processes from Colony <dev>. 
+    This operation cannot be undone! (YES,no): YES
+
+    INFO[0002] Deleting all processes in Colony
+
+    ColonyName=dev
+
+To only remove *Waiting* processes, type:
+
+.. code-block:: console
+
+    colonies process removeall --waiting
+
+Or only remove *Successful* processes, type:
+
+.. code-block:: console
+
+    colonies process removeall --successful
+
+Or *Failed* processes, type:
+
+.. code-block:: console
+
+    colonies process removeall --failed
+
+Note that it is not possible to remove processes if it is part of a workflows.
+
+Logs
+==========
+
+Attributes
+==========
 
 Add an Attribute to a Process
 -----------------------------
@@ -950,8 +1015,258 @@ Attributes can also viewed by looking up a Process.
      | 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0 | mykey | myvalue | Out  |
      +------------------------------------------------------------------+-------+---------+------+
 
-Cron
-====
+Workflows
+=========
+
+Submit a Workflow
+-----------------
+
+.. code-block:: json
+
+    [
+        {
+            "nodename": "task_a",
+            "funcname": "echo",
+            "args": [
+                "task_a"
+            ],
+            "conditions": {
+                "executortype": "cli",
+                "dependencies": []
+            }
+        },
+        {
+            "nodename": "task_b",
+            "funcname": "echo",
+            "args": [
+                "task_b"
+            ],
+            "conditions": {
+                "executortype": "cli",
+                "dependencies": [
+                    "task_a"
+                ]
+            }
+        },
+        {
+            "nodename": "task_c",
+            "funcname": "echo",
+            "args": [
+                "task_c"
+            ],
+            "conditions": {
+                "executortype": "cli",
+                "dependencies": [
+                    "task_a"
+                ]
+            }
+        },
+        {
+            "nodename": "task_d",
+            "funcname": "echo",
+            "args": [
+                "task_d"
+            ],
+            "conditions": {
+                "executortype": "cli",
+                "dependencies": [
+                    "task_b",
+                    "task_c"
+                ]
+            }
+        }
+    ]
+
+.. code-block:: text
+
+    colonies workflow submit --spec examples/workflows/workflow.json
+
+.. code-block:: text
+
+    INFO[0000] Workflow submitted
+
+    WorkflowID=3dd558fdd28cbc3ab01c5cf7e68ab8ca42e174aca9f520f193c9b98aca00696d
+
+.. code-block:: console 
+
+    colonies process psw
+
+.. code-block:: console 
+
+    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
+    |                                ID                                | FUNC |  ARGS  | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE |
+    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
+    | 3c42610205e044b83040b8ce5b3efd1fb5a73f5f71ab755785c1fd12b5799ee5 | echo | task_a |        | 2023-11-30 13:43:16 | cli           |
+    | fc58c224bd585868754b20a56b43b722c1387bebbe41124646c5ca9e3449caa2 | echo | task_b |        | 2023-11-30 13:43:16 | cli           |
+    | b1f214365bb4c1dcfaf0d4a73c2cfed22f07fb8cfecdc89f99538f32f57d6ffa | echo | task_c |        | 2023-11-30 13:43:16 | cli           |
+    | dc6f9f2ff1c2730db290f3c549a87ea5ee75629d905f286c04620f8615433594 | echo | task_d |        | 2023-11-30 13:43:16 | cli           |
+    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
+
+List Waiting Workflows
+----------------------
+
+.. code-block:: console 
+
+    colonies workflow psw
+
+.. code-block:: console 
+
+    +------------------------------------------------------------------+---------------------+
+    |                                ID                                |   SUBMISSION TIME   |
+    +------------------------------------------------------------------+---------------------+
+    | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 | 2023-11-30 13:56:38 |
+    +------------------------------------------------------------------+---------------------+
+
+List Running Workflows
+----------------------
+
+.. code-block:: console 
+
+    colonies workflow ps
+
+.. code-block:: console
+
+    WARN[0000] No running workflows found
+
+List Successful Workflows
+-------------------------
+
+.. code-block:: console 
+
+    colonies workflow pss
+
+.. code-block:: console
+
+    WARN[0000] No successful workflows found
+
+List Failed Workflows
+---------------------
+
+.. code-block:: console 
+
+    colonies workflow psf
+
+.. code-block:: console
+
+    WARN[0000] No successful workflows found
+
+
+Get info about a Workflow
+-------------------------
+
+.. code-block:: console
+
+    colonies workflow get --workflowid 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+
+.. code-block:: console
+
+    Workflow:
+    +----------------+------------------------------------------------------------------+
+    | WorkflowID     | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 |
+    | ColonyName     | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 |
+    | State          | Waiting                                                          |
+    | SubmissionTime | 2023-11-30 13:56:38                                              |
+    | StartTime      | 0001-01-01 00:53:28                                              |
+    | EndTime        | 0001-01-01 00:53:28                                              |
+    +----------------+------------------------------------------------------------------+
+    
+    Processes:
+    +-------------------+------------------------------------------------------------------+
+    | NodeName          | task_a                                                           |
+    | ProcessID         | 515b789379219db59d16112fc006c0a00fd8194de9e2848ac9952d33da80ca74 |
+    | ExecutorType      | cli                                                              |
+    | FuncName          | echo                                                             |
+    | Args              | task_a                                                           |
+    | KwArgs            | None                                                             |
+    | State             | Waiting                                                          |
+    | WaitingForParents | false                                                            |
+    | Dependencies      | None                                                             |
+    +-------------------+------------------------------------------------------------------+
+    
+    +-------------------+------------------------------------------------------------------+
+    | NodeName          | task_b                                                           |
+    | ProcessID         | 16cd30c3d35b864d562c575e15bf169f3e78a44a42863787664a38c4fa2bcb7f |
+    | ExecutorType      | cli                                                              |
+    | FuncName          | echo                                                             |
+    | Args              | task_b                                                           |
+    | KwArgs            | None                                                             |
+    | State             | Waiting                                                          |
+    | WaitingForParents | true                                                             |
+    | Dependencies      | task_a                                                           |
+    +-------------------+------------------------------------------------------------------+
+    
+    +-------------------+------------------------------------------------------------------+
+    | NodeName          | task_d                                                           |
+    | ProcessID         | 2883d96adeaed704900f7001ccbb89e02b00d1d7b4718326de1ce19c65c4c69d |
+    | ExecutorType      | cli                                                              |
+    | FuncName          | echo                                                             |
+    | Args              | task_d                                                           |
+    | KwArgs            | None                                                             |
+    | State             | Waiting                                                          |
+    | WaitingForParents | true                                                             |
+    | Dependencies      | task_b task_c                                                    |
+    +-------------------+------------------------------------------------------------------+
+    
+    +-------------------+------------------------------------------------------------------+
+    | NodeName          | task_c                                                           |
+    | ProcessID         | 4c1c6b96d509b4b57291973d23195cf3a0a3134a53b0584f27d31101366c56ea |
+    | ExecutorType      | cli                                                              |
+    | FuncName          | echo                                                             |
+    | Args              | task_c                                                           |
+    | KwArgs            | None                                                             |
+    | State             | Waiting                                                          |
+    | WaitingForParents | true                                                             |
+    | Dependencies      | task_a                                                           |
+    +-------------------+------------------------------------------------------------------+
+   
+Remove a Workflow
+-----------------
+.. code-block:: text
+    
+    colonies workflow remove --workflowid 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+
+.. code-block:: text
+
+    INFO[0000] Workflow removed
+
+    WorkflowID=7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+
+Remove all Workflows
+--------------------
+
+.. code-block:: console
+
+    colonies workflow removeall
+
+.. code-block:: console
+
+    WARNING!!! Are you sure you want to remove all workflows in the Colony <dev>. This operation cannot be undone! (YES,no):
+    This operation cannot be undone! (YES,no): YES
+
+    INFO[0002] Deleting all workflows in Colony
+
+    ColonyName=dev
+
+To only remove *Waiting* processes, type:
+
+.. code-block:: console
+
+    colonies workflow removeall --waiting
+
+Or only remove *Successful* processes, type:
+
+.. code-block:: console
+
+    colonies workflow removeall --successful
+
+Or *Failed* processes, type:
+
+.. code-block:: console
+
+    colonies worklflow removeall --failed
+
+Crons
+=====
 Cron expressions follow this format:
 
 .. code-block:: text
@@ -966,35 +1281,19 @@ Cron expressions follow this format:
     │ │ │ │ │ │ 
     * * * * * *
 
-Spawn a workflow every second starting at 00 seconds: 
-```
-0/1 * * * * *
-```
+Spawn a workflow every second starting at 00 seconds: :code:`0/1 * * * * *`
 
-Spawn a workflow every other second starting at 00 seconds: 
-```
-0/2 * * * * *
-```
+Spawn a workflow every other second starting at 00 seconds: :code:`0/2 * * * * *`
 
-Spawn a workflow every minute starting at 30 seconds: 
-```
-30 * * * * *
-```
+Spawn a workflow every minute starting at 30 seconds: :code:`30 * * * * *`
 
-Spawn a workflow every Monday at 15:03:59: 
-```
-59 3 15 * * MON
-```
+Spawn a workflow every Monday at 15:03:59: :code:`59 3 15 * * MON`
 
-Spawn a workflow every Christmas Eve at 15:00: 
-```
-0 0 15 24 12 * 
-```
+Spawn a workflow every Christmas Eve at 15:00: :code:`0 0 15 24 12 *`
 
-Add a Cron TODO
+Add a Cron
 ----------
-
-Let's run this workflow every 5 seconds.
+Let's add a **Cron** and run this workflow every 5 seconds.
 
 .. code-block:: json 
 
@@ -1037,7 +1336,8 @@ Let's run this workflow every 5 seconds.
 
     CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
 
-We can now see that new Processes appears every 5 seconds.
+We can now see that new Processes starting to appear every 5 seconds. Use the flag **--waitprevious** to only spawn a new Process if the current 
+Process in the queue has finised or failed.
 
 .. code-block:: console
 
@@ -1060,10 +1360,318 @@ We can now see that new Processes appears every 5 seconds.
     | 02076d5f70d9dcc464bb6079d61347895fd7d03c60aedcef163214bd8a67ffb5 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:45 | cli           |
     +------------------------------------------------------------------+------+--------------------+--------+---------------------+---------------+
 
-Using the Colonies FS (CFS)
-===========================
+Listing Crons
+-------------
+.. code-block:: console
 
-ColonyOS features a built-in Meta-Filesystem designed to make data transfer between Executors easier. Unlike regular filesystems that store data directly, Colony FS only contains metadata on how to access files, for example data location, credentials or configuration settings. The data itself is stored in various other places like Amazon S3 or IPFS. 
+    colonies cron ls
+
+.. code-block:: console
+
+    +------------------------------------------------------------------+--------------+
+    |                              CRONID                              |     NAME     |
+    +------------------------------------------------------------------+--------------+
+    | 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2 | example_cron |
+    +------------------------------------------------------------------+--------------+
+
+Getting info about a Cron
+-------------------------
+.. code-block:: console
+
+    colonies cron get --cronid 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+
+.. code-block:: console
+
+     Cron:
+     +-------------------------+------------------------------------------------------------------+
+     | Id                      | 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2 |
+     | ColonyName              | dev                                                              |
+     | Name                    | example_cron                                                     |
+     | Cron Expression         | 0/5 * * * * *                                                    |
+     | Interval                | -1                                                               |
+     | Random                  | false                                                            |
+     | NextRun                 | 2023-11-30 08:40:20                                              |
+     | LastRun                 | 2023-11-30 08:40:15                                              |
+     | PrevProcessGraphID      | c02ced89f3e000bd5e0032b54672de377a58e4cb15c724261809a6e028ed6e75 |
+     | WaitForPrevProcessGraph | false                                                            |
+     | CheckerPeriod           | 1000                                                             |
+     +-------------------------+------------------------------------------------------------------+
+     
+     WorkflowSpec:
+     
+     FunctionSpec 0:
+     +-------------+---------------------+
+     | Func        | date                |
+     | Args        | > /tmp/currentdate  |
+     | KwArgs      | None                |
+     | MaxWaitTime | 0                   |
+     | MaxExecTime | 0                   |
+     | MaxRetries  | 0                   |
+     | Priority    | 0                   |
+     +-------------+---------------------+
+     
+     Conditions:
+     +------------------+------+
+     | ColonyName       |      |
+     | ExecutorIDs      | None |
+     | ExecutorType     | cli  |
+     | Dependencies     |      |
+     | Nodes            | 0    |
+     | CPU              |      |
+     | Memmory          |      |
+     | Processes        | 0    |
+     | ProcessesPerNode | 0    |
+     | Storage          |      |
+     | Walltime         | 0    |
+     | GPU              |      |
+     | GPUs             | 0    |
+     | GPUMemory        |      |
+     +------------------+------+
+     
+     FunctionSpec 1:
+     +-------------+-------------------+
+     | Func        | cat               |
+     | Args        | /tmp/currentdate  |
+     | KwArgs      | None              |
+     | MaxWaitTime | 0                 |
+     | MaxExecTime | 0                 |
+     | MaxRetries  | 0                 |
+     | Priority    | 0                 |
+     +-------------+-------------------+
+     
+     Conditions:
+     +------------------+---------------+
+     | ColonyName       |               |
+     | ExecutorIDs      | None          |
+     | ExecutorType     | cli           |
+     | Dependencies     | generate_date |
+     | Nodes            | 0             |
+     | CPU              |               |
+     | Memmory          |               |
+     | Processes        | 0             |
+     | ProcessesPerNode | 0             |
+     | Storage          |               |
+     | Walltime         | 0             |
+     | GPU              |               |
+     | GPUs             | 0             |
+     | GPUMemory        |               |
+     +------------------+---------------+
+
+Immediately run a Cron
+----------------------
+
+.. code-block:: console
+
+    colonies cron run --cronid 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+
+.. code-block:: console
+
+    INFO[0000] Running cron
+
+    CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+
+Use interval instead of a Cron expressions
+------------------------------------------
+An alternative way to spawn a cron is to specify an interval instead of a cron expression. In the example, below a workflow is spawned every 10 seconds.
+
+.. code-block:: console
+    
+    colonies cron add --name another_example_cron \ 
+    --interval 10 \ 
+    --spec examples/cron/cron_workflow.json
+
+.. code-block:: console
+
+    INFO[0000] Will not wait for previous processgraph to finish
+    INFO[0000] Cron added
+
+    CronID=63aa987bb07444d16525dccf4f9936e563ca43f2ad0756a7aedb7a837ede5728
+
+Random intervals
+----------------
+It is also possible to spawn a workflow at a random time within an interval. This can be very useful when testing a software (e.g. chaos engineering).
+
+In the example, a workflow will be spawned randomly within 10 seconds.
+
+.. code-block:: console
+    
+    colonies cron add --name random_example_cron \ 
+    --interval 10 \ 
+    --random 10 \ 
+    --spec examples/cron/cron_workflow.json
+
+.. code-block:: console
+    INFO[0000] Will not wait for previous processgraph to finish
+    INFO[0000] Cron added
+
+    CronID=8f3c8db3a5f54c7726851166952453752e6381e4b1e44ab1d29f41bd4779ff11
+
+
+Remove a Cron
+-------------
+
+.. code-block:: console
+
+    colonies cron remove --cronid e5e25a98305ac11ff9292b584d4b119a48c99c5fa599d43e63cd9d57c53927d8
+
+.. code-block:: console
+
+    INFO[0000] Deleting cron
+
+    CronId=e5e25a98305ac11ff9292b584d4b119a48c99c5fa599d43e63cd9d57c53927d8
+
+Generators
+==========
+Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the Process.
+
+.. code-block:: console
+
+    colonies generator add --spec ./examples/generators/generator_workflow.json --name testgenerator --trigger 5
+
+.. code-block:: console
+
+    INFO[0000] Generator added
+
+    GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d GeneratorName=testgenerator Timeout=-1 Trigger=5
+
+Send data to Generator
+----------------------
+After 5 pack calls, the **Generator** should generate a workflow.
+
+.. code-block:: console
+
+    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello1
+    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello2
+    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello3
+    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello4
+    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello5
+
+Let's see if a Workflow was created.
+
+.. code-block:: console
+
+    colonies workflow psw
+
+.. code-block:: console
+
+    +------------------------------------------------------------------+---------------------+
+    |                                ID                                |   SUBMISSION TIME   |
+    +------------------------------------------------------------------+---------------------+
+    | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 | 2023-11-30 14:28:22 |
+    +------------------------------------------------------------------+---------------------+
+
+Let's lookup the Workflow to see if the data is there.
+
+.. code-block:: console
+
+    colonies workflow get --workflowid  e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97
+
+.. code-block:: console
+
+    Workflow:
+    +----------------+------------------------------------------------------------------+
+    | WorkflowID     | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 |
+    | ColonyName     | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 |
+    | State          | Waiting                                                          |
+    | SubmissionTime | 2023-11-30 14:28:22                                              |
+    | StartTime      | 0001-01-01 00:53:28                                              |
+    | EndTime        | 0001-01-01 00:53:28                                              |
+    +----------------+------------------------------------------------------------------+
+    
+    Processes:
+    +-------------------+------------------------------------------------------------------+
+    | NodeName          | generator_example                                                |
+    | ProcessID         | c4b589589e777ffbbaeb97494c0a43adf1bbead7ee24d711023712a1c0e36d61 |
+    | ExecutorType      | cli                                                              |
+    | FuncName          | echo                                                             |
+    | Args              | hello1 hello2 hello3 hello4                                      |
+    |                   | hello5                                                           |
+    | KwArgs            | None                                                             |
+    | State             | Waiting                                                          |
+    | WaitingForParents | false                                                            |
+    | Dependencies      | None                                                             |
+    +-------------------+------------------------------------------------------------------+
+
+List Generators
+---------------
+.. code-block:: console
+
+    colonies generator ls
+
+.. code-block:: console
+
+    +------------------------------------------------------------------+---------------+
+    |                           GENERATORID                            |     NAME      |
+    +------------------------------------------------------------------+---------------+
+    | 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d | testgenerator |
+    +------------------------------------------------------------------+---------------+
+
+Get info about a Generator
+--------------------------
+.. code-block:: console
+
+    colonies generator get --generatorid  1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d  
+
+.. code-block:: console
+
+     Generator:
+     +---------------+------------------------------------------------------------------+
+     | Id            | 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d |
+     | Name          | testgenerator                                                    |
+     | Trigger       | 5                                                                |
+     | Timeout       | -1                                                               |
+     | Lastrun       | 2023-11-30 14:28:22                                              |
+     | CheckerPeriod | 1000                                                             |
+     | QueueSize     | 0                                                                |
+     +---------------+------------------------------------------------------------------+
+     
+     WorkflowSpec:
+     
+     FunctionSpec 0:
+     +-------------+------+
+     | Func        | echo |
+     | Args        | None |
+     | KwArgs      | None |
+     | MaxWaitTime | 0    |
+     | MaxExecTime | 0    |
+     | MaxRetries  | 0    |
+     | Priority    | 0    |
+     +-------------+------+
+     
+     Conditions:
+     +------------------+------+
+     | ColonyName       |      |
+     | ExecutorIDs      | None |
+     | ExecutorType     | cli  |
+     | Dependencies     |      |
+     | Nodes            | 0    |
+     | CPU              |      |
+     | Memmory          |      |
+     | Processes        | 0    |
+     | ProcessesPerNode | 0    |
+     | Storage          |      |
+     | Walltime         | 0    |
+     | GPU              |      |
+     | GPUs             | 0    |
+     | GPUMemory        |      |
+     +------------------+------+
+
+Remove a Generator
+------------------
+
+.. code-block:: console
+
+    colonies generator remove --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d
+
+.. code-block:: console
+
+    INFO[0000] Deleting generator
+
+    GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d
+
+Filesystem
+==========
+ColonyOS features a built-in *Meta-Filesystem* designed to make data transfer between Executors easier. Unlike regular filesystems that store data directly, Colony FS only contains metadata on how to access files, for example data location, credentials or configuration settings. The data itself is stored in various other places like Amazon S3 or IPFS. 
 
 Make sure the following environmental variable is set
 
