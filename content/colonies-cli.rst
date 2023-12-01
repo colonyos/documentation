@@ -23,13 +23,13 @@ Keep in mind that the private key is sensitive and should be kept confidential.
     export COLONIES_COLONY_NAME="dev"
     export COLONIES_PRVKEY="a499fddafe51fabb405dae13c33daa9d63fe262ee92e6fff52c82b4a72e36f6d"
 
-If you are a Colony administrator, you may also want to set: 
+If you are a colony administrator, you may also want to set: 
 
 .. code-block:: console
 
     export COLONIES_COLONY_PRVKEY="29ddccc9e2825378b9055e2667c2fcf0ceffc4e8744ad0e97dd37f8a20750820"
 
-To be able to create a new Colony, you need to be a Colonies server administrator and set the following variables:
+To be able to create a new colony, you need to be a Colonies server administrator and set the following variables:
 
 .. code-block:: console
 
@@ -147,9 +147,9 @@ To get info about current configuration type:
 Colony
 ======
 
-Create a new Colony
+Create a new colony
 -------------------
-First generate a new ECDSA private key. To use the new Colony, you need to export the key as ``COLONIES_COLONY_PRVKEY``.
+First generate a new ECDSA private key. To use the new colony, you need to export the key as ``COLONIES_COLONY_PRVKEY``.
 
 .. code-block:: console
     
@@ -177,7 +177,7 @@ First generate a new ECDSA private key. To use the new Colony, you need to expor
     ColonyName=test_colony
 
 
-List all registered Colonies
+List all registered colonies
 ----------------------------
 To list all registered colonies, you must be server administrator and the ``COLONIES_SERVER_PRVKEY`` must be set.
 
@@ -194,9 +194,9 @@ To list all registered colonies, you must be server administrator and the ``COLO
     | test_colony |
     +-------------+
 
-Remove a Colony
+Remove a colony
 ---------------
-Only a Colony owner can remove a Colony and you need to have a valid ``COLONIES_COLONY_PRVKEY`` private key.
+Only a colony owner can remove a colony and you need to have a valid ``COLONIES_COLONY_PRVKEY`` private key.
 
 .. code-block:: console
     
@@ -204,7 +204,7 @@ Only a Colony owner can remove a Colony and you need to have a valid ``COLONIES_
 
 Get statistics
 --------------
-All valid users and executors can get statistics on a Colony.
+All valid users and executors can get statistics on a colony.
 
 .. code-block:: console
 
@@ -225,14 +225,14 @@ All valid users and executors can get statistics on a Colony.
     | Failed workflows     | 1   |
     +----------------------+-----+
 
-User
-====
+Users
+=====
 
-Add a new User
+Add a new user
 --------------
 First, generate a new ECDSA private key. The user Id is cryptographically linked to this newly generated private key. In fact, the Colonies server will reconstruct the user Id from the signatures of messages sent to it.
 
-It's also important to note that only the Colony owner can add a user. Therefore, ensure that the ``COLONIES_COLONY_PRVKEY`` environment variable is correctly set.
+It's also important to note that only the colony owner can add a user. Therefore, ensure that the ``COLONIES_COLONY_PRVKEY`` environment variable is correctly set.
 
 Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact with a Colonies server with this new user account. 
 
@@ -268,9 +268,9 @@ Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact w
 
 Note that both username and userid must be unique.
 
-List Users 
+List users 
 ----------
-To list all users member of a Colony.
+To list all users member of a colony.
 
 .. code-block:: console
 
@@ -284,7 +284,7 @@ To list all users member of a Colony.
     | johan    | johan.kristiansson@ri.se | +467011122233 |
     +----------+--------------------------+---------------+
 
-Get info about a User 
+Get info about a user 
 ---------------------
 
 .. code-block:: console
@@ -301,7 +301,7 @@ Get info about a User
     | Phone      | +467011122233                                                    |
     +------------+------------------------------------------------------------------+
 
-Remove a User 
+Remove a user 
 -------------
 
 .. code-block:: console
@@ -318,10 +318,10 @@ Remove a User
 Executors
 =========
 
-Register a new Executor 
+Register a new executor 
 -----------------------
 Copy the JSON object below to a file, e.g. executor.json. Only **executorname** and **executortype** are mandatory fields. 
-And only a Colony owner can register a new Executor.
+And only a colony owner can register a new executor.
 
 .. code-block:: json
 
@@ -352,7 +352,7 @@ And only a Colony owner can register a new Executor.
         }
     }
 
-Below is a minimal Executor spec.
+Below is a minimal executor spec.
 
 .. code-block:: json
 
@@ -386,12 +386,12 @@ Or simply skip the **--spec** argument, but then **executorname** and **executor
     --type my_type \
     --approve
 
-If **--approve** is not specified, the Executor will be registered, but is not allowed to get process assignments.
+If **--approve** is not specified, the executor will be registered, but is not allowed to get process assignments.
 
-Approve an Executor
+Approve an executor
 -------------------
-Not approved Executors do not take part of process brokering and will not get any processassignments. 
-The following command will approve an Executor:
+Not approved executors do not take part of process brokering and will not get any processassignments. 
+The following command will approve an executor:
 
 .. code-block:: console
     
@@ -403,9 +403,9 @@ The following command will approve an Executor:
 
     ColonyName=dev ExecutorName=my_executor
 
-Reject an Executor
+Reject an executor
 ------------------
-The following command will reject an Executor and prevent it from taking part of process brokering:
+The following command will reject an executor and prevent it from taking part of process brokering:
 
 .. code-block:: console
     
@@ -417,7 +417,7 @@ The following command will reject an Executor and prevent it from taking part of
 
     ColonyName=dev ExecutorName=my_executor
 
-Remove an Executor
+Remove an executor
 ------------------
 
 .. code-block:: console
@@ -431,7 +431,7 @@ Remove an Executor
     ColonyName=dev ExecutorName=ml-executor
 
 
-List Executors
+List executors
 --------------
  
 .. code-block:: console
@@ -447,7 +447,7 @@ List Executors
     | ml-executor | ml   | ICE Datacenter |
     +-------------+------+----------------+
 
-Get info about an Executor
+Get info about an executor
 --------------------------
 
 .. code-block:: console
@@ -502,12 +502,12 @@ Get info about an Executor
 Functions
 =========
 
-Submitting Function Specs
+Submitting function specs
 -------------------------
 
-ColonyOS operates on the principle of submitting **Functions Specifications** to a Colony, which are then executed by various Executors, members of that Colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **process**, which is subsequently assigned to an Executor. Each Executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
+ColonyOS operates on the principle of submitting **Functions Specifications** to a colony, which are then executed by various executors, members of that colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **process**, which is subsequently assigned to an executor. Each executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
 
-Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target Executor type. Note that a **Function Specification** can be submitted even if there are no matching Executors currently in the Colony. These functions will be executed in the future when an Executor of matching **executortype** becomes available.
+Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target executor type. Note that a **Function Specification** can be submitted even if there are no matching executors currently in the colony. These functions will be executed in the future when an executor of matching **executortype** becomes available.
 
 .. code-block:: json
 
@@ -523,11 +523,12 @@ Let's submit a **Function Specification** for executing a function named **hello
     colonies function submit --spec ./examples/functions/helloworld.json
 
 .. code-block:: console
+
     INFO[0000] Process submitted
 
     ProcessId=99962477b295c4058b0a54929b79dbc0d7f57699ca0a0385df1a41dfa473a04d
 
-The command will block until the process is executed by an Executor. First, we need to generate a new ECDSA private key that will be used by the Executor. 
+The command will block until the process is executed by an executor. First, we need to generate a new ECDSA private key that will be used by the executor. 
 
 .. code-block:: console
     
@@ -555,7 +556,7 @@ The command will block until the process is executed by an Executor. First, we n
     ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 
     ExecutorName=helloworld-executor ExecutorType=helloworld-executor
 
-To assign a process to an Executor, the command **colonies process assign** can be used and also specify the **helloworld-executor** Executor's private key. Typically, the assign operation is carried out by specialized Executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.
+To assign a process to an executor, the command **colonies process assign** can be used and also specify the **helloworld-executor** executor's private key. Typically, the assign operation is carried out by specialized executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.
 
 .. code-block:: console
 
@@ -568,8 +569,8 @@ To assign a process to an Executor, the command **colonies process assign** can 
     ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
     ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c
 
-The Helloworld Executor is now assigned to the process, which means that it have exclusive access to it. No other Executors can hence be 
-assigned this particular process. Only the assigned Executor can manipulate the process, such as closint it. 
+The Helloworld executor is now assigned to the process, which means that it have exclusive access to it. No other executors can hence be 
+assigned this particular process. Only the assigned executor can manipulate the process, such as closint it. 
 Now close the process with a result string (Hej).  
 
 .. code-block:: console
@@ -580,6 +581,7 @@ Now close the process with a result string (Hej).
     --out Hej
 
 .. code-block:: console
+
     INFO[0000] Process closed as Successful
 
     ProcessId=055a9e1c93ea6e252cab7f2b45eaec78f4f87e540352d10636d88e944b6bfb85
@@ -599,7 +601,7 @@ Alternatively, we can close the process as *failed*.
 
     ProcessId=46a0b33933a68ebfc0da722461b8c13bb1a170ee678ecd1ccede9ae1b01fcc91
 
-Alternative method to execute a Function
+Alternative method to execute a function
 ----------------------------------------
 It is possible to submit a Function Specification without specifying a JSON file, which can be suitable for simpler use cases.
 
@@ -613,9 +615,9 @@ It also possible to provide *args*. Note that *kwargs* is currently not support 
 
     colonies function exec --func fibonacci --args 10 --targettype cli 
 
-Registering a Function
+Registering a function
 ----------------------
-The primary role of Executors is to execute tasks. Executors can register a **Function**, thereby indicating to other Executors or users their ability to execute a specific function. Importantly, only the Executor itself can register Functions to itself; this task cannot be performed by Users or other Executors. To register a Function, access to the Executor's ECDSA private key is required.
+The primary role of executors is to execute tasks. executors can register a **Function**, thereby indicating to other executors or users their ability to execute a specific function. Importantly, only the executor itself can register Functions to itself; this task cannot be performed by Users or other executors. To register a Function, access to the executor's ECDSA private key is required.
 
 .. code-block:: console
 
@@ -623,9 +625,9 @@ The primary role of Executors is to execute tasks. Executors can register a **Fu
     --func helloworld \
     --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 
 
-List all registered Functions
+List all registered functions
 -----------------------------
-To list all registered Function in a Colony and get some basic statistics, type: 
+To list all registered Function in a colony and get some basic statistics, type: 
 
 .. code-block:: console
 
@@ -646,12 +648,12 @@ To list all registered Function in a Colony and get some basic statistics, type:
     | AvgExecTime | 27.459162 s |
     +-------------+-------------+
 
-If two or more Executors provide the same Function, they will compete for process assignments, effectively load-balancing requests between Executors.
+If two or more executors provide the same Function, they will compete for process assignments, effectively load-balancing requests between executors.
 
-Process
-=======
+Processes
+=========
 
-List Waiting Processes
+List waiting processes
 ----------------------
 
 .. code-block:: console
@@ -672,7 +674,7 @@ List Waiting Processes
      | 92fe9912d2b64d874437b95a8c4bb1beb35cbe63cc613e516a33fd1ba71a7b27 | helloworld |      |        | 2023-11-29 22:38:20 | helloworld-executor |
      +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
 
-List Running Processes
+List running processes
 ----------------------
 .. code-block:: console
 
@@ -686,7 +688,7 @@ List Running Processes
      | cf525a815119b61c98219196982309c580285994d2efbde3ab86c9398e8912ec | helloworld |      |        | 2023-11-29 22:36:04 | helloworld-executor |
      +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
 
-List Successful Processes
+List successful processes
 -------------------------
 
 .. code-block:: console
@@ -702,7 +704,7 @@ List Successful Processes
     | 6e6e4eab234617943cf91b3a6eb6ae621530b61b4859d819e18f277bba178acb | helloworld |      |        | 2023-11-29 22:36:02 | helloworld-executor |
     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
 
-List Failed Processes
+List failed processes
 ---------------------
 
 .. code-block:: console
@@ -717,7 +719,7 @@ List Failed Processes
     | b9508fb7e12bf1a4c9bd27b2a8d4193a9652e53983a79d016360f17a540658c8 | helloworld |      |        | 2023-11-29 22:36:04 | helloworld-executor |
     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
 
-Get info about a Process
+Get info about a process
 -------------------------
 
 .. code-block:: console
@@ -862,7 +864,7 @@ Or as JSON instead of tables.
        ]
     }
 
-Remove a Process
+Remove a process
 ----------------
 
 .. code-block:: console
@@ -877,7 +879,7 @@ Remove a Process
 
 Note that it is not possible to remove a process if it is part of a workflows.
 
-Remove all Processes
+Remove all processes
 --------------------
 
 .. code-block:: console
@@ -915,9 +917,9 @@ Note that it is not possible to remove processes if it is part of a workflows.
 
 Logs
 ====
-Colonies provides logging functionality, allowing Executors to add log messages to processes, e.g. stdout ot stderr logs. These logs are stored in a PostgreSQL database. If TimescaleDB is used, the logs will be stored in a timeseries hypertable; otherwise, they will be indexed and stored in a regular PostgreSQL table. If retention is enabled, log data will be automatically purged upon reaching its expiration date. This automated process ensures that logs are systematically removed from the server once they become outdated.
+Colonies provides logging functionality, allowing executors to add log messages to processes, e.g. stdout ot stderr logs. These logs are stored in a PostgreSQL database. If TimescaleDB is used, the logs will be stored in a timeseries hypertable; otherwise, they will be indexed and stored in a regular PostgreSQL table. If retention is enabled, log data will be automatically purged upon reaching its expiration date. This automated process ensures that logs are systematically removed from the server once they become outdated.
 
-Adding Logs to a Process
+Adding logs to a process
 ------------------------
 Let's demonstrate how to manage logs using the Colonies CLI. First submit a process.
 
@@ -925,8 +927,8 @@ Let's demonstrate how to manage logs using the Colonies CLI. First submit a proc
 
     colonies function submit --spec ./examples/functions/helloworld.json
 
-To add a log to a process, the process be running and be assigned to an Executor. Only the assigned Executor can add logs. 
-Let's register an Executor and assign the process we just submitted.
+To add a log to a process, the process be running and be assigned to an executor. Only the assigned executor can add logs. 
+Let's register an executor and assign the process we just submitted.
 
 .. code-block:: console
     
@@ -965,7 +967,7 @@ Let's register an Executor and assign the process we just submitted.
     ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
     ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c
 
-Now, the process is assign to the Executor. Let's add log to it.
+Now, the process is assign to the executor. Let's add log to it.
 
 .. code-block:: console
 
@@ -979,7 +981,7 @@ Now, the process is assign to the Executor. Let's add log to it.
 
     LogMsg=helloworld ProcessID=511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34
 
-Getting Logs
+Getting logs
 ------------
 
 .. code-block:: console
@@ -995,7 +997,7 @@ It is possible to use flag **-follow** to follow a process and print all logs un
 Attributes
 ==========
 
-Add an Attribute to a Process
+Add an attribute to a process
 -----------------------------
 
 .. code-block:: console
@@ -1011,8 +1013,8 @@ Add an Attribute to a Process
 
    AttributeID=77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0
 
-Lookup Attribute on a Process
------------------------------
+Lookup an attribute on a process
+--------------------------------
 
 .. code-block:: console
 
@@ -1028,7 +1030,7 @@ Lookup Attribute on a Process
     | Value         | myvalue                                                          |
     +---------------+------------------------------------------------------------------+
 
-Attributes can also viewed by looking up a Process.
+Attributes can also viewed by looking up a process.
 
 .. code-block:: console
 
@@ -1094,7 +1096,7 @@ Attributes can also viewed by looking up a Process.
 Workflows
 =========
 
-Submit a Workflow
+Submit a workflow
 -----------------
 
 .. code-block:: json
@@ -1178,7 +1180,7 @@ Submit a Workflow
     | dc6f9f2ff1c2730db290f3c549a87ea5ee75629d905f286c04620f8615433594 | echo | task_d |        | 2023-11-30 13:43:16 | cli           |
     +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
 
-List Waiting Workflows
+List waiting workflows
 ----------------------
 
 .. code-block:: console 
@@ -1193,7 +1195,7 @@ List Waiting Workflows
     | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 | 2023-11-30 13:56:38 |
     +------------------------------------------------------------------+---------------------+
 
-List Running Workflows
+List running workflows
 ----------------------
 
 .. code-block:: console 
@@ -1204,7 +1206,7 @@ List Running Workflows
 
     WARN[0000] No running workflows found
 
-List Successful Workflows
+List successful workflows
 -------------------------
 
 .. code-block:: console 
@@ -1215,7 +1217,7 @@ List Successful Workflows
 
     WARN[0000] No successful workflows found
 
-List Failed Workflows
+List failed workflows
 ---------------------
 
 .. code-block:: console 
@@ -1227,7 +1229,7 @@ List Failed Workflows
     WARN[0000] No successful workflows found
 
 
-Get info about a Workflow
+Get info about a workflow
 -------------------------
 
 .. code-block:: console
@@ -1295,7 +1297,7 @@ Get info about a Workflow
     | Dependencies      | task_a                                                           |
     +-------------------+------------------------------------------------------------------+
    
-Remove a Workflow
+Remove a workflow
 -----------------
 .. code-block:: text
     
@@ -1307,7 +1309,7 @@ Remove a Workflow
 
     WorkflowID=7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
 
-Remove all Workflows
+Remove all workflows
 --------------------
 
 .. code-block:: console
@@ -1367,7 +1369,7 @@ Spawn a workflow every Monday at 15:03:59: :code:`59 3 15 * * MON`
 
 Spawn a workflow every Christmas Eve at 15:00: :code:`0 0 15 24 12 *`
 
-Add a Cron
+Add a cron
 ----------
 Let's add a **Cron** and run this workflow every 5 seconds.
 
@@ -1412,7 +1414,7 @@ Let's add a **Cron** and run this workflow every 5 seconds.
 
     CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
 
-We can now see that new Processes starting to appear every 5 seconds. Use the flag **--waitprevious** to only spawn a new process if the current 
+We can now see that new processes starting to appear every 5 seconds. Use the flag **--waitprevious** to only spawn a new process if the current 
 process in the queue has finised or failed.
 
 .. code-block:: console
@@ -1436,7 +1438,7 @@ process in the queue has finised or failed.
     | 02076d5f70d9dcc464bb6079d61347895fd7d03c60aedcef163214bd8a67ffb5 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:45 | cli           |
     +------------------------------------------------------------------+------+--------------------+--------+---------------------+---------------+
 
-Listing Crons
+Listing crons
 -------------
 .. code-block:: console
 
@@ -1450,7 +1452,7 @@ Listing Crons
     | 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2 | example_cron |
     +------------------------------------------------------------------+--------------+
 
-Getting info about a Cron
+Getting info about a cron
 -------------------------
 .. code-block:: console
 
@@ -1533,7 +1535,7 @@ Getting info about a Cron
      | GPUMemory        |               |
      +------------------+---------------+
 
-Immediately run a Cron
+Immediately run a cron
 ----------------------
 
 .. code-block:: console
@@ -1546,7 +1548,7 @@ Immediately run a Cron
 
     CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
 
-Use interval instead of a Cron expressions
+Use interval instead of a cron expressions
 ------------------------------------------
 An alternative way to spawn a cron is to specify an interval instead of a cron expression. In the example, below a workflow is spawned every 10 seconds.
 
@@ -1577,13 +1579,14 @@ In the example, a workflow will be spawned randomly within 10 seconds.
     --spec examples/cron/cron_workflow.json
 
 .. code-block:: console
+
     INFO[0000] Will not wait for previous processgraph to finish
     INFO[0000] Cron added
 
     CronID=8f3c8db3a5f54c7726851166952453752e6381e4b1e44ab1d29f41bd4779ff11
 
 
-Remove a Cron
+Remove a cron
 -------------
 
 .. code-block:: console
@@ -1610,8 +1613,8 @@ Generators automatically spawn workflows when number of **pack** calls exceeds a
 
     GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d GeneratorName=testgenerator Timeout=-1 Trigger=5
 
-Send data to Generator
-----------------------
+Send data to a generator
+------------------------
 After 5 pack calls, the **Generator** should generate a workflow.
 
 .. code-block:: console
@@ -1668,7 +1671,7 @@ Let's lookup the Workflow to see if the data is there.
     | Dependencies      | None                                                             |
     +-------------------+------------------------------------------------------------------+
 
-List Generators
+List generators
 ---------------
 .. code-block:: console
 
@@ -1682,7 +1685,7 @@ List Generators
     | 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d | testgenerator |
     +------------------------------------------------------------------+---------------+
 
-Get info about a Generator
+Get info about a generator
 --------------------------
 .. code-block:: console
 
@@ -1732,7 +1735,7 @@ Get info about a Generator
      | GPUMemory        |      |
      +------------------+------+
 
-Remove a Generator
+Remove a generator
 ------------------
 
 .. code-block:: console
@@ -1773,7 +1776,8 @@ First create some files.
     echo "Hello" > hello.txt
     mkdir subdir
     cd subdir
-    echo "Hello 2" > hello2.txt  
+    echo "Hello 2" > hello2.txt 
+    cd ../..
 
 Now, upload the *myfiles* directory and all its sub-directories to CFS under the **label** *myfiles*.
 
@@ -1844,7 +1848,7 @@ We can not download the files from another computer, or just to another director
 
 Use the flag **--keeplocal=true** to prevent the CLI from overwriting local files in case the files have changed remotely.
 
-List all Labels
+List all labels
 ---------------
 
 .. code-block:: console 
@@ -1864,7 +1868,7 @@ List all Labels
 
     colonies fs ls -l /myfiles
 
-List files in a Label
+List files in a label
 ---------------------
 
 .. code-block:: console 
@@ -1879,7 +1883,7 @@ List files in a Label
     | hello.txt | 0 KiB | f8bcf8878543d199e4b7d48209f2dbd81be69be9609018ea33c64ebd403df47c | 2023-11-29 23:06:29 | 1         |
     +-----------+-------+------------------------------------------------------------------+---------------------+-----------+
 
-Get info about a File
+Get info about a file
 ---------------------
 
 .. code-block:: console 
@@ -1910,7 +1914,7 @@ Get info about a File
      | Encryption Alg  |                                                                  |
      +-----------------+------------------------------------------------------------------+
 
-Download a specific File
+Download a specific file
 ------------------------
 To download a specific File in a specific Label to a directory *newdir*:
 
@@ -1922,7 +1926,35 @@ To download a specific File in a specific Label to a directory *newdir*:
 
       Downloading hello.txt 100% [===============] (191 B/s)
 
-Create a Snapshot
+Remove a file
+-------------
+
+.. code-block:: console 
+
+    colonies fs remove -l /myfiles -n hello.txt
+
+.. code-block:: console 
+
+    INFO[0000] Removed file (local file is not removed)
+
+    FileID= Label=/myfiles Name=hello.txt
+
+Warning! In the current version of ColonyOS, this will break snapshots where the file is included.
+
+Remove a label
+--------------
+
+.. code-block:: console 
+
+    colonies fs label remove -l /myfiles/subdir
+
+.. code-block:: console 
+
+    All files with label </myfiles/subdir/*> will be removed. Local files are not removed.
+
+    Are you sure you want to continue?  (yes,no): yes
+
+Create a snapshot
 -----------------
 
 .. code-block:: console 
@@ -1931,18 +1963,69 @@ Create a Snapshot
 
 .. code-block:: console 
 
-      INFO[0000] Snapshot created                              Label=/myfiles/ SnapshotName=mysnapshot
-     +------------+------------------------------------------------------------------+
-     | SnapshotId | 9e93f4017e0f1f9a9db7d0b987b07f0bb5389869ea731b1ddc1952f7adb6c234 |
-     | ColonyName | dev                                                              |
-     | Label      | /myfiles/                                                        |
-     | Name       | mysnapshot                                                       |
-     | Added      | 2023-11-29 22:32:07                                              |
-     +------------+------------------------------------------------------------------+
-     
-     +------------+------------------------------------------------------------------+---------------------+
-     |  FILENAME  |                              FILEID                              |        ADDED        |
-     +------------+------------------------------------------------------------------+---------------------+
-     | hello2.txt | 043fac24f80c4ec063bd038e65b8092030fa8388b51512cb00aff00c40c42d73 | 2023-11-29 23:06:29 |
-     +------------+------------------------------------------------------------------+---------------------+
+   INFO[0000] Snapshot created
+   Label=/myfiles/ SnapshotName=mysnapshot
+   
+   +------------+------------------------------------------------------------------+
+    | SnapshotId | c0c2a910f463b32658b346511bb0792c3dee5b81bbb5a757fe3dceb71b8ef379 |
+    | ColonyName | dev                                                              |
+    | Label      | /myfiles                                                         |
+    | Name       | mysnapshot                                                       |
+    | Added      | 2023-12-01 07:00:04                                              |
+    +------------+------------------------------------------------------------------+
 
+    +------------+------------------------------------------------------------------+---------------------+
+    |  FILENAME  |                              FILEID                              |        ADDED        |
+    +------------+------------------------------------------------------------------+---------------------+
+    | hello.txt  | 0e0613956395c1aa733fe92a2fa5add62a5ac745f859d75f5f2cad81067e0381 | 2023-12-01 07:58:51 |
+    | hello2.txt | 7a34d75bb43749960a031dc0048fa4539747093a3756cb5ca612a36f487b5fbb | 2023-12-01 07:58:51 |
+    +------------+------------------------------------------------------------------+---------------------+
+
+Download a snapshot
+-------------------
+
+.. code-block:: console 
+
+    colonies fs snapshot download -n mysnapshot -d downloaded_snasphot
+
+.. code-block:: console 
+    
+    Downloading hello.txt 100% [===============] (195 B/s)
+    Downloading hello2.txt 100% [===============] (258 B/s)
+
+Show info about a snapshot
+--------------------------
+
+.. code-block:: console 
+
+    colonies fs snapshot info -n mysnapshot
+
+.. code-block:: console 
+
+    +------------+------------------------------------------------------------------+
+    | SnapshotId | 12d18ac52fd618b079882a21796283be21b375ca6654a768c3d93c614d5e2dfd |
+    | ColonyName | dev                                                              |
+    | Label      | /myfiles                                                         |
+    | Name       | mysnapshot                                                       |
+    | Added      | 2023-12-01 08:15:01                                              |
+    +------------+------------------------------------------------------------------+
+    
+    +------------+------------------------------------------------------------------+---------------------+
+    |  FILENAME  |                              FILEID                              |        ADDED        |
+    +------------+------------------------------------------------------------------+---------------------+
+    | hello.txt  | f31f64056c5d00583816e0fb91c055601ecf7bc86be0e1e6c6d8cc98c8d8ee61 | 2023-12-01 08:14:47 |
+    | hello2.txt | 38fbed96c244a21dd5f2b187a9be0912fa79ca6ff78f641dfb116dc4489cf393 | 2023-12-01 08:14:47 |
+    +------------+------------------------------------------------------------------+---------------------+
+
+Remove a snaphot
+----------------
+
+.. code-block:: console 
+
+    colonies fs snapshot remove -n mysnapshot
+
+.. code-block:: console 
+
+    INFO[0000] Snapshot removed
+
+    SnapshotName=mysnapshot

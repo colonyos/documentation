@@ -12,15 +12,39 @@ Intro
 
 .. toctree::
    :maxdepth: 1
+   :caption: Introduction
+
+   intro
+
+.. toctree::
+   :maxdepth: 1
    :caption: Colonies CLI
 
    colonies-cli 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Colonies Filesystem
+   :caption: Functions & Workflows
 
-   cfs 
+   funcwf
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Executors
+   
+   executors
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Pollinator
+   
+   pollinator
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Python SDK
+
+   python 
 
 .. toctree::
    :maxdepth: 1
