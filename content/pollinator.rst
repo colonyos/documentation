@@ -80,5 +80,86 @@ Creating a new project
 As an example, we are going to run some Python code at the `LUMI <https:///www.lumi-supercomputer.eu>`_ supercomputer in Finland. 
 When creating a new project, we must specify an **executor type**. Let's list which executor is available in the colony:
 
+.. code-block:: console
 
-Next, let's generate a new **Pollinator** project.
+    +----------------------+------------------------------+----------------+
+    |         NAME         |             TYPE             |    LOCATION    |
+    +----------------------+------------------------------+----------------+
+    | icekube              | ice-kubeexecutor             | ICE Datacenter |
+    | lumi                 | lumi-small-hpcexecutor       | CSC, Finland   |
+    | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden |
+    | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy  |
+    +----------------------+------------------------------+----------------+
+
+Next, let's generate a new **Pollinator** project with **lumi-small-hpcexecutor** as target executor.
+
+.. code-block:: console
+
+    mkdir lumi
+    cd lumi
+    pollinator new -e lumi-small-hpcexecutor
+
+.. code-block:: console
+
+    INFO[0000] Creating directory                            Dir=./cfs/src
+    INFO[0000] Creating directory                            Dir=./cfs/data
+    INFO[0000] Creating directory                            Dir=./cfs/result
+    INFO[0000] Generating                                    Filename=./project.yaml
+    INFO[0000] Generating                                    Filename=./cfs/data/hello.txt
+    INFO[0000] Generating                                    Filename=./cfs/src/main.py
+
+The generated 
+
+.. code-block:: yaml
+
+     projectid: 11bdf92c7560bee1d8c154504427bfbb9483aabf130b60f17de5d88a5d5f4ece
+     conditions:
+       executorType: lumi-small-hpcexecutor
+       nodes: 1
+       processesPerNode: 1
+       cpu: 1000m
+       mem: 1000Mi
+       walltime: 600
+       gpu:
+         count: 0
+         name: ""
+     environment:
+       docker: python:3.12-rc-bookworm
+       rebuildImage: false
+       cmd: python3
+       source: main.py
+
+
+The generated **main.py**.
+
+.. code-block:: python 
+
+     import os
+     import socket
+     
+     # Print the hostname
+     hostname = socket.gethostname()
+     print("hostname:", hostname)
+     
+     # The projdir is the location on the executor where project dirs have been synced
+     projdir = str(os.environ.get("PROJECT_DIR"))
+     
+     # The processid is the unique id of the process where this code will execute at a remove executor
+     processid = os.environ.get("COLONIES_PROCESS_ID")
+     
+     print("projdir:", projdir)
+     print("processid:", processid)
+     
+     # Open the hello.txt file and print the content
+     file = open(projdir + "/data/hello.txt", 'r')
+     contents = file.read()
+     print(contents)
+     
+     # Write the result to the a file in the result dir
+     result_dir = projdir + "/result/"
+     os.makedirs(result_dir, exist_ok=True)
+     
+     file = open(result_dir + "/result.txt", "w")
+     file.write("Hello, World!")
+     file.close()
+     
