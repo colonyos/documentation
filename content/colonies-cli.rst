@@ -236,7 +236,6 @@ It's also important to note that only the colony owner can add a user. Therefore
 
 Next, you need to set the ``COLONIES_PRVKEY`` environment variable to interact with a Colonies server with this new user account. 
 
-
 .. code-block:: console
     
     colonies key generate
@@ -662,17 +661,31 @@ List waiting processes
     
 .. code-block:: console
 
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-     |                                ID                                |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-     | 70e75aa6cca5cd5821aeb19d0586e2ca76173cff7cae42e5e015037e387243be | helloworld |      |        | 2023-11-29 22:36:04 | helloworld-executor |
-     | 85be2a0da5ffcc5fe92eb17882e88e5dadcdeb7d8a8364ba12989d6f3d78b343 | helloworld |      |        | 2023-11-29 22:36:05 | helloworld-executor |
-     | 2ff94ccba5ae1fd3db3814866a55c79c889833767ae837ff8579c6e72ae32057 | helloworld |      |        | 2023-11-29 22:38:19 | helloworld-executor |
-     | 5d0e4fc2341d162f08eefe805413c1125002e518613e56f5c31b0c1ee15048df | helloworld |      |        | 2023-11-29 22:38:19 | helloworld-executor |
-     | 0bdd2a22b46f8319c4fcf344aeababa627788c890872281c7b49c868f7692435 | helloworld |      |        | 2023-11-29 22:38:19 | helloworld-executor |
-     | 07bf994849e47afe4b8caeee87103fe911b1402d1440d7986c0e0c8130525baf | helloworld |      |        | 2023-11-29 22:38:20 | helloworld-executor |
-     | 92fe9912d2b64d874437b95a8c4bb1beb35cbe63cc613e516a33fd1ba71a7b27 | helloworld |      |        | 2023-11-29 22:38:20 | helloworld-executor |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
+    +------------+------+--------+---------------------+---------------------+----------------+
+    |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
+    +------------+------+--------+---------------------+---------------------+----------------+
+    | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |
+    | helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |
+    | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
+    | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
+    +------------+------+--------+---------------------+---------------------+----------------+
+
+Use the flag **-i** to also print process IDs.
+
+.. code-block:: console
+
+    colonies process psw -i
+
+.. code-block:: console
+
+     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
+     |                                ID                                |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
+     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
+     | dd68f3ff4bb336bb15574ae692ad08ac35ad3a7e7d8de18d3e5ba8874a0889da | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |
+     | 9972cdd82f862e535d972d9f03652701a750501b7e90ee77f221e973ad10d515 | helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |
+     | 5c26181e49714e0212d0d4a391f29a4f4762d0e206c2d19d304dbd137cfceb49 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
+     | e50589ae2f2195d83d6b6a2fd36b1aad6b6419672dc10823baab21076ff5f400 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
+     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
 
 List running processes
 ----------------------
@@ -682,11 +695,11 @@ List running processes
 
 .. code-block:: console
 
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-     |                                ID                                |  FUNCNAME  | ARGS | KWARGS |     START TIME      |    EXECUTOR TYPE    |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-     | cf525a815119b61c98219196982309c580285994d2efbde3ab86c9398e8912ec | helloworld |      |        | 2023-11-29 22:36:04 | helloworld-executor |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
+    +------------+------+--------+---------------------+---------------------+----------------+
+    |  FUNCNAME  | ARGS | KWARGS |     START TIME      |    EXECUTOR TYPE    | INITIATOR NAME |
+    +------------+------+--------+---------------------+---------------------+----------------+
+    | helloworld |      |        | 2023-12-03 11:36:31 | helloworld-executor | johan          |
+    +------------+------+--------+---------------------+---------------------+----------------+
 
 List successful processes
 -------------------------
@@ -697,12 +710,12 @@ List successful processes
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-    |                                ID                                |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    |
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-    | 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4 | helloworld |      |        | 2023-11-29 22:36:03 | helloworld-executor |
-    | 6e6e4eab234617943cf91b3a6eb6ae621530b61b4859d819e18f277bba178acb | helloworld |      |        | 2023-11-29 22:36:02 | helloworld-executor |
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
+    +------------+------+--------+---------------------+---------------------+----------------+
+    |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR NAME |
+    +------------+------+--------+---------------------+---------------------+----------------+
+    | helloworld |      |        | 2023-12-03 11:51:37 | helloworld-executor | johan          |
+    | helloworld |      |        | 2023-12-03 11:34:15 | helloworld-executor | myexecutor     |
+    +------------+------+--------+---------------------+---------------------+----------------+
 
 List failed processes
 ---------------------
@@ -713,11 +726,11 @@ List failed processes
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-    |                                ID                                |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    |
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
-    | b9508fb7e12bf1a4c9bd27b2a8d4193a9652e53983a79d016360f17a540658c8 | helloworld |      |        | 2023-11-29 22:36:04 | helloworld-executor |
-    +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+
+     +------------+------+--------+---------------------+---------------------+-----------+
+     |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR |
+     +------------+------+--------+---------------------+---------------------+-----------+
+     | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan     |
+     +------------+------+--------+---------------------+---------------------+-----------+
 
 Get info about a process
 -------------------------
@@ -891,7 +904,7 @@ Remove all processes
     WARNING!!! Are you sure you want to remove all all processes from Colony <dev>. 
     This operation cannot be undone! (YES,no): YES
 
-    INFO[0002] Deleting all processes in Colony
+    INFO[0002] Removing all processes in Colony
 
     ColonyName=dev
 
@@ -1171,14 +1184,14 @@ Submit a workflow
 
 .. code-block:: console 
 
-    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
-    |                                ID                                | FUNC |  ARGS  | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE |
-    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
-    | 3c42610205e044b83040b8ce5b3efd1fb5a73f5f71ab755785c1fd12b5799ee5 | echo | task_a |        | 2023-11-30 13:43:16 | cli           |
-    | fc58c224bd585868754b20a56b43b722c1387bebbe41124646c5ca9e3449caa2 | echo | task_b |        | 2023-11-30 13:43:16 | cli           |
-    | b1f214365bb4c1dcfaf0d4a73c2cfed22f07fb8cfecdc89f99538f32f57d6ffa | echo | task_c |        | 2023-11-30 13:43:16 | cli           |
-    | dc6f9f2ff1c2730db290f3c549a87ea5ee75629d905f286c04620f8615433594 | echo | task_d |        | 2023-11-30 13:43:16 | cli           |
-    +------------------------------------------------------------------+------+--------+--------+---------------------+---------------+
+    +------+--------+--------+---------------------+---------------+----------------+
+    | FUNC |  ARGS  | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE | INITIATOR NAME |
+    +------+--------+--------+---------------------+---------------+----------------+
+    | echo | task_b |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
+    | echo | task_c |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
+    | echo | task_d |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
+    | echo | task_a |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
+    +------+--------+--------+---------------------+---------------+----------------+
 
 List waiting workflows
 ----------------------
@@ -1189,11 +1202,11 @@ List waiting workflows
 
 .. code-block:: console 
 
-    +------------------------------------------------------------------+---------------------+
-    |                                ID                                |   SUBMISSION TIME   |
-    +------------------------------------------------------------------+---------------------+
-    | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 | 2023-11-30 13:56:38 |
-    +------------------------------------------------------------------+---------------------+
+    +------------------------------------------------------------------+---------------------+----------------+
+    |                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |
+    +------------------------------------------------------------------+---------------------+----------------+
+    | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf | 2023-12-03 14:04:21 | myexecutor     |
+    +------------------------------------------------------------------+---------------------+----------------+
 
 List running workflows
 ----------------------
@@ -1240,10 +1253,12 @@ Get info about a workflow
 
     Workflow:
     +----------------+------------------------------------------------------------------+
-    | WorkflowID     | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 |
-    | ColonyName     | 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3 |
+    | WorkflowID     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |
+    | InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName  | myexecutor                                                       |
+    | ColonyName     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |
     | State          | Waiting                                                          |
-    | SubmissionTime | 2023-11-30 13:56:38                                              |
+    | SubmissionTime | 2023-12-03 14:04:21                                              |
     | StartTime      | 0001-01-01 00:53:28                                              |
     | EndTime        | 0001-01-01 00:53:28                                              |
     +----------------+------------------------------------------------------------------+
@@ -1251,7 +1266,9 @@ Get info about a workflow
     Processes:
     +-------------------+------------------------------------------------------------------+
     | NodeName          | task_a                                                           |
-    | ProcessID         | 515b789379219db59d16112fc006c0a00fd8194de9e2848ac9952d33da80ca74 |
+    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName     | myexecutor                                                       |
+    | ProcessID         | c48ac5322cad951b88704fdf56345add7c9faada7f3cc6b2ed3e9564a0f8ab34 |
     | ExecutorType      | cli                                                              |
     | FuncName          | echo                                                             |
     | Args              | task_a                                                           |
@@ -1263,7 +1280,9 @@ Get info about a workflow
     
     +-------------------+------------------------------------------------------------------+
     | NodeName          | task_b                                                           |
-    | ProcessID         | 16cd30c3d35b864d562c575e15bf169f3e78a44a42863787664a38c4fa2bcb7f |
+    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName     | myexecutor                                                       |
+    | ProcessID         | 7d86f84d82a3320c10537d1ff1f3fc731f2555eff3099620aa151b56f90de030 |
     | ExecutorType      | cli                                                              |
     | FuncName          | echo                                                             |
     | Args              | task_b                                                           |
@@ -1275,7 +1294,9 @@ Get info about a workflow
     
     +-------------------+------------------------------------------------------------------+
     | NodeName          | task_d                                                           |
-    | ProcessID         | 2883d96adeaed704900f7001ccbb89e02b00d1d7b4718326de1ce19c65c4c69d |
+    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName     | myexecutor                                                       |
+    | ProcessID         | 4b547092a861b3b80b476da341f3bedab084da2eb58c93986b6059c7609b3296 |
     | ExecutorType      | cli                                                              |
     | FuncName          | echo                                                             |
     | Args              | task_d                                                           |
@@ -1287,7 +1308,9 @@ Get info about a workflow
     
     +-------------------+------------------------------------------------------------------+
     | NodeName          | task_c                                                           |
-    | ProcessID         | 4c1c6b96d509b4b57291973d23195cf3a0a3134a53b0584f27d31101366c56ea |
+    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName     | myexecutor                                                       |
+    | ProcessID         | 73c445472762bcca8a1defc8f6adbf093ae904ece1ff6817df83f8c2e609ba89 |
     | ExecutorType      | cli                                                              |
     | FuncName          | echo                                                             |
     | Args              | task_c                                                           |
@@ -1296,7 +1319,7 @@ Get info about a workflow
     | WaitingForParents | true                                                             |
     | Dependencies      | task_a                                                           |
     +-------------------+------------------------------------------------------------------+
-   
+
 Remove a workflow
 -----------------
 .. code-block:: text
@@ -1321,7 +1344,7 @@ Remove all workflows
     WARNING!!! Are you sure you want to remove all workflows in the Colony <dev>. This operation cannot be undone! (YES,no):
     This operation cannot be undone! (YES,no): YES
 
-    INFO[0002] Deleting all workflows in Colony
+    INFO[0002] Removing all workflows in Colony
 
     ColonyName=dev
 
@@ -1419,24 +1442,25 @@ process in the queue has finised or failed.
 
 .. code-block:: console
 
-    colonies process psw                                                                            23:58:09
+    colonies process psw
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+------+--------------------+--------+---------------------+---------------+
-    |                                ID                                | FUNC |        ARGS        | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE |
-    +------------------------------------------------------------------+------+--------------------+--------+---------------------+---------------+
-    | 763e7fe136a4b58f749c343fc31b6172c45a3362e29dfc60b91cd3dbe15114e8 | date | > /tmp/currentdate |        | 2023-11-29 23:56:25 | cli           |
-    | 47172a9f4033a954187b7987592fe8bd5e54095bcd430f6344387ab5d51e6cbb | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:25 | cli           |
-    | aeb966dfb3698c0fac9e1c32a0420a896445ac7944cca6cb5c0fe52c66a6f5e3 | date | > /tmp/currentdate |        | 2023-11-29 23:56:30 | cli           |
-    | 0f457635a6582440f945b59b435ee9ab5a7c653c08f694e1ca1bc190785b8c87 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:30 | cli           |
-    | ba621dfe492d4ca899c61bece97d43f2642bf83bdc345fcfb8bb448aa8ceb591 | date | > /tmp/currentdate |        | 2023-11-29 23:56:35 | cli           |
-    | 914700a5309c8c9f609921d0d2764be58c2d2756331d780279c3bbda6777a680 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:35 | cli           |
-    | 0a1ce698bb0f38163563aac7130e26eece5cba9afc7a913f16348544f4555910 | date | > /tmp/currentdate |        | 2023-11-29 23:56:40 | cli           |
-    | d28f4fe18b9a710d5ab2701dc860bf07bdc801cdbb74cc1a0e5e5601deab4736 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:40 | cli           |
-    | bb73ad7e491b00a4469f1a49bc251f6d1909d48ff24addfeba1bd225a08b2e05 | date | > /tmp/currentdate |        | 2023-11-29 23:56:45 | cli           |
-    | 02076d5f70d9dcc464bb6079d61347895fd7d03c60aedcef163214bd8a67ffb5 | cat  | /tmp/currentdate   |        | 2023-11-29 23:56:45 | cli           |
-    +------------------------------------------------------------------+------+--------------------+--------+---------------------+---------------+
+    +------------+--------------------+--------+---------------------+---------------------+----------------+
+    |    FUNC    |        ARGS        | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
+    +------------+--------------------+--------+---------------------+---------------------+----------------+
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:13:55 | cli                 | johan          |
+    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:00 | cli                 | johan          |
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:00 | cli                 | johan          |
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:05 | cli                 | johan          |
+    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:05 | cli                 | johan          |
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:10 | cli                 | johan          |
+    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:10 | cli                 | johan          |
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:15 | cli                 | johan          |
+    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:15 | cli                 | johan          |
+    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:20 | cli                 | johan          |
+    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:20 | cli                 | johan          |
+    +------------+--------------------+--------+---------------------+---------------------+----------------+
 
 Listing crons
 -------------
@@ -1446,11 +1470,11 @@ Listing crons
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+--------------+
-    |                              CRONID                              |     NAME     |
-    +------------------------------------------------------------------+--------------+
-    | 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2 | example_cron |
-    +------------------------------------------------------------------+--------------+
+    +------------------------------------------------------------------+--------------+----------------+
+    |                              CRONID                              |     NAME     | INITIATOR NAME |
+    +------------------------------------------------------------------+--------------+----------------+
+    | 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d | example_cron | johan          |
+    +------------------------------------------------------------------+--------------+----------------+
 
 Getting info about a cron
 -------------------------
@@ -1460,93 +1484,95 @@ Getting info about a cron
 
 .. code-block:: console
 
-     Cron:
-     +-------------------------+------------------------------------------------------------------+
-     | Id                      | 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2 |
-     | ColonyName              | dev                                                              |
-     | Name                    | example_cron                                                     |
-     | Cron Expression         | 0/5 * * * * *                                                    |
-     | Interval                | -1                                                               |
-     | Random                  | false                                                            |
-     | NextRun                 | 2023-11-30 08:40:20                                              |
-     | LastRun                 | 2023-11-30 08:40:15                                              |
-     | PrevProcessGraphID      | c02ced89f3e000bd5e0032b54672de377a58e4cb15c724261809a6e028ed6e75 |
-     | WaitForPrevProcessGraph | false                                                            |
-     | CheckerPeriod           | 1000                                                             |
-     +-------------------------+------------------------------------------------------------------+
-     
-     WorkflowSpec:
-     
-     FunctionSpec 0:
-     +-------------+---------------------+
-     | Func        | date                |
-     | Args        | > /tmp/currentdate  |
-     | KwArgs      | None                |
-     | MaxWaitTime | 0                   |
-     | MaxExecTime | 0                   |
-     | MaxRetries  | 0                   |
-     | Priority    | 0                   |
-     +-------------+---------------------+
-     
-     Conditions:
-     +------------------+------+
-     | ColonyName       |      |
-     | ExecutorIDs      | None |
-     | ExecutorType     | cli  |
-     | Dependencies     |      |
-     | Nodes            | 0    |
-     | CPU              |      |
-     | Memmory          |      |
-     | Processes        | 0    |
-     | ProcessesPerNode | 0    |
-     | Storage          |      |
-     | Walltime         | 0    |
-     | GPU              |      |
-     | GPUs             | 0    |
-     | GPUMemory        |      |
-     +------------------+------+
-     
-     FunctionSpec 1:
-     +-------------+-------------------+
-     | Func        | cat               |
-     | Args        | /tmp/currentdate  |
-     | KwArgs      | None              |
-     | MaxWaitTime | 0                 |
-     | MaxExecTime | 0                 |
-     | MaxRetries  | 0                 |
-     | Priority    | 0                 |
-     +-------------+-------------------+
-     
-     Conditions:
-     +------------------+---------------+
-     | ColonyName       |               |
-     | ExecutorIDs      | None          |
-     | ExecutorType     | cli           |
-     | Dependencies     | generate_date |
-     | Nodes            | 0             |
-     | CPU              |               |
-     | Memmory          |               |
-     | Processes        | 0             |
-     | ProcessesPerNode | 0             |
-     | Storage          |               |
-     | Walltime         | 0             |
-     | GPU              |               |
-     | GPUs             | 0             |
-     | GPUMemory        |               |
-     +------------------+---------------+
+    Cron:
+    +-------------------------+------------------------------------------------------------------+
+    | Id                      | 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d |
+    | ColonyName              | dev                                                              |
+    | InitiatorID             | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |
+    | InitiatorName           | johan                                                            |
+    | Name                    | example_cron                                                     |
+    | Cron Expression         | 0/5 * * * * *                                                    |
+    | Interval                | -1                                                               |
+    | Random                  | false                                                            |
+    | NextRun                 | 2023-12-03 14:17:00                                              |
+    | LastRun                 | 2023-12-03 14:16:55                                              |
+    | PrevProcessGraphID      | 0c3dc737468f52c4a548e98bfe9ffb630172f087f60c6bddd0e8954079cdb14d |
+    | WaitForPrevProcessGraph | false                                                            |
+    | CheckerPeriod           | 1000                                                             |
+    +-------------------------+------------------------------------------------------------------+
+    
+    WorkflowSpec:
+    
+    FunctionSpec 0:
+    +-------------+---------------------+
+    | Func        | date                |
+    | Args        | > /tmp/currentdate  |
+    | KwArgs      | None                |
+    | MaxWaitTime | 0                   |
+    | MaxExecTime | 0                   |
+    | MaxRetries  | 0                   |
+    | Priority    | 0                   |
+    +-------------+---------------------+
+    
+    Conditions:
+    +------------------+------+
+    | ColonyName       |      |
+    | ExecutorIDs      | None |
+    | ExecutorType     | cli  |
+    | Dependencies     |      |
+    | Nodes            | 0    |
+    | CPU              |      |
+    | Memmory          |      |
+    | Processes        | 0    |
+    | ProcessesPerNode | 0    |
+    | Storage          |      |
+    | Walltime         | 0    |
+    | GPU              |      |
+    | GPUs             | 0    |
+    | GPUMemory        |      |
+    +------------------+------+
+    
+    FunctionSpec 1:
+    +-------------+-------------------+
+    | Func        | cat               |
+    | Args        | /tmp/currentdate  |
+    | KwArgs      | None              |
+    | MaxWaitTime | 0                 |
+    | MaxExecTime | 0                 |
+    | MaxRetries  | 0                 |
+    | Priority    | 0                 |
+    +-------------+-------------------+
+    
+    Conditions:
+    +------------------+---------------+
+    | ColonyName       |               |
+    | ExecutorIDs      | None          |
+    | ExecutorType     | cli           |
+    | Dependencies     | generate_date |
+    | Nodes            | 0             |
+    | CPU              |               |
+    | Memmory          |               |
+    | Processes        | 0             |
+    | ProcessesPerNode | 0             |
+    | Storage          |               |
+    | Walltime         | 0             |
+    | GPU              |               |
+    | GPUs             | 0             |
+    | GPUMemory        |               |
+    +------------------+---------------+
 
 Immediately run a cron
 ----------------------
 
 .. code-block:: console
 
-    colonies cron run --cronid 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+    colonies cron run --cronid 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d
 
 .. code-block:: console
 
     INFO[0000] Running cron
 
-    CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+    CronID=180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d
 
 Use interval instead of a cron expressions
 ------------------------------------------
@@ -1595,13 +1621,16 @@ Remove a cron
 
 .. code-block:: console
 
-    INFO[0000] Deleting cron
+    INFO[0000] Removing cron
 
     CronId=e5e25a98305ac11ff9292b584d4b119a48c99c5fa599d43e63cd9d57c53927d8
 
 Generators
 ==========
 Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the process.
+
+Add a generator
+---------------
 
 .. code-block:: console
 
@@ -1611,7 +1640,10 @@ Generators automatically spawn workflows when number of **pack** calls exceeds a
 
     INFO[0000] Generator added
 
-    GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d GeneratorName=testgenerator Timeout=-1 Trigger=5
+    GeneratorID=112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 
+    GeneratorName=testgenerator 
+    Timeout=-1 
+    Trigger=5
 
 Send data to a generator
 ------------------------
@@ -1619,13 +1651,18 @@ After 5 pack calls, the **Generator** should generate a workflow.
 
 .. code-block:: console
 
-    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello1
-    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello2
-    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello3
-    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello4
-    colonies generator pack --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d --arg hello5
+    colonies generator pack --arg hello1 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
 
-Let's see if a Workflow was created.
+Make 4 more pack calls.
+
+.. code-block:: console
+
+    colonies generator pack --arg hello2 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
+    colonies generator pack --arg hello3 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
+    colonies generator pack --arg hello4 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
+    colonies generator pack --arg hello5 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
+
+Let's see if a workflow was created.
 
 .. code-block:: console
 
@@ -1633,43 +1670,46 @@ Let's see if a Workflow was created.
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+---------------------+
-    |                                ID                                |   SUBMISSION TIME   |
-    +------------------------------------------------------------------+---------------------+
-    | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 | 2023-11-30 14:28:22 |
-    +------------------------------------------------------------------+---------------------+
+    +------------------------------------------------------------------+---------------------+----------------+
+    |                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |
+    +------------------------------------------------------------------+---------------------+----------------+
+    | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 | 2023-12-03 14:28:59 | myexecutor     |
+    +------------------------------------------------------------------+---------------------+----------------+
 
 Let's lookup the Workflow to see if the data is there.
 
 .. code-block:: console
 
-    colonies workflow get --workflowid  e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97
+    colonies workflow get --workflowid 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3
 
 .. code-block:: console
-
-    Workflow:
-    +----------------+------------------------------------------------------------------+
-    | WorkflowID     | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 |
-    | ColonyName     | e470e6ad1ed92a0e9ccd3431223ba47be99c7f460b70d1f05439d7af238cea97 |
-    | State          | Waiting                                                          |
-    | SubmissionTime | 2023-11-30 14:28:22                                              |
-    | StartTime      | 0001-01-01 00:53:28                                              |
-    | EndTime        | 0001-01-01 00:53:28                                              |
-    +----------------+------------------------------------------------------------------+
-    
-    Processes:
-    +-------------------+------------------------------------------------------------------+
-    | NodeName          | generator_example                                                |
-    | ProcessID         | c4b589589e777ffbbaeb97494c0a43adf1bbead7ee24d711023712a1c0e36d61 |
-    | ExecutorType      | cli                                                              |
-    | FuncName          | echo                                                             |
-    | Args              | hello1 hello2 hello3 hello4                                      |
-    |                   | hello5                                                           |
-    | KwArgs            | None                                                             |
-    | State             | Waiting                                                          |
-    | WaitingForParents | false                                                            |
-    | Dependencies      | None                                                             |
-    +-------------------+------------------------------------------------------------------+
+     Workflow:
+     +----------------+------------------------------------------------------------------+
+     | WorkflowID     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |
+     | InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+     | InitiatorName  | myexecutor                                                       |
+     | ColonyName     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |
+     | State          | Waiting                                                          |
+     | SubmissionTime | 2023-12-03 14:28:59                                              |
+     | StartTime      | 0001-01-01 00:53:28                                              |
+     | EndTime        | 0001-01-01 00:53:28                                              |
+     +----------------+------------------------------------------------------------------+
+     
+     Processes:
+     +-------------------+------------------------------------------------------------------+
+     | NodeName          | generator_example                                                |
+     | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+     | InitiatorName     | myexecutor                                                       |
+     | ProcessID         | 1efe2efa771ac492850e5dc4d748f0155d3fa373177a6163a90937b284d2510f |
+     | ExecutorType      | cli                                                              |
+     | FuncName          | echo                                                             |
+     | Args              | hello1 hello2 hello3 hello4                                      |
+     |                   | hello5                                                           |
+     | KwArgs            | None                                                             |
+     | State             | Waiting                                                          |
+     | WaitingForParents | false                                                            |
+     | Dependencies      | None                                                             |
+     +-------------------+------------------------------------------------------------------+
 
 List generators
 ---------------
@@ -1679,72 +1719,75 @@ List generators
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+---------------+
-    |                           GENERATORID                            |     NAME      |
-    +------------------------------------------------------------------+---------------+
-    | 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d | testgenerator |
-    +------------------------------------------------------------------+---------------+
+     +------------------------------------------------------------------+---------------+----------------+
+     |                           GENERATORID                            |     NAME      | INITIATOR NAME |
+     +------------------------------------------------------------------+---------------+----------------+
+     | 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 | testgenerator | myexecutor     |
+     +------------------------------------------------------------------+---------------+----------------+
 
 Get info about a generator
 --------------------------
 .. code-block:: console
 
-    colonies generator get --generatorid  1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d  
+    colonies generator get --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 
 
 .. code-block:: console
 
-     Generator:
-     +---------------+------------------------------------------------------------------+
-     | Id            | 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d |
-     | Name          | testgenerator                                                    |
-     | Trigger       | 5                                                                |
-     | Timeout       | -1                                                               |
-     | Lastrun       | 2023-11-30 14:28:22                                              |
-     | CheckerPeriod | 1000                                                             |
-     | QueueSize     | 0                                                                |
-     +---------------+------------------------------------------------------------------+
-     
-     WorkflowSpec:
-     
-     FunctionSpec 0:
-     +-------------+------+
-     | Func        | echo |
-     | Args        | None |
-     | KwArgs      | None |
-     | MaxWaitTime | 0    |
-     | MaxExecTime | 0    |
-     | MaxRetries  | 0    |
-     | Priority    | 0    |
-     +-------------+------+
-     
-     Conditions:
-     +------------------+------+
-     | ColonyName       |      |
-     | ExecutorIDs      | None |
-     | ExecutorType     | cli  |
-     | Dependencies     |      |
-     | Nodes            | 0    |
-     | CPU              |      |
-     | Memmory          |      |
-     | Processes        | 0    |
-     | ProcessesPerNode | 0    |
-     | Storage          |      |
-     | Walltime         | 0    |
-     | GPU              |      |
-     | GPUs             | 0    |
-     | GPUMemory        |      |
-     +------------------+------+
+    Generator:
+    +---------------+------------------------------------------------------------------+
+    | Id            | 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 |
+    | ColonyName    | dev                                                              |
+    | InitiatorID   | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
+    | InitiatorName | myexecutor                                                       |
+    | Name          | testgenerator                                                    |
+    | Trigger       | 5                                                                |
+    | Timeout       | -1                                                               |
+    | Lastrun       | 2023-12-03 14:28:59                                              |
+    | CheckerPeriod | 1000                                                             |
+    | QueueSize     | 0                                                                |
+    +---------------+------------------------------------------------------------------+
+    
+    WorkflowSpec:
+    
+    FunctionSpec 0:
+    +-------------+------+
+    | Func        | echo |
+    | Args        | None |
+    | KwArgs      | None |
+    | MaxWaitTime | 0    |
+    | MaxExecTime | 0    |
+    | MaxRetries  | 0    |
+    | Priority    | 0    |
+    +-------------+------+
+    
+    Conditions:
+    +------------------+------+
+    | ColonyName       |      |
+    | ExecutorIDs      | None |
+    | ExecutorType     | cli  |
+    | Dependencies     |      |
+    | Nodes            | 0    |
+    | CPU              |      |
+    | Memmory          |      |
+    | Processes        | 0    |
+    | ProcessesPerNode | 0    |
+    | Storage          |      |
+    | Walltime         | 0    |
+    | GPU              |      |
+    | GPUs             | 0    |
+    | GPUMemory        |      |
+    +------------------+------+
 
 Remove a generator
 ------------------
 
 .. code-block:: console
 
-    colonies generator remove --generatorid 1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d
+    colonies generator remove --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
 
 .. code-block:: console
 
-    INFO[0000] Deleting generator
+    INFO[0000] Removing generator
 
     GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d
 
