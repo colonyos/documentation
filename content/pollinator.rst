@@ -108,11 +108,12 @@ Next, let's generate a new **Pollinator** project with **lumi-small-hpcexecutor*
     INFO[0000] Generating                                    Filename=./cfs/data/hello.txt
     INFO[0000] Generating                                    Filename=./cfs/src/main.py
 
-The generated 
+The generated **project.yaml** contains configuration need to run the **./cfs/src/main.py** Python source file.
+Note that is possible to run *any* languge by using another Docker container.
 
 .. code-block:: yaml
 
-     projectid: 11bdf92c7560bee1d8c154504427bfbb9483aabf130b60f17de5d88a5d5f4ece
+     projectname: 11bdf92c7560bee1d8c154504427bfbb9483aabf130b60f17de5d88a5d5f4ece
      conditions:
        executorType: lumi-small-hpcexecutor
        nodes: 1
@@ -130,7 +131,7 @@ The generated
        source: main.py
 
 
-The generated **main.py**.
+The code shows generated example code in **main.py**.
 
 .. code-block:: python 
 
@@ -162,4 +163,23 @@ The generated **main.py**.
      file = open(result_dir + "/result.txt", "w")
      file.write("Hello, World!")
      file.close()
-     
+    
+Run the code
+------------
+
+.. code-block:: console
+
+    pollinator run --follow
+
+.. code-block:: console
+
+     Uploading main.py 100% [===============] (2.8 MB/s)
+     Uploading hello.txt 100% [===============] (59 kB/s)
+     INFO[0000] Process submitted                             ProcessID=138bdf7e51b669ff65c6c90188300ecf09a9536dd2669df5ba2da1eaa12c58e5
+     INFO[0000] Follow process at https://dashboard.colonyos.io/process?processid=138bdf7e51b669ff65c6c90188300ecf09a9536dd2669df5ba2da1eaa12c58e5
+     hostname: nid002237
+     projdir: /cfs/49fb2248ff701f9a57a1a9eb845156bd5eb6ed286a854525bd119edbb4af21ad
+     processid: 138bdf7e51b669ff65c6c90188300ecf09a9536dd2669df5ba2da1eaa12c58e5
+     Hello world!
+     INFO[0005] Process finished successfully                 ProcessID=138bdf7e51b669ff65c6c90188300ecf09a9536dd2669df5ba2da1eaa12c58e5
+     Downloading result.txt 100% [===============] (419 B/s)

@@ -1683,6 +1683,7 @@ Let's lookup the Workflow to see if the data is there.
     colonies workflow get --workflowid 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3
 
 .. code-block:: console
+
      Workflow:
      +----------------+------------------------------------------------------------------+
      | WorkflowID     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |

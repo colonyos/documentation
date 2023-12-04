@@ -1,9 +1,71 @@
-HPC Executor
+HPC Executors
 ============
 
-TODO
+.. code-block:: console
 
-Kube Executor
-=============
+    {
+        "conditions": {
+            "executortype": "leonardo-booster-hpcexecutor",
+            "nodes": 1,
+            "processes-per-node": 1,
+            "cpu": "1000m",
+            "mem": "30Gi",
+            "gpu": {
+                "count": 1
+            },
+            "walltime": 700
+        },
+        "funcname": "execute",
+        "kwargs": {
+            "cmd": "python3",
+            "docker-image": "johan/classifier",
+            "rebuild-image": false,
+            "args": [
+                "/cfs/src/{processid}/classifier.py"
+            ]
+        },
+        "fs": {
+            "mount": "/cfs",
+            "snapshots": [
+                {
+                    "snapshotid": "{snapshotid}",
+                    "label": "/src",
+                    "dir": "/src/{processid}",
+                    "keepfiles": false,
+                    "keepsnaphot": false
+                },
+                {
+                    "snapshotid": "{snapshotid}",
+                    "label": "/data",
+                    "dir": "/data",
+                    "keepfiles": true,
+                    "keepsnaphot": false
+                }
+            ],
+            "dirs": [
+                {
+                    "label": "/results",
+                    "dir": "/results",
+                    "keepfiles": true,
+                    "onconflicts": {
+                        "onstart": {
+                            "keeplocal": false
+                        },
+                        "onclose": {
+                            "keeplocal": true
+                        }
+                    }
+                }
+            ]
+        },
+        "maxwaittime": -1,
+        "maxexectime": 600,
+        "maxretries": 3
+    }
 
+HPC Executor
+------------
+
+KubeC Executor
+--------------
 TODO
