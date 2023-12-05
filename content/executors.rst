@@ -1,7 +1,7 @@
 HPC Executors
 ============
 
-.. code-block:: console
+.. code-block:: json 
 
     {
         "conditions": {
