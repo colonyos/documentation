@@ -1,10 +1,9 @@
 Getting started
 ===============
+TODO
 
-Installing 
-
-Develop an executor
-===================
+Developing an executor
+======================
 
 With a private key
 ------------------

@@ -1,5 +1,7 @@
 Getting started
 ===============
+The Colonies is written in Golang and is compiled into a single binary, which simplifies deployment and eliminates external dependencies, ensuring consistent, 
+cross-platform execution. The entire ColonyOS framework consists of the **colonies** binary.
 
 Installation
 ------------
@@ -46,6 +48,7 @@ Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S
     export AWS_S3_BUCKET=""
     export AWS_S3_TLS=""
     export AWS_S3_SKIPVERIFY=""
+
 
 Getting help
 ------------
@@ -143,6 +146,88 @@ To get info about current configuration type:
     | Server | localhost:50080 |
     | TLS    | false           |
     +--------+-----------------+
+
+Starting a development server
+-----------------------------
+The Colonies CLI features a built-in development server that is easy to set up.
+Clone the `Colonies Github repo <https://github.com/colonyos/colonies>`_. 
+
+.. code-block:: console
+
+    git clone git@github.com:colonyos/colonies.git
+
+Source the development environment test credentials. Note that the keys are publicly known and should NOT be used in a production system.
+
+.. code-block:: console
+
+    source devenv
+
+Download the **colonies** binary and start the server:
+
+.. code-block:: console
+
+    colonies dev
+
+.. code-block:: console
+
+    INFO[0001] Connecting to PostgreSQL server               DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres
+    INFO[0001] Initialize a Colonies PostgreSQL database
+    INFO[0001] Starting a Colonies server                    Port=50080
+    INFO[0001] EtcdServer is ready                           DataPath=/tmp/coloniesdev/dev/etcd EtcdClientPort=23790 EtcdPeerPort=23800 Host=localhost Name=dev
+    INFO[0001] Starting Colonies server                      APIPort=50080 AllowExecutorReregister=false CronPeriod=1000 EtcdClientPort=23790 EtcdDataPath=/tmp/coloniesdev/dev/etcd EtcdPeerPort=23800 ExclusiveAssign=true GeneratorPeriod=1000 Host=localhost Name=dev Port=50080 RelayPort=2381 Retention=false RetentionPolicy=200 ServerID=039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103 TLS=false TLSCertPath= TLSPrivateKeyPath=
+    INFO[0001] Connecting to Colonies server                 ServerHost=localhost ServerPort=50080
+    INFO[0001] Registering a new Colony                      ColonyID=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4 ColonyName=dev ServerPrvKey=fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d
+    INFO[0001] Registering a new executor                    ColonyPrvKey=ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514 ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac ExecutorName=myexecutor ExecutorType=cli
+    INFO[0001] Approving executor                            ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac
+    INFO[0001] Approving CLI executor
+    INFO[0001] Starting Prometheus monitoring server         MonitorInterval=1 Port=21120 ServerHost=localhost ServerPort=50080
+    INFO[0001] Successfully started Colonies development server
+    INFO[0001] Press ctrl+c to exit
+
+Verify the installation. There should be one registered executor.
+
+.. code-block:: console
+
+   colonies executor ls
+
+.. code-block:: console
+
+   +------------+------+----------+
+   |    NAME    | TYPE | LOCATION |
+   +------------+------+----------+
+   | myexecutor | cli  |          |
+   +------------+------+----------+
+
+Troubleshooting
+^^^^^^^^^^^^^^^
+To simplify deployment, the Colonies development server uses internally an `Embedded PostgreSQL database <https://github.com/fergusstrange/embedded-postgres>`_ 
+instead of real PostgreSQL server. However, in some situations, the Embedded PostgreSQL server may not shut down correctly, leaving a zombie process and 
+this error:
+
+.. code-block:: console
+
+   INFO[0000] Starting a Colonies development server
+   INFO[0000] Creating Colonies data directory, this directory will be deleted every time the development server is restarted  Path=/tmp/coloniesdev/
+   INFO[0000] Starting embedded PostgreSQL server           DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres
+   ERRO[0000] process already listening on port 50070       BuildTime="2023-12-04T07:11:56Z" BuildVersion=154ad05
+
+To kill the Embedded PostgreSQL server running in background:
+
+.. code-block:: console
+
+    ps ax -o pid,cmd | grep embedded-postgres-go
+
+.. code-block:: console
+
+    3045089 /tmp/coloniesdev/embedded-postgres-go/extracted/bin/postgres -D /tmp/coloniesdev/embedded-postgres-go/extracted/data -p 50070
+
+.. code-block:: console
+
+   kill -9 3045089 
+
+Building from source
+--------------------
+First install `Golang <https://go.dev>`_, then just type: ``go run cmd/main.go`` in root of the Colonies Github directory. Alternatively, there is Makefile, type: ``make´´.
 
 Colony
 ======

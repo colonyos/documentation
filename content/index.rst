@@ -18,6 +18,12 @@ Intro
 
 .. toctree::
    :maxdepth: 1
+   :caption: Tutorial - Image processing
+
+   tutorial1.rst
+
+.. toctree::
+   :maxdepth: 1
    :caption: Colonies CLI
 
    colonies-cli 
