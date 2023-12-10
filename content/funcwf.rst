@@ -3,6 +3,128 @@ Introduction
 
 Function specs
 --------------
+A *function specification* defines a function that should be executed by an executor in the future. Below is a basic
+example of a function specification. 
+
+.. code-block:: json 
+
+   {
+       "conditions": {
+           "colonyname": "mycolony",
+           "executortype": "helloworld-executor"
+       },
+       "funcname": "helloworld"
+   }
+
+**funcname** defines the *name* of the function that should be executed.
+**conditions** defines requirements that must be fullfilled by targeting executors. In the example, the 
+**executortype** of an executor must be of the type *helloworld-executor*, only executors of that type will be eligible to be assigned this function. **colonyname** definies that name of the colony where this function should be executed. The **colonyname** is automatically set if using the Colonies CLI. 
+
+Arguments
+^^^^^^^^^
+
+It is also possible to pass arguments to a function.
+
+.. code-block:: json 
+
+   {
+       "conditions": {
+           "colonyname": "mycolony",
+           "executortype": "cli"
+       },
+       "funcname": "sleep",
+       "args": [
+           "10"
+       ] 
+   }
+
+Keyword arguments
+^^^^^^^^^^^^^^^^^
+
+Alternatively, it is also possible to specify keyword arguments.
+
+.. code-block:: json 
+
+   {
+        "conditions": {
+            "colonyname": "mycolony",
+            "executortype": "cli"
+        },
+       "funcname": "helloworld",
+       "desc": "Hello world example",
+       "kwargs": {
+           "str1_kw": "str1",
+           "str2_kw": "str2"
+       } 
+   }
+
+
+Failure management
+^^^^^^^^^^^^^^^^^^
+
+**maxwaittime** sets the limit for how long a process can stay in the queue at the Colonies server before being marked as failed if not executed. **maxexectime** determines the maximum time an executor can spend executing a process before it is unassigned and returned to the queue. **maxretries** specifies the number of times a process can be reassigned for execution before being automatically set as failed. These parameters are crucial for efficient process management and failure management. For instance, if an executor crashes, **maxexectime** ensures the process is reassigned, maintaining workload continuity.
+
+.. code-block:: json 
+
+   {
+       "conditions": {
+           "executortype": "cli"
+       },
+       "funcname": "sleep",
+       "args": [
+           "20"
+       ],
+       "maxwaittime": 30,
+       "maxexectime": 30,
+       "maxretries": 3
+   }
+
+Labels
+^^^^^^
+
+A **label** can be set to more easily look up the process in the Colonies server database.
+
+.. code-block:: json 
+
+   {
+       "conditions": {
+           "colonyname": "mycolony",
+           "executortype": "helloworld-executor"
+       },
+       "funcname": "helloworld",
+       "label": "mylabel"
+   }
+
+Hardware requirements
+^^^^^^^^^^^^^^^^^^^^^
+
+The **conditions** may also include hardware requirements needed to execute the function.
+
+.. code-block:: json 
+    
+   {
+    "conditions": {
+        "colonyname": "mycolony",
+        "executortype": "helloworld-executor",
+        "nodes": 10,
+        "cpu": "1000m",
+        "processes": 10,
+        "processes-per-node": 1,
+        "mem": "10G",
+        "storage": "10G",
+        "gpu": {
+            "name": "test_name1",
+            "mem": "11G",
+            "count": 1,
+            "nodecount": 0
+        },
+        "walltime": 1000
+    },
+       "funcname": "helloworld",
+       "label": "mylabel"
+   }
+
+TODO
 
 .. code-block:: json 
 

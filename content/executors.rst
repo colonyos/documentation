@@ -1,5 +1,5 @@
-HPC Executors
-============
+Container Executors
+===================
 
 .. code-block:: json 
 
@@ -63,9 +63,8 @@ HPC Executors
         "maxretries": 3
     }
 
-HPC Executor
-------------
+HPC/Slurm Executor
+------------------
 
-KubeC Executor
---------------
-TODO
+Kubernetes Executor
+-------------------
