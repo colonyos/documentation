@@ -6,7 +6,7 @@ ColonyOS build on the principle of *service brokering* and acts as a intermediar
 
 ColonyOS is somewhat similar to `grid computing <https://en.wikipedia.org/wiki/Grid_computing>`_, but takes another approach in grid network creation and resource allocation. Unlike traditional grid computing, which typically focuses on establishing a single, extensive grid computing network, ColonyOS is based on cloud-computing and adopts an application-specific approach where each application operates its own smaller, self-contained grid, referred to as a *colony*. The colony is then provisioned with only the resources necessary to efficiently execute a certain application, avoiding the one-size-fits-all approach of larger grid networks. 
 
-From another point of view, a colony can also be viewed as a `distributed service mesh <https://en.wikipedia.org/wiki/Service_mesh>`_. This architecture allows for the hosting of microservices across a wide array of platforms dispersed throughout the Internet. By doing so, it offers a more flexible and resilient environment where services can communicate and operate efficiently despite being hosted on different technologies and platforms.
+From this point of view, a colony can also be viewed as a `distributed service mesh <https://en.wikipedia.org/wiki/Service_mesh>`_. This architecture enables hosting of microservices across a wide array of platforms dispersed throughout the Internet. By doing so, it offers a more flexible and resilient environment where services can communicate and operate efficiently despite being hosted on different technologies and platforms.
 
 Colonies servers
 ================
