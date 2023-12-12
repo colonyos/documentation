@@ -128,7 +128,20 @@ To get help about a certain subcommand, e.g. type: **colonies process --help**
       -v, --verbose           Verbose (debugging)
     
     Use "colonies process [command] --help" for more information about a command.
-    
+
+Auto completion
+---------------
+Generate a completion file.
+
+.. code-block:: console
+
+    colonies completion fish > colonies_completion  
+
+Then source the ``colonies_completion`` file in the shell config file, e.g. ``config.fish``.
+
+.. code-block:: console
+
+    source ~/.config/fish/colonies_completion
 
 Show current configuration
 --------------------------
