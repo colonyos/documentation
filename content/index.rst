@@ -3,7 +3,7 @@ ColonyOS
 
 .. image:: img/colonyos.png 
 
-ColonyOS is a Meta-OS designed to facilite implementation and deployment of distributed applications that can seamlessly run across a **computing continuum**, ranging from edge environments, cloud infrastructures to powerful HPC systems.
+ColonyOS is a Meta-OS designed to facilite implementation and deployment of distributed applications that can seamlessly run across a **compute continuum**, ranging from edge environments, cloud infrastructures to powerful HPC systems.
 
 .. csv-table::
    :widths: auto

@@ -5,7 +5,7 @@ A container is a lightweight, standalone, executable package that includes every
 
 `Docker <https://www.docker.com>`_ containers are extensively used in a variety of computing environments. `Kubernetes <https://kubernetes.io>`_ a de facto standard container orchestration system, uses a container technology called `Containerd <https://containerd.io>`_ as a low-level interface for container management. Containerd is also utilized internally by Docker. In High-Performance Computing (HPC) environments, `Singularity <https://sylabs.io>`_ containers are often preferred for their specific features that is designed to meet specific HPC needs. Generally, different container technologies offer distinct toolsets and APIs.
 
-Colony OS offers a way to run containers in a portable manner across platforms, independent of the underlying container technology, using a consistent API. This is achieved by submitting *function specifications* to a Colonies server, which then wraps the *specifications* into processes. A *process* is then assigned to a suitable executor, which subsequently launches a container on the underlying container platform where the executor is operating.
+Colony OS offers a way to run containers in a unified way across platforms, independent of the underlying container technology, using a consistent API. This is achieved by submitting *function specifications* to a Colonies server, which then wraps the *specifications* into processes. A *process* is then assigned to a suitable executor, which subsequently launches a container on the underlying container platform where the executor is operating.
 
 Within ColonyOS, there is a family of executors known as *container executors*. These implement a function called ``execute`` that spawns containers. As the format of the *function specification* is identical, it becomes possible to seamless switch between different platforms.
 
@@ -202,7 +202,7 @@ For example. the command below list the last 10 successful processes:
 
 .. code-block:: console
 
-   '+----------+------+-------------------------+---------------------+------------------------------+----------------+
+   +----------+------+-------------------------+---------------------+------------------------------+----------------+
    | FUNCNAME | ARGS |         KWARGS          |      END TIME       |        EXECUTOR TYPE         | INITIATOR NAME |
    +----------+------+-------------------------+---------------------+------------------------------+----------------+
    | execute  |      | args:[30] cmd:sleep ... | 2023-12-13 10:51:47 | lumi-small-hpcexecutor       | johan          |
@@ -225,7 +225,61 @@ Now that you may have acquired some fundamental knowledge about running containe
 Managing data
 =============
 
-Let's create a directory, and 
+Upload data
+-----------
+
+Let's create a empty directory, and upload the directory to CFS. 
+
+.. code-block:: console
+
+    mkdir myfiles
+
+.. code-block:: console
+
+    echo "Hello world" > myfiles/hello.txt
+
+The command below uploads all files in the ``myfiles`` directory to CFS under the label ``myfiles``.
+
+.. code-block:: console
+
+    colonies fs sync -l /myfiles -d ./myfiles
+
+.. code-block:: console
+
+   /myfiles:
+   =========
+   These files will be uploaded:
+   +-----------+-------+----------+
+   |   FILE    | SIZE  |  LABEL   |
+   +-----------+-------+----------+
+   | hello.txt | 0 KiB | /myfiles |
+   +-----------+-------+----------+
+   No files will be downloaded
+   
+   Are you sure you want to continue? (yes,no): yes
+    Uploading hello.txt 100% [===============] (46 kB/s)
+
+Let's list all labels on CFS.
+
+.. code-block:: console
+
+    colonies fs label ls
+
+.. code-block:: console
+
+   +---------------+-----------------+
+   |     LABEL     | NUMBER OF FILES |
+   +---------------+-----------------+
+   | /myfiles      | 1               |
+   +---------------+-----------------+
+
+To download the ``/myfiles`` label, for example on another computer: 
+    
+.. code-block:: console
+    
+    colonies fs sync -l /myfiles -d ./myfiles2
 
 Pollinator
 ==========
+
+
