@@ -117,8 +117,16 @@ To efficiently manage data, ColonyOS provides a meta-filesystem called the Colon
 
 .. image:: img/cfs.png
 
-Executors can utilize CFS to fetch and synchronize data. A common practice is for users to define a *label* and upload a directory of files to CFS, where each file is tagged with that label. In function specification, users can then specify which labels should be synchronized. This allows executors to automatically retrieve necessary data when executing a process.
+Executors can utilize CFS to fetch and synchronize data. A common practice is for users to define a *label* and upload a directory of files to CFS, where each file is tagged with that label. In function specifications, users can then specify which labels should be synchronized. This enables executors to automatically retrieve necessary data when executing processes.
 
-Additionally, CFS offers functionality to create *snapshots*. This feature is essential for generating immutable copies of source code or data intended for execution or processing. Since processes can be queued and may have to wait before execution, these snapshots ensure that the referenced data remains unaltered while the process is in the queue, awaiting execution.
-
+Immutability
+------------
 Given that datasets sometimes can be quite large, efficient caching of data is crucial. In CFS, all files are immutable, meaning they cannot be altered but only completely replaced. This approach simplifies caching of files that are part of labels and snapshots, as the immutability guarantees the consistency and reliability of the data being cached.
+
+Since files cannot be altered once created, this also reduces the risk of data tampering and unauthorized modifications. Immutability ensures that data remains in its original, unaltered state, and thus provide a more secure environment where data integrity can be maintained over time.
+
+Another reason of immutability is prevention of race conditions. In computing, a race condition occurs when multiple processes access and manipulate the same data concurrently, leading to inconsistent or unexpected results. Since immutable files cannot be modified once they are created, this effectively eliminates the possibility of race conditions related to file modifications. This ensures that when a file is read, it cannot be changed by another process at the same time, leading to more predictable and reliable system behavior. By using immutable files, CFS enables stable and consistent data handling across various executors.
+
+Snapshots
+---------
+Additionally, CFS offers functionality to create *snapshots*. This feature is essential for generating immutable copies of whole directory trees, which can include source code or data intended for execution or processing. Since processes can be queued and may have to wait before execution, snapshots ensure that the referenced data remains unaltered or that files cannot be added or removed to certain label while the process is in the queue, awaiting execution.

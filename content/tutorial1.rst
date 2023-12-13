@@ -220,11 +220,12 @@ For example. the command below list the last 10 successful processes:
 Alternativly, ``colonies process ps`` lists running processes, and ``colonies process psw`` lists waiting processes, and finally
 ``colonies process psf`` lists failed processes.
 
-Now, you have some basic knowledge to run containers across platforms. Next, we will investigate how to share data across different
-*container executors*.
+Now that you may have acquired some fundamental knowledge about running containers on ColonyOS, let's proceed to explore how to share data effectively across different container executors.
 
 Managing data
 =============
+
+Let's create a directory, and 
 
 Pollinator
 ==========

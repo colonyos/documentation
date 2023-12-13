@@ -183,9 +183,9 @@ Docker container
 
 We are going the Container Executor, which comes in three variants. 
 
-1. **KubeExector** runs containers as Kubernetes batch jobs.  
-2. **DockerExector** runs containers as Docker containers on a baremetal servers or VMs.
-3. **HPCExecutor** runs containers as Singularity containers on HPC systems, managing them as Slurm jobs.
+1. **Kube Executor** runs containers as Kubernetes batch jobs.  
+2. **Docker Executor** runs containers as Docker containers on a baremetal servers or VMs.
+3. **HPC Executor** runs containers as Singularity containers on HPC systems, managing them as Slurm jobs.
    
 As the *function specification* is identical, meaning that we can easily switch between these 3 types of executors.
 To run containers, we first need to create a Dockerfile with the following content: 
