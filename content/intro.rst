@@ -11,14 +11,14 @@ From this point of view, a colony can also be viewed as a `distributed service m
 Colonies servers
 ================
 
-ColonyOS consists of Colonies servers, offering a modern HTTP API globally accessible from anywhere on the Internet. Users then submit so-called *function specifications* to a Colonies server, describing functions to be executed by a so-called *executor*. A built-in brokering system part of the Colonies server then assigns the function specification to an executor capable of executing the function.
+ColonyOS consists of Colonies servers, usually deployed as cloud services on the Internet, and offering a HTTP API globally accessible from anywhere on the Internet. Users then submit so-called *function specifications* to a Colonies server, describing functions to be executed by a so-called *executor*. A built-in brokering system part of the Colonies server then assigns the function specification to an executor capable of executing the function.
 
 .. image:: img/howdoesitwork1.png 
 
 Executors
 =========
 
-Executors can be seen as `microservices <https://en.wikipedia.org/wiki/Microservices>`_, each being lightweight, independent, and tasked with executing only specific functions. Executors register their capabilities with the Colonies server, specifying the functions they can execute. Executors do not interact with other executors, and is designed according to the Unix philosophy - *Do one thing well and do it well*. This modular approach makes it possible to decouple complex systems into distinct functions, each of which can be independently developed and managed by different teams, thereby enhancing scalability and maintainability.
+Executors can be seen as `microservices <https://en.wikipedia.org/wiki/Microservices>`_, each being lightweight, independent, and tasked with executing only specific functions. Executors register their capabilities with the Colonies server, specifying the functions they can execute. Executors cannot not directly interact with other executors, and is designed according to the Unix philosophy - *Do one thing well and do it well*. This modular approach makes it possible to decouple complex systems into distinct functions, each of which can be independently developed and managed by different teams, thereby enhancing scalability and maintainability.
 
 .. image:: img/howdoesitwork2.png 
 
@@ -81,7 +81,6 @@ To add a colony, the user (or Colonies SDK) calculates a signature of the messag
        "signature": "82f2ba6368d5c7d0e9bfa6a01a8fa4d4263113f9eedf235e3a4c7b1febcdc2914fe1f8727746b2f501ceec5736457f218fe3b1a469dd6071775c472a802aa81501",
    }
   
-
 Upon receiving the RPC message, the Colonies server reconstructs the identity from the received data. It then cross-verify the reconstructed identity against its database to verify if the caller possesses the necessary rights to add a new colony. This process ensures that only authorized users can access the system.
 
 Access control
@@ -104,6 +103,22 @@ can interact with the Colonies server:
     - Only a colony owner can approve or disapprove an executor within their colony.
 * User rules:
     - Any user member of a colony can submit, get, and list processes or workflows within their colony.
-* User/executor rules:
+* Executor rules:
     - Any executor member of a colony can submit, get, assign, and list processes or workflows within their colony.
     - Only the executor that was assigned a process can set attributes on that process or mark it as complete/failed.
+
+
+Meta-filesystem
+===============
+
+ColonyOS is primarily designed to manage machine learning tasks. Since data management is a critical aspect in all machine learning, it is important to efficiently be able to share data across a continuum of executors operating on a wide variety of platforms and domains.
+
+To efficiently manage data, ColonyOS provides a meta-filesystem called the Colony Filesystem (CFS). Unlike a traditional filesystem, CFS doesn't store the actual files but rather stores metadata about the files. This metadata includes information such as file names, checksums, Internet addresses of servers from which to fetch data, details about the protocols used, and optionally, credentials for accessing the files. In its current form, CFS supports `Amazon S3 <https://en.wikipedia.org/wiki/Amazon_S3>`_, but it is architecturally designed to support any type of protocol and storage technology, for example the `InterPlanetary File System (IPFS) <https://ipfs.tech>`_.
+
+.. image:: img/cfs.png
+
+Executors can utilize CFS to fetch and synchronize data. A common practice is for users to define a *label* and upload a directory of files to CFS, where each file is tagged with that label. In function specification, users can then specify which labels should be synchronized. This allows executors to automatically retrieve necessary data when executing a process.
+
+Additionally, CFS offers functionality to create *snapshots*. This feature is essential for generating immutable copies of source code or data intended for execution or processing. Since processes can be queued and may have to wait before execution, these snapshots ensure that the referenced data remains unaltered while the process is in the queue, awaiting execution.
+
+Given that datasets sometimes can be quite large, efficient caching of data is crucial. In CFS, all files are immutable, meaning they cannot be altered but only completely replaced. This approach simplifies caching of files that are part of labels and snapshots, as the immutability guarantees the consistency and reliability of the data being cached.

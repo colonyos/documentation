@@ -1,296 +1,230 @@
-Introduction
-============
+What is a container?
+====================
 
-In this tutorial, we will train a machine learning model to identify water in Sentinel-2 satellite images. 
-We will be using code from `this GitHub repo <https://github.com/msoczi/unet_water_bodies_segmentation>`_ using 
-this `dataset <https://www.kaggle.com/datasets/franciscoescobar/satellite-images-of-water-bodies/>`_.
+A container is a lightweight, standalone, executable package that includes everything needed to run a piece of software, such as the code, a runtime, binaries, libraries, environment variables, and config files. Numerous container technologies have been developed to meet different requirements.
 
-Upload dataset
-==============
+`Docker <https://www.docker.com>`_ containers are extensively used in a variety of computing environments. `Kubernetes <https://kubernetes.io>`_ a de facto standard container orchestration system, uses a container technology called `Containerd <https://containerd.io>`_ as a low-level interface for container management. Containerd is also utilized internally by Docker. In High-Performance Computing (HPC) environments, `Singularity <https://sylabs.io>`_ containers are often preferred for their specific features that is designed to meet specific HPC needs. Generally, different container technologies offer distinct toolsets and APIs.
 
-Method 1 - Colonies CLI
------------------------
+Colony OS offers a way to run containers in a portable manner across platforms, independent of the underlying container technology, using a consistent API. This is achieved by submitting *function specifications* to a Colonies server, which then wraps the *specifications* into processes. A *process* is then assigned to a suitable executor, which subsequently launches a container on the underlying container platform where the executor is operating.
 
-Download the dataset and unzip the ``archive.zip`` file to directory named ``water_body_dataset``. Then, upload
-to the dataset files to Colonies CFS.
+Within ColonyOS, there is a family of executors known as *container executors*. These implement a function called ``execute`` that spawns containers. As the format of the *function specification* is identical, it becomes possible to seamless switch between different platforms.
 
-.. code-block:: console
+There are currently three types of *container executors*:
 
-    colonies fs sync -l /water -d ./water_body_dataset
+1. **Kube executor** spawns containers as Kubernetes batch jobs.  
+2. **Docker executor** spawns containers as Docker containers on a baremetal servers or VMs.
+3. **HPC executor** spawns containers as Singularity containers on HPC systems, managing them as Slurm jobs.
 
-.. code-block:: console
-    
-    | water_body_1114.jpg | 6 KiB    | /water |
-    | water_body_1209.jpg | 10 KiB   | /water |
-    | water_body_1273.jpg | 9 KiB    | /water |
-    | water_body_1552.jpg | 61 KiB   | /water |
-    | water_body_7797.jpg | 4 KiB    | /water |
-    | water_body_8847.jpg | 9 KiB    | /water |
-    | water_body_1313.jpg | 8 KiB    | /water |
-    | water_body_1615.jpg | 18 KiB   | /water |
-    | water_body_1724.jpg | 1 KiB    | /water |
-    | water_body_1801.jpg | 8 KiB    | /water |
-    | water_body_1833.jpg | 11 KiB   | /water |
-    +---------------------+----------+--------+
-    No files will be downloaded
-    
-    /water:
-    =======
-    No files will be uploaded
-    No files will be downloaded
-    
-    Are you sure you want to continue? (yes,no):
+We are now going to explore how we can launch containers on various platforms.
 
-After the upload has finished, we can now list the dataset.
+Execute containers
+==================
+
+Follow instructions at :doc:`colonies-cli` and install the ``colonies`` and ``pollinator`` CLI tool.
+
+In this tutorial, we assume that at least one *container executor* is available in the colony. 
+
+Let's check which executors are currently available.
 
 .. code-block:: console
 
-    colonies fs label ls
-   
-.. code-block:: console
-
-   +---------------------------------------------------------+-----------------+
-   |                           LABEL                         | NUMBER OF FILES |
-   +---------------------------------------------------------+-----------------+
-   | /water/Images                                           | 2841            |
-   | /water/Masks                                            | 2841            |
-   +---------------------------------------------------------+-----------------+
-
-To access the dataset from an executor, the executor needs to synchronize the data. This can be achieved in several ways; one method is to specify the ``/water`` label in the function specification fs section. The executor will then synchronize the dataset files to its local file system.
-
-
-Alternatively, you can submit a function to an executor, requesting it to synchronize a specific label to its local file system without launching a container. 
-The code below will download the dataset on Leonardo HPC system. 
-
-.. code-block:: json 
-
-   {
-       "conditions": {
-           "executortype": "leonardo-booster-hpcexecutor",
-           "nodes": 1,
-           "processes-per-node": 1,
-           "cpu": "1000m",
-           "mem": "30Gi",
-           "gpu": {
-               "count": 0 
-           },
-           "walltime": 60000
-       },
-       "funcname": "sync",
-       "fs": {
-           "mount": "/cfs",
-           "dirs": [
-               {
-                   "label": "/water",
-                   "dir": "/water",
-                   "keepfiles": true,
-                   "onconflicts": {
-                       "onstart": {
-                           "keeplocal": false
-                       },
-                       "onclose": {
-                           "keeplocal": true
-                       }
-                   }
-               }
-           ]
-       },
-       "maxwaittime": -1,
-       "maxexectime": 60000,
-       "maxretries": 3
-   }
-
-.. code-block:: console
-
-   colonies function submit --spec sync.json
-
-Method 2 - Pollinator
----------------------
-
-First, find a target executor.
+   colonies executor ls
 
 .. code-block:: console
 
    +----------------------+------------------------------+------------------------+
    |         NAME         |             TYPE             |        LOCATION        |
    +----------------------+------------------------------+------------------------+
-   | icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |
    | lumi                 | lumi-small-hpcexecutor       | CSC, Finland           |
-   | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |
    | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy          |
+   | icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |
+   | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |
    +----------------------+------------------------------+------------------------+
 
-Generate an empty working, targeting the LUMI HPC system. Note that the target executor type
-can be changed later.
+A *container executor* takes a Unix command, a list of arguments, and a Docker image as input. It then launches a container that executes the specified command. 
+For example, to run the command ``echo "hello", "world"`` on an Ubuntu container we need to specify the following information:
+
+.. code-block:: json 
+
+    "funcname": "execute",
+    "kwargs": {
+        "cmd": "echo",
+        "docker-image": "ubuntu:20.04"
+        "rebuild-image": false,
+        "args": [
+            "hello", "world"
+        ]
+    }
+
+
+To submit a *function specification*, we also need to specify requirements, so-called ``conditions``, on the executors that will execute the function. 
+Additionally, we also need to define constraints on the execution, such as the expected execution time of the container. 
+This aspect is particularly important for managing failures effectively. If the ``maxexectime`` is exceeded, meaning the process takes 
+longer than anticipated, it will be unassigned and potentially reassigned to another executor. 
+The ``maxretries`` parameter determines the number of times a process can be reassigned. 
+The ``maxwaittime`` parameter specifies how long time process can wait in the queue before it is assigned and automatically failed. 
+This approach ensures execution continuity and that processes runs to completion, even in cases of 
+unexpected delays or failures. 
+
+A process can have the following *states*:
+
+* **Waiting** The process is submitted and enqueued at the Colonies server, waiting for an executor to be assigned and execute the process.
+* **Running** The process is assigned to an executor.
+* **Successful** The process has successfully been executed by an executor.
+* **Failed** The process has failed when executed by one or several executors.
+
+Now, let's execute the *echo* command specifed above. 
+
+.. code-block:: json 
+
+   {
+       "conditions": {
+           "executortype": "lumi-small-hpcexecutor",
+           "nodes": 1,
+           "processes-per-node": 1,
+           "mem": "1Gi",
+           "cpu": "500m",
+           "walltime": 200,
+           "gpu": {
+               "count": 0
+           }
+       },
+       "funcname": "execute",
+       "kwargs": {
+           "cmd": "echo",
+           "docker-image": "ubuntu:20.04",
+           "args": [
+               "hello", "world"
+           ]
+       },
+       "maxwaittime": -1,
+       "maxexectime": 100,
+       "maxretries": 3
+   }
 
 .. code-block:: console
 
-   mkdir waterml
-   cd waterml
-   pollinator new -e lumi-small-hpcexecutor  
+   colonies function submit --spec echo.json --follow
+
+The function will be execute by the ``lumi-small-hpcexecutor`` running on the LUMI supercomputer in Finland. If we change the ``executortype`` to
+``ice-kubeexecutor`` it would instead run on a Kubernetes cluster at the ICE Datacenter in Sweden. 
 
 .. code-block:: console
 
-   INFO[0000] Creating directory                            Dir=./cfs/src
-   INFO[0000] Creating directory                            Dir=./cfs/data
-   INFO[0000] Creating directory                            Dir=./cfs/result
-   INFO[0000] Generating                                    Filename=./project.yaml
-   INFO[0000] Generating                                    Filename=./cfs/data/hello.txt
-   INFO[0000] Generating                                    Filename=./cfs/src/main.py
+   INFO[0000] Process submitted                             ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+   INFO[0000] Printing logs from process                    ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+   hello world
+   INFO[0007] Process finished successfully                 ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
 
-Copy the ``water_body_dataset`` to the ``./cfs/data`` directory  
+We can also lookup the process by typing the following command: 
 
 .. code-block:: console
+  
+    colonies process get -p 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+
+.. code-block:: console
+
+   Process:
+   +--------------------+------------------------------------------------------------------+
+   | ID                 | 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8 |
+   | IsAssigned         | True                                                             |
+   | InitiatorID        | bcaeac1a507036f7fed0be9d38c43ba973be7c0064d1b0b010ede2f088093b3f |
+   | InitiatorName      | johan                                                            |
+   | AssignedExecutorID | e3e212278eda2ce8b527f832d0bb6e4976938f6f9fc2ee5fdecabf7ccc3b9da1 |
+   | State              | Successful                                                       |
+   | PriorityTime       | 1702460233177327634                                              |
+   | SubmissionTime     | 2023-12-13 10:37:13                                              |
+   | StartTime          | 2023-12-13 10:37:13                                              |
+   | EndTime            | 2023-12-13 10:37:19                                              |
+   | WaitDeadline       | 0001-01-01 00:53:28                                              |
+   | ExecDeadline       | 2023-12-13 10:38:53                                              |
+   | WaitingTime        | 17.103ms                                                         |
+   | ProcessingTime     | 6.336683s                                                        |
+   | Retries            | 0                                                                |
+   | Input              |                                                                  |
+   | Output             |                                                                  |
+   | Errors             |                                                                  |
+   +--------------------+------------------------------------------------------------------+
    
-    cp ~/water_body_dataset ./cfs/data  
-
-The dataset will upload next time the project run.
-
-.. code-block:: console
-
-   pollinator run --follow
-
-.. code-block:: console
-
-   Uploading main.py 100% [===============] (4.3 MB/s)
-   Downloading water_body_8239.jpg 100% [===============] (248 kB/s)
-   Downloading water_body_701.jpg 100% [===============] (484 kB/s)
-   Downloading water_body_8159.jpg 100% [===============] (148 kB/s)
-   Downloading water_body_683.jpg 100% [===============] (145 kB/s)
-   Downloading water_body_967.jpg 100% [===============] (350 kB/s)
-   Downloading water_body_784.jpg 100% [===============] (906 kB/s)
-   Downloading water_body_922.jpg 100% [===============] (161 kB/s)
-   Downloading water_body_233.jpg 100% [===============] (251 kB/s)
-   Downloading water_body_1206.jpg 100% [===============] (720 kB/s)
-   Downloading water_body_1708.jpg 100% [===============] (1.3 MB/s)
-   Downloading water_body_2461.jpg 100% [===============] (560 kB/s)
-   ...
-
-Docker container
-================
-
-Create a Dockerfile with the following content, and save it to an empty directory.  
-
-.. code-block:: docker
-
-   FROM docker.io/tensorflow/tensorflow:2.13.0-gpu
-
-   RUN apt-get update && apt-get install -y python3 python3-pip wget vim git fish libgl1-mesa-glx libglib2.0-0
-   RUN python3 -m pip install --upgrade pip
-   RUN pip3 install pycolonies opencv-python tqdm Pillow scikit-learn keras matplotlib numpy
-
-Build and publish the Dockerfile and publish the Docker image at public Docker registry.
-
-.. code-block:: console
-
-   docker build -t johan/hackaton .
-   docker push johan/hackaton
-
-To simpify the tutorial, the ``johan/hackaton`` Docker image has already been published at DockerHub.
-
-Training the model
-==================
-
-Setup a Pollinator project
---------------------------
-
-We assumed the ``water_dataset`` in available in Colonies CFS under the label ``/water``. 
-Create a new Pollinator project (or use the one you already created when uploading the dataset).
-
-.. code-block:: console 
-
-   mkdir waterml
-   cd waterml
-   pollinator new -e leonardo-booster-hpcexecutor  
-
-Edit the ``project.yaml`` file. Change the Docker image to ``johan/hackaton``, increase required memory to 
-``30000Mi``, change CPU to 4 CPU cores (``4000m``). 
-
-Walltime defined the maximum time the process may run. In this case, it has to finish in ``2000`` seconds.
-
-.. code-block:: yaml 
-
-   projectname: 559ac0c3a834594b337d10ebedf3134ea0ca3142cceab26b1aa5c17ba141999d
-   conditions:
-     executorType: leonardo-booster-hpcexecutor
-     nodes: 1
-     processesPerNode: 1
-     cpu: 4000m
-     mem: 30000Mi
-     walltime: 2000
-     gpu:
-       count: 1
-       name: ""
-   environment:
-     docker: johan/hackaton
-     rebuildImage: false
-     cmd: python3
-     source: main.py
-
-Update main.py
---------------
-Download source code from this `GitHub repo <https://github.com/johankristianss/colonyoshackaton/blob/main/src/main.py>`_.
-
-.. code-block:: console 
-
-    cd cfs/src
-    wget https://raw.githubusercontent.com/johankristianss/colonyoshackaton/main/src/main.py .
-
-At line 132, change epochs to e.g 30.
-
-.. code-block:: python
-
-   epochs = 30
-
-Note that the Python code saves the training result and a random prediction example in the result directory, which is
-automatically synched back to the client after process completion.
-
-.. code-block:: python
-
-    plt.savefig(projdir + '/result/res_' + processid + '.png')
-    plt.savefig(projdir + '/result/samples_' + processid + '.png')
-
-For example,
-
-.. code-block:: console 
-
-   ls cfs/result
-
-.. code-block:: console 
-
-   .rw-r--r--  55k johan 12 Dec 21:40  res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png
-   .rw-r--r-- 266k johan 12 Dec 21:40  samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png
-
-Train the model
----------------
-
-.. code-block:: console 
-
-    pollinator run --follow
-
-.. code-block:: console 
-
-   67/67 [==============================] - 1s 18ms/step - loss: 0.3434 - accuracy: 0.7024 - val_loss: 0.3263 - val_accuracy: 0.7038
-   Epoch 25/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.3307 - accuracy: 0.7092 - val_loss: 0.3146 - val_accuracy: 0.7121
-   Epoch 26/30
-   67/67 [==============================] - 1s 18ms/step - loss: 0.3139 - accuracy: 0.7140 - val_loss: 0.2947 - val_accuracy: 0.7249
-   Epoch 27/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.3226 - accuracy: 0.7110 - val_loss: 0.3027 - val_accuracy: 0.7244
-   Epoch 28/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2994 - accuracy: 0.7208 - val_loss: 0.2910 - val_accuracy: 0.7259
-   Epoch 29/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2910 - accuracy: 0.7239 - val_loss: 0.2781 - val_accuracy: 0.7261
-   Epoch 30/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2856 - accuracy: 0.7258 - val_loss: 0.2733 - val_accuracy: 0.7313
-   23/23 [==============================] - 0s 4ms/step
+   FunctionSpec:
+   +-------------+--------------------------------+
+   | Func        | execute                        |
+   | Args        | None                           |
+   | KwArgs      | args:[hello world] cmd:echo    |
+   |             | docker-image:ubuntu:20...      |
+   | MaxWaitTime | -1                             |
+   | MaxExecTime | 100                            |
+   | MaxRetries  | 3                              |
+   | Priority    | 0                              |
+   +-------------+--------------------------------+
    
-   INFO[0141] Process finished successfully                 ProcessID=61e597845ed3df4456c5be7d358e35141b8dc4c1f76a89d7caad0f31f792106c
-   Downloading samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (5.0 MB/s)
-   Downloading res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (1.7 MB/s)
+   Conditions:
+   +------------------+------------------------+
+   | ColonyName       | hpc                    |
+   | ExecutorIDs      | None                   |
+   | ExecutorType     | lumi-small-hpcexecutor |
+   | Dependencies     |                        |
+   | Nodes            | 1                      |
+   | CPU              | 500m                   |
+   | Memmory          | 1Gi                    |
+   | Processes        | 0                      |
+   | ProcessesPerNode | 1                      |
+   | Storage          |                        |
+   | Walltime         | 200                    |
+   | GPU              |                        |
+   | GPUs             | 0                      |
+   | GPUMemory        |                        |
+   +------------------+------------------------+
+   
+   Attributes:
+   No attributes found
 
-We can now open the sample and training plot pictures.
+As ColonyOS stores process execution history in a database, we can also fetch the logs after process has finished.
 
-.. image:: img/prediction_example.png 
+.. code-block:: console
 
-.. image:: img/training_result.png
+    colonies log get -p 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+
+.. code-block:: console
+
+    hello world
+
+Or we could look up the process in the ColonyOS dashboard:
+
+.. image:: img/tutorial1-dashboard1.png
+
+Is can also be useful to get information about the execution history or list the queue. This is done using the ``colonies process`` command.
+For example. the command below list the last 10 successful processes:
+
+.. code-block:: console
+
+    colonies process pss --count 10
+
+.. code-block:: console
+
+   '+----------+------+-------------------------+---------------------+------------------------------+----------------+
+   | FUNCNAME | ARGS |         KWARGS          |      END TIME       |        EXECUTOR TYPE         | INITIATOR NAME |
+   +----------+------+-------------------------+---------------------+------------------------------+----------------+
+   | execute  |      | args:[30] cmd:sleep ... | 2023-12-13 10:51:47 | lumi-small-hpcexecutor       | johan          |
+   | execute  |      | args:[hello world] c... | 2023-12-13 10:37:13 | lumi-small-hpcexecutor       | johan          |
+   | execute  |      | args:[hello world] c... | 2023-12-13 10:37:09 | lumi-small-hpcexecutor       | johan          |
+   | execute  |      | args:[hello world] c... | 2023-12-13 10:24:50 | ice-kubeexecutor             | johan          |
+   | execute  |      | args:[hello  world] ... | 2023-12-13 09:56:07 | ice-kubeexecutor             | johan          |
+   | execute  |      | docker-image:ubuntu:... | 2023-12-13 09:28:05 | ice-kubeexecutor             | johan          |
+   | execute  |      | docker-image:ubuntu:... | 2023-12-13 09:27:23 | ice-kubeexecutor             | johan          |
+   | execute  |      | args:[/cfs/fc752fe20... | 2023-12-12 22:29:26 | leonardo-booster-hpcexecutor | johan          |
+   | execute  |      | cmd:python3 docker-i... | 2023-12-12 22:29:22 | leonardo-booster-hpcexecutor | johan          |
+   | execute  |      | cmd:python3 docker-i... | 2023-12-12 22:29:25 | leonardo-booster-hpcexecutor | johan          |
+   +----------+------+-------------------------+---------------------+------------------------------+----------------+
+
+Alternativly, ``colonies process ps`` lists running processes, and ``colonies process psw`` lists waiting processes, and finally
+``colonies process psf`` lists failed processes.
+
+Now, you have some basic knowledge to run containers across platforms. Next, we will investigate how to share data across different
+*container executors*.
+
+Managing data
+=============
+
+Pollinator
+==========

@@ -1,5 +1,6 @@
 Getting started
 ===============
+
 The Colonies is written in Golang and is compiled into a single binary, which simplifies deployment and eliminates external dependencies, ensuring consistent, 
 cross-platform execution. The entire ColonyOS framework consists of the **colonies** binary.
 
