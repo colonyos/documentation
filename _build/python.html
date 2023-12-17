@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="pollinator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#security">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#meta-filesystem">Meta-filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Using GPUs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Nvidia systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html#amd-rocm-systems">AMD/ROCm systems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#upload-dataset">Upload dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#training-the-model">Training the model</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#processes">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#attributes">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcwf.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#developing-an-executor">Developing an executor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#with-a-private-key">With a private key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#self-registration">Self-registration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-example">Run the example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#paillier-homomorphic-encryption-in-python">Paillier Homomorphic encryption in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/python.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>TODO</p>
+</section>
+<section id="developing-an-executor">
+<h1>Developing an executor<a class="headerlink" href="#developing-an-executor" title="Link to this heading"></a></h1>
+<section id="with-a-private-key">
+<h2>With a private key<a class="headerlink" href="#with-a-private-key" title="Link to this heading"></a></h2>
+</section>
+<section id="self-registration">
+<h2>Self-registration<a class="headerlink" href="#self-registration" title="Link to this heading"></a></h2>
+</section>
+</section>
+<section id="example-cross-platform-workflows">
+<h1>Example - Cross-platform workflows<a class="headerlink" href="#example-cross-platform-workflows" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">cprint</span>
+
+<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">Colonies</span>
+<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">colonies_client</span>
+<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">func_spec</span>
+<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">Workflow</span>
+
+<span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorid</span><span class="p">,</span> <span class="n">executor_prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">gen_sleep</span><span class="p">(</span><span class="n">executortype</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+    <span class="s2">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;executortype&quot;</span><span class="p">:</span> <span class="n">executortype</span><span class="p">,</span>
+        <span class="s2">&quot;nodes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;processes-per-node&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;500Mi&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;1000m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;walltime&quot;</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;funcname&quot;</span><span class="p">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kwargs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;sleep 8&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;docker-image&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu:20.04&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;maxexectime&quot;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+    <span class="s2">&quot;maxretries&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">colonyname</span><span class="p">)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;ice-kubeexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;ice-0&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-0&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-1&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-2&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-3&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-4&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-5&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-6&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;lumi-small-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;lumi-7&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ice-0&quot;</span><span class="p">])</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;leonardo-booster-hpcexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;leonardo-0&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lumi-0&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-1&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-2&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-3&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-4&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-5&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-6&quot;</span><span class="p">,</span> <span class="s2">&quot;lumi-7&quot;</span><span class="p">])</span>
+<span class="c1"># print(wf)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gen_sleep</span><span class="p">(</span><span class="s2">&quot;ice-kubeexecutor&quot;</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;ice-1&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;leonardo-0&quot;</span><span class="p">])</span>
+<span class="n">colonies</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">executor_prvkey</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-secure-multi-party-computation">
+<h1>Example - Secure Multi-party Computation<a class="headerlink" href="#example-secure-multi-party-computation" title="Link to this heading"></a></h1>
+<p>This is an example of how to use ColonyOS to execute cross-platform workflows for Secure Multi-party Computation.
+We will explore a use case that demonstrates Homomorphic encryption on medical data. The source code can be found <a class="reference external" href="https://github.com/johankristianss/colonyos-he-example">here</a>.</p>
+<p>Let’s assume we have three sites:</p>
+<ul class="simple">
+<li><p>Hospital (Region A</p></li>
+<li><p>Hospital (Region B)</p></li>
+<li><p>A cloud provider (ICE Connect).</p></li>
+</ul>
+<p>The cloud provider should be able to execute certain mathematical operations (in this case calculate a sum) on the encryped patient data
+obtained from the both hospitals. With homomorphic encryption, the cloud provider only has access to encrypted data without ever accessing
+the actual, sensitive patient data.</p>
+<p>Now, we aim to streamline the entire process of acquiring encrypted patient data from both hospitals, performing the sum computation, and then
+decrypting the final result. The computation we aim to perform can be represented as the following Directed Acyclic Graph (DAG):</p>
+<img alt="_images/python_usecase_dag.png" src="_images/python_usecase_dag.png" />
+<p>We are going to utilize the Paillier homomorphic encryption protocol, which works as follows:</p>
+<ol class="arabic simple">
+<li><ol class="arabic simple">
+<li><p>A user generate a private/public key pair.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>The user sends the public key to the hospitals.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Each hospital retrieves patient data through database queries, encrypts this data using the provided public key.
+This ensures the confidentiality of the patient information.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Each hospital then sends the encrypted data to the cloud provider.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>The cloud provider calculates a sum of the encrypted data — without ever decrypting it, thus preserving the privacy of the information.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>The cloud provider sends the encrypted result back to the user.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="7">
+<li><p>Finally, the user decrypts the result using the private key to obtain the plaintext outcome of the computation.</p></li>
+</ol>
+</li>
+</ol>
+<p>This process is shown in the figure below:</p>
+<img alt="_images/python_usecase_arch.png" src="_images/python_usecase_arch.png" />
+<p>We are going to develop two types of ColonyOS executors.
+1. A Hospital executor, responbible for getting patient data. The hospital executor is going to provide a Colonies function called <strong>get_patient_data</strong>.
+2. A Cloud executor, responisible for calculating the sum. The cloud provider is going to provide a Colonies function called <strong>sum_patient_data</strong>.</p>
+<p>We are going the pass the Paillier enbcryption key through the DAG as an argument to the workflow. The JSON code below describes the DAG:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;nodename&quot;: &quot;r1:get_patent_data&quot;,</span>
+<span class="go">        &quot;conditions&quot;: {</span>
+<span class="go">            &quot;executortype&quot;: &quot;r1-hospital_executor&quot;,</span>
+<span class="go">            &quot;dependencies&quot;: []</span>
+<span class="go">        },</span>
+<span class="go">        &quot;funcname&quot;: &quot;get_patient_data&quot;,</span>
+<span class="go">        &quot;kwargs&quot;: {</span>
+<span class="go">            &quot;paillier-pubkey&quot;: &quot;eyJuIjogIjQwNDI....&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;maxexectime&quot;: 600,</span>
+<span class="go">        &quot;maxretries&quot;: 3</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;nodename&quot;: &quot;r2:get_patent_data&quot;,</span>
+<span class="go">        &quot;conditions&quot;: {</span>
+<span class="go">            &quot;executortype&quot;: &quot;r2-hospital_executor&quot;,</span>
+<span class="go">            &quot;dependencies&quot;: []</span>
+<span class="go">        },</span>
+<span class="go">        &quot;funcname&quot;: &quot;get_patient_data&quot;,</span>
+<span class="go">        &quot;kwargs&quot;: {</span>
+<span class="go">            &quot;paillier-pubkey&quot;: &quot;eyJuIjogIjQwNDI....&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;maxexectime&quot;: 600,</span>
+<span class="go">        &quot;maxretries&quot;: 3</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;nodename&quot;: &quot;cloud:sum_patent_data&quot;,</span>
+<span class="go">        &quot;conditions&quot;: {</span>
+<span class="go">            &quot;executortype&quot;: &quot;cloud-hospital-executor&quot;,</span>
+<span class="go">            &quot;dependencies&quot;: [</span>
+<span class="go">                &quot;r1:get_patent_data&quot;,</span>
+<span class="go">                &quot;r2:get_patent_data&quot;</span>
+<span class="go">            ]</span>
+<span class="go">        },</span>
+<span class="go">        &quot;funcname&quot;: &quot;sum_patient_data&quot;,</span>
+<span class="go">        &quot;kwargs&quot;: {</span>
+<span class="go">            &quot;paillier-pubkey&quot;: &quot;eyJuIjogIjQwNDI....&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;maxexectime&quot;: 600,</span>
+<span class="go">        &quot;maxretries&quot;: 3</span>
+<span class="go">    }</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<section id="run-the-example">
+<h2>Run the example<a class="headerlink" href="#run-the-example" title="Link to this heading"></a></h2>
+<p>First, start the first Hospital executor. The first argument is the name of executor. The second argument is the secret patient data.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 hospital_executor.py r2-hospital_executor 5</span>
+</pre></div>
+</div>
+<p>Start the second Hospital executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 hospital_executor.py r1-hospital_executor 55</span>
+</pre></div>
+</div>
+<p>And finally start the cloud provider executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 cloud_executor.py</span>
+</pre></div>
+</div>
+<p>Submit the workflow.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow submit --spec workflow/workflow.json</span>
+</pre></div>
+</div>
+<p>We can also look at the DAG in the ColonyOS dashboard.</p>
+<img alt="_images/python_usecase_dashboard1.png" src="_images/python_usecase_dashboard1.png" />
+<img alt="_images/python_usecase_dashboard2.png" src="_images/python_usecase_dashboard2.png" />
+<p>Note the input and out field of the last process in the DAG.
+The input field contains the encrypted patient data generated by the Hospital executors. The outout field contains the encrypted sum.</p>
+<p>To get the result we need to decrypt the output from the last process in the DAG.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 decrypt.py 8e7823ff8d0f8a167480199d070a43a6ad88894a45137d3837f34789580d5035</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">The sum of all patient data is: 60</span>
+</pre></div>
+</div>
+<section id="paillier-homomorphic-encryption-in-python">
+<h3>Paillier Homomorphic encryption in Python<a class="headerlink" href="#paillier-homomorphic-encryption-in-python" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">phe</span> <span class="kn">import</span> <span class="n">paillier</span>
+
+<span class="c1"># Sensitive medical data</span>
+<span class="n">private_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;patient_data1&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s1">&#39;patient_data2&#39;</span><span class="p">:</span> <span class="mi">25</span>
+<span class="p">}</span>
+
+<span class="c1"># Generate public and private keys for Paillier encryption</span>
+<span class="n">public_key</span><span class="p">,</span> <span class="n">private_key</span> <span class="o">=</span> <span class="n">paillier</span><span class="o">.</span><span class="n">generate_paillier_keypair</span><span class="p">()</span>
+
+<span class="c1"># Encrypt each site&#39;s private data using the public key</span>
+<span class="n">encrypted_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">public_key</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">private_data</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="c1"># The central authority sums the encrypted values</span>
+<span class="n">encrypted_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">encrypted_data</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">public_key</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># The encrypted sum is then decrypted with the private key</span>
+<span class="n">total_sum</span> <span class="o">=</span> <span class="n">private_key</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted_sum</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum of all site data is: </span><span class="si">{</span><span class="n">total_sum</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pollinator.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

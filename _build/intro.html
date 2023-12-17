@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is ColonyOS? &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="ColonyOS" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#security">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#access-control">Access control</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#meta-filesystem">Meta-filesystem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#immutability">Immutability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snapshots">Snapshots</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Using GPUs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Nvidia systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html#amd-rocm-systems">AMD/ROCm systems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#upload-dataset">Upload dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#training-the-model">Training the model</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#processes">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#attributes">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcwf.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">What is ColonyOS?</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/intro.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-is-colonyos">
+<h1>What is ColonyOS?<a class="headerlink" href="#what-is-colonyos" title="Link to this heading"></a></h1>
+<p>ColonyOS is a Meta-OS, offering functionalities like a traditional OS, but operates as an overlay on top of existing platforms and OSs. This unique capability can be used to bridge the gap between various computing environments and enables seamless integration and execution of cross-platform workflows.</p>
+<p>ColonyOS build on the principle of <em>service brokering</em> and acts as a intermediary between users and various platforms. This makes it possible to hide or <em>abstract away</em> the complexity of underlying platforms and streamline execution of workloads. The ultimate goal is to make it possible to develop platform-independent and portable applications.</p>
+<p>ColonyOS is somewhat similar to <a class="reference external" href="https://en.wikipedia.org/wiki/Grid_computing">grid computing</a>, but takes another approach in grid network creation and resource allocation. Unlike traditional grid computing, which typically focuses on establishing a single, extensive grid computing network, ColonyOS is based on cloud-computing and adopts an application-specific approach where each application operates its own smaller, self-contained grid, referred to as a <em>colony</em>. The colony is then provisioned with only the resources necessary to efficiently execute a certain application, avoiding the one-size-fits-all approach of larger grid networks.</p>
+<p>From this point of view, a colony can also be viewed as a <a class="reference external" href="https://en.wikipedia.org/wiki/Service_mesh">distributed service mesh</a>. This architecture enables hosting of microservices across a wide array of platforms dispersed throughout the Internet. By doing so, it offers a more flexible and resilient environment where services can communicate and operate efficiently despite being hosted on different technologies and platforms.</p>
+</section>
+<section id="colonies-servers">
+<h1>Colonies servers<a class="headerlink" href="#colonies-servers" title="Link to this heading"></a></h1>
+<p>ColonyOS consists of Colonies servers, usually deployed as cloud services on the Internet, and offering a HTTP API globally accessible from anywhere on the Internet. Users then submit so-called <em>function specifications</em> to a Colonies server, describing functions to be executed by a so-called <em>executor</em>. A built-in brokering system part of the Colonies server then assigns the function specification to an executor capable of executing the function.</p>
+<img alt="_images/howdoesitwork1.png" src="_images/howdoesitwork1.png" />
+</section>
+<section id="executors">
+<h1>Executors<a class="headerlink" href="#executors" title="Link to this heading"></a></h1>
+<p>Executors can be seen as <a class="reference external" href="https://en.wikipedia.org/wiki/Microservices">microservices</a>, each being lightweight, independent, and tasked with executing only specific functions. Executors register their capabilities with the Colonies server, specifying the functions they can execute. Executors cannot not directly interact with other executors, and is designed according to the Unix philosophy - <em>Do one thing well and do it well</em>. This modular approach makes it possible to decouple complex systems into distinct functions, each of which can be independently developed and managed by different teams, thereby enhancing scalability and maintainability.</p>
+<img alt="_images/howdoesitwork2.png" src="_images/howdoesitwork2.png" />
+<p>Executors must specify its <em>type</em> when registering with the Colonies server. If multiple executors of the same type exist within the colony, the Colonies server then load balances function assignments, distributing functions evenly among executors of that type. Should an executor fail to execute a function within a specified timeframe, the function specification is reassigned to another executor of the same type, ensuring task completion and system reliability. This failsafe mechanism allows for easy system updates by simply replacing an executor, as ColonyOS ensures all functions are eventually executed by reassigning failed functions to other executors.</p>
+</section>
+<section id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h1>
+<p>To execute a function, users or external applications submit function specifications to the Colonies server. These specifications contain meta-information describing how to execute the function. The executor assigned the function specification interprets the specification and performs some kind of computation.</p>
+<img alt="_images/howdoesitwork3.png" src="_images/howdoesitwork3.png" />
+<p>When the Colonies server receives a function specification, the function specification is encapsulated into process that includes contextual details such as the assigned executor and start time. The process is stored in a database with a timestamp, effectively turning the database into a queue. Consequently, users can submit functions targetting an executor that do not yet exist.</p>
+<img alt="_images/howdoesitwork4.png" src="_images/howdoesitwork4.png" />
+<p>The figure above illustrates how an executor execute a process. The function specification part of the process record, can also contain instructions how to fetch and synchronize data. This is done using a built-in meta-filesystem part of ColonyOS.</p>
+</section>
+<section id="colony">
+<h1>Colony<a class="headerlink" href="#colony" title="Link to this heading"></a></h1>
+<p>A colony in ColonyOS is a <em>distributed computing system</em> comprised of loosely-connected executors, which may be geographically dispersed across Internet and deploy on varios platforms, <em>yet collectively form a cohesive compute unit</em>. Applications based on ColonyOS do not interact directly with an individual executor. Instead, they operate indirectly by submitting function specifications to the Colonies server. The server hence acts as an intermediary, enabling implementation of a loosely connected system.</p>
+<p>This loosely connected system architecture offers numerous benefits:</p>
+<ul class="simple">
+<li><p><strong>Scalability:</strong> The system can be scaled simply by deploying more executors, allowing the system to adapt to varying workload demands.</p></li>
+<li><p><strong>Load Balancing:</strong> The Colonies server can distribute tasks among executors efficiently, ensuring optimal utilization of resources and preventing any single executor from becoming a bottleneck.</p></li>
+<li><p><strong>Resilience:</strong> Executors can crash or be restarted without affecting entire ColonyOS applications.</p></li>
+<li><p><strong>Upgrades:</strong> Executors can be individually updated, facilitating Continuous Deployment and Integration (CD/CI) without disrupting the overall system.</p></li>
+<li><p><strong>Reduced complexity:</strong> ColonyOS applications are relieved from handling platform integration complexities, as this is managed by the executors. This breakdown into smaller, independent executors allows for easier development and integration across various platforms.</p></li>
+<li><p><strong>Modularity:</strong> Different teams can develop and manage different executors, promoting modular development and potentially speeding up development processes.</p></li>
+<li><p><strong>Flexibility:</strong> Executors’ ability to operate on different platforms enhances the system’s adaptability to diverse computing environments and requirements.</p></li>
+<li><p><strong>Cost-effectiveness:</strong> By using resources only when needed and allowing for the use of diverse, potentially less expensive hardware, ColonyOS can be a more cost-effective solution compared to traditional centralized systems.</p></li>
+</ul>
+<img alt="_images/colony1.png" src="_images/colony1.png" />
+<p>The figure above shown above depicts an empty colony, where no executors are currently connected. Importantly, it highlights the capability of the system to accept and queue function specifications from applications, even in the absence of active executors. These submitted functions are held in a queue and will be promptly executed as soon as an executor connects to the colony, ensuring no disruption in the processing of tasks despite the initial lack of executors. This feature underscores the flexibility and resilience of the ColonyOS architecture.</p>
+<img alt="_images/colony2.png" src="_images/colony2.png" />
+<p>In the figure above, the colony now includes three executors: the <em>LUMI HPC Executor</em> for executing containers on HPC systems, the <em>ICE Kube Executor</em> for running containers on Kubernetes, and the <em>Laptop Executor</em> for running containers on a local laptop. This demonstrates the dynamic nature of ColonyOS, where executors of varied types and capabilities can be added dynamically to the colony without disrupting the functioning of ColonyOS applications. This flexibility allows for a versatile and adaptable computing environment. For example, it becomes possible to develop an application that can automatically harness spot cloud resources to reduce costs.</p>
+</section>
+<section id="security">
+<h1>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h1>
+<p>A key component of ColonyOS is a crypto identity protocol, inspired by Bitcoin and Ethereum. Each user, colony and executor is assigned a digital identity verified by the Colonies server using <a class="reference external" href="https://en.wikipedia.org/wiki/Implicit_certificate">implicit certificates</a> implicit certificates based on <a class="reference external" href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">Elliptic-curve cryptography</a>. This setup enables the reconstruction of public keys from signatures, and identities are then calculated as cryptographic hashes (SHA3-256) of these reconstructed public keys. The Colonies server doesn’t store private keys but keeps the identities in a database, verifying that identities reconstructed from RPC calls match those stored. This ensures secure and authenticated interactions within the ColonyOS environment.</p>
+<p>This protocol works as follows. Let’s assume a user has the following id, and the Colonies server has stored the id in its internal database.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">69383f17554afbf81594999eec96adbaa0fc6caace5f07990248b14167c41e8f</span>
+</pre></div>
+</div>
+<p>To add a colony, the user (or Colonies SDK) calculates a signature of the message using the user’s private key and sends the RPC message to the Colonies server.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;payloadtype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;addcolonymsg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ewogICAgICBjb2xvbnlpZDogYWM4ZGM4OTQ5YWYzOTVmZDUxZWFkMzFkNTk4YjI1MmJkYTAyZjFmNmVlZDExYWNlN2ZjN2RjOGRkODVhYzMyZSwKICAgICAgbmFtZTogdGVzdF9jb2xvbnlfbmFtZQogIH0=&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82f2ba6368d5c7d0e9bfa6a01a8fa4d4263113f9eedf235e3a4c7b1febcdc2914fe1f8727746b2f501ceec5736457f218fe3b1a469dd6071775c472a802aa81501&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Upon receiving the RPC message, the Colonies server reconstructs the identity from the received data. It then cross-verify the reconstructed identity against its database to verify if the caller possesses the necessary rights to add a new colony. This process ensures that only authorized users can access the system.</p>
+<section id="access-control">
+<h2>Access control<a class="headerlink" href="#access-control" title="Link to this heading"></a></h2>
+<p>In ColonyOS, there are four defined roles, each with specific responsibilities and levels of access:</p>
+<ul class="simple">
+<li><p><strong>Colonies server owner:</strong> Analogous to super root user, this role involves owning and maintaining the server.</p></li>
+<li><p><strong>Colony owner:</strong> Comparable to root users, they are individuals or entities owning individual colonies. One server can host multiple colonies.</p></li>
+<li><p><strong>Colony user members:</strong> Members of a specific colony, potentially ranging from one to several in each colony.</p></li>
+<li><p><strong>Colony executor members:</strong> Executors within a specific colony, with each colony possibly having multiple executors.</p></li>
+</ul>
+<p>In ColonyOS, each role is associated with a private key, and specific rules determine how these roles
+can interact with the Colonies server:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Server owner rules:</dt><dd><ul>
+<li><p>Only the server owner can register a new colony.</p></li>
+<li><p>Only the server owner can list all registered colonies.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Colony owner rules:</dt><dd><ul>
+<li><p>Only a colony owner can register a user or executor to their colony.</p></li>
+<li><p>Only a colony owner can approve or disapprove an executor within their colony.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>User rules:</dt><dd><ul>
+<li><p>Any user member of a colony can submit, get, and list processes or workflows within their colony.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Executor rules:</dt><dd><ul>
+<li><p>Any executor member of a colony can submit, get, assign, and list processes or workflows within their colony.</p></li>
+<li><p>Only the executor that was assigned a process can set attributes on that process or mark it as complete/failed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="meta-filesystem">
+<h1>Meta-filesystem<a class="headerlink" href="#meta-filesystem" title="Link to this heading"></a></h1>
+<p>ColonyOS is primarily designed to manage machine learning tasks. Since data management is a critical aspect in all machine learning, it is important to efficiently be able to share data across a continuum of executors operating on a wide variety of platforms and domains.</p>
+<p>To efficiently manage data, ColonyOS provides a meta-filesystem called the Colony Filesystem (CFS). Unlike a traditional filesystem, CFS doesn’t store the actual files but rather stores metadata about the files. This metadata includes information such as file names, checksums, Internet addresses of servers from which to fetch data, details about the protocols used, and optionally, credentials for accessing the files. In its current form, CFS supports <a class="reference external" href="https://en.wikipedia.org/wiki/Amazon_S3">Amazon S3</a>, but it is architecturally designed to support any type of protocol and storage technology, for example the <a class="reference external" href="https://ipfs.tech">InterPlanetary File System (IPFS)</a>.</p>
+<img alt="_images/cfs.png" src="_images/cfs.png" />
+<p>Executors can utilize CFS to fetch and synchronize data. A common practice is for users to define a <em>label</em> and upload a directory of files to CFS, where each file is tagged with that label. In function specifications, users can then specify which labels should be synchronized. This enables executors to automatically retrieve necessary data when executing processes.</p>
+<section id="immutability">
+<h2>Immutability<a class="headerlink" href="#immutability" title="Link to this heading"></a></h2>
+<p>Given that datasets sometimes can be quite large, efficient caching of data is crucial. In CFS, all files are immutable, meaning they cannot be altered but only completely replaced. This approach simplifies caching of files that are part of labels and snapshots, as the immutability guarantees the consistency and reliability of the data being cached.</p>
+<p>Since files cannot be altered once created, this also reduces the risk of data tampering and unauthorized modifications. Immutability ensures that data remains in its original, unaltered state, and thus provide a more secure environment where data integrity can be maintained over time.</p>
+<p>Another reason of immutability is prevention of race conditions. In computing, a race condition occurs when multiple processes access and manipulate the same data concurrently, leading to inconsistent or unexpected results. Since immutable files cannot be modified once they are created, this effectively eliminates the possibility of race conditions related to file modifications. This ensures that when a file is read, it cannot be changed by another process at the same time, leading to more predictable and reliable system behavior. By using immutable files, CFS enables stable and consistent data handling across various executors.</p>
+</section>
+<section id="snapshots">
+<h2>Snapshots<a class="headerlink" href="#snapshots" title="Link to this heading"></a></h2>
+<p>Additionally, CFS offers functionality to create <em>snapshots</em>. This feature is essential for generating immutable copies of whole directory trees, which can include source code or data intended for execution or processing. Since processes can be queued and may have to wait before execution, snapshots ensure that the referenced data remains unaltered or that files cannot be added or removed to certain label while the process is in the queue, awaiting execution.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ColonyOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

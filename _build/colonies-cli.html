@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="funcwf.html" />
+    <link rel="prev" title="Introduction" href="tutorial3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#security">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#meta-filesystem">Meta-filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Using GPUs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Nvidia systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html#amd-rocm-systems">AMD/ROCm systems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#upload-dataset">Upload dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#training-the-model">Training the model</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auto-completion">Auto completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show-current-configuration">Show current configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-a-development-server">Starting a development server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#colony">Colony</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-colony">Create a new colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-registered-colonies">List all registered colonies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-colony">Remove a colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-statistics">Get statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#users">Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-new-user">Add a new user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-users">List users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-user">Get info about a user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-user">Remove a user</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#executors">Executors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#register-a-new-executor">Register a new executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#approve-an-executor">Approve an executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reject-an-executor">Reject an executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-an-executor">Remove an executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-executors">List executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-an-executor">Get info about an executor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submitting-function-specs">Submitting function specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alternative-method-to-execute-a-function">Alternative method to execute a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registering-a-function">Registering a function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-registered-functions">List all registered functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#processes">Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-waiting-processes">List waiting processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-running-processes">List running processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-successful-processes">List successful processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-failed-processes">List failed processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-process">Get info about a process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-process">Remove a process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-all-processes">Remove all processes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#logs">Logs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-logs-to-a-process">Adding logs to a process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-logs">Getting logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-an-attribute-to-a-process">Add an attribute to a process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lookup-an-attribute-on-a-process">Lookup an attribute on a process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#workflows">Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submit-a-workflow">Submit a workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-waiting-workflows">List waiting workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-running-workflows">List running workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-successful-workflows">List successful workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-failed-workflows">List failed workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-workflow">Get info about a workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-workflow">Remove a workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-all-workflows">Remove all workflows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#crons">Crons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-cron">Add a cron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-crons">Listing crons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-info-about-a-cron">Getting info about a cron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#immediately-run-a-cron">Immediately run a cron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-interval-instead-of-a-cron-expressions">Use interval instead of a cron expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-intervals">Random intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-cron">Remove a cron</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#generators">Generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-generator">Add a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-data-to-a-generator">Send data to a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-generators">List generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-generator">Get info about a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-generator">Remove a generator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#filesystem">Filesystem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#synchronizing-files">Synchronizing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-labels">List all labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-files-in-a-label">List files in a label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-file">Get info about a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-a-specific-file">Download a specific file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-file">Remove a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-label">Remove a label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-snapshot">Create a snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-a-snapshot">Download a snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show-info-about-a-snapshot">Show info about a snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-a-snaphot">Remove a snaphot</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcwf.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/colonies-cli.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>The Colonies is written in Golang and is compiled into a single binary, which simplifies deployment and eliminates external dependencies, ensuring consistent,
+cross-platform execution. The entire ColonyOS framework consists of the <strong>colonies</strong> binary.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Download the Colonies CLI binary <a class="reference external" href="https://github.com/colonyos/colonies/releases">here</a>.</p>
+<p>On Windows, it is recommended to use Unix alike shell, e.g. <a class="reference external" href="https://gitforwindows.org">Git BASH</a>,
+<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">Linux for Windows with WSL</a>, or
+<a class="reference external" href="https://www.cygwin.com">Cygwin</a>.</p>
+<p>The following environmental variables must be set at a minimum.
+Replace the sample values below with the actual ones you will use.
+Keep in mind that the private key is sensitive and should be kept confidential.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_TLS=&quot;true&quot;</span>
+<span class="go">export COLONIES_SERVER_TLS=&quot;true&quot;</span>
+<span class="go">export COLONIES_SERVER_HOST=&quot;server.colonyos.io&quot;</span>
+<span class="go">export COLONIES_SERVER_PORT=&quot;443&quot;</span>
+<span class="go">export COLONIES_COLONY_NAME=&quot;dev&quot;</span>
+<span class="go">export COLONIES_PRVKEY=&quot;a499fddafe51fabb405dae13c33daa9d63fe262ee92e6fff52c82b4a72e36f6d&quot;</span>
+</pre></div>
+</div>
+<p>If you are a colony administrator, you may also want to set:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_COLONY_PRVKEY=&quot;29ddccc9e2825378b9055e2667c2fcf0ceffc4e8744ad0e97dd37f8a20750820&quot;</span>
+</pre></div>
+</div>
+<p>To be able to create a new colony, you need to be a Colonies server administrator and set the following variables:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_SERVER_PRVKEY=&quot;74b1e2168600ef0186b43515747ac0020698b1dab2d6eb868e329122727353c4&quot;</span>
+</pre></div>
+</div>
+<p>Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S3 configuration and credentials:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export AWS_S3_ENDPOINT=&quot;&quot;</span>
+<span class="go">export AWS_S3_ACCESSKEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_SECRETKEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_REGION_KEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_BUCKET=&quot;&quot;</span>
+<span class="go">export AWS_S3_TLS=&quot;&quot;</span>
+<span class="go">export AWS_S3_SKIPVERIFY=&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<p>To use the Colonies CLI tool, just type <strong>colonies</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Colonies CLI tool</span>
+
+<span class="go">Usage:</span>
+<span class="go">  colonies [command]</span>
+
+<span class="go">Available Commands:</span>
+<span class="go">  attribute   Manage process attributes</span>
+<span class="go">  cluster     Manage clusters</span>
+<span class="go">  colony      Manage colonies</span>
+<span class="go">  completion  Generate the autocompletion script for the specified shell</span>
+<span class="go">  config      Show currently used configuration</span>
+<span class="go">  cron        Manage cron</span>
+<span class="go">  database    Manage internal database</span>
+<span class="go">  dev         Start a development server</span>
+<span class="go">  executor    Manage executors</span>
+<span class="go">  fs          Manage file storage</span>
+<span class="go">  function    Manage functions</span>
+<span class="go">  generator   Manage generators</span>
+<span class="go">  help        Help about any command</span>
+<span class="go">  key         Manage private keys</span>
+<span class="go">  log         Manage logging</span>
+<span class="go">  monitor     Manage Prometheus monitoring</span>
+<span class="go">  process     Manage processes</span>
+<span class="go">  server      Manage production server</span>
+<span class="go">  users       Manage users</span>
+<span class="go">  workflow    Manage workflows</span>
+
+<span class="go">Flags:</span>
+<span class="go">  -h, --help              help for colonies</span>
+<span class="go">      --insecure          Disable TLS and use HTTP</span>
+<span class="go">      --skip-tls-verify   Skip TLS certificate verification</span>
+<span class="go">  -v, --verbose           Verbose (debugging)</span>
+
+<span class="go">Use &quot;colonies [command] --help&quot; for more information about a command.</span>
+</pre></div>
+</div>
+<p>To get help about a certain subcommand, e.g. type: <strong>colonies process –help</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Manage processes</span>
+
+<span class="go">Usage:</span>
+<span class="go">  colonies process [command]</span>
+
+<span class="go">Available Commands:</span>
+<span class="go">  assign      Assign a process to a executor</span>
+<span class="go">  close       Close a process as successful</span>
+<span class="go">  remove      Remove a process</span>
+<span class="go">  removeall   Remove all processes</span>
+<span class="go">  fail        Close a process as failed</span>
+<span class="go">  get         Get info about a process</span>
+<span class="go">  ps          List all running processes</span>
+<span class="go">  psf         List all failed processes</span>
+<span class="go">  pss         List all successful processes</span>
+<span class="go">  psw         List all waiting processes</span>
+
+<span class="go">Flags:</span>
+<span class="go">  -h, --help          help for process</span>
+<span class="go">      --host string   Server host (default &quot;localhost&quot;)</span>
+<span class="go">      --port int      Server HTTP port (default -1)</span>
+
+<span class="go">Global Flags:</span>
+<span class="go">      --insecure          Disable TLS and use HTTP</span>
+<span class="go">      --skip-tls-verify   Skip TLS certificate verification</span>
+<span class="go">  -v, --verbose           Verbose (debugging)</span>
+
+<span class="go">Use &quot;colonies process [command] --help&quot; for more information about a command.</span>
+</pre></div>
+</div>
+</section>
+<section id="auto-completion">
+<h2>Auto completion<a class="headerlink" href="#auto-completion" title="Link to this heading"></a></h2>
+<p>Generate a completion file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies completion fish &gt; colonies_completion</span>
+</pre></div>
+</div>
+<p>Then source the <code class="docutils literal notranslate"><span class="pre">colonies_completion</span></code> file in the shell config file, e.g. <code class="docutils literal notranslate"><span class="pre">config.fish</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/.config/fish/colonies_completion</span>
+</pre></div>
+</div>
+</section>
+<section id="show-current-configuration">
+<h2>Show current configuration<a class="headerlink" href="#show-current-configuration" title="Link to this heading"></a></h2>
+<p>To get info about current configuration type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies config</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Current configurations:</span>
+<span class="go">+--------+-----------------+</span>
+<span class="go">| Colony | dev             |</span>
+<span class="go">| Server | localhost:50080 |</span>
+<span class="go">| TLS    | false           |</span>
+<span class="go">+--------+-----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="starting-a-development-server">
+<h2>Starting a development server<a class="headerlink" href="#starting-a-development-server" title="Link to this heading"></a></h2>
+<p>The Colonies CLI features a built-in development server that is easy to set up.
+Clone the <a class="reference external" href="https://github.com/colonyos/colonies">Colonies Github repo</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git@github.com:colonyos/colonies.git</span>
+</pre></div>
+</div>
+<p>Source the development environment test credentials. Note that the keys are publicly known and should NOT be used in a production system.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source devenv</span>
+</pre></div>
+</div>
+<p>Download the <strong>colonies</strong> binary and start the server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies dev</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0001] Connecting to PostgreSQL server               DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
+<span class="go">INFO[0001] Initialize a Colonies PostgreSQL database</span>
+<span class="go">INFO[0001] Starting a Colonies server                    Port=50080</span>
+<span class="go">INFO[0001] EtcdServer is ready                           DataPath=/tmp/coloniesdev/dev/etcd EtcdClientPort=23790 EtcdPeerPort=23800 Host=localhost Name=dev</span>
+<span class="go">INFO[0001] Starting Colonies server                      APIPort=50080 AllowExecutorReregister=false CronPeriod=1000 EtcdClientPort=23790 EtcdDataPath=/tmp/coloniesdev/dev/etcd EtcdPeerPort=23800 ExclusiveAssign=true GeneratorPeriod=1000 Host=localhost Name=dev Port=50080 RelayPort=2381 Retention=false RetentionPolicy=200 ServerID=039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103 TLS=false TLSCertPath= TLSPrivateKeyPath=</span>
+<span class="go">INFO[0001] Connecting to Colonies server                 ServerHost=localhost ServerPort=50080</span>
+<span class="go">INFO[0001] Registering a new Colony                      ColonyID=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4 ColonyName=dev ServerPrvKey=fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d</span>
+<span class="go">INFO[0001] Registering a new executor                    ColonyPrvKey=ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514 ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac ExecutorName=myexecutor ExecutorType=cli</span>
+<span class="go">INFO[0001] Approving executor                            ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac</span>
+<span class="go">INFO[0001] Approving CLI executor</span>
+<span class="go">INFO[0001] Starting Prometheus monitoring server         MonitorInterval=1 Port=21120 ServerHost=localhost ServerPort=50080</span>
+<span class="go">INFO[0001] Successfully started Colonies development server</span>
+<span class="go">INFO[0001] Press ctrl+c to exit</span>
+</pre></div>
+</div>
+<p>Verify the installation. There should be one registered executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+----------+</span>
+<span class="go">|    NAME    | TYPE | LOCATION |</span>
+<span class="go">+------------+------+----------+</span>
+<span class="go">| myexecutor | cli  |          |</span>
+<span class="go">+------------+------+----------+</span>
+</pre></div>
+</div>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<p>To simplify deployment, the Colonies development server uses internally an <a class="reference external" href="https://github.com/fergusstrange/embedded-postgres">Embedded PostgreSQL database</a>
+instead of real PostgreSQL server. However, in some situations, the Embedded PostgreSQL server may not shut down correctly, leaving a zombie process and
+this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Starting a Colonies development server</span>
+<span class="go">INFO[0000] Creating Colonies data directory, this directory will be deleted every time the development server is restarted  Path=/tmp/coloniesdev/</span>
+<span class="go">INFO[0000] Starting embedded PostgreSQL server           DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
+<span class="go">ERRO[0000] process already listening on port 50070       BuildTime=&quot;2023-12-04T07:11:56Z&quot; BuildVersion=154ad05</span>
+</pre></div>
+</div>
+<p>To kill the Embedded PostgreSQL server running in background:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ps ax -o pid,cmd | grep embedded-postgres-go</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">3045089 /tmp/coloniesdev/embedded-postgres-go/extracted/bin/postgres -D /tmp/coloniesdev/embedded-postgres-go/extracted/data -p 50070</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kill -9 3045089</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="building-from-source">
+<h2>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h2>
+<p>First install <a class="reference external" href="https://go.dev">Golang</a>, then just type: <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">run</span> <span class="pre">cmd/main.go</span></code> in root of the Colonies Github directory.
+Alternatively, there is Makefile, type: <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+</section>
+</section>
+<section id="colony">
+<h1>Colony<a class="headerlink" href="#colony" title="Link to this heading"></a></h1>
+<section id="create-a-new-colony">
+<h2>Create a new colony<a class="headerlink" href="#create-a-new-colony" title="Link to this heading"></a></h2>
+<p>First generate a new ECDSA private key. To use the new colony, you need to export the key as <code class="docutils literal notranslate"><span class="pre">COLONIES_COLONY_PRVKEY</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+
+<span class="go">Id=f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f</span>
+<span class="go">PrvKey=4a8739fab821a394d5c4f215e525c8d908d010b9618a700e51739286869dc8e1</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony add \</span>
+<span class="go">--name test_colony \</span>
+<span class="go">--colonyid f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Colony added</span>
+
+<span class="go">ColonyID=f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f</span>
+<span class="go">ColonyName=test_colony</span>
+</pre></div>
+</div>
+</section>
+<section id="list-all-registered-colonies">
+<h2>List all registered colonies<a class="headerlink" href="#list-all-registered-colonies" title="Link to this heading"></a></h2>
+<p>To list all registered colonies, you must be server administrator and the <code class="docutils literal notranslate"><span class="pre">COLONIES_SERVER_PRVKEY</span></code> must be set.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-------------+</span>
+<span class="go">|    NAME     |</span>
+<span class="go">+-------------+</span>
+<span class="go">| dev         |</span>
+<span class="go">| test_colony |</span>
+<span class="go">+-------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-colony">
+<h2>Remove a colony<a class="headerlink" href="#remove-a-colony" title="Link to this heading"></a></h2>
+<p>Only a colony owner can remove a colony and you need to have a valid <code class="docutils literal notranslate"><span class="pre">COLONIES_COLONY_PRVKEY</span></code> private key.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony remove --name test_colony</span>
+</pre></div>
+</div>
+</section>
+<section id="get-statistics">
+<h2>Get statistics<a class="headerlink" href="#get-statistics" title="Link to this heading"></a></h2>
+<p>All valid users and executors can get statistics on a colony.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony stats --name dev</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Process statistics:</span>
+<span class="go">+----------------------+-----+</span>
+<span class="go">| Executors            | 3   |</span>
+<span class="go">| Waiting processes    | 10  |</span>
+<span class="go">| Running processes    | 3   |</span>
+<span class="go">| Successful processes | 131 |</span>
+<span class="go">| Failed processes     | 10  |</span>
+<span class="go">| Waiting workflows    | 0   |</span>
+<span class="go">| Running workflows    | 0   |</span>
+<span class="go">| Successful workflows | 5   |</span>
+<span class="go">| Failed workflows     | 1   |</span>
+<span class="go">+----------------------+-----+</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="users">
+<h1>Users<a class="headerlink" href="#users" title="Link to this heading"></a></h1>
+<section id="add-a-new-user">
+<h2>Add a new user<a class="headerlink" href="#add-a-new-user" title="Link to this heading"></a></h2>
+<p>First, generate a new ECDSA private key. The user Id is cryptographically linked to this newly generated private key. In fact, the Colonies server will reconstruct the user Id from the signatures of messages sent to it.</p>
+<p>It’s also important to note that only the colony owner can add a user. Therefore, ensure that the <code class="docutils literal notranslate"><span class="pre">COLONIES_COLONY_PRVKEY</span></code> environment variable is correctly set.</p>
+<p>Next, you need to set the <code class="docutils literal notranslate"><span class="pre">COLONIES_PRVKEY</span></code> environment variable to interact with a Colonies server with this new user account.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+
+<span class="go">Id=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5</span>
+<span class="go">PrvKey=4e7e012894601adb804061724757860f316e342146f3794f90ce14e527d7bac7</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies user add \</span>
+<span class="go">--name=&quot;johan&quot; \</span>
+<span class="go">--email=&quot;johan.kristiansson@ri.se&quot; \</span>
+<span class="go">--phone=&quot;+467011122233&quot; \</span>
+<span class="go">--userid=&quot;b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] User added</span>
+
+<span class="go">ColonyName=dev Email=johan.kristiansson@ri.se</span>
+<span class="go">Phone=+467011122233</span>
+<span class="go">UserId=b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5</span>
+<span class="go">Username=johan2</span>
+</pre></div>
+</div>
+<p>Note that both username and userid must be unique.</p>
+</section>
+<section id="list-users">
+<h2>List users<a class="headerlink" href="#list-users" title="Link to this heading"></a></h2>
+<p>To list all users member of a colony.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies user ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+----------+--------------------------+---------------+</span>
+<span class="go">| USERNAME |          EMAIL           |     PHONE     |</span>
+<span class="go">+----------+--------------------------+---------------+</span>
+<span class="go">| johan    | johan.kristiansson@ri.se | +467011122233 |</span>
+<span class="go">+----------+--------------------------+---------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-a-user">
+<h2>Get info about a user<a class="headerlink" href="#get-info-about-a-user" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies user get --name johan</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------------------------------------------------------------------+</span>
+<span class="go">| Name       | johan                                                            |</span>
+<span class="go">| ID         | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |</span>
+<span class="go">| ColonyName | dev                                                              |</span>
+<span class="go">| Email      | johan.kristiansson@ri.se                                         |</span>
+<span class="go">| Phone      | +467011122233                                                    |</span>
+<span class="go">+------------+------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-user">
+<h2>Remove a user<a class="headerlink" href="#remove-a-user" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies user remove --name johan</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] User removed</span>
+
+<span class="go">ColonyName=dev</span>
+<span class="go">Username=johan</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="executors">
+<h1>Executors<a class="headerlink" href="#executors" title="Link to this heading"></a></h1>
+<section id="register-a-new-executor">
+<h2>Register a new executor<a class="headerlink" href="#register-a-new-executor" title="Link to this heading"></a></h2>
+<p>Copy the JSON object below to a file, e.g. executor.json. Only <strong>executorname</strong> and <strong>executortype</strong> are mandatory fields.
+And only a colony owner can register a new executor.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;executorname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml-executor&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;long&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">65.61204640586546</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22.132275667285477</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;desc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ICE Datacenter&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;hardware&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMD Ryzen 9 5950X 16-Core Processor&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4000m&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;16Gi&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100Ti&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia_3080ti&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;software&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;colonyos/ml:latest&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;k8s&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;latest&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Below is a minimal executor spec.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;executorname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml-executor&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ml&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --spec examples/executors/executor.json  \</span>
+<span class="go">--executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<p>It is also possible to override <strong>executorname</strong> and <strong>executortype</strong> fields.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --spec examples/executors/executor.json  \</span>
+<span class="go">--executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \</span>
+<span class="go">--name my_name \</span>
+<span class="go">--type my_type \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<p>Or simply skip the <strong>–spec</strong> argument, but then <strong>executorname</strong> and <strong>executortype</strong> must be specified.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --executorid 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 \</span>
+<span class="go">--name my_name \</span>
+<span class="go">--type my_type \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<p>If <strong>–approve</strong> is not specified, the executor will be registered, but is not allowed to get process assignments.</p>
+</section>
+<section id="approve-an-executor">
+<h2>Approve an executor<a class="headerlink" href="#approve-an-executor" title="Link to this heading"></a></h2>
+<p>Not approved executors do not take part of process brokering and will not get any processassignments.
+The following command will approve an executor:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor approve --name my_executor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Executor approved</span>
+
+<span class="go">ColonyName=dev ExecutorName=my_executor</span>
+</pre></div>
+</div>
+</section>
+<section id="reject-an-executor">
+<h2>Reject an executor<a class="headerlink" href="#reject-an-executor" title="Link to this heading"></a></h2>
+<p>The following command will reject an executor and prevent it from taking part of process brokering:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor reject --name my_executor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Executor rejected</span>
+
+<span class="go">ColonyName=dev ExecutorName=my_executor</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-an-executor">
+<h2>Remove an executor<a class="headerlink" href="#remove-an-executor" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor remove --name  ml-executor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Executor removed</span>
+
+<span class="go">ColonyName=dev ExecutorName=ml-executor</span>
+</pre></div>
+</div>
+</section>
+<section id="list-executors">
+<h2>List executors<a class="headerlink" href="#list-executors" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-------------+------+----------------+</span>
+<span class="go">|    NAME     | TYPE |    LOCATION    |</span>
+<span class="go">+-------------+------+----------------+</span>
+<span class="go">| myexecutor  | cli  |                |</span>
+<span class="go">| ml-executor | ml   | ICE Datacenter |</span>
+<span class="go">+-------------+------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-an-executor">
+<h2>Get info about an executor<a class="headerlink" href="#get-info-about-an-executor" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor get --name ml-executor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Executor:</span>
+<span class="go">+-------------------------+------------------------------------------------------------------+</span>
+<span class="go">| Name                    | ml-executor                                                      |</span>
+<span class="go">| ID                      | 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 |</span>
+<span class="go">| Type                    | ml                                                               |</span>
+<span class="go">| ColonyName              | dev                                                              |</span>
+<span class="go">| State                   | Approved                                                         |</span>
+<span class="go">| RequireFuncRegistration | False                                                            |</span>
+<span class="go">| CommissionTime          | 2023-11-29 15:05:25                                              |</span>
+<span class="go">| LastHeardFrom           | 0001-01-01 00:53:28                                              |</span>
+<span class="go">+-------------------------+------------------------------------------------------------------+</span>
+
+<span class="go">Location:</span>
+<span class="go">+-------------+----------------+</span>
+<span class="go">| Longitude   | 65.612046      |</span>
+<span class="go">| Latitude    | 22.132276      |</span>
+<span class="go">| Description | ICE Datacenter |</span>
+<span class="go">+-------------+----------------+</span>
+
+<span class="go">Hardware:</span>
+<span class="go">+-----------+--------------------------------+</span>
+<span class="go">| Model     | AMD Ryzen 9 5950X 16-Core      |</span>
+<span class="go">|           | Processor                      |</span>
+<span class="go">| CPU       | 4000m                          |</span>
+<span class="go">| Nodes     | 0                              |</span>
+<span class="go">| Memory    | 16Gi                           |</span>
+<span class="go">| Storage   | 100Ti                          |</span>
+<span class="go">| GPU       | nvidia_3080ti                  |</span>
+<span class="go">| GPUMem    |                                |</span>
+<span class="go">| GPUs      | 1                              |</span>
+<span class="go">| GPUs/Node | 0                              |</span>
+<span class="go">+-----------+--------------------------------+</span>
+
+<span class="go">Software:</span>
+<span class="go">+---------+--------------------+</span>
+<span class="go">| Name    | colonyos/ml:latest |</span>
+<span class="go">| Type    | k8s                |</span>
+<span class="go">| Version | latest             |</span>
+<span class="go">+---------+--------------------+</span>
+
+<span class="go">Functions:</span>
+<span class="go">No functions found</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h1>
+<section id="submitting-function-specs">
+<h2>Submitting function specs<a class="headerlink" href="#submitting-function-specs" title="Link to this heading"></a></h2>
+<p>ColonyOS operates on the principle of submitting <strong>Functions Specifications</strong> to a colony, which are then executed by various executors, members of that colony. When a <strong>Function Specification</strong> is received by the Colonies server, it is wrapped into a <strong>process</strong>, which is subsequently assigned to an executor. Each executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments.</p>
+<p>Let’s submit a <strong>Function Specification</strong> for executing a function named <strong>helloworld</strong>, specifying <strong>helloworld-executor</strong> as the target executor type. Note that a <strong>Function Specification</strong> can be submitted even if there are no matching executors currently in the colony. These functions will be executed in the future when an executor of matching <strong>executortype</strong> becomes available.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld-executor&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function submit --spec ./examples/functions/helloworld.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process submitted</span>
+
+<span class="go">ProcessId=99962477b295c4058b0a54929b79dbc0d7f57699ca0a0385df1a41dfa473a04d</span>
+</pre></div>
+</div>
+<p>The command will block until the process is executed by an executor. First, we need to generate a new ECDSA private key that will be used by the executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+
+<span class="go">Id=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">PrvKey=8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \</span>
+<span class="go">--name helloworld-executor \</span>
+<span class="go">--type helloworld-executor \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Executor added</span>
+
+<span class="go">ColonyName=dev</span>
+<span class="go">ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">ExecutorName=helloworld-executor ExecutorType=helloworld-executor</span>
+</pre></div>
+</div>
+<p>To assign a process to an executor, the command <strong>colonies process assign</strong> can be used and also specify the <strong>helloworld-executor</strong> executor’s private key. Typically, the assign operation is carried out by specialized executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Assigned process to executor</span>
+
+<span class="go">ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c</span>
+</pre></div>
+</div>
+<p>The Helloworld executor is now assigned to the process, which means that it have exclusive access to it. No other executors can hence be
+assigned this particular process. Only the assigned executor can manipulate the process, such as closint it.
+Now close the process with a result string (Hej).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process close \</span>
+<span class="go">-p 0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c \</span>
+<span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 \</span>
+<span class="go">--out Hej</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process closed as Successful</span>
+
+<span class="go">ProcessId=055a9e1c93ea6e252cab7f2b45eaec78f4f87e540352d10636d88e944b6bfb85</span>
+</pre></div>
+</div>
+<p>Alternatively, we can close the process as <em>failed</em>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process close \</span>
+<span class="go">-p 0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c \</span>
+<span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58 \</span>
+<span class="go">--out Hej</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process closed as Failed</span>
+
+<span class="go">ProcessId=46a0b33933a68ebfc0da722461b8c13bb1a170ee678ecd1ccede9ae1b01fcc91</span>
+</pre></div>
+</div>
+</section>
+<section id="alternative-method-to-execute-a-function">
+<h2>Alternative method to execute a function<a class="headerlink" href="#alternative-method-to-execute-a-function" title="Link to this heading"></a></h2>
+<p>It is possible to submit a Function Specification without specifying a JSON file, which can be suitable for simpler use cases.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function exec --func helloworld --targettype helloworld-executor</span>
+</pre></div>
+</div>
+<p>It also possible to provide <em>args</em>. Note that <em>kwargs</em> is currently not support by the <strong>exec</strong> function.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function exec --func fibonacci --args 10 --targettype cli</span>
+</pre></div>
+</div>
+</section>
+<section id="registering-a-function">
+<h2>Registering a function<a class="headerlink" href="#registering-a-function" title="Link to this heading"></a></h2>
+<p>The primary role of executors is to execute tasks. executors can register a <strong>Function</strong>, thereby indicating to other executors or users their ability to execute a specific function. Importantly, only the executor itself can register Functions to itself; this task cannot be performed by Users or other executors. To register a Function, access to the executor’s ECDSA private key is required.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function register --name helloworld-executor \</span>
+<span class="go">--func helloworld \</span>
+<span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+</section>
+<section id="list-all-registered-functions">
+<h2>List all registered functions<a class="headerlink" href="#list-all-registered-functions" title="Link to this heading"></a></h2>
+<p>To list all registered Function in a colony and get some basic statistics, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Function:</span>
+<span class="go">+-------------+-------------+</span>
+<span class="go">| FuncName    | helloworld  |</span>
+<span class="go">| Calls       | 1           |</span>
+<span class="go">| Served by   | 1 executors |</span>
+<span class="go">| MinWaitTime | 10.410566 s |</span>
+<span class="go">| MaxWaitTime | 10.410566 s |</span>
+<span class="go">| AvgWaitTime | 10.410566 s |</span>
+<span class="go">| MinExecTime | 27.459162 s |</span>
+<span class="go">| MaxExecTime | 27.459162 s |</span>
+<span class="go">| AvgExecTime | 27.459162 s |</span>
+<span class="go">+-------------+-------------+</span>
+</pre></div>
+</div>
+<p>If two or more executors provide the same Function, they will compete for process assignments, effectively load-balancing requests between executors.</p>
+</section>
+</section>
+<section id="processes">
+<h1>Processes<a class="headerlink" href="#processes" title="Link to this heading"></a></h1>
+<section id="list-waiting-processes">
+<h2>List waiting processes<a class="headerlink" href="#list-waiting-processes" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process psw</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">|    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+<p>Use the flag <strong>-i</strong> to also print process IDs.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process psw -i</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">|                                ID                                |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |</span>
+<span class="go">+------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">| dd68f3ff4bb336bb15574ae692ad08ac35ad3a7e7d8de18d3e5ba8874a0889da | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |</span>
+<span class="go">| 9972cdd82f862e535d972d9f03652701a750501b7e90ee77f221e973ad10d515 | helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |</span>
+<span class="go">| 5c26181e49714e0212d0d4a391f29a4f4762d0e206c2d19d304dbd137cfceb49 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |</span>
+<span class="go">| e50589ae2f2195d83d6b6a2fd36b1aad6b6419672dc10823baab21076ff5f400 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |</span>
+<span class="go">+------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-running-processes">
+<h2>List running processes<a class="headerlink" href="#list-running-processes" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process ps</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">|  FUNCNAME  | ARGS | KWARGS |     START TIME      |    EXECUTOR TYPE    | INITIATOR NAME |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:36:31 | helloworld-executor | johan          |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-successful-processes">
+<h2>List successful processes<a class="headerlink" href="#list-successful-processes" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process pss</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">|  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR NAME |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:51:37 | helloworld-executor | johan          |</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:34:15 | helloworld-executor | myexecutor     |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-failed-processes">
+<h2>List failed processes<a class="headerlink" href="#list-failed-processes" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process psf</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+--------+---------------------+---------------------+-----------+</span>
+<span class="go">|  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+-----------+</span>
+<span class="go">| helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan     |</span>
+<span class="go">+------------+------+--------+---------------------+---------------------+-----------+</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-a-process">
+<h2>Get info about a process<a class="headerlink" href="#get-info-about-a-process" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process get -p 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Process:</span>
+<span class="go">+--------------------+------------------------------------------------------------------+</span>
+<span class="go">| ID                 | 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4 |</span>
+<span class="go">| IsAssigned         | True                                                             |</span>
+<span class="go">| AssignedExecutorID | ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 |</span>
+<span class="go">| State              | Successful                                                       |</span>
+<span class="go">| PriorityTime       | 1701293763654005927                                              |</span>
+<span class="go">| SubmissionTime     | 2023-11-29 22:36:03                                              |</span>
+<span class="go">| StartTime          | 2023-11-29 22:37:23                                              |</span>
+<span class="go">| EndTime            | 2023-11-29 22:37:41                                              |</span>
+<span class="go">| WaitDeadline       | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| ExecDeadline       | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| WaitingTime        | 1m19.767467s                                                     |</span>
+<span class="go">| ProcessingTime     | 18.021749s                                                       |</span>
+<span class="go">| Retries            | 0                                                                |</span>
+<span class="go">| Errors             |                                                                  |</span>
+<span class="go">| Output             | Hej                                                              |</span>
+<span class="go">+--------------------+------------------------------------------------------------------+</span>
+
+<span class="go">FunctionSpec:</span>
+<span class="go">+-------------+------------+</span>
+<span class="go">| Func        | helloworld |</span>
+<span class="go">| Args        | None       |</span>
+<span class="go">| KwArgs      | None       |</span>
+<span class="go">| MaxWaitTime | -1         |</span>
+<span class="go">| MaxExecTime | -1         |</span>
+<span class="go">| MaxRetries  | -1         |</span>
+<span class="go">| Priority    | 0          |</span>
+<span class="go">+-------------+------------+</span>
+
+<span class="go">Conditions:</span>
+<span class="go">+------------------+---------------------+</span>
+<span class="go">| ColonyName       | dev                 |</span>
+<span class="go">| ExecutorIDs      | None                |</span>
+<span class="go">| ExecutorType     | helloworld-executor |</span>
+<span class="go">| Dependencies     |                     |</span>
+<span class="go">| Nodes            | 0                   |</span>
+<span class="go">| CPU              |                     |</span>
+<span class="go">| Memmory          |                     |</span>
+<span class="go">| Processes        | 0                   |</span>
+<span class="go">| ProcessesPerNode | 0                   |</span>
+<span class="go">| Storage          |                     |</span>
+<span class="go">| Walltime         | 0                   |</span>
+<span class="go">| GPU              |                     |</span>
+<span class="go">| GPUs             | 0                   |</span>
+<span class="go">| GPUMemory        |                     |</span>
+<span class="go">+------------------+---------------------+</span>
+
+<span class="go">Attributes:</span>
+<span class="go">No attributes found</span>
+</pre></div>
+</div>
+<p>Or as JSON instead of tables.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process get -p 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4 --json</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;processid&quot;</span><span class="p">:</span><span class="s2">&quot;4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;assignedexecutorid&quot;</span><span class="p">:</span><span class="s2">&quot;ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;isassigned&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;prioritytime&quot;</span><span class="p">:</span><span class="mi">1701293763654005927</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;submissiontime&quot;</span><span class="p">:</span><span class="s2">&quot;2023-11-29T22:36:03.654006+01:00&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;starttime&quot;</span><span class="p">:</span><span class="s2">&quot;2023-11-29T22:37:23.421473+01:00&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;endtime&quot;</span><span class="p">:</span><span class="s2">&quot;2023-11-29T22:37:41.443222+01:00&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;waitdeadline&quot;</span><span class="p">:</span><span class="s2">&quot;0001-01-01T00:53:28+00:53&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;execdeadline&quot;</span><span class="p">:</span><span class="s2">&quot;0001-01-01T00:53:28+00:53&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;retries&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;attributes&quot;</span><span class="p">:[</span>
+
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;spec&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:[</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:{</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxwaittime&quot;</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;conditions&quot;</span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;executorids&quot;</span><span class="p">:[</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="s2">&quot;helloworld-executor&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:[</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;processes&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;gpu&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;nodecount&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fs&quot;</span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;mount&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;snapshots&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;dirs&quot;</span><span class="p">:</span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:{</span>
+
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;waitforparents&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;parents&quot;</span><span class="p">:[</span>
+
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;children&quot;</span><span class="p">:[</span>
+
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;processgraphid&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;in&quot;</span><span class="p">:[</span>
+
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;out&quot;</span><span class="p">:[</span>
+<span class="w">      </span><span class="s2">&quot;Hej&quot;</span>
+<span class="w">   </span><span class="p">],</span>
+<span class="w">   </span><span class="nt">&quot;errors&quot;</span><span class="p">:[</span>
+
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-process">
+<h2>Remove a process<a class="headerlink" href="#remove-a-process" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process remove -p  0bcca3064a6619f91770b9e49c77f7537020a63d7c5b5d693756a2231aa2ad72</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process removed</span>
+
+<span class="go">ProcessId=0bcca3064a6619f91770b9e49c77f7537020a63d7c5b5d693756a2231aa2ad72</span>
+</pre></div>
+</div>
+<p>Note that it is not possible to remove a process if it is part of a workflows.</p>
+</section>
+<section id="remove-all-processes">
+<h2>Remove all processes<a class="headerlink" href="#remove-all-processes" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process removeall</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING!!! Are you sure you want to remove all all processes from Colony &lt;dev&gt;.</span>
+<span class="go">This operation cannot be undone! (YES,no): YES</span>
+
+<span class="go">INFO[0002] Removing all processes in Colony</span>
+
+<span class="go">ColonyName=dev</span>
+</pre></div>
+</div>
+<p>To only remove <em>Waiting</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process removeall --waiting</span>
+</pre></div>
+</div>
+<p>Or only remove <em>Successful</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process removeall --successful</span>
+</pre></div>
+</div>
+<p>Or <em>Failed</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process removeall --failed</span>
+</pre></div>
+</div>
+<p>Note that it is not possible to remove processes if it is part of a workflows.</p>
+</section>
+</section>
+<section id="logs">
+<h1>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h1>
+<p>Colonies provides logging functionality, allowing executors to add log messages to processes, e.g. stdout ot stderr logs. These logs are stored in a PostgreSQL database. If TimescaleDB is used, the logs will be stored in a timeseries hypertable; otherwise, they will be indexed and stored in a regular PostgreSQL table. If retention is enabled, log data will be automatically purged upon reaching its expiration date. This automated process ensures that logs are systematically removed from the server once they become outdated.</p>
+<section id="adding-logs-to-a-process">
+<h2>Adding logs to a process<a class="headerlink" href="#adding-logs-to-a-process" title="Link to this heading"></a></h2>
+<p>Let’s demonstrate how to manage logs using the Colonies CLI. First submit a process.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function submit --spec ./examples/functions/helloworld.json</span>
+</pre></div>
+</div>
+<p>To add a log to a process, the process be running and be assigned to an executor. Only the assigned executor can add logs.
+Let’s register an executor and assign the process we just submitted.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+
+<span class="go">Id=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">PrvKey=8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --executorid ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 \</span>
+<span class="go">--name helloworld-executor \</span>
+<span class="go">--type helloworld-executor \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Executor added</span>
+
+<span class="go">ColonyName=dev</span>
+<span class="go">ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">ExecutorName=helloworld-executor ExecutorType=helloworld-executor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Assigned process to executor</span>
+
+<span class="go">ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517</span>
+<span class="go">ProcessId=0ddcc0b74ab1ec0cace153432fbf0bb3c7cdd3deffc0d0a69ad1f210f570962c</span>
+</pre></div>
+</div>
+<p>Now, the process is assign to the executor. Let’s add log to it.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \n</span>
+<span class="go">-m &quot;helloworld&quot; \n</span>
+<span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Adding log</span>
+
+<span class="go">LogMsg=helloworld ProcessID=511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-logs">
+<h2>Getting logs<a class="headerlink" href="#getting-logs" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log get -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">helloworld</span>
+</pre></div>
+</div>
+<p>It is possible to use flag <strong>-follow</strong> to follow a process and print all logs until the process is concludes.</p>
+</section>
+</section>
+<section id="attributes">
+<h1>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h1>
+<section id="add-an-attribute-to-a-process">
+<h2>Add an attribute to a process<a class="headerlink" href="#add-an-attribute-to-a-process" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go"> colonies attribute add --key mykey \</span>
+<span class="go">--value myvalue \</span>
+<span class="go">-p 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1 \</span>
+<span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Attribute added</span>
+
+<span class="go">AttributeID=77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0</span>
+</pre></div>
+</div>
+</section>
+<section id="lookup-an-attribute-on-a-process">
+<h2>Lookup an attribute on a process<a class="headerlink" href="#lookup-an-attribute-on-a-process" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies attribute get --attributeid 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+---------------+------------------------------------------------------------------+</span>
+<span class="go">| ID            | 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0 |</span>
+<span class="go">| TargetID      | 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1 |</span>
+<span class="go">| AttributeType | Out                                                              |</span>
+<span class="go">| Key           | mykey                                                            |</span>
+<span class="go">| Value         | myvalue                                                          |</span>
+<span class="go">+---------------+------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>Attributes can also viewed by looking up a process.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process get -p 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Process:</span>
+<span class="go">+--------------------+------------------------------------------------------------------+</span>
+<span class="go">| ID                 | 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1 |</span>
+<span class="go">| IsAssigned         | True                                                             |</span>
+<span class="go">| AssignedExecutorID | ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 |</span>
+<span class="go">| State              | Running                                                          |</span>
+<span class="go">| PriorityTime       | 1701297603277101941                                              |</span>
+<span class="go">| SubmissionTime     | 2023-11-29 23:40:03                                              |</span>
+<span class="go">| StartTime          | 2023-11-29 23:40:17                                              |</span>
+<span class="go">| EndTime            | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| WaitDeadline       | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| ExecDeadline       | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| WaitingTime        | 14.272943s                                                       |</span>
+<span class="go">| ProcessingTime     | 4m45.843362013s                                                  |</span>
+<span class="go">| Retries            | 0                                                                |</span>
+<span class="go">| Errors             |                                                                  |</span>
+<span class="go">| Output             |                                                                  |</span>
+<span class="go">+--------------------+------------------------------------------------------------------+</span>
+
+<span class="go">FunctionSpec:</span>
+<span class="go">+-------------+------------+</span>
+<span class="go">| Func        | helloworld |</span>
+<span class="go">| Args        | None       |</span>
+<span class="go">| KwArgs      | None       |</span>
+<span class="go">| MaxWaitTime | -1         |</span>
+<span class="go">| MaxExecTime | -1         |</span>
+<span class="go">| MaxRetries  | 0          |</span>
+<span class="go">| Priority    | 0          |</span>
+<span class="go">+-------------+------------+</span>
+
+<span class="go">Conditions:</span>
+<span class="go">+------------------+---------------------+</span>
+<span class="go">| ColonyName       | dev                 |</span>
+<span class="go">| ExecutorIDs      | None                |</span>
+<span class="go">| ExecutorType     | helloworld-executor |</span>
+<span class="go">| Dependencies     |                     |</span>
+<span class="go">| Nodes            | 0                   |</span>
+<span class="go">| CPU              |                     |</span>
+<span class="go">| Memmory          |                     |</span>
+<span class="go">| Processes        | 0                   |</span>
+<span class="go">| ProcessesPerNode | 0                   |</span>
+<span class="go">| Storage          |                     |</span>
+<span class="go">| Walltime         | 0                   |</span>
+<span class="go">| GPU              |                     |</span>
+<span class="go">| GPUs             | 0                   |</span>
+<span class="go">| GPUMemory        |                     |</span>
+<span class="go">+------------------+---------------------+</span>
+
+<span class="go">Attributes:</span>
+<span class="go">+------------------------------------------------------------------+-------+---------+------+</span>
+<span class="go">|                                ID                                |  KEY  |  VALUE  | TYPE |</span>
+<span class="go">+------------------------------------------------------------------+-------+---------+------+</span>
+<span class="go">| 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0 | mykey | myvalue | Out  |</span>
+<span class="go">+------------------------------------------------------------------+-------+---------+------+</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="workflows">
+<h1>Workflows<a class="headerlink" href="#workflows" title="Link to this heading"></a></h1>
+<section id="submit-a-workflow">
+<h2>Submit a workflow<a class="headerlink" href="#submit-a-workflow" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_b&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_c&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_d&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_d&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_b&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;task_c&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>colonies workflow submit --spec examples/workflows/workflow.json
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INFO[0000] Workflow submitted
+
+WorkflowID=3dd558fdd28cbc3ab01c5cf7e68ab8ca42e174aca9f520f193c9b98aca00696d
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process psw</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------+--------+--------+---------------------+---------------+----------------+</span>
+<span class="go">| FUNC |  ARGS  | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE | INITIATOR NAME |</span>
+<span class="go">+------+--------+--------+---------------------+---------------+----------------+</span>
+<span class="go">| echo | task_b |        | 2023-12-03 13:54:59 | cli           | myexecutor     |</span>
+<span class="go">| echo | task_c |        | 2023-12-03 13:54:59 | cli           | myexecutor     |</span>
+<span class="go">| echo | task_d |        | 2023-12-03 13:54:59 | cli           | myexecutor     |</span>
+<span class="go">| echo | task_a |        | 2023-12-03 13:54:59 | cli           | myexecutor     |</span>
+<span class="go">+------+--------+--------+---------------------+---------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-waiting-workflows">
+<h2>List waiting workflows<a class="headerlink" href="#list-waiting-workflows" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow psw</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+<span class="go">|                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |</span>
+<span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+<span class="go">| 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf | 2023-12-03 14:04:21 | myexecutor     |</span>
+<span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-running-workflows">
+<h2>List running workflows<a class="headerlink" href="#list-running-workflows" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow ps</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARN[0000] No running workflows found</span>
+</pre></div>
+</div>
+</section>
+<section id="list-successful-workflows">
+<h2>List successful workflows<a class="headerlink" href="#list-successful-workflows" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow pss</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARN[0000] No successful workflows found</span>
+</pre></div>
+</div>
+</section>
+<section id="list-failed-workflows">
+<h2>List failed workflows<a class="headerlink" href="#list-failed-workflows" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow psf</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARN[0000] No successful workflows found</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-a-workflow">
+<h2>Get info about a workflow<a class="headerlink" href="#get-info-about-a-workflow" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow get --workflowid 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Workflow:</span>
+<span class="go">+----------------+------------------------------------------------------------------+</span>
+<span class="go">| WorkflowID     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |</span>
+<span class="go">| InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName  | myexecutor                                                       |</span>
+<span class="go">| ColonyName     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |</span>
+<span class="go">| State          | Waiting                                                          |</span>
+<span class="go">| SubmissionTime | 2023-12-03 14:04:21                                              |</span>
+<span class="go">| StartTime      | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| EndTime        | 0001-01-01 00:53:28                                              |</span>
+<span class="go">+----------------+------------------------------------------------------------------+</span>
+
+<span class="go">Processes:</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+<span class="go">| NodeName          | task_a                                                           |</span>
+<span class="go">| InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName     | myexecutor                                                       |</span>
+<span class="go">| ProcessID         | c48ac5322cad951b88704fdf56345add7c9faada7f3cc6b2ed3e9564a0f8ab34 |</span>
+<span class="go">| ExecutorType      | cli                                                              |</span>
+<span class="go">| FuncName          | echo                                                             |</span>
+<span class="go">| Args              | task_a                                                           |</span>
+<span class="go">| KwArgs            | None                                                             |</span>
+<span class="go">| State             | Waiting                                                          |</span>
+<span class="go">| WaitingForParents | false                                                            |</span>
+<span class="go">| Dependencies      | None                                                             |</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+<span class="go">| NodeName          | task_b                                                           |</span>
+<span class="go">| InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName     | myexecutor                                                       |</span>
+<span class="go">| ProcessID         | 7d86f84d82a3320c10537d1ff1f3fc731f2555eff3099620aa151b56f90de030 |</span>
+<span class="go">| ExecutorType      | cli                                                              |</span>
+<span class="go">| FuncName          | echo                                                             |</span>
+<span class="go">| Args              | task_b                                                           |</span>
+<span class="go">| KwArgs            | None                                                             |</span>
+<span class="go">| State             | Waiting                                                          |</span>
+<span class="go">| WaitingForParents | true                                                             |</span>
+<span class="go">| Dependencies      | task_a                                                           |</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+<span class="go">| NodeName          | task_d                                                           |</span>
+<span class="go">| InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName     | myexecutor                                                       |</span>
+<span class="go">| ProcessID         | 4b547092a861b3b80b476da341f3bedab084da2eb58c93986b6059c7609b3296 |</span>
+<span class="go">| ExecutorType      | cli                                                              |</span>
+<span class="go">| FuncName          | echo                                                             |</span>
+<span class="go">| Args              | task_d                                                           |</span>
+<span class="go">| KwArgs            | None                                                             |</span>
+<span class="go">| State             | Waiting                                                          |</span>
+<span class="go">| WaitingForParents | true                                                             |</span>
+<span class="go">| Dependencies      | task_b task_c                                                    |</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+<span class="go">| NodeName          | task_c                                                           |</span>
+<span class="go">| InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName     | myexecutor                                                       |</span>
+<span class="go">| ProcessID         | 73c445472762bcca8a1defc8f6adbf093ae904ece1ff6817df83f8c2e609ba89 |</span>
+<span class="go">| ExecutorType      | cli                                                              |</span>
+<span class="go">| FuncName          | echo                                                             |</span>
+<span class="go">| Args              | task_c                                                           |</span>
+<span class="go">| KwArgs            | None                                                             |</span>
+<span class="go">| State             | Waiting                                                          |</span>
+<span class="go">| WaitingForParents | true                                                             |</span>
+<span class="go">| Dependencies      | task_a                                                           |</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-workflow">
+<h2>Remove a workflow<a class="headerlink" href="#remove-a-workflow" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>colonies workflow remove --workflowid 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INFO[0000] Workflow removed
+
+WorkflowID=7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+</pre></div>
+</div>
+</section>
+<section id="remove-all-workflows">
+<h2>Remove all workflows<a class="headerlink" href="#remove-all-workflows" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow removeall</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING!!! Are you sure you want to remove all workflows in the Colony &lt;dev&gt;. This operation cannot be undone! (YES,no):</span>
+<span class="go">This operation cannot be undone! (YES,no): YES</span>
+
+<span class="go">INFO[0002] Removing all workflows in Colony</span>
+
+<span class="go">ColonyName=dev</span>
+</pre></div>
+</div>
+<p>To only remove <em>Waiting</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow removeall --waiting</span>
+</pre></div>
+</div>
+<p>Or only remove <em>Successful</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow removeall --successful</span>
+</pre></div>
+</div>
+<p>Or <em>Failed</em> processes, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies worklflow removeall --failed</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="crons">
+<h1>Crons<a class="headerlink" href="#crons" title="Link to this heading"></a></h1>
+<p>Cron expressions follow this format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌───────────── second (0 - 59)
+│ ┌───────────── minute (0 - 59)
+│ │ ┌───────────── hour (0 - 23)
+│ │ │ ┌───────────── day of the month (1 - 31)
+│ │ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ │ ┌───────────── day of the week
+│ │ │ │ │ │
+│ │ │ │ │ │
+* * * * * *
+</pre></div>
+</div>
+<p>Spawn a workflow every second starting at 00 seconds: <code class="code docutils literal notranslate"><span class="pre">0/1</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span></code></p>
+<p>Spawn a workflow every other second starting at 00 seconds: <code class="code docutils literal notranslate"><span class="pre">0/2</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span></code></p>
+<p>Spawn a workflow every minute starting at 30 seconds: <code class="code docutils literal notranslate"><span class="pre">30</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span></code></p>
+<p>Spawn a workflow every Monday at 15:03:59: <code class="code docutils literal notranslate"><span class="pre">59</span> <span class="pre">3</span> <span class="pre">15</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">MON</span></code></p>
+<p>Spawn a workflow every Christmas Eve at 15:00: <code class="code docutils literal notranslate"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">15</span> <span class="pre">24</span> <span class="pre">12</span> <span class="pre">*</span></code></p>
+<section id="add-a-cron">
+<h2>Add a cron<a class="headerlink" href="#add-a-cron" title="Link to this heading"></a></h2>
+<p>Let’s add a <strong>Cron</strong> and run this workflow every 5 seconds.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generate_date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;/tmp/currentdate&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;print_date&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;/tmp/currentdate&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;generate_date&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron add --name example_cron --cron &quot;0/5 * * * * *&quot; --spec examples/cron/cron_workflow.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Will not wait for previous processgraph to finish</span>
+<span class="go">INFO[0000] Cron added</span>
+
+<span class="go">CronID=733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2</span>
+</pre></div>
+</div>
+<p>We can now see that new processes starting to appear every 5 seconds. Use the flag <strong>–waitprevious</strong> to only spawn a new process if the current
+process in the queue has finised or failed.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process psw</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+--------------------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">|    FUNC    |        ARGS        | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |</span>
+<span class="go">+------------+--------------------+--------+---------------------+---------------------+----------------+</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:13:55 | cli                 | johan          |</span>
+<span class="go">| cat        | /tmp/currentdate   |        | 2023-12-03 14:14:00 | cli                 | johan          |</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:14:00 | cli                 | johan          |</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:14:05 | cli                 | johan          |</span>
+<span class="go">| cat        | /tmp/currentdate   |        | 2023-12-03 14:14:05 | cli                 | johan          |</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:14:10 | cli                 | johan          |</span>
+<span class="go">| cat        | /tmp/currentdate   |        | 2023-12-03 14:14:10 | cli                 | johan          |</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:14:15 | cli                 | johan          |</span>
+<span class="go">| cat        | /tmp/currentdate   |        | 2023-12-03 14:14:15 | cli                 | johan          |</span>
+<span class="go">| date       | &gt; /tmp/currentdate |        | 2023-12-03 14:14:20 | cli                 | johan          |</span>
+<span class="go">| cat        | /tmp/currentdate   |        | 2023-12-03 14:14:20 | cli                 | johan          |</span>
+<span class="go">+------------+--------------------+--------+---------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="listing-crons">
+<h2>Listing crons<a class="headerlink" href="#listing-crons" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------------------------------------------------------------+--------------+----------------+</span>
+<span class="go">|                              CRONID                              |     NAME     | INITIATOR NAME |</span>
+<span class="go">+------------------------------------------------------------------+--------------+----------------+</span>
+<span class="go">| 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d | example_cron | johan          |</span>
+<span class="go">+------------------------------------------------------------------+--------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-info-about-a-cron">
+<h2>Getting info about a cron<a class="headerlink" href="#getting-info-about-a-cron" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron get --cronid 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Cron:</span>
+<span class="go">+-------------------------+------------------------------------------------------------------+</span>
+<span class="go">| Id                      | 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d |</span>
+<span class="go">| ColonyName              | dev                                                              |</span>
+<span class="go">| InitiatorID             | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |</span>
+<span class="go">| InitiatorName           | johan                                                            |</span>
+<span class="go">| Name                    | example_cron                                                     |</span>
+<span class="go">| Cron Expression         | 0/5 * * * * *                                                    |</span>
+<span class="go">| Interval                | -1                                                               |</span>
+<span class="go">| Random                  | false                                                            |</span>
+<span class="go">| NextRun                 | 2023-12-03 14:17:00                                              |</span>
+<span class="go">| LastRun                 | 2023-12-03 14:16:55                                              |</span>
+<span class="go">| PrevProcessGraphID      | 0c3dc737468f52c4a548e98bfe9ffb630172f087f60c6bddd0e8954079cdb14d |</span>
+<span class="go">| WaitForPrevProcessGraph | false                                                            |</span>
+<span class="go">| CheckerPeriod           | 1000                                                             |</span>
+<span class="go">+-------------------------+------------------------------------------------------------------+</span>
+
+<span class="go">WorkflowSpec:</span>
+
+<span class="go">FunctionSpec 0:</span>
+<span class="go">+-------------+---------------------+</span>
+<span class="go">| Func        | date                |</span>
+<span class="go">| Args        | &gt; /tmp/currentdate  |</span>
+<span class="go">| KwArgs      | None                |</span>
+<span class="go">| MaxWaitTime | 0                   |</span>
+<span class="go">| MaxExecTime | 0                   |</span>
+<span class="go">| MaxRetries  | 0                   |</span>
+<span class="go">| Priority    | 0                   |</span>
+<span class="go">+-------------+---------------------+</span>
+
+<span class="go">Conditions:</span>
+<span class="go">+------------------+------+</span>
+<span class="go">| ColonyName       |      |</span>
+<span class="go">| ExecutorIDs      | None |</span>
+<span class="go">| ExecutorType     | cli  |</span>
+<span class="go">| Dependencies     |      |</span>
+<span class="go">| Nodes            | 0    |</span>
+<span class="go">| CPU              |      |</span>
+<span class="go">| Memmory          |      |</span>
+<span class="go">| Processes        | 0    |</span>
+<span class="go">| ProcessesPerNode | 0    |</span>
+<span class="go">| Storage          |      |</span>
+<span class="go">| Walltime         | 0    |</span>
+<span class="go">| GPU              |      |</span>
+<span class="go">| GPUs             | 0    |</span>
+<span class="go">| GPUMemory        |      |</span>
+<span class="go">+------------------+------+</span>
+
+<span class="go">FunctionSpec 1:</span>
+<span class="go">+-------------+-------------------+</span>
+<span class="go">| Func        | cat               |</span>
+<span class="go">| Args        | /tmp/currentdate  |</span>
+<span class="go">| KwArgs      | None              |</span>
+<span class="go">| MaxWaitTime | 0                 |</span>
+<span class="go">| MaxExecTime | 0                 |</span>
+<span class="go">| MaxRetries  | 0                 |</span>
+<span class="go">| Priority    | 0                 |</span>
+<span class="go">+-------------+-------------------+</span>
+
+<span class="go">Conditions:</span>
+<span class="go">+------------------+---------------+</span>
+<span class="go">| ColonyName       |               |</span>
+<span class="go">| ExecutorIDs      | None          |</span>
+<span class="go">| ExecutorType     | cli           |</span>
+<span class="go">| Dependencies     | generate_date |</span>
+<span class="go">| Nodes            | 0             |</span>
+<span class="go">| CPU              |               |</span>
+<span class="go">| Memmory          |               |</span>
+<span class="go">| Processes        | 0             |</span>
+<span class="go">| ProcessesPerNode | 0             |</span>
+<span class="go">| Storage          |               |</span>
+<span class="go">| Walltime         | 0             |</span>
+<span class="go">| GPU              |               |</span>
+<span class="go">| GPUs             | 0             |</span>
+<span class="go">| GPUMemory        |               |</span>
+<span class="go">+------------------+---------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="immediately-run-a-cron">
+<h2>Immediately run a cron<a class="headerlink" href="#immediately-run-a-cron" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron run --cronid 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Running cron</span>
+
+<span class="go">CronID=180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d</span>
+</pre></div>
+</div>
+</section>
+<section id="use-interval-instead-of-a-cron-expressions">
+<h2>Use interval instead of a cron expressions<a class="headerlink" href="#use-interval-instead-of-a-cron-expressions" title="Link to this heading"></a></h2>
+<p>An alternative way to spawn a cron is to specify an interval instead of a cron expression. In the example, below a workflow is spawned every 10 seconds.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron add --name another_example_cron \</span>
+<span class="go">--interval 10 \</span>
+<span class="go">--spec examples/cron/cron_workflow.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Will not wait for previous processgraph to finish</span>
+<span class="go">INFO[0000] Cron added</span>
+
+<span class="go">CronID=63aa987bb07444d16525dccf4f9936e563ca43f2ad0756a7aedb7a837ede5728</span>
+</pre></div>
+</div>
+</section>
+<section id="random-intervals">
+<h2>Random intervals<a class="headerlink" href="#random-intervals" title="Link to this heading"></a></h2>
+<p>It is also possible to spawn a workflow at a random time within an interval. This can be very useful when testing a software (e.g. chaos engineering).</p>
+<p>In the example, a workflow will be spawned randomly within 10 seconds.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron add --name random_example_cron \</span>
+<span class="go">--interval 10 \</span>
+<span class="go">--random 10 \</span>
+<span class="go">--spec examples/cron/cron_workflow.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Will not wait for previous processgraph to finish</span>
+<span class="go">INFO[0000] Cron added</span>
+
+<span class="go">CronID=8f3c8db3a5f54c7726851166952453752e6381e4b1e44ab1d29f41bd4779ff11</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-cron">
+<h2>Remove a cron<a class="headerlink" href="#remove-a-cron" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies cron remove --cronid e5e25a98305ac11ff9292b584d4b119a48c99c5fa599d43e63cd9d57c53927d8</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Removing cron</span>
+
+<span class="go">CronId=e5e25a98305ac11ff9292b584d4b119a48c99c5fa599d43e63cd9d57c53927d8</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="generators">
+<h1>Generators<a class="headerlink" href="#generators" title="Link to this heading"></a></h1>
+<p>Generators automatically spawn workflows when number of <strong>pack</strong> calls exceeds a threshold. Pack <strong>data</strong> is then available as an argument to the process.</p>
+<section id="add-a-generator">
+<h2>Add a generator<a class="headerlink" href="#add-a-generator" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator add --spec ./examples/generators/generator_workflow.json --name testgenerator --trigger 5</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generator added</span>
+
+<span class="go">GeneratorID=112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+<span class="go">GeneratorName=testgenerator</span>
+<span class="go">Timeout=-1</span>
+<span class="go">Trigger=5</span>
+</pre></div>
+</div>
+</section>
+<section id="send-data-to-a-generator">
+<h2>Send data to a generator<a class="headerlink" href="#send-data-to-a-generator" title="Link to this heading"></a></h2>
+<p>After 5 pack calls, the <strong>Generator</strong> should generate a workflow.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator pack --arg hello1 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+</pre></div>
+</div>
+<p>Make 4 more pack calls.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator pack --arg hello2 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+<span class="go">colonies generator pack --arg hello3 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+<span class="go">colonies generator pack --arg hello4 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+<span class="go">colonies generator pack --arg hello5 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+</pre></div>
+</div>
+<p>Let’s see if a workflow was created.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow psw</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+<span class="go">|                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |</span>
+<span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+<span class="go">| 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 | 2023-12-03 14:28:59 | myexecutor     |</span>
+<span class="go">+------------------------------------------------------------------+---------------------+----------------+</span>
+</pre></div>
+</div>
+<p>Let’s lookup the Workflow to see if the data is there.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies workflow get --workflowid 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Workflow:</span>
+<span class="go">+----------------+------------------------------------------------------------------+</span>
+<span class="go">| WorkflowID     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |</span>
+<span class="go">| InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName  | myexecutor                                                       |</span>
+<span class="go">| ColonyName     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |</span>
+<span class="go">| State          | Waiting                                                          |</span>
+<span class="go">| SubmissionTime | 2023-12-03 14:28:59                                              |</span>
+<span class="go">| StartTime      | 0001-01-01 00:53:28                                              |</span>
+<span class="go">| EndTime        | 0001-01-01 00:53:28                                              |</span>
+<span class="go">+----------------+------------------------------------------------------------------+</span>
+
+<span class="go">Processes:</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+<span class="go">| NodeName          | generator_example                                                |</span>
+<span class="go">| InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName     | myexecutor                                                       |</span>
+<span class="go">| ProcessID         | 1efe2efa771ac492850e5dc4d748f0155d3fa373177a6163a90937b284d2510f |</span>
+<span class="go">| ExecutorType      | cli                                                              |</span>
+<span class="go">| FuncName          | echo                                                             |</span>
+<span class="go">| Args              | hello1 hello2 hello3 hello4                                      |</span>
+<span class="go">|                   | hello5                                                           |</span>
+<span class="go">| KwArgs            | None                                                             |</span>
+<span class="go">| State             | Waiting                                                          |</span>
+<span class="go">| WaitingForParents | false                                                            |</span>
+<span class="go">| Dependencies      | None                                                             |</span>
+<span class="go">+-------------------+------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="list-generators">
+<h2>List generators<a class="headerlink" href="#list-generators" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------------------------------------------------------------+---------------+----------------+</span>
+<span class="go">|                           GENERATORID                            |     NAME      | INITIATOR NAME |</span>
+<span class="go">+------------------------------------------------------------------+---------------+----------------+</span>
+<span class="go">| 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 | testgenerator | myexecutor     |</span>
+<span class="go">+------------------------------------------------------------------+---------------+----------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-a-generator">
+<h2>Get info about a generator<a class="headerlink" href="#get-info-about-a-generator" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator get --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Generator:</span>
+<span class="go">+---------------+------------------------------------------------------------------+</span>
+<span class="go">| Id            | 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 |</span>
+<span class="go">| ColonyName    | dev                                                              |</span>
+<span class="go">| InitiatorID   | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |</span>
+<span class="go">| InitiatorName | myexecutor                                                       |</span>
+<span class="go">| Name          | testgenerator                                                    |</span>
+<span class="go">| Trigger       | 5                                                                |</span>
+<span class="go">| Timeout       | -1                                                               |</span>
+<span class="go">| Lastrun       | 2023-12-03 14:28:59                                              |</span>
+<span class="go">| CheckerPeriod | 1000                                                             |</span>
+<span class="go">| QueueSize     | 0                                                                |</span>
+<span class="go">+---------------+------------------------------------------------------------------+</span>
+
+<span class="go">WorkflowSpec:</span>
+
+<span class="go">FunctionSpec 0:</span>
+<span class="go">+-------------+------+</span>
+<span class="go">| Func        | echo |</span>
+<span class="go">| Args        | None |</span>
+<span class="go">| KwArgs      | None |</span>
+<span class="go">| MaxWaitTime | 0    |</span>
+<span class="go">| MaxExecTime | 0    |</span>
+<span class="go">| MaxRetries  | 0    |</span>
+<span class="go">| Priority    | 0    |</span>
+<span class="go">+-------------+------+</span>
+
+<span class="go">Conditions:</span>
+<span class="go">+------------------+------+</span>
+<span class="go">| ColonyName       |      |</span>
+<span class="go">| ExecutorIDs      | None |</span>
+<span class="go">| ExecutorType     | cli  |</span>
+<span class="go">| Dependencies     |      |</span>
+<span class="go">| Nodes            | 0    |</span>
+<span class="go">| CPU              |      |</span>
+<span class="go">| Memmory          |      |</span>
+<span class="go">| Processes        | 0    |</span>
+<span class="go">| ProcessesPerNode | 0    |</span>
+<span class="go">| Storage          |      |</span>
+<span class="go">| Walltime         | 0    |</span>
+<span class="go">| GPU              |      |</span>
+<span class="go">| GPUs             | 0    |</span>
+<span class="go">| GPUMemory        |      |</span>
+<span class="go">+------------------+------+</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-generator">
+<h2>Remove a generator<a class="headerlink" href="#remove-a-generator" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies generator remove --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Removing generator</span>
+
+<span class="go">GeneratorID=1093f5b68dcc2583104250f3390db891fbe7b8467fd8095505714786ec9fe87d</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="filesystem">
+<h1>Filesystem<a class="headerlink" href="#filesystem" title="Link to this heading"></a></h1>
+<p>ColonyOS features a built-in <em>Meta-Filesystem</em> designed to make data transfer between Executors easier. Unlike regular filesystems that store data directly, Colony FS only contains metadata on how to access files, for example data location, credentials or configuration settings. The data itself is stored in various other places like Amazon S3 or IPFS.</p>
+<p>Make sure the following environmental variable is set</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export AWS_S3_ENDPOINT=&quot;s3.colonyos.io:443&quot;</span>
+<span class="go">export AWS_S3_ACCESSKEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_SECRETKEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_REGION_KEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_BUCKET=&quot;&quot;</span>
+<span class="go">export AWS_S3_TLS=&quot;&quot;</span>
+<span class="go">export AWS_S3_SKIPVERIFY=&quot;&quot;</span>
+</pre></div>
+</div>
+<section id="synchronizing-files">
+<h2>Synchronizing files<a class="headerlink" href="#synchronizing-files" title="Link to this heading"></a></h2>
+<p>First create some files.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir myfiles</span>
+<span class="go">cd myfiles</span>
+<span class="go">echo &quot;Hello&quot; &gt; hello.txt</span>
+<span class="go">mkdir subdir</span>
+<span class="go">cd subdir</span>
+<span class="go">echo &quot;Hello 2&quot; &gt; hello2.txt</span>
+<span class="go">cd ../..</span>
+</pre></div>
+</div>
+<p>Now, upload the <em>myfiles</em> directory and all its sub-directories to CFS under the <strong>label</strong> <em>myfiles</em>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs sync -l myfiles -d myfiles</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/myfiles:</span>
+<span class="go">=========</span>
+<span class="go">These files will be uploaded:</span>
+<span class="go">+-----------+-------+---------+</span>
+<span class="go">|   FILE    | SIZE  |  LABEL  |</span>
+<span class="go">+-----------+-------+---------+</span>
+<span class="go">| hello.txt | 0 KiB | myfiles |</span>
+<span class="go">+-----------+-------+---------+</span>
+<span class="go">No files will be downloaded</span>
+
+<span class="go">/myfiles/subdir:</span>
+<span class="go">================</span>
+<span class="go">These files will be uploaded:</span>
+<span class="go">+------------+-------+---------+</span>
+<span class="go">|    FILE    | SIZE  |  LABEL  |</span>
+<span class="go">+------------+-------+---------+</span>
+<span class="go">| hello2.txt | 0 KiB | myfiles |</span>
+<span class="go">+------------+-------+---------+</span>
+<span class="go">No files will be downloaded</span>
+
+<span class="go">Are you sure you want to continue? (yes,no): yes</span>
+<span class="go">Uploading hello.txt 100% [===============] (19 kB/s)</span>
+<span class="go">Uploading hello2.txt 100% [===============] (32 kB/s)</span>
+</pre></div>
+</div>
+<p>We can not download the files from another computer, or just to another directory (<em>myfiles2</em>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs sync -l myfiles -d myfiles2</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/myfiles:</span>
+<span class="go">=========</span>
+<span class="go">No files will be uploaded</span>
+
+<span class="go">These files will be downloaded to directory: myfiles2/</span>
+<span class="go">+-----------+-------+---------+</span>
+<span class="go">|   FILE    | SIZE  |  LABEL  |</span>
+<span class="go">+-----------+-------+---------+</span>
+<span class="go">| hello.txt | 0 KiB | myfiles |</span>
+<span class="go">+-----------+-------+---------+</span>
+
+<span class="go">/myfiles/subdir:</span>
+<span class="go">================</span>
+<span class="go">No files will be uploaded</span>
+
+<span class="go">These files will be downloaded to directory: myfiles2/</span>
+<span class="go">+------------+-------+---------+</span>
+<span class="go">|    FILE    | SIZE  |  LABEL  |</span>
+<span class="go">+------------+-------+---------+</span>
+<span class="go">| hello2.txt | 0 KiB | myfiles |</span>
+<span class="go">+------------+-------+---------+</span>
+
+<span class="go">Are you sure you want to continue? (yes,no): yes</span>
+<span class="go"> Downloading hello.txt 100% [===============] (196 B/s)</span>
+<span class="go"> Downloading hello2.txt 100% [===============] (224 B/s)</span>
+</pre></div>
+</div>
+<p>Use the flag <strong>–keeplocal=true</strong> to prevent the CLI from overwriting local files in case the files have changed remotely.</p>
+</section>
+<section id="list-all-labels">
+<h2>List all labels<a class="headerlink" href="#list-all-labels" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs label ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-----------------+-----------------+</span>
+<span class="go">|      LABEL      | NUMBER OF FILES |</span>
+<span class="go">+-----------------+-----------------+</span>
+<span class="go">| /myfiles        | 1               |</span>
+<span class="go">| /myfiles/subdir | 1               |</span>
+<span class="go">+-----------------+-----------------+</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs ls -l /myfiles</span>
+</pre></div>
+</div>
+</section>
+<section id="list-files-in-a-label">
+<h2>List files in a label<a class="headerlink" href="#list-files-in-a-label" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs ls -l /myfiles</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-----------+-------+------------------------------------------------------------------+---------------------+-----------+</span>
+<span class="go">| FILENAME  | SIZE  |                            LATEST ID                             |        ADDED        | REVISIONS |</span>
+<span class="go">+-----------+-------+------------------------------------------------------------------+---------------------+-----------+</span>
+<span class="go">| hello.txt | 0 KiB | f8bcf8878543d199e4b7d48209f2dbd81be69be9609018ea33c64ebd403df47c | 2023-11-29 23:06:29 | 1         |</span>
+<span class="go">+-----------+-------+------------------------------------------------------------------+---------------------+-----------+</span>
+</pre></div>
+</div>
+</section>
+<section id="get-info-about-a-file">
+<h2>Get info about a file<a class="headerlink" href="#get-info-about-a-file" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs info -l /myfiles -n hello.txt</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-----------------+------------------------------------------------------------------+</span>
+<span class="go">| Filename        | hello.txt                                                        |</span>
+<span class="go">| Id              | f8bcf8878543d199e4b7d48209f2dbd81be69be9609018ea33c64ebd403df47c |</span>
+<span class="go">| ColonyName      | dev                                                              |</span>
+<span class="go">| Added           | 2023-11-29 23:06:29                                              |</span>
+<span class="go">| Sequence Number | 1                                                                |</span>
+<span class="go">| Label           | /myfiles                                                         |</span>
+<span class="go">| Size            | 0 KiB                                                            |</span>
+<span class="go">| Checksum        | 66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f18 |</span>
+<span class="go">| Checksum Alg    | SHA256                                                           |</span>
+<span class="go">| Protocol        | s3                                                               |</span>
+<span class="go">| S3 Endpoint     | s3.colonyos.io:443                                               |</span>
+<span class="go">| S3 TLS          | true                                                             |</span>
+<span class="go">| S3 Region       |                                                                  |</span>
+<span class="go">| S3 Bucket       | colonies-prod                                                    |</span>
+<span class="go">| S3 Object       | fdfc87d498950102a6129b7e09489e16c59e19f38310c2f93213e5f54656fea7 |</span>
+<span class="go">| S3 Accesskey    | *********************************                                |</span>
+<span class="go">| S3 Secretkey    | *********************************                                |</span>
+<span class="go">| Encryption Key  | *********************************                                |</span>
+<span class="go">| Encryption Alg  |                                                                  |</span>
+<span class="go">+-----------------+------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="download-a-specific-file">
+<h2>Download a specific file<a class="headerlink" href="#download-a-specific-file" title="Link to this heading"></a></h2>
+<p>To download a specific File in a specific Label to a directory <em>newdir</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs get -l /myfiles -n hello.txt -d newdir</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Downloading hello.txt 100% [===============] (191 B/s)</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-file">
+<h2>Remove a file<a class="headerlink" href="#remove-a-file" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs remove -l /myfiles -n hello.txt</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Removed file (local file is not removed)</span>
+
+<span class="go">FileID= Label=/myfiles Name=hello.txt</span>
+</pre></div>
+</div>
+<p>Warning! In the current version of ColonyOS, this will break snapshots where the file is included.</p>
+</section>
+<section id="remove-a-label">
+<h2>Remove a label<a class="headerlink" href="#remove-a-label" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs label remove -l /myfiles/subdir</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">All files with label &lt;/myfiles/subdir/*&gt; will be removed. Local files are not removed.</span>
+
+<span class="go">Are you sure you want to continue?  (yes,no): yes</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-snapshot">
+<h2>Create a snapshot<a class="headerlink" href="#create-a-snapshot" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot create -l /myfiles -n mysnapshot</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Snapshot created</span>
+<span class="go">Label=/myfiles/ SnapshotName=mysnapshot</span>
+
+<span class="go">+------------+------------------------------------------------------------------+</span>
+<span class="go"> | SnapshotId | c0c2a910f463b32658b346511bb0792c3dee5b81bbb5a757fe3dceb71b8ef379 |</span>
+<span class="go"> | ColonyName | dev                                                              |</span>
+<span class="go"> | Label      | /myfiles                                                         |</span>
+<span class="go"> | Name       | mysnapshot                                                       |</span>
+<span class="go"> | Added      | 2023-12-01 07:00:04                                              |</span>
+<span class="go"> +------------+------------------------------------------------------------------+</span>
+
+<span class="go"> +------------+------------------------------------------------------------------+---------------------+</span>
+<span class="go"> |  FILENAME  |                              FILEID                              |        ADDED        |</span>
+<span class="go"> +------------+------------------------------------------------------------------+---------------------+</span>
+<span class="go"> | hello.txt  | 0e0613956395c1aa733fe92a2fa5add62a5ac745f859d75f5f2cad81067e0381 | 2023-12-01 07:58:51 |</span>
+<span class="go"> | hello2.txt | 7a34d75bb43749960a031dc0048fa4539747093a3756cb5ca612a36f487b5fbb | 2023-12-01 07:58:51 |</span>
+<span class="go"> +------------+------------------------------------------------------------------+---------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="download-a-snapshot">
+<h2>Download a snapshot<a class="headerlink" href="#download-a-snapshot" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot download -n mysnapshot -d downloaded_snasphot</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Downloading hello.txt 100% [===============] (195 B/s)</span>
+<span class="go">Downloading hello2.txt 100% [===============] (258 B/s)</span>
+</pre></div>
+</div>
+</section>
+<section id="show-info-about-a-snapshot">
+<h2>Show info about a snapshot<a class="headerlink" href="#show-info-about-a-snapshot" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot info -n mysnapshot</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------------------------------------------------------------------+</span>
+<span class="go">| SnapshotId | 12d18ac52fd618b079882a21796283be21b375ca6654a768c3d93c614d5e2dfd |</span>
+<span class="go">| ColonyName | dev                                                              |</span>
+<span class="go">| Label      | /myfiles                                                         |</span>
+<span class="go">| Name       | mysnapshot                                                       |</span>
+<span class="go">| Added      | 2023-12-01 08:15:01                                              |</span>
+<span class="go">+------------+------------------------------------------------------------------+</span>
+
+<span class="go">+------------+------------------------------------------------------------------+---------------------+</span>
+<span class="go">|  FILENAME  |                              FILEID                              |        ADDED        |</span>
+<span class="go">+------------+------------------------------------------------------------------+---------------------+</span>
+<span class="go">| hello.txt  | f31f64056c5d00583816e0fb91c055601ecf7bc86be0e1e6c6d8cc98c8d8ee61 | 2023-12-01 08:14:47 |</span>
+<span class="go">| hello2.txt | 38fbed96c244a21dd5f2b187a9be0912fa79ca6ff78f641dfb116dc4489cf393 | 2023-12-01 08:14:47 |</span>
+<span class="go">+------------+------------------------------------------------------------------+---------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-a-snaphot">
+<h2>Remove a snaphot<a class="headerlink" href="#remove-a-snaphot" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot remove -n mysnapshot</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Snapshot removed</span>
+
+<span class="go">SnapshotName=mysnapshot</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial3.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="funcwf.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
