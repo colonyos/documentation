@@ -241,7 +241,8 @@ To kill the Embedded PostgreSQL server running in background:
 
 Building from source
 --------------------
-First install `Golang <https://go.dev>`_, then just type: ``go run cmd/main.go`` in root of the Colonies Github directory. Alternatively, there is Makefile, type: ``make´´.
+First install `Golang <https://go.dev>`_, then just type: ``go run cmd/main.go`` in root of the Colonies Github directory. 
+Alternatively, there is Makefile, type: ``make``.
 
 Colony
 ======
