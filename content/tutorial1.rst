@@ -222,6 +222,10 @@ Alternativly, ``colonies process ps`` lists running processes, and ``colonies pr
 
 Now that you may have acquired some fundamental knowledge about running containers on ColonyOS, let's proceed to explore how to share data effectively across different container executors.
 
+Init command
+------------
+
+
 Managing data
 =============
 
@@ -339,8 +343,6 @@ The ``/myfiles`` label will be synchronized to ``/cfs/myfiles``. This synchroniz
    Hello world
    INFO[0003] Process finished successfully                 ProcessId=b3a15b7822651cbbd34f7299d266f78de806505a0836a89033d513ade038ab13
 
-
 Pollinator
 ==========
-
 

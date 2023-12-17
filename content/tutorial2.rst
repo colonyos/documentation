@@ -1,320 +1,257 @@
-Introduction
-============
-
-In this tutorial, we will train a machine learning model to identify water in Sentinel-2 satellite images. 
-We will be using code from `this GitHub repo <https://github.com/msoczi/unet_water_bodies_segmentation>`_ using 
-this `dataset <https://www.kaggle.com/datasets/franciscoescobar/satellite-images-of-water-bodies/>`_.
-
-Upload dataset
+Nvidia systems
 ==============
 
-We need a dataset to train the ML model. We will use the Colonies CFS to distribute the dataset to different executors.
+This is a short guide how to use Nvidia GPUs. 
 
-Method 1 - Colonies CLI
------------------------
-
-Download the dataset and unzip the ``archive.zip`` file to directory named ``water_body_dataset``. 
-Then, upload to the dataset files to Colonies CFS.
-
-.. code-block:: console
-
-    colonies fs sync -l /water -d ./water_body_dataset
-
-.. code-block:: console
-    
-    | water_body_1114.jpg | 6 KiB    | /water |
-    | water_body_1209.jpg | 10 KiB   | /water |
-    | water_body_1273.jpg | 9 KiB    | /water |
-    | water_body_1552.jpg | 61 KiB   | /water |
-    | water_body_7797.jpg | 4 KiB    | /water |
-    | water_body_8847.jpg | 9 KiB    | /water |
-    | water_body_1313.jpg | 8 KiB    | /water |
-    | water_body_1615.jpg | 18 KiB   | /water |
-    | water_body_1724.jpg | 1 KiB    | /water |
-    | water_body_1801.jpg | 8 KiB    | /water |
-    | water_body_1833.jpg | 11 KiB   | /water |
-    +---------------------+----------+--------+
-    No files will be downloaded
-    
-    /water:
-    =======
-    No files will be uploaded
-    No files will be downloaded
-    
-    Are you sure you want to continue? (yes,no):
-
-After the upload has finished, we can now list the dataset.
-
-.. code-block:: console
-
-    colonies fs label ls
-   
-.. code-block:: console
-
-   +---------------------------------------------------------+-----------------+
-   |                           LABEL                         | NUMBER OF FILES |
-   +---------------------------------------------------------+-----------------+
-   | /water/Images                                           | 2841            |
-   | /water/Masks                                            | 2841            |
-   +---------------------------------------------------------+-----------------+
-
-To access the dataset from an executor, the executor first needs to synchronize the data. This can be achieved in several ways; one method is to specify the ``/water`` label in the function specification fs section. The executor will then synchronize the dataset files to its local file system.
-
-
-Alternatively, you can submit a function to an executor, requesting it to synchronize a specific label to its local file system without launching a container. 
-The code below will download the dataset on the Leonardo HPC system. 
-
-.. code-block:: json 
-
-   {
-       "conditions": {
-           "executortype": "leonardo-booster-hpcexecutor",
-           "nodes": 1,
-           "processes-per-node": 1,
-           "cpu": "1000m",
-           "mem": "30Gi",
-           "gpu": {
-               "count": 0 
-           },
-           "walltime": 60000
-       },
-       "funcname": "sync",
-       "fs": {
-           "mount": "/cfs",
-           "dirs": [
-               {
-                   "label": "/water",
-                   "dir": "/water",
-                   "keepfiles": true,
-                   "onconflicts": {
-                       "onstart": {
-                           "keeplocal": false
-                       },
-                       "onclose": {
-                           "keeplocal": true
-                       }
-                   }
-               }
-           ]
-       },
-       "maxwaittime": -1,
-       "maxexectime": 60000,
-       "maxretries": 3
-   }
-
-The data set will then be available in ``/cfs/water/Images/`` and ``/cfs/water/Masks/`` in the container running on Leonardo. 
-
-.. code-block:: console
-
-   colonies function submit --spec sync.json
-
-Method 2 - Pollinator
----------------------
-
-First, find a target executor.
-
-.. code-block:: console
-
-   +----------------------+------------------------------+------------------------+
-   |         NAME         |             TYPE             |        LOCATION        |
-   +----------------------+------------------------------+------------------------+
-   | icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |
-   | lumi                 | lumi-small-hpcexecutor       | CSC, Finland           |
-   | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |
-   | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy          |
-   +----------------------+------------------------------+------------------------+
-
-Generate an empty working, targeting the LUMI HPC system. Note that the target executor type
-can be changed later.
-
-.. code-block:: console
-
-   mkdir waterml
-   cd waterml
-   pollinator new -e lumi-small-hpcexecutor  
-
-.. code-block:: console
-
-   INFO[0000] Creating directory                            Dir=./cfs/src
-   INFO[0000] Creating directory                            Dir=./cfs/data
-   INFO[0000] Creating directory                            Dir=./cfs/result
-   INFO[0000] Generating                                    Filename=./project.yaml
-   INFO[0000] Generating                                    Filename=./cfs/data/hello.txt
-   INFO[0000] Generating                                    Filename=./cfs/src/main.py
-
-Copy the ``water_body_dataset`` to the ``./cfs/data`` directory  
-
-.. code-block:: console
-   
-    cp ~/water_body_dataset ./cfs/data  
-
-The dataset will upload next time the project run.
-
-.. code-block:: console
-
-   pollinator run --follow
-
-.. code-block:: console
-
-   Uploading main.py 100% [===============] (4.3 MB/s)
-   Downloading water_body_8239.jpg 100% [===============] (248 kB/s)
-   Downloading water_body_701.jpg 100% [===============] (484 kB/s)
-   Downloading water_body_8159.jpg 100% [===============] (148 kB/s)
-   Downloading water_body_683.jpg 100% [===============] (145 kB/s)
-   Downloading water_body_967.jpg 100% [===============] (350 kB/s)
-   Downloading water_body_784.jpg 100% [===============] (906 kB/s)
-   Downloading water_body_922.jpg 100% [===============] (161 kB/s)
-   Downloading water_body_233.jpg 100% [===============] (251 kB/s)
-   Downloading water_body_1206.jpg 100% [===============] (720 kB/s)
-   Downloading water_body_1708.jpg 100% [===============] (1.3 MB/s)
-   Downloading water_body_2461.jpg 100% [===============] (560 kB/s)
-   ...
-
-The data set will then be available here in the running container:
-
-.. code-block:: python
-
-    projdir = os.environ.get("PROJECT_DIR")
-    image_path = projdir + '/data/water/Images/'
-    mask_path = projdir + '/data/water/Masks/'
-
-Docker container
-================
-
-We are going the Container Executor, which comes in three variants. 
-
-1. **Kube Executor** runs containers as Kubernetes batch jobs.  
-2. **Docker Executor** runs containers as Docker containers on a baremetal servers or VMs.
-3. **HPC Executor** runs containers as Singularity containers on HPC systems, managing them as Slurm jobs.
-   
-As the *function specification* is identical, meaning that we can easily switch between these 3 types of executors.
-To run containers, we first need to create a Dockerfile with the following content: 
+Build a container
+-----------------
 
 .. code-block:: docker
 
    FROM docker.io/tensorflow/tensorflow:2.13.0-gpu
-
-   RUN apt-get update && apt-get install -y python3 python3-pip wget vim git fish libgl1-mesa-glx libglib2.0-0
+   
+   USER root
+   
+   RUN apt-get update && apt-get install -y python3 python3-pip wget vim git fish libgl1-mesa-glx libglib2.0-0 libc6
    RUN python3 -m pip install --upgrade pip
-   RUN pip3 install pycolonies opencv-python tqdm Pillow scikit-learn keras matplotlib numpy
+   RUN pip3 install --target=/usr/local/lib/python3.8/dist-packages pycolonies opencv-python tqdm Pillow scikit-learn keras matplotlib numpy
 
-Build and publish the Dockerfile and publish the Docker image at public Docker registry.
-
-.. code-block:: console
-
-   docker build -t johan/hackaton .
-   docker push johan/hackaton
-
-The ``johan/hackaton`` Docker image has already been published at DockerHub.
-
-Training the model
-==================
-
-Now that we have uploaded the dataset and created a Docker container, it's time to proceed with training the model.
-
-Setup a Pollinator project
---------------------------
-
-Create a new Pollinator project (or use the one you already created when uploading the dataset).
-In the example, we assumed the ``water_dataset`` in available in Colonies CFS under the label ``/water``. 
+Note the ``target`` flag to ``pip3``. Without it, ``pip3`` will installs to modules to ``~/.local/lib/python3.9/dist-packages``. 
+However, when using Singularity, the home directory is normally mounted from the host system, which means that installed Python 
+libraries will not be available in the container as intended.
 
 .. code-block:: console 
+    
+    docker build -t johan/tensorflow .
+    docker push johan/tensorflow
 
-   mkdir waterml
-   cd waterml
-   pollinator new -e leonardo-booster-hpcexecutor  
+Simple Python example
+---------------------
 
-Edit the ``project.yaml`` file. Change the Docker image to ``johan/hackaton``, increase required memory to 
-``30000Mi``, use 4 CPU cores (``4000m``). 
+.. code-block:: console 
+    
+    pollinator new -e ice-kubeexecutor
 
-Walltime defined the maximum time the process may run. In this case, it has to finish in ``2000`` seconds.
+Update ``project.yaml`` file:
 
-.. code-block:: yaml 
+.. code-block:: yaml
 
-   projectname: 559ac0c3a834594b337d10ebedf3134ea0ca3142cceab26b1aa5c17ba141999d
+   projectname: gputest
    conditions:
-     executorType: leonardo-booster-hpcexecutor
+     executorType: ice-kubeexecutor
      nodes: 1
      processesPerNode: 1
-     cpu: 4000m
-     mem: 30000Mi
-     walltime: 2000
+     cpu: 5000m
+     mem: 10000Mi
+     walltime: 600
      gpu:
        count: 1
-       name: ""
+       name: "nvidia-gtx-2080ti"
    environment:
-     docker: johan/hackaton
+     docker: johan/tensorflow
      rebuildImage: false
      cmd: python3
      source: main.py
 
-Replace main.py
----------------
+.. code-block:: console 
 
-Download source code from this `GitHub repo <https://github.com/johankristianss/colonyoshackaton/blob/main/src/main.py>`_.
+    import tensorflow as tf
+    print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+Now, run the code:
+
+.. code-block:: python 
+
+   pollinator run --follow
 
 .. code-block:: console 
 
-    cd cfs/src
-    wget https://raw.githubusercontent.com/johankristianss/colonyoshackaton/main/src/main.py .
+   Uploading main.py 100% [===============] (590 kB/s)
+   Uploading hello.txt 100% [===============] (66 kB/s)
+   INFO[0000] Process submitted                             ProcessID=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37
+   INFO[0000] Follow process at https://dashboard.colonyos.io/process?processid=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37
+   Num GPUs Available:  1
+   INFO[0012] Process finished successfully                 ProcessID=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37
 
-At line 132, change epochs to e.g 30.
+Running nvidia-smi
+------------------
 
-.. code-block:: python
+.. code-block:: json 
 
-   epochs = 30
-
-Note that the Python code saves the training result and a random prediction example in the result directory, which is
-automatically synchronized back to the client after process completion.
-
-.. code-block:: python
-
-    plt.savefig(projdir + '/result/res_' + processid + '.png')
-    plt.savefig(projdir + '/result/samples_' + processid + '.png')
+    {
+        "conditions": {
+            "executortype": "ice-kubeexecutor",
+            "nodes": 2,
+            "processes-per-node": 2,
+            "mem": "2000Mi",
+            "cpu": "500m",
+            "gpu": {
+                "name": "nvidia-gtx-2080ti",
+                "count": 2
+            },
+            "walltime": 600
+        },
+        "funcname": "execute",
+        "kwargs": {
+            "cmd": "nvidia-smi",
+            "args": [],
+            "docker-image": "tensorflow/tensorflow:2.14.0rc1-gpu",
+            "rebuild-image": false
+        },
+        "maxexectime": 600,
+        "maxretries": 3
+    }
 
 .. code-block:: console 
 
-   ls cfs/result
+   colonies function submit --spec nvidia-smi.json
 
 .. code-block:: console 
 
-   .rw-r--r--  55k johan 12 Dec 21:40 res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png
-   .rw-r--r-- 266k johan 12 Dec 21:40 samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png
+   INFO[0000] Process submitted                             ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df
+   INFO[0000] Printing logs from process                    ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df
+   Sun Dec 17 14:34:23 2023
+   +---------------------------------------------------------------------------------------+
+   | NVIDIA-SMI 545.29.02              Driver Version: 545.29.02    CUDA Version: 12.3     |
+   |-----------------------------------------+----------------------+----------------------+
+   | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+   |                                         |                      |               MIG M. |
+   |=========================================+======================+======================|
+   |   0  NVIDIA GeForce RTX 2080 Ti     Off | 00000000:24:00.0 Off |                  N/A |
+   | 32%   32C    P0              35W / 250W |      0MiB / 11264MiB |      0%      Default |
+   |                                         |                      |                  N/A |
+   +-----------------------------------------+----------------------+----------------------+
+   
+   +---------------------------------------------------------------------------------------+
+   | Processes:                                                                            |
+   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+   |        ID   ID                                                             Usage      |
+   |=======================================================================================|
+   |  No running processes found                                                           |
+   +---------------------------------------------------------------------------------------+
+   INFO[0010] Process finished successfully                 ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df
+   
+AMD/ROCm systems
+================
 
-Train the model
----------------
+This is a short guide how to use AMD/ROCm GPUs. 
 
-Pollinator will automatically synchronize the ``cfs/src``, ``cfs/data``, and ``cfs/result`` directories to Colonies CFS, generate
-a *function specification* and then submit the *function specification*, follow the process execution, and upon completion, synchronize the 
-project files back to your local computer.
- 
+Build a container
+-----------------
+
+.. code-block:: docker 
+
+   FROM docker.io/rocm/tensorflow:rocm5.2.0-tf2.9-dev
+   
+   USER root
+   
+   RUN apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="Europe/Stockholm" apt-get install -y python3 python3-pip wget git fish libgl1-mesa-glx libglib2.0-0
+   RUN python3 -m pip install --upgrade pip
+   RUN pip3 install --target=/usr/local/lib/python3.9/dist-packages opencv-python tqdm Pillow scikit-learn keras matplotlib numpy google wrapt typing_extensions packaging opt_einsum gast astunparse termcolor flatbuffers 
+   RUN pip3 install --target=/usr/local/lib/python3.9/dist-packages protobuf==3.20.0
+
+
 .. code-block:: console 
+    
+    docker build -t johan/rocmtensorflow .
+    docker push johan/rocmhackaton52g
+  
+Note that the Docker image becomes almost 9Gb!
+
+Simple Python example
+---------------------
+
+.. code-block:: console 
+    
+    pollinator new -e lumi-standard-gpu-hpcexecutor
+
+Update ``project.yaml`` file:
+
+.. code-block:: yaml
+
+   projectname: gputest
+   conditions:
+     executorType: lumi-standard-gpu-hpcexecutor
+     nodes: 1
+     processesPerNode: 1
+     cpu: 5000m
+     mem: 10000Mi
+     walltime: 600
+     gpu:
+       count: 1
+       name: ""
+   environment:
+     docker: johan/rocmtensorflow
+     rebuildImage: false
+     cmd: python3
+     source: main.py
+
+Replace the ``main.py`` with this code:
+
+.. code-block:: console 
+
+    import tensorflow as tf
+    print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+
+Now, run the code:
+
+.. code-block:: python 
 
     pollinator run --follow
 
 .. code-block:: console 
 
-   67/67 [==============================] - 1s 18ms/step - loss: 0.3434 - accuracy: 0.7024 - val_loss: 0.3263 - val_accuracy: 0.7038
-   Epoch 25/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.3307 - accuracy: 0.7092 - val_loss: 0.3146 - val_accuracy: 0.7121
-   Epoch 26/30
-   67/67 [==============================] - 1s 18ms/step - loss: 0.3139 - accuracy: 0.7140 - val_loss: 0.2947 - val_accuracy: 0.7249
-   Epoch 27/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.3226 - accuracy: 0.7110 - val_loss: 0.3027 - val_accuracy: 0.7244
-   Epoch 28/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2994 - accuracy: 0.7208 - val_loss: 0.2910 - val_accuracy: 0.7259
-   Epoch 29/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2910 - accuracy: 0.7239 - val_loss: 0.2781 - val_accuracy: 0.7261
-   Epoch 30/30
-   67/67 [==============================] - 1s 17ms/step - loss: 0.2856 - accuracy: 0.7258 - val_loss: 0.2733 - val_accuracy: 0.7313
-   23/23 [==============================] - 0s 4ms/step
-   
-   INFO[0141] Process finished successfully                 ProcessID=61e597845ed3df4456c5be7d358e35141b8dc4c1f76a89d7caad0f31f792106c
-   Downloading samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (5.0 MB/s)
-   Downloading res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (1.7 MB/s)
+   INFO[0000] Process submitted                  ProcessID=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070
+   INFO[0000] Follow process at https://dashboard.colonyos.io/process?processid=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070
+   Num GPUs Available:  1
+   INFO[0036] Process finished successfully      ProcessID=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070
 
-We can now open the sample and training plot pictures.
+Running rocm-smi
+----------------
 
-.. image:: img/prediction_example.png 
+.. code-block:: json 
 
-.. image:: img/training_result.png
+   {
+       "conditions": {
+           "executortype": "lumi-standard-gpu-hpcexecutor",
+           "nodes": 1,
+           "processes-per-node": 1,
+           "mem": "10Gi",
+           "cpu": "1000m",
+           "gpu": {
+               "count": 8
+           },
+           "walltime": 60
+       },
+       "funcname": "execute",
+       "kwargs": {
+           "cmd": "rocm-smi",
+           "args": [
+               ""
+           ],
+           "docker-image": "johan/rocmtensorflow"
+       },
+       "maxexectime": 55,
+       "maxretries": 3
+   }
+
+.. code-block:: console 
+
+   colonies function submit --spec rocm-smi.json
+
+.. code-block:: console 
+
+   ======================= ROCm System Management Interface =======================
+   ================================= Concise Info =================================
+   GPU  Temp   AvgPwr  SCLK    MCLK     Fan  Perf    PwrCap  VRAM%  GPU%
+   0    44.0c  92.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%
+   1    49.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%
+   2    43.0c  88.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%
+   3    45.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%
+   4    48.0c  87.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%
+   5    48.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%
+   6    40.0c  92.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%
+   7    44.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%
+   ================================================================================
+   ============================= End of ROCm SMI Log ==============================

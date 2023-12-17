@@ -23,9 +23,15 @@ ColonyOS is a Meta-OS designed to facilite implementation and deployment of dist
 
 .. toctree::
    :maxdepth: 1
-   :caption: Tutorial - Image processing
+   :caption: Tutorial - Using GPUs
 
    tutorial2.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorial - Image processing
+
+   tutorial3.rst
 
 .. toctree::
    :maxdepth: 1
