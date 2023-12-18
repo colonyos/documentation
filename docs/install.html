@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; ColonyOS  documentation</title>
+  <title>Docker-compose &mdash; ColonyOS  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -72,7 +72,28 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker-compose</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-minio-s3">Setup Minio/S3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-colony">Create a Colony</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dev-server">Dev server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Setup Minio/S3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#building-from-source">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#production-server">Production server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#let-s-encrypt">Let’s encrypt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#longhorn">Longhorn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#helm">Helm</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - Getting started</span></p>
 <ul>
@@ -142,7 +163,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">Docker-compose</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/colonyos/content/blob/main/content/install.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -152,9 +173,217 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>TODO!!</p>
+  <section id="docker-compose">
+<h1>Docker-compose<a class="headerlink" href="#docker-compose" title="Link to this heading"></a></h1>
+<p>Docker-compose is the easiest way to setup Colonies on a local server.
+Start by cloning the <a class="reference external" href="https://github.com/colonyos/colonies">Colonies Github repo</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/colonyos/colonies.git</span>
+</pre></div>
+</div>
+<p>All settings are located in the <code class="docutils literal notranslate"><span class="pre">docker-compose.env</span></code> file located in the repos root directory.
+Note that all keys are published on the Internet. Use <code class="docutils literal notranslate"><span class="pre">colonies</span> <span class="pre">key</span> <span class="pre">generate</span></code> to create new key pairs.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export LANG=en_US.UTF-8</span>
+<span class="go">export LANGUAGE=en_US.UTF-8</span>
+<span class="go">export LC_ALL=en_US.UTF-8</span>
+<span class="go">export LC_CTYPE=UTF-8</span>
+<span class="go">export TZ=Europe/Stockholm</span>
+<span class="go">export COLONIES_SERVER_TLS=&quot;false&quot;</span>
+<span class="go">export COLONIES_SERVER_HOST=&quot;localhost&quot;</span>
+<span class="go">export COLONIES_SERVER_PORT=&quot;50080&quot;</span>
+<span class="go">export COLONIES_MONITOR_PORT=&quot;21120&quot;</span>
+<span class="go">export COLONIES_MONITOR_INTERVAL=&quot;1&quot;</span>
+<span class="go">export COLONIES_SERVER_ID=&quot;039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103&quot;</span>
+<span class="go">export COLONIES_SERVER_PRVKEY=&quot;fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d&quot;</span>
+<span class="go">export COLONIES_DB_HOST=&quot;timescaledb&quot;</span>
+<span class="go">export COLONIES_DB_USER=&quot;postgres&quot;</span>
+<span class="go">export COLONIES_DB_PASSWORD=&quot;rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7&quot;</span>
+<span class="go">export COLONIES_COLONY_NAME=&quot;dev&quot;</span>
+<span class="go">export COLONIES_COLONY_ID=&quot;4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4&quot;</span>
+<span class="go">export COLONIES_COLONY_PRVKEY=&quot;ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514&quot;</span>
+<span class="go">export COLONIES_ID=&quot;3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac&quot;</span>
+<span class="go">export COLONIES_PRVKEY=&quot;ddf7f7791208083b6a9ed975a72684f6406a269cfa36f1b1c32045c0a71fff05&quot;</span>
+<span class="go">export COLONIES_EXECUTOR_TYPE=&quot;cli&quot;</span>
+<span class="go">export COLONIES_CRON_CHECKER_PERIOD=&quot;1000&quot;</span>
+<span class="go">export COLONIES_GENERATOR_CHECKER_PERIOD=&quot;1000&quot;</span>
+<span class="go">export COLONIES_EXCLUSIVE_ASSIGN=&quot;true&quot;</span>
+<span class="go">export COLONIES_ALLOW_EXECUTOR_REREGISTER=&quot;false&quot;</span>
+<span class="go">export COLONIES_RETENTION=&quot;false&quot;</span>
+<span class="go">export COLONIES_RETENTION_POLICY=&quot;200&quot;</span>
+<span class="go">export COLONIES_SERVER_PROFILER=&quot;false&quot;</span>
+<span class="go">export COLONIES_SERVER_PROFILER_PORT=&quot;6060&quot;</span>
+<span class="go">export MINIO_USER=&quot;admin&quot;</span>
+<span class="go">export MINIO_PASSWORD=&quot;admin12345&quot;</span>
+<span class="go">export AWS_S3_ENDPOINT=&quot;localhost:9000&quot;</span>
+<span class="go">export AWS_S3_ACCESSKEY=&quot;RrXN2vcLeHjBptG8a3Ay&quot;</span>
+<span class="go">export AWS_S3_SECRETKEY=&quot;ivwLB0Luqomq65nNVmoo8fTBgxXgNvqYGC50VQN6&quot;</span>
+<span class="go">export AWS_S3_REGION_KEY=&quot;&quot;</span>
+<span class="go">export AWS_S3_BUCKET=&quot;colonies-prod&quot;</span>
+<span class="go">export AWS_S3_TLS=&quot;false&quot;</span>
+<span class="go">export AWS_S3_SKIPVERIFY=&quot;false&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source docker-compose.env</span>
+</pre></div>
+</div>
+<p>Docker-compose will setup a TimescaleDB server, a Minio/S3 server and a single node Colonies server.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker-compose up</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies-server_1  | [GIN-debug] POST   /api --&gt; github.com/colonyos/colonies/pkg/server.(*ColoniesServer).handleAPIRequest-fm (4 handlers)</span>
+<span class="go">colonies-server_1  | time=&quot;2023-12-18T20:53:30Z&quot; level=info msg=&quot;EtcdServer is ready&quot; DataPath=/var/colonies/etcd EtcdClientPort=23100 EtcdPeerPort=24100 Host=colonies-server Name=server1</span>
+<span class="go">colonies-server_1  | time=&quot;2023-12-18T20:53:30Z&quot; level=debug msg=&quot;ColoniesServer became leader&quot; EtcdNode=server1</span>
+<span class="go">colonies-server_1  | time=&quot;2023-12-18T20:53:30Z&quot; level=info msg=&quot;Starting Colonies server&quot; APIPort=50080 AllowExecutorReregister=false CronPeriod=1000 EtcdClientPort=23100 EtcdDataPath=/var/colonies/etcd EtcdPeerPort=24100 ExclusiveAssign=true GeneratorPeriod=500 Host=colonies-server Name=server1 Port=50080 RelayPort=25100 Retention=false RetentionPolicy=604800 ServerID=039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103 TLS=false TLSCertPath= TLSPrivateKeyPath=</span>
+</pre></div>
+</div>
+<p>To remove all data, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker-compose down --volumes</span>
+</pre></div>
+</div>
+<section id="setup-minio-s3">
+<h2>Setup Minio/S3<a class="headerlink" href="#setup-minio-s3" title="Link to this heading"></a></h2>
+<p>To use Colony FS, you alse need to set up Minio/S3.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD</span>
+<span class="go">mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY</span>
+<span class="go">mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY</span>
+<span class="go">mc mb myminio/$AWS_S3_BUCKET</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-colony">
+<h2>Create a Colony<a class="headerlink" href="#create-a-colony" title="Link to this heading"></a></h2>
+<p>Create a new colony and a new user.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony add --name $COLONIES_COLONY_NAME --colonyid $COLONIES_COLONY_ID</span>
+<span class="go">colonies user add --name=&quot;myuser&quot; --email=&quot;&quot; --phone=&quot;&quot; --userid=$COLONIES_ID</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dev-server">
+<h1>Dev server<a class="headerlink" href="#dev-server" title="Link to this heading"></a></h1>
+<p>The Colonies CLI features a built-in development server that is easy to set up.
+Clone the <a class="reference external" href="https://github.com/colonyos/colonies">Colonies Github repo</a>.</p>
+<p>It will also automatically set up a test colony and a test user. Note that all data is lost if the dev server is restarted.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git@github.com:colonyos/colonies.git</span>
+</pre></div>
+</div>
+<p>Source the development environment test credentials. Note that the keys are publicly known and should NOT be used in a production system.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source devenv</span>
+</pre></div>
+</div>
+<p>Download the <strong>colonies</strong> binary and start the server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies dev</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0001] Connecting to PostgreSQL server               DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
+<span class="go">INFO[0001] Initialize a Colonies PostgreSQL database</span>
+<span class="go">INFO[0001] Starting a Colonies server                    Port=50080</span>
+<span class="go">INFO[0001] EtcdServer is ready                           DataPath=/tmp/coloniesdev/dev/etcd EtcdClientPort=23790 EtcdPeerPort=23800 Host=localhost Name=dev</span>
+<span class="go">INFO[0001] Starting Colonies server                      APIPort=50080 AllowExecutorReregister=false CronPeriod=1000 EtcdClientPort=23790 EtcdDataPath=/tmp/coloniesdev/dev/etcd EtcdPeerPort=23800 ExclusiveAssign=true GeneratorPeriod=1000 Host=localhost Name=dev Port=50080 RelayPort=2381 Retention=false RetentionPolicy=200 ServerID=039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103 TLS=false TLSCertPath= TLSPrivateKeyPath=</span>
+<span class="go">INFO[0001] Connecting to Colonies server                 ServerHost=localhost ServerPort=50080</span>
+<span class="go">INFO[0001] Registering a new Colony                      ColonyID=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4 ColonyName=dev ServerPrvKey=fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d</span>
+<span class="go">INFO[0001] Registering a new executor                    ColonyPrvKey=ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514 ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac ExecutorName=myexecutor ExecutorType=cli</span>
+<span class="go">INFO[0001] Approving executor                            ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac</span>
+<span class="go">INFO[0001] Approving CLI executor</span>
+<span class="go">INFO[0001] Starting Prometheus monitoring server         MonitorInterval=1 Port=21120 ServerHost=localhost ServerPort=50080</span>
+<span class="go">INFO[0001] Successfully started Colonies development server</span>
+<span class="go">INFO[0001] Press ctrl+c to exit</span>
+</pre></div>
+</div>
+<p>Verify the installation. There should be one registered executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+----------+</span>
+<span class="go">|    NAME    | TYPE | LOCATION |</span>
+<span class="go">+------------+------+----------+</span>
+<span class="go">| myexecutor | cli  |          |</span>
+<span class="go">+------------+------+----------+</span>
+</pre></div>
+</div>
+<section id="id2">
+<h2>Setup Minio/S3<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>To use Colony FS, you alse need to set up Minio/S3.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD</span>
+<span class="go">mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY</span>
+<span class="go">mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY</span>
+<span class="go">mc mb myminio/$AWS_S3_BUCKET</span>
+</pre></div>
+</div>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<p>To simplify deployment, the Colonies development server uses internally an <a class="reference external" href="https://github.com/fergusstrange/embedded-postgres">Embedded PostgreSQL database</a>
+instead of real PostgreSQL server. However, in some situations, the Embedded PostgreSQL server may not shut down correctly, leaving a zombie process and
+this error:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Starting a Colonies development server</span>
+<span class="go">INFO[0000] Creating Colonies data directory, this directory will be deleted every time the development server is restarted  Path=/tmp/coloniesdev/</span>
+<span class="go">INFO[0000] Starting embedded PostgreSQL server           DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
+<span class="go">ERRO[0000] process already listening on port 50070       BuildTime=&quot;2023-12-04T07:11:56Z&quot; BuildVersion=154ad05</span>
+</pre></div>
+</div>
+<p>To kill the Embedded PostgreSQL server running in background:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ps ax -o pid,cmd | grep embedded-postgres-go</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">3045089 /tmp/coloniesdev/embedded-postgres-go/extracted/bin/postgres -D /tmp/coloniesdev/embedded-postgres-go/extracted/data -p 50070</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kill -9 3045089</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="building-from-source">
+<h1>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h1>
+<p>First install <a class="reference external" href="https://go.dev">Golang</a>, then just type: <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">devenv</span></code> and then <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">run</span> <span class="pre">cmd/main.go</span></code> in root of the Colonies Github directory. Alternatively, there is Makefile, type: <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+</section>
+<section id="production-server">
+<h1>Production server<a class="headerlink" href="#production-server" title="Link to this heading"></a></h1>
+<p>Kubernetes is recommended for setting up a production server.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Install <a class="reference external" href="https://k3s.io">K3s</a> (or some other Kubernetes distribution).</p>
+<section id="let-s-encrypt">
+<h3>Let’s encrypt<a class="headerlink" href="#let-s-encrypt" title="Link to this heading"></a></h3>
+<p>You need a valid domain name to setup TLS and use Let’s encrypt.</p>
+<p>If you are using Nginx:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.0/cert-manager.yaml</span>
+<span class="go">kubectl create -f letsencrypt.yaml</span>
+</pre></div>
+</div>
+<p>If you are using Traefik:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.0/cert-manager.yaml</span>
+<span class="go">kubectl create -f letsencrypt_k3s.yaml</span>
+</pre></div>
+</div>
+<p>Verify the installation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kubectl get pods --namespace cert-manager</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">NAME                                     READY   STATUS    RESTARTS   AGE</span>
+<span class="go">cert-manager-646dddd544-rrmx4            1/1     Running   0          19h</span>
+<span class="go">cert-manager-cainjector-8676c4b7-dxsjw   1/1     Running   0          19h</span>
+</pre></div>
+</div>
+</section>
+<section id="longhorn">
+<h3>Longhorn<a class="headerlink" href="#longhorn" title="Link to this heading"></a></h3>
+<p>You may also want to install Longhorn.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.5.1/deploy/longhorn.yaml</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="helm">
+<h2>Helm<a class="headerlink" href="#helm" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/colonyos/helm.git</span>
+</pre></div>
+</div>
+<p>Follow instructions at <a class="reference external" href="https://github.com/colonyos/helm/tree/main/colonies">Colones Helm Chart Github page</a>, and edit the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> files accordingly.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd colonies; ./install.sh</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 

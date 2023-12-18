@@ -72,7 +72,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - Getting started</span></p>
 <ul>
@@ -100,10 +101,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#auto-completion">Auto completion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#show-current-configuration">Show current configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#starting-a-development-server">Starting a development server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#building-from-source">Building from source</a></li>
 </ul>
 </li>
@@ -384,70 +381,6 @@ Keep in mind that the private key is sensitive and should be kept confidential.<
 <span class="go">+--------+-----------------+</span>
 </pre></div>
 </div>
-</section>
-<section id="starting-a-development-server">
-<h2>Starting a development server<a class="headerlink" href="#starting-a-development-server" title="Link to this heading"></a></h2>
-<p>The Colonies CLI features a built-in development server that is easy to set up.
-Clone the <a class="reference external" href="https://github.com/colonyos/colonies">Colonies Github repo</a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git@github.com:colonyos/colonies.git</span>
-</pre></div>
-</div>
-<p>Source the development environment test credentials. Note that the keys are publicly known and should NOT be used in a production system.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source devenv</span>
-</pre></div>
-</div>
-<p>Download the <strong>colonies</strong> binary and start the server:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies dev</span>
-</pre></div>
-</div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0001] Connecting to PostgreSQL server               DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
-<span class="go">INFO[0001] Initialize a Colonies PostgreSQL database</span>
-<span class="go">INFO[0001] Starting a Colonies server                    Port=50080</span>
-<span class="go">INFO[0001] EtcdServer is ready                           DataPath=/tmp/coloniesdev/dev/etcd EtcdClientPort=23790 EtcdPeerPort=23800 Host=localhost Name=dev</span>
-<span class="go">INFO[0001] Starting Colonies server                      APIPort=50080 AllowExecutorReregister=false CronPeriod=1000 EtcdClientPort=23790 EtcdDataPath=/tmp/coloniesdev/dev/etcd EtcdPeerPort=23800 ExclusiveAssign=true GeneratorPeriod=1000 Host=localhost Name=dev Port=50080 RelayPort=2381 Retention=false RetentionPolicy=200 ServerID=039231c7644e04b6895471dd5335cf332681c54e27f81fac54f9067b3f2c0103 TLS=false TLSCertPath= TLSPrivateKeyPath=</span>
-<span class="go">INFO[0001] Connecting to Colonies server                 ServerHost=localhost ServerPort=50080</span>
-<span class="go">INFO[0001] Registering a new Colony                      ColonyID=4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4 ColonyName=dev ServerPrvKey=fcc79953d8a751bf41db661592dc34d30004b1a651ffa0725b03ac227641499d</span>
-<span class="go">INFO[0001] Registering a new executor                    ColonyPrvKey=ba949fa134981372d6da62b6a56f336ab4d843b22c02a4257dcf7d0d73097514 ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac ExecutorName=myexecutor ExecutorType=cli</span>
-<span class="go">INFO[0001] Approving executor                            ExecutorID=3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac</span>
-<span class="go">INFO[0001] Approving CLI executor</span>
-<span class="go">INFO[0001] Starting Prometheus monitoring server         MonitorInterval=1 Port=21120 ServerHost=localhost ServerPort=50080</span>
-<span class="go">INFO[0001] Successfully started Colonies development server</span>
-<span class="go">INFO[0001] Press ctrl+c to exit</span>
-</pre></div>
-</div>
-<p>Verify the installation. There should be one registered executor.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor ls</span>
-</pre></div>
-</div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+----------+</span>
-<span class="go">|    NAME    | TYPE | LOCATION |</span>
-<span class="go">+------------+------+----------+</span>
-<span class="go">| myexecutor | cli  |          |</span>
-<span class="go">+------------+------+----------+</span>
-</pre></div>
-</div>
-<section id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
-<p>To simplify deployment, the Colonies development server uses internally an <a class="reference external" href="https://github.com/fergusstrange/embedded-postgres">Embedded PostgreSQL database</a>
-instead of real PostgreSQL server. However, in some situations, the Embedded PostgreSQL server may not shut down correctly, leaving a zombie process and
-this error:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Starting a Colonies development server</span>
-<span class="go">INFO[0000] Creating Colonies data directory, this directory will be deleted every time the development server is restarted  Path=/tmp/coloniesdev/</span>
-<span class="go">INFO[0000] Starting embedded PostgreSQL server           DBHost=localhost DBName=postgres DBPassword=rFcLGNkgsNtksg6Pgtn9CumL4xXBQ7 DBPort=50070 DBUser=postgres</span>
-<span class="go">ERRO[0000] process already listening on port 50070       BuildTime=&quot;2023-12-04T07:11:56Z&quot; BuildVersion=154ad05</span>
-</pre></div>
-</div>
-<p>To kill the Embedded PostgreSQL server running in background:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ps ax -o pid,cmd | grep embedded-postgres-go</span>
-</pre></div>
-</div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">3045089 /tmp/coloniesdev/embedded-postgres-go/extracted/bin/postgres -D /tmp/coloniesdev/embedded-postgres-go/extracted/data -p 50070</span>
-</pre></div>
-</div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">kill -9 3045089</span>
-</pre></div>
-</div>
-</section>
 </section>
 <section id="building-from-source">
 <h2>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h2>
