@@ -37,6 +37,12 @@ ColonyOS is a Meta-OS designed to facilite implementation and deployment of dist
 
 .. toctree::
    :maxdepth: 1
+   :caption: Tutorial - Developing an executor
+
+   tutorial4.rst
+
+.. toctree::
+   :maxdepth: 1
    :caption: Colonies CLI
 
    colonies-cli 

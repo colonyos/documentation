@@ -225,7 +225,6 @@ Now that you may have acquired some fundamental knowledge about running containe
 Init command
 ------------
 
-
 Managing data
 =============
 
