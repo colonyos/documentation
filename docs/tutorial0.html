@@ -7,7 +7,7 @@
   <title>Getting started &mdash; ColonyOS  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
@@ -235,7 +235,7 @@ following environmental variables:</p>
 <p>Just make sure to <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">docker-compose.env</span></code> before starting the Python script.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">colonies_client</span>
 
-<span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executor_name</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
+<span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -244,13 +244,13 @@ following environmental variables:</p>
 <p>The first step to register an executor is to create a new ECDSA key pair.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crypto</span> <span class="o">=</span> <span class="n">Crypto</span><span class="p">()</span>
 <span class="n">executor_prvkey</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">prvkey</span><span class="p">()</span>
-<span class="n">executorid</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="n">executor_prvkey</span><span class="p">)</span>
+<span class="n">executorname</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="n">executor_prvkey</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">executor_id</span></code> is essentially a SHA3-256 hash of the public key, which itself is generated from the private key. The Colonies server derives the public key from message signatures to reconstruct the <code class="docutils literal notranslate"><span class="pre">executor_id</span></code>. It then searches for the <code class="docutils literal notranslate"><span class="pre">executor_id</span></code> in its internal database to verify whether the executor is an authorized member of the colony. The <code class="docutils literal notranslate"><span class="pre">executor_id</span></code> must therefore be specified when registering a new executor. Additionally, only the colony owner has the authority to add an executor. Consequently, the <code class="docutils literal notranslate"><span class="pre">add_executor()</span></code> function requires the colony’s private key as an argument.</p>
 <p>Note that the process of adding an executor in done in two steps. Once an executor is added, it need to be approved by calling <code class="docutils literal notranslate"><span class="pre">approve_executor()</span></code> function in order to get process assignments.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">executor</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;executorname&quot;</span><span class="p">:</span> <span class="n">executor_name</span><span class="p">,</span>
+    <span class="s2">&quot;executorname&quot;</span><span class="p">:</span> <span class="n">executorname</span><span class="p">,</span>
         <span class="s2">&quot;executorid&quot;</span><span class="p">:</span> <span class="n">executorid</span><span class="p">,</span>
         <span class="s2">&quot;colonyname&quot;</span><span class="p">:</span> <span class="n">colonyname</span><span class="p">,</span>
         <span class="s2">&quot;executortype&quot;</span><span class="p">:</span> <span class="s2">&quot;helloworld-executor&quot;</span>
@@ -258,9 +258,9 @@ following environmental variables:</p>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_executor</span><span class="p">(</span><span class="n">executor</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">approve_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="n">executor_name</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">approve_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">executor_name</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">executorname</span><span class="p">,</span>
                                <span class="n">colonyname</span><span class="p">,</span>
                                <span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
                                <span class="n">executor_prvkey</span><span class="p">)</span>
@@ -268,7 +268,7 @@ following environmental variables:</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="n">executorid</span><span class="p">,</span> <span class="s2">&quot;registered&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="s2">&quot;registered&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -321,12 +321,12 @@ timeout how long time the call should block, in this case 10 seconds.</p>
 
 <span class="k">class</span> <span class="nc">PythonExecutor</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executor_name</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
+        <span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span> <span class="o">=</span> <span class="n">colonies</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span> <span class="o">=</span> <span class="n">colonyname</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span> <span class="o">=</span> <span class="n">colony_prvkey</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">executor_name</span> <span class="o">=</span> <span class="s2">&quot;helloworld-executor&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">executor_type</span> <span class="o">=</span> <span class="s2">&quot;helloworld-executor&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span> <span class="o">=</span> <span class="s2">&quot;helloworld-executor&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executortype</span> <span class="o">=</span> <span class="s2">&quot;helloworld-executor&quot;</span>
 
         <span class="n">crypto</span> <span class="o">=</span> <span class="n">Crypto</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">executor_prvkey</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">prvkey</span><span class="p">()</span>
@@ -336,17 +336,17 @@ timeout how long time the call should block, in this case 10 seconds.</p>
 
     <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">executor</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;executorname&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor_name</span><span class="p">,</span>
+            <span class="s2">&quot;executorname&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span>
             <span class="s2">&quot;executorid&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorid</span><span class="p">,</span>
             <span class="s2">&quot;colonyname&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span>
-            <span class="s2">&quot;executortype&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor_type</span>
+            <span class="s2">&quot;executortype&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">executortype</span>
         <span class="p">}</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_executor</span><span class="p">(</span><span class="n">executor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">approve_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">approve_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span><span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executor_name</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span>
                                        <span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
                                        <span class="bp">self</span><span class="o">.</span><span class="n">executor_prvkey</span><span class="p">)</span>
@@ -354,7 +354,7 @@ timeout how long time the call should block, in this case 10 seconds.</p>
             <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
             <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorid</span><span class="p">,</span> <span class="s2">&quot;registered&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span> <span class="s2">&quot;registered&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">while</span> <span class="p">(</span><span class="kc">True</span><span class="p">):</span>
@@ -368,8 +368,8 @@ timeout how long time the call should block, in this case 10 seconds.</p>
                 <span class="k">pass</span>
 
     <span class="k">def</span> <span class="nf">unregister</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">remove_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorid</span><span class="p">,</span> <span class="s2">&quot;unregistered&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">remove_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colony_prvkey</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Executor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">executorname</span><span class="p">,</span> <span class="s2">&quot;unregistered&quot;</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">sigint_handler</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
@@ -410,7 +410,7 @@ new file called <code class="docutils literal notranslate"><span class="pre">hel
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">func_spec</span>
 <span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">colonies_client</span>
 
-<span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executor_name</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
+<span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
 
 <span class="n">func_spec</span> <span class="o">=</span> <span class="n">func_spec</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
                       <span class="n">args</span><span class="o">=</span><span class="p">[],</span>
@@ -511,7 +511,7 @@ operate seamlessly across a <em>continuum</em> of executors</p>
 </section>
 <section id="load-balancing">
 <h2>Load balancing<a class="headerlink" href="#load-balancing" title="Link to this heading"></a></h2>
-<p>Make it possible to start multiple executors by setting the <code class="docutils literal notranslate"><span class="pre">executor_name</span></code> to a random number or making it possible to specify an
+<p>Make it possible to start multiple executors by setting the <code class="docutils literal notranslate"><span class="pre">executorname</span></code> to a random number or making it possible to specify an
 executor name as an argument to the <code class="docutils literal notranslate"><span class="pre">helloworld_executor.py</span></code> script. Sumbit several function specifications and notice how the they become load balanced between the executors.</p>
 </section>
 </section>

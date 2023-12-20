@@ -73,7 +73,7 @@ Just make sure to ``source docker-compose.env`` before starting the Python scrip
 
    from pycolonies import colonies_client
    
-   colonies, colonyname, colony_prvkey, executor_name, prvkey = colonies_client()
+   colonies, colonyname, colony_prvkey, executorname, prvkey = colonies_client()
 
 Registering an executor
 =======================
@@ -84,7 +84,7 @@ The first step to register an executor is to create a new ECDSA key pair.
         
     crypto = Crypto()
     executor_prvkey = crypto.prvkey()
-    executorid = crypto.id(executor_prvkey)
+    executorname = crypto.id(executor_prvkey)
 
 The ``executor_id`` is essentially a SHA3-256 hash of the public key, which itself is generated from the private key. The Colonies server derives the public key from message signatures to reconstruct the ``executor_id``. It then searches for the ``executor_id`` in its internal database to verify whether the executor is an authorized member of the colony. The ``executor_id`` must therefore be specified when registering a new executor. Additionally, only the colony owner has the authority to add an executor. Consequently, the ``add_executor()`` function requires the colony's private key as an argument.
 
@@ -93,7 +93,7 @@ Note that the process of adding an executor in done in two steps. Once an execut
 .. code-block:: python
 
     executor = {
-        "executorname": executor_name,
+        "executorname": executorname,
             "executorid": executorid,
             "colonyname": colonyname,
             "executortype": "helloworld-executor"
@@ -101,9 +101,9 @@ Note that the process of adding an executor in done in two steps. Once an execut
         
     try:
         executor = self.colonies.add_executor(executor, colony_prvkey)
-        self.colonies.approve_executor(self.colonyname, executor_name, colony_prvkey)
+        self.colonies.approve_executor(self.colonyname, executorname, colony_prvkey)
             
-        self.colonies.add_function(executor_name, 
+        self.colonies.add_function(executorname, 
                                    colonyname, 
                                    "helloworld",  
                                    executor_prvkey)
@@ -111,7 +111,7 @@ Note that the process of adding an executor in done in two steps. Once an execut
         print(err)
         os._exit(0)
         
-    print("Executor", executorid, "registered")
+    print("Executor", executorname, "registered")
 
 Process assignments
 ===================
@@ -172,12 +172,12 @@ Complete example
    
    class PythonExecutor:
        def __init__(self):
-           colonies, colonyname, colony_prvkey, executor_name, prvkey = colonies_client()
+           colonies, colonyname, colony_prvkey, executorname, prvkey = colonies_client()
            self.colonies = colonies
            self.colonyname = colonyname
            self.colony_prvkey = colony_prvkey
-           self.executor_name = "helloworld-executor"
-           self.executor_type = "helloworld-executor"
+           self.executorname = "helloworld-executor"
+           self.executortype = "helloworld-executor"
    
            crypto = Crypto()
            self.executor_prvkey = crypto.prvkey()
@@ -187,17 +187,17 @@ Complete example
            
        def register(self):
            executor = {
-               "executorname": self.executor_name,
+               "executorname": self.executorname,
                "executorid": self.executorid,
                "colonyname": self.colonyname,
-               "executortype": self.executor_type
+               "executortype": self.executortype
            }
            
            try:
                executor = self.colonies.add_executor(executor, self.colony_prvkey)
-               self.colonies.approve_executor(self.colonyname, self.executor_name, self.colony_prvkey)
+               self.colonies.approve_executor(self.colonyname, self.executorname, self.colony_prvkey)
                
-               self.colonies.add_function(self.executor_name, 
+               self.colonies.add_function(self.executorname, 
                                           self.colonyname, 
                                           "helloworld",  
                                           self.executor_prvkey)
@@ -205,7 +205,7 @@ Complete example
                print(err)
                os._exit(0)
            
-           print("Executor", self.executorid, "registered")
+           print("Executor", self.executorname, "registered")
            
        def start(self):
            while (True):
@@ -219,8 +219,8 @@ Complete example
                    pass
    
        def unregister(self):
-           self.colonies.remove_executor(self.colonyname, self.executor_name, self.colony_prvkey)
-           print("Executor", self.executorid, "unregistered")
+           self.colonies.remove_executor(self.colonyname, self.executorname, self.colony_prvkey)
+           print("Executor", self.executorname, "unregistered")
            os._exit(0)
    
    def sigint_handler(signum, frame):
@@ -272,7 +272,7 @@ new file called ``helloworld.py``.
    from pycolonies import func_spec
    from pycolonies import colonies_client
    
-   colonies, colonyname, colony_prvkey, executor_name, prvkey = colonies_client()
+   colonies, colonyname, colony_prvkey, executorname, prvkey = colonies_client()
    
    func_spec = func_spec(func="helloworld", 
                          args=[], 
@@ -381,6 +381,5 @@ In this case, the process will be unassigned from the executor and immediately r
 
 Load balancing
 --------------
-Make it possible to start multiple executors by setting the ``executor_name`` to a random number or making it possible to specify an 
+Make it possible to start multiple executors by setting the ``executorname`` to a random number or making it possible to specify an 
 executor name as an argument to the ``helloworld_executor.py`` script. Sumbit several function specifications and notice how the they become load balanced between the executors. 
-
