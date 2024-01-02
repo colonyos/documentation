@@ -154,13 +154,13 @@ To get info about current configuration type:
 
 .. code-block:: console
 
-    Current configurations:
-    +--------+-----------------+
-    | Colony | dev             |
-    | Server | localhost:50080 |
-    | TLS    | false           |
-    +--------+-----------------+
-
+   ╭──────────────────────────────────╮
+   │ Current configuration            │
+   ├────────────────┬─────────────────┤
+   │ ColoniesServer │ localhost:50080 │
+   │ TLS            │ false           │
+   │ Colony         │ dev             │
+   ╰────────────────┴─────────────────╯
 
 Building from source
 --------------------
@@ -210,12 +210,12 @@ To list all registered colonies, you must be server administrator and the ``COLO
 
 .. code-block:: console
 
-    +-------------+
-    |    NAME     |
-    +-------------+
-    | dev         |
-    | test_colony |
-    +-------------+
+   ╭─────────────┬──────────────────────────────────────────────────────────────────╮
+   │ NAME        │ COLONYID                                                         │
+   ├─────────────┼──────────────────────────────────────────────────────────────────┤
+   │ dev         │ 4787a5071856a4acf702b2ffcea422e3237a679c681314113d86139461290cf4 │
+   │ test_colony │ f5ce6d9c328b0750ea37cad504e5f64e2380836231e9389eb848f77250eb038f │
+   ╰─────────────┴──────────────────────────────────────────────────────────────────╯
 
 Remove a colony
 ---------------
@@ -227,7 +227,8 @@ Only a colony owner can remove a colony and you need to have a valid ``COLONIES_
 
 Get statistics
 --------------
-All valid users and executors can get statistics on a colony.
+All valid users and executors can get statistics on a colony. Set the ``COLONIES_PRVKEY`` environment variable to interact with a colony,
+and the ``COLONIES_COLONY_NAME`` environment variable to specify the colony name.
 
 .. code-block:: console
 
@@ -235,18 +236,18 @@ All valid users and executors can get statistics on a colony.
 
 .. code-block:: console
 
-    Process statistics:
-    +----------------------+-----+
-    | Executors            | 3   |
-    | Waiting processes    | 10  |
-    | Running processes    | 3   |
-    | Successful processes | 131 |
-    | Failed processes     | 10  |
-    | Waiting workflows    | 0   |
-    | Running workflows    | 0   |
-    | Successful workflows | 5   |
-    | Failed workflows     | 1   |
-    +----------------------+-----+
+   ╭──────────────────────┬─────╮
+   │ Colony               │ dev │
+   │ Executors            │ 3   │
+   │ Waiting processes    │ 10  │
+   │ Running processes    │ 3   │
+   │ Successful processes │ 131 │
+   │ Failed processes     │ 10  │
+   │ Waiting workflows    │ 0   │
+   │ Running workflows    │ 0   │
+   │ Successful workflows │ 5   │
+   │ Failed workflows     │ 1   │
+   ╰──────────────────────┴─────╯
 
 Users
 =====
@@ -300,11 +301,11 @@ To list all users member of a colony.
 
 .. code-block:: console
 
-    +----------+--------------------------+---------------+
-    | USERNAME |          EMAIL           |     PHONE     |
-    +----------+--------------------------+---------------+
-    | johan    | johan.kristiansson@ri.se | +467011122233 |
-    +----------+--------------------------+---------------+
+   ╭──────────┬──────────────────────────┬───────────────╮
+   │ USERNAME │ EMAIL                    │ PHONE         │
+   ├──────────┼──────────────────────────┼───────────────┤
+   │ johan    │ johan.kristiansson@ri.se │ +467011122233 │
+   ╰──────────┴──────────────────────────┴───────────────╯
 
 Get info about a user 
 ---------------------
@@ -315,13 +316,13 @@ Get info about a user
 
 .. code-block:: console
 
-    +------------+------------------------------------------------------------------+
-    | Name       | johan                                                            |
-    | ID         | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |
-    | ColonyName | dev                                                              |
-    | Email      | johan.kristiansson@ri.se                                         |
-    | Phone      | +467011122233                                                    |
-    +------------+------------------------------------------------------------------+
+   ╭──────────┬──────────────────────────────────────────────────────────────────╮
+   │ Username │ johan                                                            │
+   │ UserId   │ b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 │
+   │ Phone    │ +467011122233                                                    │
+   │ Email    │ johan.kristiansson@ri.se                                         │
+   │ Colony   │ dev                                                              │
+   ╰──────────┴──────────────────────────────────────────────────────────────────╯
 
 Remove a user 
 -------------
@@ -462,12 +463,12 @@ List executors
 
 .. code-block:: console
 
-    +-------------+------+----------------+
-    |    NAME     | TYPE |    LOCATION    |
-    +-------------+------+----------------+
-    | myexecutor  | cli  |                |
-    | ml-executor | ml   | ICE Datacenter |
-    +-------------+------+----------------+
+   ╭─────────────┬──────┬────────────────╮
+   │ NAME        │ TYPE │ LOCATION       │
+   ├─────────────┼──────┼────────────────┤
+   │ ml-executor │ ml   │ ICE Datacenter │
+   │ myexecutor  │ cli  │                │
+   ╰─────────────┴──────┴────────────────╯
 
 Get info about an executor
 --------------------------
@@ -478,48 +479,43 @@ Get info about an executor
 
 .. code-block:: console
 
-     Executor:
-     +-------------------------+------------------------------------------------------------------+
-     | Name                    | ml-executor                                                      |
-     | ID                      | 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 |
-     | Type                    | ml                                                               |
-     | ColonyName              | dev                                                              |
-     | State                   | Approved                                                         |
-     | RequireFuncRegistration | False                                                            |
-     | CommissionTime          | 2023-11-29 15:05:25                                              |
-     | LastHeardFrom           | 0001-01-01 00:53:28                                              |
-     +-------------------------+------------------------------------------------------------------+
-     
-     Location:
-     +-------------+----------------+
-     | Longitude   | 65.612046      |
-     | Latitude    | 22.132276      |
-     | Description | ICE Datacenter |
-     +-------------+----------------+
-     
-     Hardware:
-     +-----------+--------------------------------+
-     | Model     | AMD Ryzen 9 5950X 16-Core      |
-     |           | Processor                      |
-     | CPU       | 4000m                          |
-     | Nodes     | 0                              |
-     | Memory    | 16Gi                           |
-     | Storage   | 100Ti                          |
-     | GPU       | nvidia_3080ti                  |
-     | GPUMem    |                                |
-     | GPUs      | 1                              |
-     | GPUs/Node | 0                              |
-     +-----------+--------------------------------+
-     
-     Software:
-     +---------+--------------------+
-     | Name    | colonyos/ml:latest |
-     | Type    | k8s                |
-     | Version | latest             |
-     +---------+--------------------+
-     
-     Functions:
-     No functions found
+   ╭─────────────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ Name                    │ ml-executor                                                      │
+   │ Id                      │ 24bbbc074019734fc4676ec1641ca6f22c3ac943c48067ded3649602653a96c1 │
+   │ Type                    │ ml                                                               │
+   │ Colony                  │ dev                                                              │
+   │ State                   │ Approved                                                         │
+   │ RequireFuncRegistration │ False                                                            │
+   │ CommissionTime          │ 2024-01-02 18:54:06                                              │
+   │ LastHeardFrom           │ 0001-01-01 00:53:28                                              │
+   ╰─────────────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭──────────────────────────────╮
+   │ Location                     │
+   ├─────────────┬────────────────┤
+   │ Longitude   │ 65.612046      │
+   │ Latitude    │ 22.132276      │
+   │ Description │ ICE Datacenter │
+   ╰─────────────┴────────────────╯
+   ╭──────────────────────────────────────────────────╮
+   │ Hardware                                         │
+   ├────────────┬─────────────────────────────────────┤
+   │ Nodes      │ 0                                   │
+   │ Model      │ AMD Ryzen 9 5950X 16-Core Processor │
+   │ CPU        │ 4000m                               │
+   │ Memory     │ 16Gi                                │
+   │ Storage    │ 100Ti                               │
+   │ GPU        │ nvidia_3080ti                       │
+   │ GPUs       │ 1                                   │
+   │ GPU/Node   │ 0                                   │
+   │ GPU Memory │                                     │
+   ╰────────────┴─────────────────────────────────────╯
+   ╭──────────────────────────────╮
+   │ Software                     │
+   ├─────────┬────────────────────┤
+   │ Name    │ colonyos/ml:latest │
+   │ Type    │ k8s                │
+   │ Version │ latest             │
+   ╰─────────┴────────────────────╯
 
 Functions
 =========
@@ -529,7 +525,7 @@ Submitting function specs
 
 ColonyOS operates on the principle of submitting **Functions Specifications** to a colony, which are then executed by various executors, members of that colony. When a **Function Specification** is received by the Colonies server, it is wrapped into a **process**, which is subsequently assigned to an executor. Each executor is responsible for implementing one or more of these functions and connects to the Colonies server to receive assignments. 
 
-Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target executor type. Note that a **Function Specification** can be submitted even if there are no matching executors currently in the colony. These functions will be executed in the future when an executor of matching **executortype** becomes available.
+Let's submit a **Function Specification** for executing a function named **helloworld**, specifying **helloworld-executor** as the target executor type. Note that a **Function Specification** can be submitted even if there are no matching executors currently available in the colony. These functions will be executed in the future when an executor of matching **executortype** becomes available.
 
 .. code-block:: json
 
@@ -657,18 +653,19 @@ To list all registered Function in a colony and get some basic statistics, type:
 
 .. code-block:: console
 
-    Function:
-    +-------------+-------------+
-    | FuncName    | helloworld  |
-    | Calls       | 1           |
-    | Served by   | 1 executors |
-    | MinWaitTime | 10.410566 s |
-    | MaxWaitTime | 10.410566 s |
-    | AvgWaitTime | 10.410566 s |
-    | MinExecTime | 27.459162 s |
-    | MaxExecTime | 27.459162 s |
-    | AvgExecTime | 27.459162 s |
-    +-------------+-------------+
+   ╭────────────────────────────────────╮
+   │ Function: helloworld               │
+   ├──────────────┬─────────────────────┤
+   │ ExecutorType │ helloworld-executor │
+   │ FunctionName │ helloworld          │
+   │ Call counter │ 0                   │
+   │ MinWaitTime  │ 0.000000 s          │
+   │ MaxWaitTime  │ 0.000000 s          │
+   │ AvgWaitTime  │ 0.000000 s          │
+   │ MinExecTime  │ 0.000000 s          │
+   │ MaxExecTime  │ 0.000000 s          │
+   │ AvgExecTime  │ 0.000000 s          │
+   ╰──────────────┴─────────────────────╯
 
 If two or more executors provide the same Function, they will compete for process assignments, effectively load-balancing requests between executors.
 
@@ -684,14 +681,14 @@ List waiting processes
     
 .. code-block:: console
 
-    +------------+------+--------+---------------------+---------------------+----------------+
-    |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
-    +------------+------+--------+---------------------+---------------------+----------------+
-    | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |
-    | helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |
-    | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
-    | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
-    +------------+------+--------+---------------------+---------------------+----------------+
+   ╭────────────┬──────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS │ KWARGS │ SUBMSSIONTIME       │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ helloworld │      │        │ 2024-01-02 18:57:36 │ helloworld-executor │ myexecutor │
+   │ helloworld │      │        │ 2024-01-02 18:57:35 │ helloworld-executor │ myexecutor │
+   │ helloworld │      │        │ 2024-01-02 18:57:35 │ helloworld-executor │ myexecutor │
+   │ helloworld │      │        │ 2024-01-02 18:57:31 │ helloworld-executor │ myexecutor │
+   ╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 Use the flag **-i** to also print process IDs.
 
@@ -701,14 +698,14 @@ Use the flag **-i** to also print process IDs.
 
 .. code-block:: console
 
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
-     |                                ID                                |    FUNC    | ARGS | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
-     | dd68f3ff4bb336bb15574ae692ad08ac35ad3a7e7d8de18d3e5ba8874a0889da | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan          |
-     | 9972cdd82f862e535d972d9f03652701a750501b7e90ee77f221e973ad10d515 | helloworld |      |        | 2023-12-03 11:56:07 | helloworld-executor | johan          |
-     | 5c26181e49714e0212d0d4a391f29a4f4762d0e206c2d19d304dbd137cfceb49 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
-     | e50589ae2f2195d83d6b6a2fd36b1aad6b6419672dc10823baab21076ff5f400 | helloworld |      |        | 2023-12-03 11:56:08 | helloworld-executor | johan          |
-     +------------------------------------------------------------------+------------+------+--------+---------------------+---------------------+----------------+
+   ╭──────────────────────────────────────────────────────────────────┬────────────┬──────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ ID                                                               │ FUNCNAME   │ ARGS │ KWARGS │ SUBMSSIONTIME       │ EXECUTORTYPE        │ INITIATOR  │
+   ├──────────────────────────────────────────────────────────────────┼────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ 963c37ec90177cd2aae3aac0a5b3fe3ebf494f736fd6225b0d596da0f50850a7 │ helloworld │      │        │ 2024-01-02 18:57:36 │ helloworld-executor │ myexecutor │
+   │ 36c1c32f44c477e5958b64b42487708ce3cb091936e4939e8289d3cb3a5b7463 │ helloworld │      │        │ 2024-01-02 18:57:35 │ helloworld-executor │ myexecutor │
+   │ def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f │ helloworld │      │        │ 2024-01-02 18:57:35 │ helloworld-executor │ myexecutor │
+   │ e298c2ef655fada6ef752b11370c315bec9667406665475f5d64280889a44114 │ helloworld │      │        │ 2024-01-02 18:57:31 │ helloworld-executor │ myexecutor │
+   ╰──────────────────────────────────────────────────────────────────┴────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 List running processes
 ----------------------
@@ -718,11 +715,12 @@ List running processes
 
 .. code-block:: console
 
-    +------------+------+--------+---------------------+---------------------+----------------+
-    |  FUNCNAME  | ARGS | KWARGS |     START TIME      |    EXECUTOR TYPE    | INITIATOR NAME |
-    +------------+------+--------+---------------------+---------------------+----------------+
-    | helloworld |      |        | 2023-12-03 11:36:31 | helloworld-executor | johan          |
-    +------------+------+--------+---------------------+---------------------+----------------+
+   ╭────────────┬──────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS │ KWARGS │ STARTTIME           │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ helloworld │      │        │ 2024-01-02 18:59:47 │ helloworld-executor │ myexecutor │
+   │ helloworld │      │        │ 2024-01-02 18:59:45 │ helloworld-executor │ myexecutor │
+   ╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 List successful processes
 -------------------------
@@ -733,12 +731,11 @@ List successful processes
 
 .. code-block:: console
 
-    +------------+------+--------+---------------------+---------------------+----------------+
-    |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR NAME |
-    +------------+------+--------+---------------------+---------------------+----------------+
-    | helloworld |      |        | 2023-12-03 11:51:37 | helloworld-executor | johan          |
-    | helloworld |      |        | 2023-12-03 11:34:15 | helloworld-executor | myexecutor     |
-    +------------+------+--------+---------------------+---------------------+----------------+
+   ╭────────────┬──────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS │ KWARGS │ SUBMSSIONTIME       │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ helloworld │      │        │ 2024-01-02 18:57:35 │ helloworld-executor │ myexecutor │
+   ╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 List failed processes
 ---------------------
@@ -749,155 +746,157 @@ List failed processes
 
 .. code-block:: console
 
-     +------------+------+--------+---------------------+---------------------+-----------+
-     |  FUNCNAME  | ARGS | KWARGS |      END TIME       |    EXECUTOR TYPE    | INITIATOR |
-     +------------+------+--------+---------------------+---------------------+-----------+
-     | helloworld |      |        | 2023-12-03 11:52:47 | helloworld-executor | johan     |
-     +------------+------+--------+---------------------+---------------------+-----------+
+   ╭────────────┬──────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS │ KWARGS │ ENDTIME             │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ helloworld │      │        │ 2024-01-02 19:02:01 │ helloworld-executor │ myexecutor │
+   ╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 Get info about a process
 -------------------------
 
 .. code-block:: console
 
-    colonies process get -p 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4
-
+    colonies process get -p e298c2ef655fada6ef752b11370c315bec9667406665475f5d64280889a44114
 
 .. code-block:: console
 
-     Process:
-     +--------------------+------------------------------------------------------------------+
-     | ID                 | 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4 |
-     | IsAssigned         | True                                                             |
-     | AssignedExecutorID | ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 |
-     | State              | Successful                                                       |
-     | PriorityTime       | 1701293763654005927                                              |
-     | SubmissionTime     | 2023-11-29 22:36:03                                              |
-     | StartTime          | 2023-11-29 22:37:23                                              |
-     | EndTime            | 2023-11-29 22:37:41                                              |
-     | WaitDeadline       | 0001-01-01 00:53:28                                              |
-     | ExecDeadline       | 0001-01-01 00:53:28                                              |
-     | WaitingTime        | 1m19.767467s                                                     |
-     | ProcessingTime     | 18.021749s                                                       |
-     | Retries            | 0                                                                |
-     | Errors             |                                                                  |
-     | Output             | Hej                                                              |
-     +--------------------+------------------------------------------------------------------+
-     
-     FunctionSpec:
-     +-------------+------------+
-     | Func        | helloworld |
-     | Args        | None       |
-     | KwArgs      | None       |
-     | MaxWaitTime | -1         |
-     | MaxExecTime | -1         |
-     | MaxRetries  | -1         |
-     | Priority    | 0          |
-     +-------------+------------+
-     
-     Conditions:
-     +------------------+---------------------+
-     | ColonyName       | dev                 |
-     | ExecutorIDs      | None                |
-     | ExecutorType     | helloworld-executor |
-     | Dependencies     |                     |
-     | Nodes            | 0                   |
-     | CPU              |                     |
-     | Memmory          |                     |
-     | Processes        | 0                   |
-     | ProcessesPerNode | 0                   |
-     | Storage          |                     |
-     | Walltime         | 0                   |
-     | GPU              |                     |
-     | GPUs             | 0                   |
-     | GPUMemory        |                     |
-     +------------------+---------------------+
+   ╭───────────────────────────────────────────────────────────────────────────────────────╮
+   │ Process                                                                               │
+   ├────────────────────┬──────────────────────────────────────────────────────────────────┤
+   │ Id                 │ e298c2ef655fada6ef752b11370c315bec9667406665475f5d64280889a44114 │
+   │ IsAssigned         │ True                                                             │
+   │ InitiatorID        │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator          │ myexecutor                                                       │
+   │ AssignedExecutorID │ ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 │
+   │ AssignedExecutorID │ Failed                                                           │
+   │ PriorityTime       │ 1704218251124505155                                              │
+   │ SubmissionTime     │ 2024-01-02 18:57:31                                              │
+   │ StartTime          │ 2024-01-02 18:57:31                                              │
+   │ EndTime            │ 2024-01-02 18:57:31                                              │
+   │ WaitDeadline       │ 0001-01-01 00:53:28                                              │
+   │ ExecDeadline       │ 0001-01-01 00:53:28                                              │
+   │ WaitingTime        │ 2m14.682235s                                                     │
+   │ ProcessingTime     │ 2m15.20196s                                                      │
+   │ Retries            │ 0                                                                │
+   │ Input              │                                                                  │
+   │ Output             │                                                                  │
+   │ Errors             │ No errors specified                                              │
+   ╰────────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭──────────────────────────╮
+   │ Function Specification   │
+   ├─────────────┬────────────┤
+   │ Func        │ helloworld │
+   │ Args        │ None       │
+   │ KwArgs      │ None       │
+   │ MaxWaitTime │ -1         │
+   │ MaxExecTime │ -1         │
+   │ MaxRetries  │ 0          │
+   │ Priority    │ 0          │
+   ╰─────────────┴────────────╯
+   ╭──────────────────────────╮
+   │ Function Specification   │
+   ├─────────────┬────────────┤
+   │ Func        │ helloworld │
+   │ Args        │ None       │
+   │ KwArgs      │ None       │
+   │ MaxWaitTime │ -1         │
+   │ MaxExecTime │ -1         │
+   │ MaxRetries  │ 0          │
+   │ Priority    │ 0          │
+   │ Label       │            │
+   ╰─────────────┴────────────╯
+   ╭────────────────────────────────────────╮
+   │ Conditions                             │
+   ├──────────────────┬─────────────────────┤
+   │ Colony           │ dev                 │
+   │ ExecutorNames    │ None                │
+   │ ExecutorType     │ helloworld-executor │
+   │ Dependencies     │                     │
+   │ Nodes            │ 0                   │
+   │ CPU              │ 0m                  │
+   │ Memory           │ 0Ki                 │
+   │ Processes        │ 0                   │
+   │ ProcessesPerNode │ 0                   │
+   │ Storage          │ 0Ki                 │
+   │ Walltime         │ 0                   │
+   │ GPUName          │                     │
+   │ GPUs             │ 0                   │
+   │ GPUPerNode       │ 0                   │
+   │ GPUMemory        │ 0Ki                 │
+   ╰──────────────────┴─────────────────────╯
+   
+No attributes found
 
-     Attributes:
-     No attributes found
 
 Or as JSON instead of tables.
 
 .. code-block:: console 
 
-    colonies process get -p 4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4 --json 
+    colonies process get -p e298c2ef655fada6ef752b11370c315bec9667406665475f5d64280889a44114 --json 
 
 .. code-block:: json
 
     {
-       "processid":"4adbfdd08bf6e97abe17773359a3821e526067779f076564e153d07f030802d4",
-       "assignedexecutorid":"ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517",
-       "isassigned":true,
-       "state":2,
-       "prioritytime":1701293763654005927,
-       "submissiontime":"2023-11-29T22:36:03.654006+01:00",
-       "starttime":"2023-11-29T22:37:23.421473+01:00",
-       "endtime":"2023-11-29T22:37:41.443222+01:00",
-       "waitdeadline":"0001-01-01T00:53:28+00:53",
-       "execdeadline":"0001-01-01T00:53:28+00:53",
-       "retries":0,
-       "attributes":[
-          
-       ],
-       "spec":{
-          "nodename":"",
-          "funcname":"helloworld",
-          "args":[
-          ],
-          "kwargs":{
+      "processid": "e298c2ef655fada6ef752b11370c315bec9667406665475f5d64280889a44114",
+      "initiatorid": "3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac",
+      "initiatorname": "myexecutor",
+      "assignedexecutorid": "ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517",
+      "isassigned": true,
+      "state": 3,
+      "prioritytime": 1704218251124505155,
+      "submissiontime": "2024-01-02T18:57:31.124505+01:00",
+      "starttime": "2024-01-02T18:59:45.80674+01:00",
+      "endtime": "2024-01-02T19:02:01.0087+01:00",
+      "waitdeadline": "0001-01-01T00:53:28+00:53",
+      "execdeadline": "0001-01-01T00:53:28+00:53",
+      "retries": 0,
+      "attributes": [],
+      "spec": {
+        "nodename": "",
+        "funcname": "helloworld",
+        "args": [],
+        "kwargs": {},
+        "priority": 0,
+        "maxwaittime": -1,
+        "maxexectime": -1,
+        "maxretries": 0,
+        "conditions": {
+          "colonyname": "dev",
+          "executorNames": null,
+          "executortype": "helloworld-executor",
+          "dependencies": [],
+          "nodes": 0,
+          "cpu": "0m",
+          "processes": 0,
+          "processes-per-node": 0,
+          "mem": "0Ki",
+          "storage": "0Ki",
+          "gpu": {
+            "name": "",
+            "mem": "0Ki",
+            "count": 0,
+            "nodecount": 0
           },
-          "priority":0,
-          "maxwaittime":-1,
-          "maxexectime":-1,
-          "maxretries":-1,
-          "conditions":{
-             "colonyname":"dev",
-             "executorids":[
-             ],
-             "executortype":"helloworld-executor",
-             "dependencies":[
-             ],
-             "nodes":0,
-             "cpu":"",
-             "processes":0,
-             "processes-per-node":0,
-             "mem":"",
-             "storage":"",
-             "gpu":{
-                "name":"",
-                "mem":"",
-                "count":0,
-                "nodecount":0
-             },
-             "walltime":0
-          },
-          "label":"",
-          "fs":{
-             "mount":"",
-             "snapshots":null,
-             "dirs":null
-          },
-          "env":{
-             
-          }
-       },
-       "waitforparents":false,
-       "parents":[
-          
-       ],
-       "children":[
-          
-       ],
-       "processgraphid":"",
-       "in":[
-          
-       ],
-       "out":[
-          "Hej"
-       ],
-       "errors":[
-          
-       ]
+          "walltime": 0
+        },
+        "label": "",
+        "fs": {
+          "mount": "",
+          "snapshots": null,
+          "dirs": null
+        },
+        "env": {}
+      },
+      "waitforparents": false,
+      "parents": [],
+      "children": [],
+      "processgraphid": "",
+      "in": [],
+      "out": [],
+      "errors": [
+        "No errors specified"
+      ]
     }
 
 Remove a process
@@ -1032,11 +1031,40 @@ It is possible to use flag **-follow** to follow a process and print all logs un
 
 Attributes
 ==========
+Attributes are key-value pairs that can be used to store arbitrary data associated with a process. Attributes can be used to store information about the process, such as the input and output data, or to store information about the process execution. Attributes can only be added to process by an executor that has been assigned to that process. Let's submit a process and assign it to demonstrate how to use attributes.
+
+Submit and assign a process
+---------------------------
+
+.. code-block:: console
+
+    colonies function submit --spec ./examples/functions/helloworld.json
+
+.. code-block:: console
+
+    INFO[0000] Process submitted  
+    ProcessId=462e4cee0641972a1e9f7d7303843606dfce8a8716612df6e7e458e1b327d234
+
+.. code-block:: console
+
+    colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
+
+.. code-block:: console
+
+    INFO[0000] Assigned process to executor
+    ExecutorId=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517
+    ProcessId=def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f
 
 Add an attribute to a process
 -----------------------------
 
 .. code-block:: console
+
+   colonies attribute add --key mykey \
+                          --value myvalue \
+                          -p def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f \
+                          --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
+
 
     colonies attribute add --key mykey \
    --value myvalue \
@@ -1046,88 +1074,102 @@ Add an attribute to a process
 .. code-block:: console
 
    INFO[0000] Attribute added
-
-   AttributeID=77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0
+   AttributeID=1c07e06dde48b7a25a44ed644ccfcc883fed420b0fdc1207f4e829e1617571db
 
 Lookup an attribute on a process
 --------------------------------
 
 .. code-block:: console
 
-    colonies attribute get --attributeid 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0
+    colonies attribute get --attributeid 1c07e06dde48b7a25a44ed644ccfcc883fed420b0fdc1207f4e829e1617571db
 
 .. code-block:: console
 
-    +---------------+------------------------------------------------------------------+
-    | ID            | 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0 |
-    | TargetID      | 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1 |
-    | AttributeType | Out                                                              |
-    | Key           | mykey                                                            |
-    | Value         | myvalue                                                          |
-    +---------------+------------------------------------------------------------------+
+   ╭──────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────┬───────┬─────────┬──────╮
+   │ ATTRIBUTEID                                                      │ TARGETID                                                         │ KEY   │ VALUE   │ TYPE │
+   ├──────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────┼───────┼─────────┼──────┤
+   │ 1c07e06dde48b7a25a44ed644ccfcc883fed420b0fdc1207f4e829e1617571db │ def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f │ mykey │ myvalue │ Out  │
+   ╰──────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────┴───────┴─────────┴──────╯
 
 Attributes can also viewed by looking up a process.
 
 .. code-block:: console
 
-    colonies process get -p 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1
+    colonies process get -p def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f 
 
 .. code-block:: console
 
-     Process:
-     +--------------------+------------------------------------------------------------------+
-     | ID                 | 2dfc4d9348624f750151ad1eed24941676c30915d92af96c62bac155609c38c1 |
-     | IsAssigned         | True                                                             |
-     | AssignedExecutorID | ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 |
-     | State              | Running                                                          |
-     | PriorityTime       | 1701297603277101941                                              |
-     | SubmissionTime     | 2023-11-29 23:40:03                                              |
-     | StartTime          | 2023-11-29 23:40:17                                              |
-     | EndTime            | 0001-01-01 00:53:28                                              |
-     | WaitDeadline       | 0001-01-01 00:53:28                                              |
-     | ExecDeadline       | 0001-01-01 00:53:28                                              |
-     | WaitingTime        | 14.272943s                                                       |
-     | ProcessingTime     | 4m45.843362013s                                                  |
-     | Retries            | 0                                                                |
-     | Errors             |                                                                  |
-     | Output             |                                                                  |
-     +--------------------+------------------------------------------------------------------+
-     
-     FunctionSpec:
-     +-------------+------------+
-     | Func        | helloworld |
-     | Args        | None       |
-     | KwArgs      | None       |
-     | MaxWaitTime | -1         |
-     | MaxExecTime | -1         |
-     | MaxRetries  | 0          |
-     | Priority    | 0          |
-     +-------------+------------+
-     
-     Conditions:
-     +------------------+---------------------+
-     | ColonyName       | dev                 |
-     | ExecutorIDs      | None                |
-     | ExecutorType     | helloworld-executor |
-     | Dependencies     |                     |
-     | Nodes            | 0                   |
-     | CPU              |                     |
-     | Memmory          |                     |
-     | Processes        | 0                   |
-     | ProcessesPerNode | 0                   |
-     | Storage          |                     |
-     | Walltime         | 0                   |
-     | GPU              |                     |
-     | GPUs             | 0                   |
-     | GPUMemory        |                     |
-     +------------------+---------------------+
-     
-     Attributes:
-     +------------------------------------------------------------------+-------+---------+------+
-     |                                ID                                |  KEY  |  VALUE  | TYPE |
-     +------------------------------------------------------------------+-------+---------+------+
-     | 77b767baed76180b98a3cf3f553f43dfeee5aad4d98c5107f59015fe04fcdef0 | mykey | myvalue | Out  |
-     +------------------------------------------------------------------+-------+---------+------+
+   ╭───────────────────────────────────────────────────────────────────────────────────────╮
+   │ Process                                                                               │
+   ├────────────────────┬──────────────────────────────────────────────────────────────────┤
+   │ Id                 │ def42ec43e4add06bb803bdbd9d572df64eaed4479242093fe7d450b23d41b8f │
+   │ IsAssigned         │ True                                                             │
+   │ InitiatorID        │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator          │ myexecutor                                                       │
+   │ AssignedExecutorID │ ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 │
+   │ AssignedExecutorID │ Running                                                          │
+   │ PriorityTime       │ 1704218255844915410                                              │
+   │ SubmissionTime     │ 2024-01-02 18:57:35                                              │
+   │ StartTime          │ 2024-01-02 18:57:35                                              │
+   │ EndTime            │ 2024-01-02 18:57:35                                              │
+   │ WaitDeadline       │ 0001-01-01 00:53:28                                              │
+   │ ExecDeadline       │ 0001-01-01 00:53:28                                              │
+   │ WaitingTime        │ 10m51.249646s                                                    │
+   │ ProcessingTime     │ 10m45.301510243s                                                 │
+   │ Retries            │ 0                                                                │
+   │ Input              │                                                                  │
+   │ Output             │                                                                  │
+   │ Errors             │                                                                  │
+   ╰────────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭──────────────────────────╮
+   │ Function Specification   │
+   ├─────────────┬────────────┤
+   │ Func        │ helloworld │
+   │ Args        │ None       │
+   │ KwArgs      │ None       │
+   │ MaxWaitTime │ -1         │
+   │ MaxExecTime │ -1         │
+   │ MaxRetries  │ 0          │
+   │ Priority    │ 0          │
+   ╰─────────────┴────────────╯
+   ╭──────────────────────────╮
+   │ Function Specification   │
+   ├─────────────┬────────────┤
+   │ Func        │ helloworld │
+   │ Args        │ None       │
+   │ KwArgs      │ None       │
+   │ MaxWaitTime │ -1         │
+   │ MaxExecTime │ -1         │
+   │ MaxRetries  │ 0          │
+   │ Priority    │ 0          │
+   │ Label       │            │
+   ╰─────────────┴────────────╯
+   ╭────────────────────────────────────────╮
+   │ Conditions                             │
+   ├──────────────────┬─────────────────────┤
+   │ Colony           │ dev                 │
+   │ ExecutorNames    │ None                │
+   │ ExecutorType     │ helloworld-executor │
+   │ Dependencies     │                     │
+   │ Nodes            │ 0                   │
+   │ CPU              │ 0m                  │
+   │ Memory           │ 0Ki                 │
+   │ Processes        │ 0                   │
+   │ ProcessesPerNode │ 0                   │
+   │ Storage          │ 0Ki                 │
+   │ Walltime         │ 0                   │
+   │ GPUName          │                     │
+   │ GPUs             │ 0                   │
+   │ GPUPerNode       │ 0                   │
+   │ GPUMemory        │ 0Ki                 │
+   ╰──────────────────┴─────────────────────╯
+   ╭──────────────────────────────────────────────────────────────────────────────────────────╮
+   │ Attributes                                                                               │
+   ├──────────────────────────────────────────────────────────────────┬───────┬─────────┬─────┤
+   │ ATTRIBUTEID                                                      │ KEY   │ TYPE    │     │
+   ├──────────────────────────────────────────────────────────────────┼───────┼─────────┼─────┤
+   │ 1c07e06dde48b7a25a44ed644ccfcc883fed420b0fdc1207f4e829e1617571db │ mykey │ myvalue │ Out │
+   ╰──────────────────────────────────────────────────────────────────┴───────┴─────────┴─────╯
 
 Workflows
 =========
@@ -1198,8 +1240,7 @@ Submit a workflow
 .. code-block:: text
 
     INFO[0000] Workflow submitted
-
-    WorkflowID=3dd558fdd28cbc3ab01c5cf7e68ab8ca42e174aca9f520f193c9b98aca00696d
+    WorkflowID=dacee3f1a54074f77e1682df20cedcae550a796ff831123793e491d7acfcfaf7
 
 .. code-block:: console 
 
@@ -1207,14 +1248,15 @@ Submit a workflow
 
 .. code-block:: console 
 
-    +------+--------+--------+---------------------+---------------+----------------+
-    | FUNC |  ARGS  | KWARGS |   SUBMISSION TIME   | EXECUTOR TYPE | INITIATOR NAME |
-    +------+--------+--------+---------------------+---------------+----------------+
-    | echo | task_b |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
-    | echo | task_c |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
-    | echo | task_d |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
-    | echo | task_a |        | 2023-12-03 13:54:59 | cli           | myexecutor     |
-    +------+--------+--------+---------------------+---------------+----------------+
+   ╭────────────┬────────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS   │ KWARGS │ SUBMSSIONTIME       │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼────────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ echo       │ task_b │        │ 2024-01-02 19:21:43 │ cli                 │ myexecutor │
+   │ echo       │ task_c │        │ 2024-01-02 19:21:43 │ cli                 │ myexecutor │
+   │ echo       │ task_d │        │ 2024-01-02 19:21:43 │ cli                 │ myexecutor │
+   │ echo       │ task_a │        │ 2024-01-02 19:21:43 │ cli                 │ myexecutor │
+   ╰────────────┴────────┴────────┴─────────────────────┴─────────────────────┴────────────╯
+
 
 List waiting workflows
 ----------------------
@@ -1225,11 +1267,11 @@ List waiting workflows
 
 .. code-block:: console 
 
-    +------------------------------------------------------------------+---------------------+----------------+
-    |                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |
-    +------------------------------------------------------------------+---------------------+----------------+
-    | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf | 2023-12-03 14:04:21 | myexecutor     |
-    +------------------------------------------------------------------+---------------------+----------------+
+   ╭──────────────────────────────────────────────────────────────────┬─────────────────────┬────────────╮
+   │ WORKFLOWID                                                       │ SUBMSSIONTIME       │ INITIATOR  │
+   ├──────────────────────────────────────────────────────────────────┼─────────────────────┼────────────┤
+   │ dacee3f1a54074f77e1682df20cedcae550a796ff831123793e491d7acfcfaf7 │ 2024-01-02 19:21:43 │ myexecutor │
+   ╰──────────────────────────────────────────────────────────────────┴─────────────────────┴────────────╯
 
 List running workflows
 ----------------------
@@ -1270,78 +1312,75 @@ Get info about a workflow
 
 .. code-block:: console
 
-    colonies workflow get --workflowid 7fee39395bc839168efff707ed5ed23dcf713c7a87cb9e3f2e679f24bc3b79e3
+    colonies workflow get --workflowid dacee3f1a54074f77e1682df20cedcae550a796ff831123793e491d7acfcfaf7
 
 .. code-block:: console
 
-    Workflow:
-    +----------------+------------------------------------------------------------------+
-    | WorkflowID     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |
-    | InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName  | myexecutor                                                       |
-    | ColonyName     | 04d01e7b3a567305312c23a8c5a223237a2c5f6148334fa8d1df67434328b1cf |
-    | State          | Waiting                                                          |
-    | SubmissionTime | 2023-12-03 14:04:21                                              |
-    | StartTime      | 0001-01-01 00:53:28                                              |
-    | EndTime        | 0001-01-01 00:53:28                                              |
-    +----------------+------------------------------------------------------------------+
-    
-    Processes:
-    +-------------------+------------------------------------------------------------------+
-    | NodeName          | task_a                                                           |
-    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName     | myexecutor                                                       |
-    | ProcessID         | c48ac5322cad951b88704fdf56345add7c9faada7f3cc6b2ed3e9564a0f8ab34 |
-    | ExecutorType      | cli                                                              |
-    | FuncName          | echo                                                             |
-    | Args              | task_a                                                           |
-    | KwArgs            | None                                                             |
-    | State             | Waiting                                                          |
-    | WaitingForParents | false                                                            |
-    | Dependencies      | None                                                             |
-    +-------------------+------------------------------------------------------------------+
-    
-    +-------------------+------------------------------------------------------------------+
-    | NodeName          | task_b                                                           |
-    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName     | myexecutor                                                       |
-    | ProcessID         | 7d86f84d82a3320c10537d1ff1f3fc731f2555eff3099620aa151b56f90de030 |
-    | ExecutorType      | cli                                                              |
-    | FuncName          | echo                                                             |
-    | Args              | task_b                                                           |
-    | KwArgs            | None                                                             |
-    | State             | Waiting                                                          |
-    | WaitingForParents | true                                                             |
-    | Dependencies      | task_a                                                           |
-    +-------------------+------------------------------------------------------------------+
-    
-    +-------------------+------------------------------------------------------------------+
-    | NodeName          | task_d                                                           |
-    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName     | myexecutor                                                       |
-    | ProcessID         | 4b547092a861b3b80b476da341f3bedab084da2eb58c93986b6059c7609b3296 |
-    | ExecutorType      | cli                                                              |
-    | FuncName          | echo                                                             |
-    | Args              | task_d                                                           |
-    | KwArgs            | None                                                             |
-    | State             | Waiting                                                          |
-    | WaitingForParents | true                                                             |
-    | Dependencies      | task_b task_c                                                    |
-    +-------------------+------------------------------------------------------------------+
-    
-    +-------------------+------------------------------------------------------------------+
-    | NodeName          | task_c                                                           |
-    | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName     | myexecutor                                                       |
-    | ProcessID         | 73c445472762bcca8a1defc8f6adbf093ae904ece1ff6817df83f8c2e609ba89 |
-    | ExecutorType      | cli                                                              |
-    | FuncName          | echo                                                             |
-    | Args              | task_c                                                           |
-    | KwArgs            | None                                                             |
-    | State             | Waiting                                                          |
-    | WaitingForParents | true                                                             |
-    | Dependencies      | task_a                                                           |
-    +-------------------+------------------------------------------------------------------+
+   ╭───────────────────────────────────────────────────────────────────────────────────╮
+   │ Workflow                                                                          │
+   ├────────────────┬──────────────────────────────────────────────────────────────────┤
+   │ WorkflowId     │ dacee3f1a54074f77e1682df20cedcae550a796ff831123793e491d7acfcfaf7 │
+   │ SubmissionTime │ 2024-01-02 19:21:43                                              │
+   │ State          │ Waiting                                                          │
+   │ StartTime      │ 0001-01-01 00:53:28                                              │
+   │ InitiatorName  │ myexecutor                                                       │
+   │ InitiatorId    │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ EndTime        │ 0001-01-01 00:53:28                                              │
+   ╰────────────────┴──────────────────────────────────────────────────────────────────╯
+   
+   Processes:
+   ╭───────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ WaitingForParents │ false                                                            │
+   │ State             │ Waiting                                                          │
+   │ ProcessId         │ 025ee8eaf3fd031b7188687f8ef877b10f2b803036d9c1aea524769d2fe94ade │
+   │ NodeName          │ task_a                                                           │
+   │ KwArgs            │ None                                                             │
+   │ InitiatorId       │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator         │ myexecutor                                                       │
+   │ FuncName          │ echo                                                             │
+   │ ExecutorType      │ cli                                                              │
+   │ Dependencies      │ None                                                             │
+   │ Args              │ task_a                                                           │
+   ╰───────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭───────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ WaitingForParents │ true                                                             │
+   │ State             │ Waiting                                                          │
+   │ ProcessId         │ 323082529ba9d3c1888fc049ca6757a2093828b5e42c946e4c8204d4bc4b4973 │
+   │ NodeName          │ task_b                                                           │
+   │ KwArgs            │ None                                                             │
+   │ InitiatorId       │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator         │ myexecutor                                                       │
+   │ FuncName          │ echo                                                             │
+   │ ExecutorType      │ cli                                                              │
+   │ Dependencies      │ task_a                                                           │
+   │ Args              │ task_b                                                           │
+   ╰───────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭───────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ WaitingForParents │ true                                                             │
+   │ State             │ Waiting                                                          │
+   │ ProcessId         │ b3be222780252f9f334671b8f35a90b7267ff34878cee054cd084fad9e916853 │
+   │ NodeName          │ task_d                                                           │
+   │ KwArgs            │ None                                                             │
+   │ InitiatorId       │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator         │ myexecutor                                                       │
+   │ FuncName          │ echo                                                             │
+   │ ExecutorType      │ cli                                                              │
+   │ Dependencies      │ task_b task_c                                                    │
+   │ Args              │ task_d                                                           │
+   ╰───────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭───────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ WaitingForParents │ true                                                             │
+   │ State             │ Waiting                                                          │
+   │ ProcessId         │ 45b650eb0dd8e61e1ad338f40efe4734dd3d2cf3ad5b179f33f9dce4ddf3ec99 │
+   │ NodeName          │ task_c                                                           │
+   │ KwArgs            │ None                                                             │
+   │ InitiatorId       │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator         │ myexecutor                                                       │
+   │ FuncName          │ echo                                                             │
+   │ ExecutorType      │ cli                                                              │
+   │ Dependencies      │ task_a                                                           │
+   │ Args              │ task_c                                                           │
+   ╰───────────────────┴──────────────────────────────────────────────────────────────────╯
 
 Remove a workflow
 -----------------
@@ -1469,21 +1508,18 @@ process in the queue has finised or failed.
 
 .. code-block:: console
 
-    +------------+--------------------+--------+---------------------+---------------------+----------------+
-    |    FUNC    |        ARGS        | KWARGS |   SUBMISSION TIME   |    EXECUTOR TYPE    | INITIATOR NAME |
-    +------------+--------------------+--------+---------------------+---------------------+----------------+
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:13:55 | cli                 | johan          |
-    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:00 | cli                 | johan          |
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:00 | cli                 | johan          |
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:05 | cli                 | johan          |
-    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:05 | cli                 | johan          |
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:10 | cli                 | johan          |
-    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:10 | cli                 | johan          |
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:15 | cli                 | johan          |
-    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:15 | cli                 | johan          |
-    | date       | > /tmp/currentdate |        | 2023-12-03 14:14:20 | cli                 | johan          |
-    | cat        | /tmp/currentdate   |        | 2023-12-03 14:14:20 | cli                 | johan          |
-    +------------+--------------------+--------+---------------------+---------------------+----------------+
+   ╭────────────┬────────────────────┬────────┬─────────────────────┬─────────────────────┬────────────╮
+   │ FUNCNAME   │ ARGS               │ KWARGS │ SUBMSSIONTIME       │ EXECUTORTYPE        │ INITIATOR  │
+   ├────────────┼────────────────────┼────────┼─────────────────────┼─────────────────────┼────────────┤
+   │ cat        │ /tmp/currentdate   │        │ 2024-01-02 19:25:55 │ cli                 │ myexecutor │
+   │ date       │ > /tmp/currentdate │        │ 2024-01-02 19:25:55 │ cli                 │ myexecutor │
+   │ cat        │ /tmp/currentdate   │        │ 2024-01-02 19:25:50 │ cli                 │ myexecutor │
+   │ date       │ > /tmp/currentdate │        │ 2024-01-02 19:25:50 │ cli                 │ myexecutor │
+   │ date       │ > /tmp/currentdate │        │ 2024-01-02 19:25:45 │ cli                 │ myexecutor │
+   │ cat        │ /tmp/currentdate   │        │ 2024-01-02 19:25:45 │ cli                 │ myexecutor │
+   │ date       │ > /tmp/currentdate │        │ 2024-01-02 19:25:40 │ cli                 │ myexecutor │
+   │ cat        │ /tmp/currentdate   │        │ 2024-01-02 19:25:40 │ cli                 │ myexecutor │
+   ╰────────────┴────────────────────┴────────┴─────────────────────┴─────────────────────┴────────────╯
 
 Listing crons
 -------------
@@ -1493,96 +1529,83 @@ Listing crons
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+--------------+----------------+
-    |                              CRONID                              |     NAME     | INITIATOR NAME |
-    +------------------------------------------------------------------+--------------+----------------+
-    | 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d | example_cron | johan          |
-    +------------------------------------------------------------------+--------------+----------------+
+   ╭──────────────────────────────────────────────────────────────────┬──────────────┬────────────╮
+   │ CRONID                                                           │ NAME         │ INITIATOR  │
+   ├──────────────────────────────────────────────────────────────────┼──────────────┼────────────┤
+   │ 9005f3f4ea3ce9ff6fdd1aae14e67f6c6c02a72a280c2b359e28bdc3f23c7ee7 │ example_cron │ myexecutor │
+   ╰──────────────────────────────────────────────────────────────────┴──────────────┴────────────╯
 
 Getting info about a cron
 -------------------------
 .. code-block:: console
 
-    colonies cron get --cronid 733ec939a47ae4a499bdabcd3425e82b3c245613afe065ad6002dede8b98d5c2
+    colonies cron get --cronid 9005f3f4ea3ce9ff6fdd1aae14e67f6c6c02a72a280c2b359e28bdc3f23c7ee7
 
 .. code-block:: console
 
-    Cron:
-    +-------------------------+------------------------------------------------------------------+
-    | Id                      | 180828461a5b76b4e82b1cb5275a5995f7a690cd2ba4e07566b9e438e0cfdb3d |
-    | ColonyName              | dev                                                              |
-    | InitiatorID             | b06e5e9445b2db98ec66a813a0fba923422163923c9b41096867961ec39a5ab5 |
-    | InitiatorName           | johan                                                            |
-    | Name                    | example_cron                                                     |
-    | Cron Expression         | 0/5 * * * * *                                                    |
-    | Interval                | -1                                                               |
-    | Random                  | false                                                            |
-    | NextRun                 | 2023-12-03 14:17:00                                              |
-    | LastRun                 | 2023-12-03 14:16:55                                              |
-    | PrevProcessGraphID      | 0c3dc737468f52c4a548e98bfe9ffb630172f087f60c6bddd0e8954079cdb14d |
-    | WaitForPrevProcessGraph | false                                                            |
-    | CheckerPeriod           | 1000                                                             |
-    +-------------------------+------------------------------------------------------------------+
-    
-    WorkflowSpec:
-    
-    FunctionSpec 0:
-    +-------------+---------------------+
-    | Func        | date                |
-    | Args        | > /tmp/currentdate  |
-    | KwArgs      | None                |
-    | MaxWaitTime | 0                   |
-    | MaxExecTime | 0                   |
-    | MaxRetries  | 0                   |
-    | Priority    | 0                   |
-    +-------------+---------------------+
-    
-    Conditions:
-    +------------------+------+
-    | ColonyName       |      |
-    | ExecutorIDs      | None |
-    | ExecutorType     | cli  |
-    | Dependencies     |      |
-    | Nodes            | 0    |
-    | CPU              |      |
-    | Memmory          |      |
-    | Processes        | 0    |
-    | ProcessesPerNode | 0    |
-    | Storage          |      |
-    | Walltime         | 0    |
-    | GPU              |      |
-    | GPUs             | 0    |
-    | GPUMemory        |      |
-    +------------------+------+
-    
-    FunctionSpec 1:
-    +-------------+-------------------+
-    | Func        | cat               |
-    | Args        | /tmp/currentdate  |
-    | KwArgs      | None              |
-    | MaxWaitTime | 0                 |
-    | MaxExecTime | 0                 |
-    | MaxRetries  | 0                 |
-    | Priority    | 0                 |
-    +-------------+-------------------+
-    
-    Conditions:
-    +------------------+---------------+
-    | ColonyName       |               |
-    | ExecutorIDs      | None          |
-    | ExecutorType     | cli           |
-    | Dependencies     | generate_date |
-    | Nodes            | 0             |
-    | CPU              |               |
-    | Memmory          |               |
-    | Processes        | 0             |
-    | ProcessesPerNode | 0             |
-    | Storage          |               |
-    | Walltime         | 0             |
-    | GPU              |               |
-    | GPUs             | 0             |
-    | GPUMemory        |               |
-    +------------------+---------------+
+   ╭────────────────────────────────────────────────────────────────────────────────────────────╮
+   │ Cron                                                                                       │
+   ├─────────────────────────┬──────────────────────────────────────────────────────────────────┤
+   │ CronId                  │ 9005f3f4ea3ce9ff6fdd1aae14e67f6c6c02a72a280c2b359e28bdc3f23c7ee7 │
+   │ Name                    │ example_cron                                                     │
+   │ Colony                  │ dev                                                              │
+   │ InitiatorID             │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator               │ myexecutor                                                       │
+   │ Cron Expression         │ 0/5 * * * * *                                                    │
+   │ Interval                │ -1                                                               │
+   │ Random                  │ false                                                            │
+   │ NextRun                 │ 2024-01-02 19:27:35                                              │
+   │ LastRun                 │ 2024-01-02 19:27:35                                              │
+   │ PrevProcessGraphID      │ 8638064388532a2e2a082e4200579990b66243d01f2d32769e9fbc70ef206427 │
+   │ WaitForPrevProcessGraph │ false                                                            │
+   │ CheckerPeriod           │ 1000                                                             │
+   ╰─────────────────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭───────────────────────────────────╮
+   │ Function Specification            │
+   ├─────────────┬─────────────────────┤
+   │ Func        │ date                │
+   │ Args        │ > /tmp/currentdate  │
+   │ KwArgs      │ None                │
+   │ MaxWaitTime │ 0                   │
+   │ MaxExecTime │ 0                   │
+   │ MaxRetries  │ 0                   │
+   │ Priority    │ 0                   │
+   ╰─────────────┴─────────────────────╯
+   ╭───────────────────────────────────╮
+   │ Function Specification            │
+   ├─────────────┬─────────────────────┤
+   │ Func        │ date                │
+   │ Args        │ > /tmp/currentdate  │
+   │ KwArgs      │ None                │
+   │ MaxWaitTime │ 0                   │
+   │ MaxExecTime │ 0                   │
+   │ MaxRetries  │ 0                   │
+   │ Priority    │ 0                   │
+   │ Label       │                     │
+   ╰─────────────┴─────────────────────╯
+   ╭─────────────────────────────────╮
+   │ Function Specification          │
+   ├─────────────┬───────────────────┤
+   │ Func        │ cat               │
+   │ Args        │ /tmp/currentdate  │
+   │ KwArgs      │ None              │
+   │ MaxWaitTime │ 0                 │
+   │ MaxExecTime │ 0                 │
+   │ MaxRetries  │ 0                 │
+   │ Priority    │ 0                 │
+   ╰─────────────┴───────────────────╯
+   ╭─────────────────────────────────╮
+   │ Function Specification          │
+   ├─────────────┬───────────────────┤
+   │ Func        │ cat               │
+   │ Args        │ /tmp/currentdate  │
+   │ KwArgs      │ None              │
+   │ MaxWaitTime │ 0                 │
+   │ MaxExecTime │ 0                 │
+   │ MaxRetries  │ 0                 │
+   │ Priority    │ 0                 │
+   │ Label       │                   │
+   ╰─────────────┴───────────────────╯
 
 Immediately run a cron
 ----------------------
@@ -1650,7 +1673,7 @@ Remove a cron
 
 Generators
 ==========
-Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the process.
+Generators is a built-in feature in ColonyOS, which spawns workflows when certain conditions are met. Generators automatically spawn workflows when number of **pack** calls exceeds a threshold. Pack **data** is then available as an argument to the process.
 
 Add a generator
 ---------------
@@ -1680,10 +1703,10 @@ Make 4 more pack calls.
 
 .. code-block:: console
 
-    colonies generator pack --arg hello2 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
-    colonies generator pack --arg hello3 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
-    colonies generator pack --arg hello4 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
-    colonies generator pack --arg hello5 --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880
+    colonies generator pack --arg hello2 --generatorid 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef;
+    colonies generator pack --arg hello3 --generatorid 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef;
+    colonies generator pack --arg hello4 --generatorid 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef;
+    colonies generator pack --arg hello5 --generatorid 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef;
 
 Let's see if a workflow was created.
 
@@ -1693,47 +1716,46 @@ Let's see if a workflow was created.
 
 .. code-block:: console
 
-    +------------------------------------------------------------------+---------------------+----------------+
-    |                                ID                                |   SUBMISSION TIME   | INITIATOR NAME |
-    +------------------------------------------------------------------+---------------------+----------------+
-    | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 | 2023-12-03 14:28:59 | myexecutor     |
-    +------------------------------------------------------------------+---------------------+----------------+
+   ╭──────────────────────────────────────────────────────────────────┬─────────────────────┬────────────╮
+   │ WORKFLOWID                                                       │ SUBMSSIONTIME       │ INITIATOR  │
+   ├──────────────────────────────────────────────────────────────────┼─────────────────────┼────────────┤
+   │ b1706752af86ad9da0ea5cd194009188c8391a837fbb80e478e8df672742230b │ 2024-01-02 19:31:23 │ myexecutor │
+   ╰──────────────────────────────────────────────────────────────────┴─────────────────────┴────────────╯
 
 Let's lookup the Workflow to see if the data is there.
 
 .. code-block:: console
 
-    colonies workflow get --workflowid 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3
+    colonies workflow get --workflowid b1706752af86ad9da0ea5cd194009188c8391a837fbb80e478e8df672742230b 
 
 .. code-block:: console
 
-     Workflow:
-     +----------------+------------------------------------------------------------------+
-     | WorkflowID     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |
-     | InitiatorID    | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-     | InitiatorName  | myexecutor                                                       |
-     | ColonyName     | 2fd2ad0a416f2fddfae230c0c838b2cd325bbce441b4cd73933ecc0d6b8346c3 |
-     | State          | Waiting                                                          |
-     | SubmissionTime | 2023-12-03 14:28:59                                              |
-     | StartTime      | 0001-01-01 00:53:28                                              |
-     | EndTime        | 0001-01-01 00:53:28                                              |
-     +----------------+------------------------------------------------------------------+
-     
-     Processes:
-     +-------------------+------------------------------------------------------------------+
-     | NodeName          | generator_example                                                |
-     | InitiatorID       | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-     | InitiatorName     | myexecutor                                                       |
-     | ProcessID         | 1efe2efa771ac492850e5dc4d748f0155d3fa373177a6163a90937b284d2510f |
-     | ExecutorType      | cli                                                              |
-     | FuncName          | echo                                                             |
-     | Args              | hello1 hello2 hello3 hello4                                      |
-     |                   | hello5                                                           |
-     | KwArgs            | None                                                             |
-     | State             | Waiting                                                          |
-     | WaitingForParents | false                                                            |
-     | Dependencies      | None                                                             |
-     +-------------------+------------------------------------------------------------------+
+   ╭───────────────────────────────────────────────────────────────────────────────────╮
+   │ Workflow                                                                          │
+   ├────────────────┬──────────────────────────────────────────────────────────────────┤
+   │ WorkflowId     │ b1706752af86ad9da0ea5cd194009188c8391a837fbb80e478e8df672742230b │
+   │ SubmissionTime │ 2024-01-02 19:31:23                                              │
+   │ State          │ Waiting                                                          │
+   │ StartTime      │ 0001-01-01 00:53:28                                              │
+   │ InitiatorName  │ myexecutor                                                       │
+   │ InitiatorId    │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ EndTime        │ 0001-01-01 00:53:28                                              │
+   ╰────────────────┴──────────────────────────────────────────────────────────────────╯
+   
+   Processes:
+   ╭───────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ WaitingForParents │ false                                                            │
+   │ State             │ Waiting                                                          │
+   │ ProcessId         │ 3fc9d091bd6684c86215d4284dce1836cb477eab4a7a44771ae4d008ff3d3e4f │
+   │ NodeName          │ generator_example                                                │
+   │ KwArgs            │ None                                                             │
+   │ InitiatorId       │ 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac │
+   │ Initiator         │ myexecutor                                                       │
+   │ FuncName          │ echo                                                             │
+   │ ExecutorType      │ cli                                                              │
+   │ Dependencies      │ None                                                             │
+   │ Args              │ hello3 hello4 hello5 hello2 hello3                               │
+   ╰───────────────────┴──────────────────────────────────────────────────────────────────╯
 
 List generators
 ---------------
@@ -1743,64 +1765,56 @@ List generators
 
 .. code-block:: console
 
-     +------------------------------------------------------------------+---------------+----------------+
-     |                           GENERATORID                            |     NAME      | INITIATOR NAME |
-     +------------------------------------------------------------------+---------------+----------------+
-     | 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 | testgenerator | myexecutor     |
-     +------------------------------------------------------------------+---------------+----------------+
+   ╭──────────────────────────────────────────────────────────────────┬───────────────┬────────────╮
+   │ GENERATORID                                                      │ NAME          │ INITIATOR  │
+   ├──────────────────────────────────────────────────────────────────┼───────────────┼────────────┤
+   │ 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef │ testgenerator │ myexecutor │
+   ╰──────────────────────────────────────────────────────────────────┴───────────────┴────────────╯
 
 Get info about a generator
 --------------------------
 .. code-block:: console
 
-    colonies generator get --generatorid 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 
+    colonies generator get --generatorid 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef
 
 .. code-block:: console
 
-    Generator:
-    +---------------+------------------------------------------------------------------+
-    | Id            | 112480ed9cfc25f69ad87009d38946fd024c8d0320f7295838eda368e0cb7880 |
-    | ColonyName    | dev                                                              |
-    | InitiatorID   | 3fc05cf3df4b494e95d6a3d297a34f19938f7daa7422ab0d4f794454133341ac |
-    | InitiatorName | myexecutor                                                       |
-    | Name          | testgenerator                                                    |
-    | Trigger       | 5                                                                |
-    | Timeout       | -1                                                               |
-    | Lastrun       | 2023-12-03 14:28:59                                              |
-    | CheckerPeriod | 1000                                                             |
-    | QueueSize     | 0                                                                |
-    +---------------+------------------------------------------------------------------+
-    
-    WorkflowSpec:
-    
-    FunctionSpec 0:
-    +-------------+------+
-    | Func        | echo |
-    | Args        | None |
-    | KwArgs      | None |
-    | MaxWaitTime | 0    |
-    | MaxExecTime | 0    |
-    | MaxRetries  | 0    |
-    | Priority    | 0    |
-    +-------------+------+
-    
-    Conditions:
-    +------------------+------+
-    | ColonyName       |      |
-    | ExecutorIDs      | None |
-    | ExecutorType     | cli  |
-    | Dependencies     |      |
-    | Nodes            | 0    |
-    | CPU              |      |
-    | Memmory          |      |
-    | Processes        | 0    |
-    | ProcessesPerNode | 0    |
-    | Storage          |      |
-    | Walltime         | 0    |
-    | GPU              |      |
-    | GPUs             | 0    |
-    | GPUMemory        |      |
-    +------------------+------+
+   ╭───────────────┬──────────────────────────────────────────────────────────────────╮
+   │ Trigger       │ 5                                                                │
+   │ Timeout       │ -1                                                               │
+   │ QueueSize     │ 2                                                                │
+   │ Name          │ testgenerator                                                    │
+   │ Lastrun       │ 2024-01-02 19:31:23                                              │
+   │ Initiator     │ myexecutor                                                       │
+   │ GeneratorId   │ 3ac74d27f132007d5fb2e7cbedb279f26c78f0c9df98ba73357c0efe91c9c1ef │
+   │ Colony        │ dev                                                              │
+   │ CheckerPeriod │ 1000                                                             │
+   ╰───────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭────────────────────╮
+   │ Function Specifica │
+   │ tion               │
+   ├─────────────┬──────┤
+   │ Func        │ echo │
+   │ Args        │ None │
+   │ KwArgs      │ None │
+   │ MaxWaitTime │ 0    │
+   │ MaxExecTime │ 0    │
+   │ MaxRetries  │ 0    │
+   │ Priority    │ 0    │
+   ╰─────────────┴──────╯
+   ╭────────────────────╮
+   │ Function Specifica │
+   │ tion               │
+   ├─────────────┬──────┤
+   │ Func        │ echo │
+   │ Args        │ None │
+   │ KwArgs      │ None │
+   │ MaxWaitTime │ 0    │
+   │ MaxExecTime │ 0    │
+   │ MaxRetries  │ 0    │
+   │ Priority    │ 0    │
+   │ Label       │      │
+   ╰─────────────┴──────╯
 
 Remove a generator
 ------------------
@@ -1838,85 +1852,45 @@ First create some files.
 
 .. code-block:: console 
 
-    mkdir myfiles  
-    cd myfiles
-    echo "Hello" > hello.txt
-    mkdir subdir
-    cd subdir
-    echo "Hello 2" > hello2.txt 
+    mkdir myfiles; 
+    cd myfiles;
+    echo "Hello" > hello.txt;
+    mkdir subdir;
+    cd subdir;
+    echo "Hello 2" > hello2.txt;
     cd ../..
 
 Now, upload the *myfiles* directory and all its sub-directories to CFS under the **label** *myfiles*.
 
 .. code-block:: console 
 
-    colonies fs sync -l myfiles -d myfiles
+    colonies fs sync -l myfiles -d myfiles --yes
 
 .. code-block:: console 
 
-    /myfiles:
-    =========
-    These files will be uploaded:
-    +-----------+-------+---------+
-    |   FILE    | SIZE  |  LABEL  |
-    +-----------+-------+---------+
-    | hello.txt | 0 KiB | myfiles |
-    +-----------+-------+---------+
-    No files will be downloaded
-    
-    /myfiles/subdir:
-    ================
-    These files will be uploaded:
-    +------------+-------+---------+
-    |    FILE    | SIZE  |  LABEL  |
-    +------------+-------+---------+
-    | hello2.txt | 0 KiB | myfiles |
-    +------------+-------+---------+
-    No files will be downloaded
-    
-    Are you sure you want to continue? (yes,no): yes
-    Uploading hello.txt 100% [===============] (19 kB/s)
-    Uploading hello2.txt 100% [===============] (32 kB/s)
-
+   INFO[0000] Calculating sync plans
+   Analyzing /home/johan/dev/github/colony~ ... done!
+   Analyzing /home/johan/dev/github/colony~ ... done!
+   Uploading /myfiles/subdir                ... done! [8B]
+   Uploading /myfiles                       ... done! [6B]
 
 We can not download the files from another computer, or just to another directory (*myfiles2*).
 
 .. code-block:: console 
 
-    colonies fs sync -l myfiles -d myfiles2
+    colonies fs sync -l myfiles -d myfiles2 --yes
 
 .. code-block:: console 
 
-    /myfiles:
-    =========
-    No files will be uploaded
-    
-    These files will be downloaded to directory: myfiles2/
-    +-----------+-------+---------+
-    |   FILE    | SIZE  |  LABEL  |
-    +-----------+-------+---------+
-    | hello.txt | 0 KiB | myfiles |
-    +-----------+-------+---------+
-    
-    /myfiles/subdir:
-    ================
-    No files will be uploaded
-    
-    These files will be downloaded to directory: myfiles2/
-    +------------+-------+---------+
-    |    FILE    | SIZE  |  LABEL  |
-    +------------+-------+---------+
-    | hello2.txt | 0 KiB | myfiles |
-    +------------+-------+---------+
-    
-    Are you sure you want to continue? (yes,no): yes
-     Downloading hello.txt 100% [===============] (196 B/s)
-     Downloading hello2.txt 100% [===============] (224 B/s)
+   INFO[0000] Calculating sync plans
+   Downloading /home/johan/dev/github/colo~ ... done! [8B]
+   Downloading /home/johan/dev/github/colo~ ... done! [6B]
 
 Use the flag **--keeplocal=true** to prevent the CLI from overwriting local files in case the files have changed remotely.
 
 List all labels
 ---------------
+To list all labels, type:
 
 .. code-block:: console 
 
@@ -1924,12 +1898,12 @@ List all labels
 
 .. code-block:: console 
 
-    +-----------------+-----------------+
-    |      LABEL      | NUMBER OF FILES |
-    +-----------------+-----------------+
-    | /myfiles        | 1               |
-    | /myfiles/subdir | 1               |
-    +-----------------+-----------------+
+   ╭─────────────────┬───────╮
+   │ LABEL           │ FILES │
+   ├─────────────────┼───────┤
+   │ /myfiles/subdir │ 1     │
+   │ /myfiles        │ 1     │
+   ╰─────────────────┴───────╯
 
 .. code-block:: console 
 
@@ -1944,11 +1918,11 @@ List files in a label
 
 .. code-block:: console 
 
-    +-----------+-------+------------------------------------------------------------------+---------------------+-----------+
-    | FILENAME  | SIZE  |                            LATEST ID                             |        ADDED        | REVISIONS |
-    +-----------+-------+------------------------------------------------------------------+---------------------+-----------+
-    | hello.txt | 0 KiB | f8bcf8878543d199e4b7d48209f2dbd81be69be9609018ea33c64ebd403df47c | 2023-11-29 23:06:29 | 1         |
-    +-----------+-------+------------------------------------------------------------------+---------------------+-----------+
+   ╭───────────┬───────┬──────────────────────────────────────────────────────────────────┬─────────────────────┬───────────╮
+   │ FILENAME  │ SIZE  │ LATEST ID                                                        │ ADDED               │ REVISIONS │
+   ├───────────┼───────┼──────────────────────────────────────────────────────────────────┼─────────────────────┼───────────┤
+   │ hello.txt │ 0 KiB │ e7036e2a0da8bc9d4e8cb260e340e21ff2c493122561fd05f7fb76da4b191284 │ 2024-01-02 19:38:55 │ 1         │
+   ╰───────────┴───────┴──────────────────────────────────────────────────────────────────┴─────────────────────┴───────────╯
 
 Get info about a file
 ---------------------
@@ -1959,27 +1933,27 @@ Get info about a file
 
 .. code-block:: console 
 
-     +-----------------+------------------------------------------------------------------+
-     | Filename        | hello.txt                                                        |
-     | Id              | f8bcf8878543d199e4b7d48209f2dbd81be69be9609018ea33c64ebd403df47c |
-     | ColonyName      | dev                                                              |
-     | Added           | 2023-11-29 23:06:29                                              |
-     | Sequence Number | 1                                                                |
-     | Label           | /myfiles                                                         |
-     | Size            | 0 KiB                                                            |
-     | Checksum        | 66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f18 |
-     | Checksum Alg    | SHA256                                                           |
-     | Protocol        | s3                                                               |
-     | S3 Endpoint     | s3.colonyos.io:443                                               |
-     | S3 TLS          | true                                                             |
-     | S3 Region       |                                                                  |
-     | S3 Bucket       | colonies-prod                                                    |
-     | S3 Object       | fdfc87d498950102a6129b7e09489e16c59e19f38310c2f93213e5f54656fea7 |
-     | S3 Accesskey    | *********************************                                |
-     | S3 Secretkey    | *********************************                                |
-     | Encryption Key  | *********************************                                |
-     | Encryption Alg  |                                                                  |
-     +-----------------+------------------------------------------------------------------+
+   ╭─────────────────┬──────────────────────────────────────────────────────────────────╮
+   │ Filename        │ hello.txt                                                        │
+   │ FileId          │ e7036e2a0da8bc9d4e8cb260e340e21ff2c493122561fd05f7fb76da4b191284 │
+   │ Added           │ 2024-01-02 19:38:55                                              │
+   │ Sequence Number │ 2                                                                │
+   │ Label           │ /myfiles                                                         │
+   │ Colony          │ dev                                                              │
+   │ Size            │ 0 KiB                                                            │
+   │ Checksum        │ 66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f18 │
+   │ Checksum Alg    │ SHA256                                                           │
+   │ Protocol        │ s3                                                               │
+   │ S3 Endpoint     │ localhost:9000                                                   │
+   │ S3 TLS          │ false                                                            │
+   │ S3 Region       │                                                                  │
+   │ S3 Bucket       │ colonies-prod                                                    │
+   │ S3 Object       │ e85385e4fcc4a4de5ff6d9921288df79d53ed33ebfde9625ec65bc234bc70b8b │
+   │ S3 Accesskey    │ ******************************                                   │
+   │ S3 Secretkey    │ ******************************                                   │
+   │ Encryption Key  │ ******************************                                   │
+   │ Encryption Alg  │                                                                  │
+   ╰─────────────────┴──────────────────────────────────────────────────────────────────╯
 
 Download a specific file
 ------------------------
@@ -1991,7 +1965,7 @@ To download a specific File in a specific Label to a directory *newdir*:
 
 .. code-block:: console 
 
-      Downloading hello.txt 100% [===============] (191 B/s)
+   Downloading hello.txt                    ... done! [6B]
 
 Remove a file
 -------------
@@ -2023,6 +1997,7 @@ Remove a label
 
 Create a snapshot
 -----------------
+A Snapshot is a read-only copy of a Label. Snapshots are useful when you want to make sure that a Label is not changed. For example, you can create a snapshot of a Label and then download the snapshot to another computer. A snapshot can not be changed after it has been created.
 
 .. code-block:: console 
 
@@ -2032,24 +2007,23 @@ Create a snapshot
 
    INFO[0000] Snapshot created
    Label=/myfiles/ SnapshotName=mysnapshot
-   
-   +------------+------------------------------------------------------------------+
-    | SnapshotId | c0c2a910f463b32658b346511bb0792c3dee5b81bbb5a757fe3dceb71b8ef379 |
-    | ColonyName | dev                                                              |
-    | Label      | /myfiles                                                         |
-    | Name       | mysnapshot                                                       |
-    | Added      | 2023-12-01 07:00:04                                              |
-    +------------+------------------------------------------------------------------+
-
-    +------------+------------------------------------------------------------------+---------------------+
-    |  FILENAME  |                              FILEID                              |        ADDED        |
-    +------------+------------------------------------------------------------------+---------------------+
-    | hello.txt  | 0e0613956395c1aa733fe92a2fa5add62a5ac745f859d75f5f2cad81067e0381 | 2023-12-01 07:58:51 |
-    | hello2.txt | 7a34d75bb43749960a031dc0048fa4539747093a3756cb5ca612a36f487b5fbb | 2023-12-01 07:58:51 |
-    +------------+------------------------------------------------------------------+---------------------+
+   ╭────────────┬──────────────────────────────────────────────────────────────────╮
+   │ SnapshotId │ 8a66fe1bd92ee5af4f739f8c5ded116251d12db95db248a77b0f41fd3e41ff39 │
+   │ Name       │ mysnapshot                                                       │
+   │ Label      │ /myfiles                                                         │
+   │ Colony     │ dev                                                              │
+   │ Added      │ 2024-01-02 18:43:45                                              │
+   ╰────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭────────────┬──────────────────────────────────────────────────────────────────┬─────────────────────╮
+   │ FILENAME   │ FILEID                                                           │ ADDED               │
+   ├────────────┼──────────────────────────────────────────────────────────────────┼─────────────────────┤
+   │ hello.txt  │ e7036e2a0da8bc9d4e8cb260e340e21ff2c493122561fd05f7fb76da4b191284 │ 2024-01-02 19:38:55 │
+   │ hello2.txt │ 84c424fc6e7ae6ce6dfe7a88c5877e5af44c56fc65f60824f4282b22a73d0cff │ 2024-01-02 19:38:55 │
+   ╰────────────┴──────────────────────────────────────────────────────────────────┴─────────────────────╯
 
 Download a snapshot
 -------------------
+To download a snapshot to a directory *downloaded_snapshot*:
 
 .. code-block:: console 
 
@@ -2062,6 +2036,7 @@ Download a snapshot
 
 Show info about a snapshot
 --------------------------
+To show info about a snapshot:
 
 .. code-block:: console 
 
@@ -2069,20 +2044,19 @@ Show info about a snapshot
 
 .. code-block:: console 
 
-    +------------+------------------------------------------------------------------+
-    | SnapshotId | 12d18ac52fd618b079882a21796283be21b375ca6654a768c3d93c614d5e2dfd |
-    | ColonyName | dev                                                              |
-    | Label      | /myfiles                                                         |
-    | Name       | mysnapshot                                                       |
-    | Added      | 2023-12-01 08:15:01                                              |
-    +------------+------------------------------------------------------------------+
-    
-    +------------+------------------------------------------------------------------+---------------------+
-    |  FILENAME  |                              FILEID                              |        ADDED        |
-    +------------+------------------------------------------------------------------+---------------------+
-    | hello.txt  | f31f64056c5d00583816e0fb91c055601ecf7bc86be0e1e6c6d8cc98c8d8ee61 | 2023-12-01 08:14:47 |
-    | hello2.txt | 38fbed96c244a21dd5f2b187a9be0912fa79ca6ff78f641dfb116dc4489cf393 | 2023-12-01 08:14:47 |
-    +------------+------------------------------------------------------------------+---------------------+
+   ╭────────────┬──────────────────────────────────────────────────────────────────╮
+   │ SnapshotId │ 8a66fe1bd92ee5af4f739f8c5ded116251d12db95db248a77b0f41fd3e41ff39 │
+   │ Name       │ mysnapshot                                                       │
+   │ Label      │ /myfiles                                                         │
+   │ Colony     │ dev                                                              │
+   │ Added      │ 2024-01-02 19:43:45                                              │
+   ╰────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭────────────┬──────────────────────────────────────────────────────────────────┬─────────────────────╮
+   │ FILENAME   │ FILEID                                                           │ ADDED               │
+   ├────────────┼──────────────────────────────────────────────────────────────────┼─────────────────────┤
+   │ hello.txt  │ e7036e2a0da8bc9d4e8cb260e340e21ff2c493122561fd05f7fb76da4b191284 │ 2024-01-02 19:38:55 │
+   │ hello2.txt │ 84c424fc6e7ae6ce6dfe7a88c5877e5af44c56fc65f60824f4282b22a73d0cff │ 2024-01-02 19:38:55 │
+   ╰────────────┴──────────────────────────────────────────────────────────────────┴─────────────────────╯
 
 Remove a snaphot
 ----------------

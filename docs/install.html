@@ -7,7 +7,7 @@
   <title>Docker-compose &mdash; ColonyOS  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
@@ -253,17 +253,17 @@ Note that all keys are published on the Internet. Use <code class="docutils lite
 <section id="setup-minio-s3">
 <h2>Setup Minio/S3<a class="headerlink" href="#setup-minio-s3" title="Link to this heading"></a></h2>
 <p>To use Colony FS, you alse need to set up Minio/S3.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD</span>
-<span class="go">mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY</span>
-<span class="go">mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY</span>
-<span class="go">mc mb myminio/$AWS_S3_BUCKET</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD;</span>
+<span class="go">mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY;</span>
+<span class="go">mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY;</span>
+<span class="go">mc mb myminio/$AWS_S3_BUCKET;</span>
 </pre></div>
 </div>
 </section>
 <section id="create-a-colony">
 <h2>Create a Colony<a class="headerlink" href="#create-a-colony" title="Link to this heading"></a></h2>
 <p>Create a new colony and a new user.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony add --name $COLONIES_COLONY_NAME --colonyid $COLONIES_COLONY_ID</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony add --name $COLONIES_COLONY_NAME --colonyid $COLONIES_COLONY_ID;</span>
 <span class="go">colonies user add --name=&quot;myuser&quot; --email=&quot;&quot; --phone=&quot;&quot; --userid=$COLONIES_ID</span>
 </pre></div>
 </div>
@@ -304,11 +304,11 @@ Clone the <a class="reference external" href="https://github.com/colonyos/coloni
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor ls</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+------------+------+----------+</span>
-<span class="go">|    NAME    | TYPE | LOCATION |</span>
-<span class="go">+------------+------+----------+</span>
-<span class="go">| myexecutor | cli  |          |</span>
-<span class="go">+------------+------+----------+</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">╭────────────┬──────┬──────────╮</span>
+<span class="go">│ NAME       │ TYPE │ LOCATION │</span>
+<span class="go">├────────────┼──────┼──────────┤</span>
+<span class="go">│ myexecutor │ cli  │          │</span>
+<span class="go">╰────────────┴──────┴──────────╯</span>
 </pre></div>
 </div>
 <section id="id2">

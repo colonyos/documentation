@@ -81,10 +81,10 @@ To use Colony FS, you alse need to set up Minio/S3.
 
 .. code-block:: console
 
-    mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD
-    mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY
-    mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY
-    mc mb myminio/$AWS_S3_BUCKET
+    mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD;
+    mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY;
+    mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY;
+    mc mb myminio/$AWS_S3_BUCKET;
 
 
 Create a Colony
@@ -93,7 +93,7 @@ Create a new colony and a new user.
 
 .. code-block:: console
 
-    colonies colony add --name $COLONIES_COLONY_NAME --colonyid $COLONIES_COLONY_ID
+    colonies colony add --name $COLONIES_COLONY_NAME --colonyid $COLONIES_COLONY_ID;
     colonies user add --name="myuser" --email="" --phone="" --userid=$COLONIES_ID
 
 
@@ -145,11 +145,12 @@ Verify the installation. There should be one registered executor.
 
 .. code-block:: console
 
-   +------------+------+----------+
-   |    NAME    | TYPE | LOCATION |
-   +------------+------+----------+
-   | myexecutor | cli  |          |
-   +------------+------+----------+
+   ╭────────────┬──────┬──────────╮
+   │ NAME       │ TYPE │ LOCATION │
+   ├────────────┼──────┼──────────┤
+   │ myexecutor │ cli  │          │
+   ╰────────────┴──────┴──────────╯
+
 
 Setup Minio/S3
 --------------
