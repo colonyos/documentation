@@ -2070,3 +2070,151 @@ Remove a snaphot
     INFO[0000] Snapshot removed
 
     SnapshotName=mysnapshot
+
+Security
+========
+
+Change user Id
+--------------
+To change the user Id, you first need to generate a new private key. The private key is used to sign all requests to the ColonyOS API. 
+
+.. code-block:: console
+
+    colonies key generate
+
+.. code-block:: console
+
+    INFO[0000] Generated new private key
+    Id=af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079 
+    PrvKey=09ca203b3b033a58118ee786e779020a50bdc47e81d6dd214ccd3f9b802d659f
+
+To change the user Id, type:
+
+.. code-block:: console
+   
+    colonies user chid --userid af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079
+
+.. code-block:: console
+
+    INFO[0000] Changed user Id
+    ColonyName=dev 
+    UserId=af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079
+
+To use the new user Id, you also need to update the environmental variable **COLONIES_PRVKEY**
+
+.. code-block:: console
+
+    export COLONIES_PRVKEY=09ca203b3b033a58118ee786e779020a50bdc47e81d6dd214ccd3f9b802d659f
+
+Change executor Id
+------------------
+Let's first add a test executor.
+
+.. code-block:: console
+
+    colonies key generate 
+
+.. code-block:: console
+
+    INFO[0000] Generated new private key
+    Id=e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9
+    PrvKey=a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd
+
+.. code-block:: console
+
+   colonies executor add --executorid e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9 \
+   --name my_name \
+   --type my_type \
+   --approve
+
+Export the private key to an environmental variable to use exector when interacting with the ColonyOS API.
+
+.. code-block:: console
+
+   export COLONIES_PRVKEY=a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd
+
+Now, let's change the executor Id.
+
+.. code-block:: console
+
+    colonies key generate 
+
+.. code-block:: console
+
+   INFO[0000] Generated new private key
+   Id=68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd
+   PrvKey=6131943cee3c123a5eb6d4c28ba107f60e215ea4fc2013c009dd6cacf1e964cd
+
+.. code-block:: console
+
+    colonies executor chid --executorid 68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd
+
+.. code-block:: console
+
+    INFO[0000] Changed executor Id
+    ColonyName=dev 
+    ExecutorId=68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd
+
+Update the environmental variable **COLONIES_PRVKEY** to use the new executor Id.
+
+.. code-block:: console
+
+   export COLONIES_PRVKEY=6131943cee3c123a5eb6d4c28ba107f60e215ea4fc2013c009dd6cacf1e964cd
+
+Change colony Id
+----------------
+
+To generate a new colony Id, first generate a new private key.
+
+.. code-block:: console
+
+   colonies key generate 
+
+.. code-block:: console
+   
+   INFO[0000] Generated new private key
+   Id=07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa
+   PrvKey=da041bd75fe6e2c0bfdf95873ab12d2dcd11aaf46ef6f9c5cac28b4fa9386ff0
+
+.. code-block:: console
+
+   colonies colony chid --colonyid 07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa
+ 
+.. code-block:: console
+
+    INFO[0000] Changed colony Id
+    ColonyId=07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa
+    ColonyName=dev
+
+To use the new colony Id, you also need to update the environmental variable **COLONIES_COLONY_PRVKEY**.
+
+.. code-block:: console
+   
+    export COLONIES_COLONY_PRVKEY=da041bd75fe6e2c0bfdf95873ab12d2dcd11aaf46ef6f9c5cac28b4fa9386ff0
+
+Change server Id
+----------------
+
+To generate a new server Id, first generate a new private key.
+
+.. code-block:: console
+
+   colonies key generate
+
+.. code-block:: console
+
+   INFO[0000] Generated new private key
+   Id=fc99670de6c091c99b5ea8e86f230e238f1cc67b29d0d4e7204e38b6d366710b
+   PrvKey=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18
+
+.. code-block:: console
+
+   colonies server chid --serverid fc99670de6c091c99b5ea8e86f230e238f1cc67b29d0d4e7204e38b6d366710b
+
+To use the new server Id, you also need to update the environmental variable **COLONIES_SERVER_PRVKEY**. 
+
+.. code-block:: console
+
+   export COLONIES_SERVER_PRVKEY=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18
+
+

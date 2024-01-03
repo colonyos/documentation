@@ -211,6 +211,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#remove-a-snaphot">Remove a snaphot</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#security">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-user-id">Change user Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-executor-id">Change executor Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-colony-id">Change colony Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-server-id">Change server Id</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
 <ul>
@@ -2080,6 +2087,120 @@ process in the queue has finised or failed.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Snapshot removed</span>
 
 <span class="go">SnapshotName=mysnapshot</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="security">
+<h1>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h1>
+<section id="change-user-id">
+<h2>Change user Id<a class="headerlink" href="#change-user-id" title="Link to this heading"></a></h2>
+<p>To change the user Id, you first need to generate a new private key. The private key is used to sign all requests to the ColonyOS API.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+<span class="go">Id=af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079</span>
+<span class="go">PrvKey=09ca203b3b033a58118ee786e779020a50bdc47e81d6dd214ccd3f9b802d659f</span>
+</pre></div>
+</div>
+<p>To change the user Id, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies user chid --userid af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Changed user Id</span>
+<span class="go">ColonyName=dev</span>
+<span class="go">UserId=af27015d13c896829c7f670d9cc3804a99b95f6ff6742090c99255a15e9a9079</span>
+</pre></div>
+</div>
+<p>To use the new user Id, you also need to update the environmental variable <strong>COLONIES_PRVKEY</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_PRVKEY=09ca203b3b033a58118ee786e779020a50bdc47e81d6dd214ccd3f9b802d659f</span>
+</pre></div>
+</div>
+</section>
+<section id="change-executor-id">
+<h2>Change executor Id<a class="headerlink" href="#change-executor-id" title="Link to this heading"></a></h2>
+<p>Let’s first add a test executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+<span class="go">Id=e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9</span>
+<span class="go">PrvKey=a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor add --executorid e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9 \</span>
+<span class="go">--name my_name \</span>
+<span class="go">--type my_type \</span>
+<span class="go">--approve</span>
+</pre></div>
+</div>
+<p>Export the private key to an environmental variable to use exector when interacting with the ColonyOS API.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_PRVKEY=a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd</span>
+</pre></div>
+</div>
+<p>Now, let’s change the executor Id.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+<span class="go">Id=68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd</span>
+<span class="go">PrvKey=6131943cee3c123a5eb6d4c28ba107f60e215ea4fc2013c009dd6cacf1e964cd</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies executor chid --executorid 68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Changed executor Id</span>
+<span class="go">ColonyName=dev</span>
+<span class="go">ExecutorId=68fd35cdb87cc00825a86cdb0accae67565ea68fede3a1694864cd57104844cd</span>
+</pre></div>
+</div>
+<p>Update the environmental variable <strong>COLONIES_PRVKEY</strong> to use the new executor Id.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_PRVKEY=6131943cee3c123a5eb6d4c28ba107f60e215ea4fc2013c009dd6cacf1e964cd</span>
+</pre></div>
+</div>
+</section>
+<section id="change-colony-id">
+<h2>Change colony Id<a class="headerlink" href="#change-colony-id" title="Link to this heading"></a></h2>
+<p>To generate a new colony Id, first generate a new private key.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+<span class="go">Id=07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa</span>
+<span class="go">PrvKey=da041bd75fe6e2c0bfdf95873ab12d2dcd11aaf46ef6f9c5cac28b4fa9386ff0</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies colony chid --colonyid 07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Changed colony Id</span>
+<span class="go">ColonyId=07079e6e0d6737c688204ec2fcb68db1b00a903e9f059a76f1fcb185947de7fa</span>
+<span class="go">ColonyName=dev</span>
+</pre></div>
+</div>
+<p>To use the new colony Id, you also need to update the environmental variable <strong>COLONIES_COLONY_PRVKEY</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_COLONY_PRVKEY=da041bd75fe6e2c0bfdf95873ab12d2dcd11aaf46ef6f9c5cac28b4fa9386ff0</span>
+</pre></div>
+</div>
+</section>
+<section id="change-server-id">
+<h2>Change server Id<a class="headerlink" href="#change-server-id" title="Link to this heading"></a></h2>
+<p>To generate a new server Id, first generate a new private key.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key generate</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Generated new private key</span>
+<span class="go">Id=fc99670de6c091c99b5ea8e86f230e238f1cc67b29d0d4e7204e38b6d366710b</span>
+<span class="go">PrvKey=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies server chid --serverid fc99670de6c091c99b5ea8e86f230e238f1cc67b29d0d4e7204e38b6d366710b</span>
+</pre></div>
+</div>
+<p>To use the new server Id, you also need to update the environmental variable <strong>COLONIES_SERVER_PRVKEY</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_SERVER_PRVKEY=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18</span>
 </pre></div>
 </div>
 </section>
