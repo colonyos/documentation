@@ -1997,7 +1997,7 @@ Remove a label
 
 Create a snapshot
 -----------------
-A Snapshot is a read-only copy of a Label. Snapshots are useful when you want to make sure that a Label is not changed. For example, you can create a snapshot of a Label and then download the snapshot to another computer. A snapshot can not be changed after it has been created.
+A snapshot is a read-only copy of a label. Snapshots are useful for ensuring that a label remains unchanged. For instance, you can create a snapshot of a label, then download it to another computer, ensuring you retrieve the same files part of the snapshots even if the label has been modified. Once created, a snapshot cannot be altered.
 
 .. code-block:: console 
 
