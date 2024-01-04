@@ -142,6 +142,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submitting-function-specs">Submitting function specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assigning-functions-to-executors">Assigning functions to executors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#alternative-method-to-execute-a-function">Alternative method to execute a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#registering-a-function">Registering a function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-all-registered-functions">List all registered functions</a></li>
@@ -152,6 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#list-running-processes">List running processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-successful-processes">List successful processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-failed-processes">List failed processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filtering-processes">Filtering processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-info-about-a-process">Get info about a process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remove-a-process">Remove a process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remove-all-processes">Remove all processes</a></li>
@@ -218,6 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#change-executor-id">Change executor Id</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-colony-id">Change colony Id</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#change-server-id">Change server Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-out-id-given-a-private-key">Find out Id given a private key</a></li>
 </ul>
 </li>
 </ul>
@@ -762,6 +765,9 @@ The following command will approve an executor:</p>
 <span class="go">ExecutorName=helloworld-executor ExecutorType=helloworld-executor</span>
 </pre></div>
 </div>
+</section>
+<section id="assigning-functions-to-executors">
+<h2>Assigning functions to executors<a class="headerlink" href="#assigning-functions-to-executors" title="Link to this heading"></a></h2>
 <p>To assign a process to an executor, the command <strong>colonies process assign</strong> can be used and also specify the <strong>helloworld-executor</strong> executor’s private key. Typically, the assign operation is carried out by specialized executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process assign --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
 </pre></div>
@@ -912,6 +918,31 @@ Now close the process with a result string (Hej).</p>
 <span class="go">├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤</span>
 <span class="go">│ helloworld │      │        │ 2024-01-02 19:02:01 │ helloworld-executor │ myexecutor │</span>
 <span class="go">╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-processes">
+<h2>Filtering processes<a class="headerlink" href="#filtering-processes" title="Link to this heading"></a></h2>
+<p>It is possible to specify a label when submitting a process. This label can then be used to filter processes. The label can be either be specified in the JSON file or with the <strong>–label</strong> flag when submitting function specifications.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process ps --func helloworld --label mylabel</span>
+<span class="go">colonies function exec --func fibonacci --args 10 --targettype cli --label mylabel</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">{</span>
+<span class="go">    &quot;conditions&quot;: {</span>
+<span class="go">        &quot;executortype&quot;: &quot;helloworld-executor&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;funcname&quot;: &quot;helloworld&quot;,</span>
+<span class="go">        &quot;label&quot;: &quot;mylabel&quot;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>To filter processes with a specific label, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process ps --label mylabel</span>
+</pre></div>
+</div>
+<p>It is also possible to filter processes based on initiator name.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies process ps --initiator myuser</span>
 </pre></div>
 </div>
 </section>
@@ -2229,6 +2260,16 @@ process in the queue has finised or failed.</p>
 </div>
 <p>To use the new server Id, you also need to update the environmental variable <strong>COLONIES_SERVER_PRVKEY</strong>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_SERVER_PRVKEY=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18</span>
+</pre></div>
+</div>
+</section>
+<section id="find-out-id-given-a-private-key">
+<h2>Find out Id given a private key<a class="headerlink" href="#find-out-id-given-a-private-key" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies key id --prvkey a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd                                                             16:58:56</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Corresponding Id for the given private key</span>
+<span class="go">Id=e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9</span>
 </pre></div>
 </div>
 </section>
