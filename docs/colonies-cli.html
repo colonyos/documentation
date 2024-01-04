@@ -208,7 +208,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#create-a-snapshot">Create a snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#download-a-snapshot">Download a snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#show-info-about-a-snapshot">Show info about a snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-snapshots">List all snapshots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#remove-a-snaphot">Remove a snaphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-all-snaphots">Remove all snaphots</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#security">Security</a><ul>
@@ -2079,6 +2081,22 @@ process in the queue has finised or failed.</p>
 </pre></div>
 </div>
 </section>
+<section id="list-all-snapshots">
+<h2>List all snapshots<a class="headerlink" href="#list-all-snapshots" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">╭─────────────┬──────────────────────────────────────────────────────────────────┬──────────┬───────┬─────────────────────╮</span>
+<span class="go">│ NAME        │ SNAPSHOTID                                                       │ LABEL    │ FILES │ ADDED               │</span>
+<span class="go">├─────────────┼──────────────────────────────────────────────────────────────────┼──────────┼───────┼─────────────────────┤</span>
+<span class="go">│ mysnapshot  │ 99fb744919d8593940ad3e49354b307842f364d2b919b722b7e760923cb0e1b5 │ /myfiles │ 2     │ 2024-01-04 12:31:12 │</span>
+<span class="go">│ mysnapshot2 │ eaad357f164c330c8922756c9ae74e25d12cd99b98f6617d3bc2284464d01df3 │ /myfiles │ 2     │ 2024-01-04 12:31:11 │</span>
+<span class="go">│ mysnapshot1 │ c94e7d2a347da9c9b29ed46ff6b9fdd28aea52fd032287f2dbca23a8829d6ae5 │ /myfiles │ 2     │ 2024-01-04 12:31:10 │</span>
+<span class="go">│ mysnapshot3 │ 479c3a0b50fb1d9e3963462ecad1d9934db0d10d7bfcbe42e8eb45a3c38d0c65 │ /myfiles │ 2     │ 2024-01-04 12:31:08 │</span>
+<span class="go">╰─────────────┴──────────────────────────────────────────────────────────────────┴──────────┴───────┴─────────────────────╯</span>
+</pre></div>
+</div>
+</section>
 <section id="remove-a-snaphot">
 <h2>Remove a snaphot<a class="headerlink" href="#remove-a-snaphot" title="Link to this heading"></a></h2>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot remove -n mysnapshot</span>
@@ -2087,6 +2105,16 @@ process in the queue has finised or failed.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Snapshot removed</span>
 
 <span class="go">SnapshotName=mysnapshot</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-all-snaphots">
+<h2>Remove all snaphots<a class="headerlink" href="#remove-all-snaphots" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs snapshot removeall</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING!!! Are you sure you want to remove all snapshots in colony &lt;dev&gt;. This operation cannot be undone! (YES,no): YES</span>
+<span class="go">INFO[0001] All snapshots removed</span>
 </pre></div>
 </div>
 </section>

@@ -2058,6 +2058,24 @@ To show info about a snapshot:
    │ hello2.txt │ 84c424fc6e7ae6ce6dfe7a88c5877e5af44c56fc65f60824f4282b22a73d0cff │ 2024-01-02 19:38:55 │
    ╰────────────┴──────────────────────────────────────────────────────────────────┴─────────────────────╯
 
+List all snapshots
+------------------
+
+.. code-block:: console 
+
+    colonies fs snapshot ls 
+
+.. code-block:: console
+
+   ╭─────────────┬──────────────────────────────────────────────────────────────────┬──────────┬───────┬─────────────────────╮
+   │ NAME        │ SNAPSHOTID                                                       │ LABEL    │ FILES │ ADDED               │
+   ├─────────────┼──────────────────────────────────────────────────────────────────┼──────────┼───────┼─────────────────────┤
+   │ mysnapshot  │ 99fb744919d8593940ad3e49354b307842f364d2b919b722b7e760923cb0e1b5 │ /myfiles │ 2     │ 2024-01-04 12:31:12 │
+   │ mysnapshot2 │ eaad357f164c330c8922756c9ae74e25d12cd99b98f6617d3bc2284464d01df3 │ /myfiles │ 2     │ 2024-01-04 12:31:11 │
+   │ mysnapshot1 │ c94e7d2a347da9c9b29ed46ff6b9fdd28aea52fd032287f2dbca23a8829d6ae5 │ /myfiles │ 2     │ 2024-01-04 12:31:10 │
+   │ mysnapshot3 │ 479c3a0b50fb1d9e3963462ecad1d9934db0d10d7bfcbe42e8eb45a3c38d0c65 │ /myfiles │ 2     │ 2024-01-04 12:31:08 │
+   ╰─────────────┴──────────────────────────────────────────────────────────────────┴──────────┴───────┴─────────────────────╯
+
 Remove a snaphot
 ----------------
 
@@ -2070,6 +2088,18 @@ Remove a snaphot
     INFO[0000] Snapshot removed
 
     SnapshotName=mysnapshot
+
+Remove all snaphots
+-------------------
+
+.. code-block:: console 
+
+   colonies fs snapshot removeall 
+
+.. code-block:: console
+
+   WARNING!!! Are you sure you want to remove all snapshots in colony <dev>. This operation cannot be undone! (YES,no): YES
+   INFO[0001] All snapshots removed
 
 Security
 ========
