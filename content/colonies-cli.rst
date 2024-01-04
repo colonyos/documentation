@@ -574,6 +574,8 @@ The command will block until the process is executed by an executor. First, we n
     ExecutorID=ee58b16a187bb4467437cc068741118bf6ca0ba42e6589c7ea016550ac63e517 
     ExecutorName=helloworld-executor ExecutorType=helloworld-executor
 
+Assigning functions to executors
+--------------------------------
 To assign a process to an executor, the command **colonies process assign** can be used and also specify the **helloworld-executor** executor's private key. Typically, the assign operation is carried out by specialized executors developed using the ColonyOS SDKs, rather than through the Colonies CLI. The example below is primarily for educational purposes.
 
 .. code-block:: console
@@ -751,6 +753,37 @@ List failed processes
    ├────────────┼──────┼────────┼─────────────────────┼─────────────────────┼────────────┤
    │ helloworld │      │        │ 2024-01-02 19:02:01 │ helloworld-executor │ myexecutor │
    ╰────────────┴──────┴────────┴─────────────────────┴─────────────────────┴────────────╯
+
+Filtering processes
+-------------------
+It is possible to specify a label when submitting a process. This label can then be used to filter processes. The label can be either be specified in the JSON file or with the **--label** flag when submitting function specifications.
+
+.. code-block:: console
+
+    colonies process ps --func helloworld --label mylabel
+    colonies function exec --func fibonacci --args 10 --targettype cli --label mylabel
+
+.. code-block:: console
+
+   {
+       "conditions": {
+           "executortype": "helloworld-executor"
+       },
+       "funcname": "helloworld",
+           "label": "mylabel"
+   }
+
+To filter processes with a specific label, type:
+
+.. code-block:: console
+
+   colonies process ps --label mylabel
+
+It is also possible to filter processes based on initiator name.
+
+.. code-block:: console
+
+   colonies process ps --initiator myuser
 
 Get info about a process
 -------------------------
@@ -2247,4 +2280,14 @@ To use the new server Id, you also need to update the environmental variable **C
 
    export COLONIES_SERVER_PRVKEY=37837d364ad0df1d62cc48eb4c58aeba267196b60c9d09005c3fcad53195ef18
 
+Find out Id given a private key
+-------------------------------
 
+.. code-block:: console
+
+    colonies key id --prvkey a410e7471a2d43228c90d6b6de6df299fe5d2863eb20dda1964e1f169e4e6dcd                                                             16:58:56
+
+.. code-block:: console
+
+    INFO[0000] Corresponding Id for the given private key
+    Id=e199f392d5ed676fdebfac8f71d69684f90c80e7776d390b1ef495f0ea3950a9
