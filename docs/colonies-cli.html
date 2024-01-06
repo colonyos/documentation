@@ -162,6 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#logs">Logs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#adding-logs-to-a-process">Adding logs to a process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-logs">Getting logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#searching-logs">Searching logs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#attributes">Attributes</a><ul>
@@ -305,6 +306,14 @@ Keep in mind that the private key is sensitive and should be kept confidential.<
 <span class="go">export AWS_S3_BUCKET=&quot;&quot;</span>
 <span class="go">export AWS_S3_TLS=&quot;&quot;</span>
 <span class="go">export AWS_S3_SKIPVERIFY=&quot;&quot;</span>
+</pre></div>
+</div>
+<p>If you are using the Colonies CLI on Windows with Git Bash, you may need to set the following environment variable to prevent Git Bash to translates Unix-like paths into Windows-style paths.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export MSYS_NO_PATHCONV=1</span>
+</pre></div>
+</div>
+<p>To print table in ASCII format, set the following environment variable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export COLONIES_CLI_ASCII=&quot;false&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -1169,8 +1178,8 @@ Let’s register an executor and assign the process we just submitted.</p>
 </pre></div>
 </div>
 <p>Now, the process is assign to the executor. Let’s add log to it.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \n</span>
-<span class="go">-m &quot;helloworld&quot; \n</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \</span>
+<span class="go">-m &quot;helloworld&quot; \</span>
 <span class="go">--prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58</span>
 </pre></div>
 </div>
@@ -1189,6 +1198,70 @@ Let’s register an executor and assign the process we just submitted.</p>
 </pre></div>
 </div>
 <p>It is possible to use flag <strong>-follow</strong> to follow a process and print all logs until the process is concludes.</p>
+</section>
+<section id="searching-logs">
+<h2>Searching logs<a class="headerlink" href="#searching-logs" title="Link to this heading"></a></h2>
+<p>It is possible to search logs based on a text string. The example below searches for logs containing the string <em>ERROR</em>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log search --text ERROR</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go"> INFO[0000] Searching for logs</span>
+<span class="go"> Count=100 Days=1 Text=ERROR</span>
+
+<span class="go">╭──────────────┬──────────────────────────────────────────────────────────────────╮</span>
+<span class="go">│ Timestamp    │ 2024-01-06 13:45:38                                              │</span>
+<span class="go">│ ExecutorName │ helloworld-executor                                              │</span>
+<span class="go">│ ProcessID    │ 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51 │</span>
+<span class="go">│ Text         │ ERROR: failed to say hello                                       │</span>
+<span class="go">╰──────────────┴──────────────────────────────────────────────────────────────────╯</span>
+<span class="go">╭──────────────┬──────────────────────────────────────────────────────────────────╮</span>
+<span class="go">│ Timestamp    │ 2024-01-06 13:40:00                                              │</span>
+<span class="go">│ ExecutorName │ helloworld-executor                                              │</span>
+<span class="go">│ ProcessID    │ 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51 │</span>
+<span class="go">│ Text         │ ERROR: failed to print                                           │</span>
+<span class="go">╰──────────────┴──────────────────────────────────────────────────────────────────╯</span>
+</pre></div>
+</div>
+<p>The example above only searches for logs from the last 24 hours. To search for logs from the last 7 days, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log search --text ERROR --days 7</span>
+</pre></div>
+</div>
+<p>Only show the last error log:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log search --text ERROR --days 7 --print</span>
+</pre></div>
+</div>
+<p>It is also possible print the logs and surrounding logs. The example below prints the last error log and
+the surrounding logs 1 second before the error string occured.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Searching for logs</span>
+<span class="go">Count=100 Days=1</span>
+<span class="go">Seconds=1 Text=ERROR</span>
+
+<span class="go">Timestamp: 2024-01-06 13:45:38</span>
+<span class="go">ProcessID: 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51</span>
+
+<span class="go">ExecutorName: helloworld-executor</span>
+<span class="go">=================== LOGS ====================</span>
+<span class="go">helloworld</span>
+<span class="go">ERROR: failed to print</span>
+<span class="go">================= END LOGS ==================</span>
+
+<span class="go">Timestamp: 2024-01-06 13:40:00</span>
+<span class="go">ProcessID: 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51</span>
+<span class="go">ExecutorName: helloworld-executor</span>
+<span class="go">=================== LOGS ====================</span>
+<span class="go">helloworld</span>
+<span class="go">ERROR: failed to print</span>
+<span class="go">================= END LOGS ==================</span>
+</pre></div>
+</div>
+<p>The print logs 10 seconds before the error string occured, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log search --text ERROR --days 7 --print --seconds 10</span>
+</pre></div>
+</div>
+<p>Limit number of logs to print to 2, type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies log search --text ERROR --days 7 --print --seconds 10 --count 2</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="attributes">

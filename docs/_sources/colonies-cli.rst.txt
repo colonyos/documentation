@@ -50,6 +50,18 @@ Addititionally, to be able to use Colonies Filesystem, you need to provide AWS S
     export AWS_S3_TLS=""
     export AWS_S3_SKIPVERIFY=""
 
+If you are using the Colonies CLI on Windows with Git Bash, you may need to set the following environment variable to prevent Git Bash to translates Unix-like paths into Windows-style paths.
+
+.. code-block:: console
+
+   export MSYS_NO_PATHCONV=1
+
+To print table in ASCII format, set the following environment variable:
+
+.. code-block:: console
+
+   export COLONIES_CLI_ASCII="false"
+
 
 Getting help
 ------------
@@ -1039,8 +1051,8 @@ Now, the process is assign to the executor. Let's add log to it.
 
 .. code-block:: console
 
-    colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \n
-    -m "helloworld" \n
+    colonies log add -p 511c09528b01a26d95bc4ed0899c65f2b95732aadb1221bd42d1c1e17d9daa34 \
+    -m "helloworld" \
     --prvkey 8c32cdcea68600e05df8661eb0cb6679b9ba1d62c901b2a0a55c2eecd9bbbf58
 
 .. code-block:: console
@@ -1061,6 +1073,82 @@ Getting logs
     helloworld
 
 It is possible to use flag **-follow** to follow a process and print all logs until the process is concludes. 
+
+Searching logs
+--------------
+It is possible to search logs based on a text string. The example below searches for logs containing the string *ERROR*.
+
+.. code-block:: console
+
+    colonies log search --text ERROR
+
+.. code-block:: console
+
+    INFO[0000] Searching for logs
+    Count=100 Days=1 Text=ERROR
+
+   ╭──────────────┬──────────────────────────────────────────────────────────────────╮
+   │ Timestamp    │ 2024-01-06 13:45:38                                              │
+   │ ExecutorName │ helloworld-executor                                              │
+   │ ProcessID    │ 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51 │
+   │ Text         │ ERROR: failed to say hello                                       │
+   ╰──────────────┴──────────────────────────────────────────────────────────────────╯
+   ╭──────────────┬──────────────────────────────────────────────────────────────────╮
+   │ Timestamp    │ 2024-01-06 13:40:00                                              │
+   │ ExecutorName │ helloworld-executor                                              │
+   │ ProcessID    │ 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51 │
+   │ Text         │ ERROR: failed to print                                           │
+   ╰──────────────┴──────────────────────────────────────────────────────────────────╯
+
+The example above only searches for logs from the last 24 hours. To search for logs from the last 7 days, type:
+
+.. code-block:: console
+
+    colonies log search --text ERROR --days 7
+
+Only show the last error log:
+
+.. code-block:: console
+
+    colonies log search --text ERROR --days 7 --print 
+
+It is also possible print the logs and surrounding logs. The example below prints the last error log and 
+the surrounding logs 1 second before the error string occured.
+
+.. code-block:: console
+
+   INFO[0000] Searching for logs
+   Count=100 Days=1 
+   Seconds=1 Text=ERROR
+
+   Timestamp: 2024-01-06 13:45:38
+   ProcessID: 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51
+   
+   ExecutorName: helloworld-executor
+   =================== LOGS ====================
+   helloworld
+   ERROR: failed to print 
+   ================= END LOGS ==================
+   
+   Timestamp: 2024-01-06 13:40:00
+   ProcessID: 0bb15f66e85d729b63d8bcd53f79c19e25ba15fce1b631bb559f560f9c724c51
+   ExecutorName: helloworld-executor
+   =================== LOGS ====================
+   helloworld
+   ERROR: failed to print 
+   ================= END LOGS ==================
+
+The print logs 10 seconds before the error string occured, type:
+
+.. code-block:: console
+
+    colonies log search --text ERROR --days 7 --print --seconds 10
+
+Limit number of logs to print to 2, type:
+
+.. code-block:: console
+
+    colonies log search --text ERROR --days 7 --print --seconds 10 --count 2
 
 Attributes
 ==========
