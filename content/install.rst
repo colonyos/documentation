@@ -79,6 +79,8 @@ Setup Minio/S3
 --------------
 To use Colony FS, you alse need to set up Minio/S3.
 
+First install the Minio client. Instructions can be found `here <https://min.io/docs/minio/linux/reference/minio-mc.html>`_.
+
 .. code-block:: console
 
     mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD;
