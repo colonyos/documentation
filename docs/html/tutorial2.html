@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nvidia systems &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="tutorial3.html" />
+    <link rel="prev" title="What is a container?" href="tutorial1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#security">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#meta-filesystem">Meta-filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#production-server">Production server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Developing an executor</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#connecting-to-a-colonies-server">Connecting to a Colonies server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#registering-an-executor">Registering an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#process-assignments">Process assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#complete-example">Complete example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#excercises">Excercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Executing containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nvidia systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-a-container">Build a container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-python-example">Simple Python example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-nvidia-smi">Running nvidia-smi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#amd-rocm-systems">AMD/ROCm systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Build a container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Simple Python example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-rocm-smi">Running rocm-smi</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#upload-dataset">Upload dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#training-the-model">Training the model</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#processes">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#attributes">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcwf.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Nvidia systems</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/tutorial2.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nvidia-systems">
+<h1>Nvidia systems<a class="headerlink" href="#nvidia-systems" title="Link to this heading"></a></h1>
+<p>This is a short guide how to use Nvidia GPUs.</p>
+<section id="build-a-container">
+<h2>Build a container<a class="headerlink" href="#build-a-container" title="Link to this heading"></a></h2>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/tensorflow/tensorflow:2.13.0-gpu</span>
+
+<span class="k">USER</span><span class="w"> </span><span class="s">root</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>wget<span class="w"> </span>vim<span class="w"> </span>git<span class="w"> </span>fish<span class="w"> </span>libgl1-mesa-glx<span class="w"> </span>libglib2.0-0<span class="w"> </span>libc6
+<span class="k">RUN</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--target<span class="o">=</span>/usr/local/lib/python3.8/dist-packages<span class="w"> </span>pycolonies<span class="w"> </span>opencv-python<span class="w"> </span>tqdm<span class="w"> </span>Pillow<span class="w"> </span>scikit-learn<span class="w"> </span>keras<span class="w"> </span>matplotlib<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">target</span></code> flag to <code class="docutils literal notranslate"><span class="pre">pip3</span></code>. Without it, <code class="docutils literal notranslate"><span class="pre">pip3</span></code> will installs to modules to <code class="docutils literal notranslate"><span class="pre">~/.local/lib/python3.9/dist-packages</span></code>.
+However, when using Singularity, the home directory is normally mounted from the host system, which means that installed Python
+libraries will not be available in the container as intended.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker build -t johan/tensorflow .</span>
+<span class="go">docker push johan/tensorflow</span>
+</pre></div>
+</div>
+</section>
+<section id="simple-python-example">
+<h2>Simple Python example<a class="headerlink" href="#simple-python-example" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator new -n icekube</span>
+</pre></div>
+</div>
+<p>Update <code class="docutils literal notranslate"><span class="pre">project.yaml</span></code> file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gputest</span>
+<span class="nt">conditions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">executorNames</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icekube</span>
+<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">processesPerNode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000m</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000Mi</span>
+<span class="w">  </span><span class="nt">walltime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nvidia-gtx-2080ti&quot;</span>
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">johan/tensorflow</span>
+<span class="w">  </span><span class="nt">rebuildImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main.py</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">import tensorflow as tf</span>
+<span class="go">print(&quot;Num GPUs Available: &quot;, len(tf.config.experimental.list_physical_devices(&#39;GPU&#39;)))</span>
+</pre></div>
+</div>
+<p>Now, run the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pollinator</span> <span class="n">run</span> <span class="o">--</span><span class="n">follow</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Uploading main.py 100% [===============] (590 kB/s)</span>
+<span class="go">Uploading hello.txt 100% [===============] (66 kB/s)</span>
+<span class="go">INFO[0000] Process submitted                             ProcessID=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37</span>
+<span class="go">INFO[0000] Follow process at https://dashboard.colonyos.io/process?processid=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37</span>
+<span class="go">Num GPUs Available:  1</span>
+<span class="go">INFO[0012] Process finished successfully                 ProcessID=591c063721f408419e571a65d451187488ceb2624cffa2262e7ad44d80744b37</span>
+</pre></div>
+</div>
+</section>
+<section id="running-nvidia-smi">
+<h2>Running nvidia-smi<a class="headerlink" href="#running-nvidia-smi" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ice-kubeexecutor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2000Mi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;500m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia-gtx-2080ti&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;execute&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia-smi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">&quot;docker-image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tensorflow/tensorflow:2.14.0rc1-gpu&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rebuild-image&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function submit --spec nvidia-smi.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process submitted                             ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df</span>
+<span class="go">INFO[0000] Printing logs from process                    ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df</span>
+<span class="go">Sun Dec 17 14:34:23 2023</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 545.29.02              Driver Version: 545.29.02    CUDA Version: 12.3     |</span>
+<span class="go">|-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                                         |                      |               MIG M. |</span>
+<span class="go">|=========================================+======================+======================|</span>
+<span class="go">|   0  NVIDIA GeForce RTX 2080 Ti     Off | 00000000:24:00.0 Off |                  N/A |</span>
+<span class="go">| 32%   32C    P0              35W / 250W |      0MiB / 11264MiB |      0%      Default |</span>
+<span class="go">|                                         |                      |                  N/A |</span>
+<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
+
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                            |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |</span>
+<span class="go">|        ID   ID                                                             Usage      |</span>
+<span class="go">|=======================================================================================|</span>
+<span class="go">|  No running processes found                                                           |</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">INFO[0010] Process finished successfully                 ProcessId=1b93b14c1eb83c4b91bbe33c7f0b1bf35845ac20e1fe371aae0c9bedf3b638df</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="amd-rocm-systems">
+<h1>AMD/ROCm systems<a class="headerlink" href="#amd-rocm-systems" title="Link to this heading"></a></h1>
+<p>This is a short guide how to use AMD/ROCm GPUs.</p>
+<section id="id1">
+<h2>Build a container<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/rocm/tensorflow:rocm5.2.0-tf2.9-dev</span>
+
+<span class="k">USER</span><span class="w"> </span><span class="s">root</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span><span class="s2">&quot;noninteractive&quot;</span><span class="w"> </span><span class="nv">TZ</span><span class="o">=</span><span class="s2">&quot;Europe/Stockholm&quot;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>wget<span class="w"> </span>git<span class="w"> </span>fish<span class="w"> </span>libgl1-mesa-glx<span class="w"> </span>libglib2.0-0
+<span class="k">RUN</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--target<span class="o">=</span>/usr/local/lib/python3.9/dist-packages<span class="w"> </span>opencv-python<span class="w"> </span>tqdm<span class="w"> </span>Pillow<span class="w"> </span>scikit-learn<span class="w"> </span>keras<span class="w"> </span>matplotlib<span class="w"> </span>numpy<span class="w"> </span>google<span class="w"> </span>wrapt<span class="w"> </span>typing_extensions<span class="w"> </span>packaging<span class="w"> </span>opt_einsum<span class="w"> </span>gast<span class="w"> </span>astunparse<span class="w"> </span>termcolor<span class="w"> </span>flatbuffers
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--target<span class="o">=</span>/usr/local/lib/python3.9/dist-packages<span class="w"> </span><span class="nv">protobuf</span><span class="o">==</span><span class="m">3</span>.20.0
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker build -t johan/rocmtensorflow .</span>
+<span class="go">docker push johan/rocmhackaton52g</span>
+</pre></div>
+</div>
+<p>Note that the Docker image becomes almost 9Gb!</p>
+</section>
+<section id="id2">
+<h2>Simple Python example<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator new -e lumi-standard-gpu-hpcexecutor</span>
+</pre></div>
+</div>
+<p>Update <code class="docutils literal notranslate"><span class="pre">project.yaml</span></code> file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gputest</span>
+<span class="nt">conditions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">executorType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lumi-standard-gpu-hpcexecutor</span>
+<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">processesPerNode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000m</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10000Mi</span>
+<span class="w">  </span><span class="nt">walltime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">johan/rocmtensorflow</span>
+<span class="w">  </span><span class="nt">rebuildImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main.py</span>
+</pre></div>
+</div>
+<p>Replace the <code class="docutils literal notranslate"><span class="pre">main.py</span></code> with this code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">import tensorflow as tf</span>
+<span class="go">print(&quot;Num GPUs Available: &quot;, len(tf.config.experimental.list_physical_devices(&#39;GPU&#39;)))</span>
+</pre></div>
+</div>
+<p>Now, run the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pollinator</span> <span class="n">run</span> <span class="o">--</span><span class="n">follow</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Process submitted                  ProcessID=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070</span>
+<span class="go">INFO[0000] Follow process at https://dashboard.colonyos.io/process?processid=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070</span>
+<span class="go">Num GPUs Available:  1</span>
+<span class="go">INFO[0036] Process finished successfully      ProcessID=192f0c29a89a3f7bc3c620a2306e2cab92709d5af5693736b5cb774536a07070</span>
+</pre></div>
+</div>
+</section>
+<section id="running-rocm-smi">
+<h2>Running rocm-smi<a class="headerlink" href="#running-rocm-smi" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lumi-standard-gpu-hpcexecutor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10Gi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;execute&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rocm-smi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;docker-image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johan/rocmtensorflow&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function submit --spec rocm-smi.json</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">======================= ROCm System Management Interface =======================</span>
+<span class="go">================================= Concise Info =================================</span>
+<span class="go">GPU  Temp   AvgPwr  SCLK    MCLK     Fan  Perf    PwrCap  VRAM%  GPU%</span>
+<span class="go">0    44.0c  92.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%</span>
+<span class="go">1    49.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%</span>
+<span class="go">2    43.0c  88.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%</span>
+<span class="go">3    45.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%</span>
+<span class="go">4    48.0c  87.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%</span>
+<span class="go">5    48.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%</span>
+<span class="go">6    40.0c  92.0W   800Mhz  1600Mhz  0%   manual  500.0W    0%   0%</span>
+<span class="go">7    44.0c  N/A     800Mhz  1600Mhz  0%   manual  0.0W      0%   0%</span>
+<span class="go">================================================================================</span>
+<span class="go">============================= End of ROCm SMI Log ==============================</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial1.html" class="btn btn-neutral float-left" title="What is a container?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial3.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

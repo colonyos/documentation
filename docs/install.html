@@ -139,6 +139,7 @@
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
 <ul>
@@ -253,6 +254,7 @@ Note that all keys are published on the Internet. Use <code class="docutils lite
 <section id="setup-minio-s3">
 <h2>Setup Minio/S3<a class="headerlink" href="#setup-minio-s3" title="Link to this heading"></a></h2>
 <p>To use Colony FS, you alse need to set up Minio/S3.</p>
+<p>First install the Minio client. Instructions can be found <a class="reference external" href="https://min.io/docs/minio/linux/reference/minio-mc.html">here</a>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mc alias set myminio http://localhost:9000 $MINIO_USER $MINIO_PASSWORD;</span>
 <span class="go">mc admin user add myminio $AWS_S3_ACCESSKEY $AWS_S3_SECRETKEY;</span>
 <span class="go">mc admin policy attach myminio readwrite --user=$AWS_S3_ACCESSKEY;</span>

@@ -32,7 +32,7 @@ The library assumes ``libcryptolib.so`` is installed in ``/usr/local/lib`` or av
 
 .. code-block:: console
 
-    export CRYPTOLIB="./lib/cryptolib.so"
+    export CRYPTOLIB="./lib/libcryptolib.so"
 
 The ``libcryptolib.so`` is available in the `PyColonies github repo <https://github.com/colonyos/pycolonies>`_ in the ``lib`` directory.
 
@@ -103,8 +103,8 @@ Note that the process of adding an executor in done in two steps. Once an execut
         executor = self.colonies.add_executor(executor, colony_prvkey)
         self.colonies.approve_executor(self.colonyname, executorname, colony_prvkey)
             
-        self.colonies.add_function(executorname, 
-                                   colonyname, 
+        self.colonies.add_function(colonyname, 
+                                   executorname, 
                                    "helloworld",  
                                    executor_prvkey)
     except Exception as err:

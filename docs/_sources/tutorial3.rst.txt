@@ -68,6 +68,10 @@ The code below will download the dataset on the Leonardo HPC system.
 
    {
        "conditions": {
+            "executortype": "container-executor",
+	        "executornames": [
+                "leonardo-booster"
+            ],
            "executortype": "leonardo-booster-hpcexecutor",
            "nodes": 1,
            "processes-per-node": 1,
@@ -115,14 +119,14 @@ First, find a target executor.
 
 .. code-block:: console
 
-   +----------------------+------------------------------+------------------------+
-   |         NAME         |             TYPE             |        LOCATION        |
-   +----------------------+------------------------------+------------------------+
-   | icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |
-   | lumi                 | lumi-small-hpcexecutor       | CSC, Finland           |
-   | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |
-   | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy          |
-   +----------------------+------------------------------+------------------------+
+    ╭──────────────────┬────────────────────┬────────────────┬─────────────────────╮
+    │ NAME             │ TYPE               │ LOCATION       │ LAST HEARD FROM     │
+    ├──────────────────┼────────────────────┼────────────────┼─────────────────────┤
+    │ icekube          │ container-executor │ RISE, Sweden   │ 2024-02-23 12:35:39 │
+    │ dev              │ container-executor │ Rutvik, Sweden │ 2024-02-23 12:35:39 │
+    │ lumi-standard    │ container-executor │ CSC, Finland   │ 2024-02-23 12:35:41 │
+    │ leonardo-booster │ container-executor │ Cineca, Italy  │ 2024-02-23 12:34:44 │
+    ╰──────────────────┴────────────────────┴────────────────┴─────────────────────╯
 
 Generate an empty working, targeting the LUMI HPC system. Note that the target executor type
 can be changed later.
@@ -222,7 +226,7 @@ In the example, we assumed the ``water_dataset`` in available in Colonies CFS un
 
    mkdir waterml
    cd waterml
-   pollinator new -e leonardo-booster-hpcexecutor  
+   pollinator new -n leonardo-booster
 
 Edit the ``project.yaml`` file. Change the Docker image to ``johan/hackaton``, increase required memory to 
 ``30000Mi``, use 4 CPU cores (``4000m``). 

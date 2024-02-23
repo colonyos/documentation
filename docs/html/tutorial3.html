@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting started" href="colonies-cli.html" />
+    <link rel="prev" title="Nvidia systems" href="tutorial2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#security">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#meta-filesystem">Meta-filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#production-server">Production server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Developing an executor</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#connecting-to-a-colonies-server">Connecting to a Colonies server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#registering-an-executor">Registering an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#process-assignments">Process assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#complete-example">Complete example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#excercises">Excercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Executing containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Nvidia systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html#amd-rocm-systems">AMD/ROCm systems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#upload-dataset">Upload dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#method-1-colonies-cli">Method 1 - Colonies CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method-2-pollinator">Method 2 - Pollinator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#training-the-model">Training the model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-a-pollinator-project">Setup a Pollinator project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#replace-main-py">Replace main.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-the-model">Train the model</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#processes">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#attributes">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="funcwf.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/tutorial3.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>In this tutorial, we will train a machine learning model to identify water in Sentinel-2 satellite images.
+We will be using code from <a class="reference external" href="https://github.com/msoczi/unet_water_bodies_segmentation">this GitHub repo</a> using
+this <a class="reference external" href="https://www.kaggle.com/datasets/franciscoescobar/satellite-images-of-water-bodies/">dataset</a>.</p>
+</section>
+<section id="upload-dataset">
+<h1>Upload dataset<a class="headerlink" href="#upload-dataset" title="Link to this heading"></a></h1>
+<p>We need a dataset to train the ML model. We will use the Colonies CFS to distribute the dataset to different executors.</p>
+<section id="method-1-colonies-cli">
+<h2>Method 1 - Colonies CLI<a class="headerlink" href="#method-1-colonies-cli" title="Link to this heading"></a></h2>
+<p>Download the dataset and unzip the <code class="docutils literal notranslate"><span class="pre">archive.zip</span></code> file to directory named <code class="docutils literal notranslate"><span class="pre">water_body_dataset</span></code>.
+Then, upload to the dataset files to Colonies CFS.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs sync -l /water -d ./water_body_dataset</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">| water_body_1114.jpg | 6 KiB    | /water |</span>
+<span class="go">| water_body_1209.jpg | 10 KiB   | /water |</span>
+<span class="go">| water_body_1273.jpg | 9 KiB    | /water |</span>
+<span class="go">| water_body_1552.jpg | 61 KiB   | /water |</span>
+<span class="go">| water_body_7797.jpg | 4 KiB    | /water |</span>
+<span class="go">| water_body_8847.jpg | 9 KiB    | /water |</span>
+<span class="go">| water_body_1313.jpg | 8 KiB    | /water |</span>
+<span class="go">| water_body_1615.jpg | 18 KiB   | /water |</span>
+<span class="go">| water_body_1724.jpg | 1 KiB    | /water |</span>
+<span class="go">| water_body_1801.jpg | 8 KiB    | /water |</span>
+<span class="go">| water_body_1833.jpg | 11 KiB   | /water |</span>
+<span class="go">+---------------------+----------+--------+</span>
+<span class="go">No files will be downloaded</span>
+
+<span class="go">/water:</span>
+<span class="go">=======</span>
+<span class="go">No files will be uploaded</span>
+<span class="go">No files will be downloaded</span>
+
+<span class="go">Are you sure you want to continue? (yes,no):</span>
+</pre></div>
+</div>
+<p>After the upload has finished, we can now list the dataset.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies fs label ls</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+---------------------------------------------------------+-----------------+</span>
+<span class="go">|                           LABEL                         | NUMBER OF FILES |</span>
+<span class="go">+---------------------------------------------------------+-----------------+</span>
+<span class="go">| /water/Images                                           | 2841            |</span>
+<span class="go">| /water/Masks                                            | 2841            |</span>
+<span class="go">+---------------------------------------------------------+-----------------+</span>
+</pre></div>
+</div>
+<p>To access the dataset from an executor, the executor first needs to synchronize the data. This can be achieved in several ways; one method is to specify the <code class="docutils literal notranslate"><span class="pre">/water</span></code> label in the function specification fs section. The executor will then synchronize the dataset files to its local file system.</p>
+<p>Alternatively, you can submit a function to an executor, requesting it to synchronize a specific label to its local file system without launching a container.
+The code below will download the dataset on the Leonardo HPC system.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container-executor&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;executornames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">             </span><span class="s2">&quot;leonardo-booster&quot;</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leonardo-booster-hpcexecutor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;30Gi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60000</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sync&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;mount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/cfs&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dirs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/water&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/water&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;keepfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;onconflicts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;onstart&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;onclose&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;maxwaittime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The data set will then be available in <code class="docutils literal notranslate"><span class="pre">/cfs/water/Images/</span></code> and <code class="docutils literal notranslate"><span class="pre">/cfs/water/Masks/</span></code> in the container running on Leonardo.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">colonies function submit --spec sync.json</span>
+</pre></div>
+</div>
+</section>
+<section id="method-2-pollinator">
+<h2>Method 2 - Pollinator<a class="headerlink" href="#method-2-pollinator" title="Link to this heading"></a></h2>
+<p>First, find a target executor.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">╭──────────────────┬────────────────────┬────────────────┬─────────────────────╮</span>
+<span class="go">│ NAME             │ TYPE               │ LOCATION       │ LAST HEARD FROM     │</span>
+<span class="go">├──────────────────┼────────────────────┼────────────────┼─────────────────────┤</span>
+<span class="go">│ icekube          │ container-executor │ RISE, Sweden   │ 2024-02-23 12:35:39 │</span>
+<span class="go">│ dev              │ container-executor │ Rutvik, Sweden │ 2024-02-23 12:35:39 │</span>
+<span class="go">│ lumi-standard    │ container-executor │ CSC, Finland   │ 2024-02-23 12:35:41 │</span>
+<span class="go">│ leonardo-booster │ container-executor │ Cineca, Italy  │ 2024-02-23 12:34:44 │</span>
+<span class="go">╰──────────────────┴────────────────────┴────────────────┴─────────────────────╯</span>
+</pre></div>
+</div>
+<p>Generate an empty working, targeting the LUMI HPC system. Note that the target executor type
+can be changed later.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir waterml</span>
+<span class="go">cd waterml</span>
+<span class="go">pollinator new -e lumi-small-hpcexecutor</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Creating directory                            Dir=./cfs/src</span>
+<span class="go">INFO[0000] Creating directory                            Dir=./cfs/data</span>
+<span class="go">INFO[0000] Creating directory                            Dir=./cfs/result</span>
+<span class="go">INFO[0000] Generating                                    Filename=./project.yaml</span>
+<span class="go">INFO[0000] Generating                                    Filename=./cfs/data/hello.txt</span>
+<span class="go">INFO[0000] Generating                                    Filename=./cfs/src/main.py</span>
+</pre></div>
+</div>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">water_body_dataset</span></code> to the <code class="docutils literal notranslate"><span class="pre">./cfs/data</span></code> directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp ~/water_body_dataset ./cfs/data</span>
+</pre></div>
+</div>
+<p>The dataset will upload next time the project run.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator run --follow</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Uploading main.py 100% [===============] (4.3 MB/s)</span>
+<span class="go">Downloading water_body_8239.jpg 100% [===============] (248 kB/s)</span>
+<span class="go">Downloading water_body_701.jpg 100% [===============] (484 kB/s)</span>
+<span class="go">Downloading water_body_8159.jpg 100% [===============] (148 kB/s)</span>
+<span class="go">Downloading water_body_683.jpg 100% [===============] (145 kB/s)</span>
+<span class="go">Downloading water_body_967.jpg 100% [===============] (350 kB/s)</span>
+<span class="go">Downloading water_body_784.jpg 100% [===============] (906 kB/s)</span>
+<span class="go">Downloading water_body_922.jpg 100% [===============] (161 kB/s)</span>
+<span class="go">Downloading water_body_233.jpg 100% [===============] (251 kB/s)</span>
+<span class="go">Downloading water_body_1206.jpg 100% [===============] (720 kB/s)</span>
+<span class="go">Downloading water_body_1708.jpg 100% [===============] (1.3 MB/s)</span>
+<span class="go">Downloading water_body_2461.jpg 100% [===============] (560 kB/s)</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>The data set will then be available here in the running container:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">projdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PROJECT_DIR&quot;</span><span class="p">)</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="n">projdir</span> <span class="o">+</span> <span class="s1">&#39;/data/water/Images/&#39;</span>
+<span class="n">mask_path</span> <span class="o">=</span> <span class="n">projdir</span> <span class="o">+</span> <span class="s1">&#39;/data/water/Masks/&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docker-container">
+<h1>Docker container<a class="headerlink" href="#docker-container" title="Link to this heading"></a></h1>
+<p>We are going the Container Executor, which comes in three variants.</p>
+<ol class="arabic simple">
+<li><p><strong>Kube Executor</strong> runs containers as Kubernetes batch jobs.</p></li>
+<li><p><strong>Docker Executor</strong> runs containers as Docker containers on a baremetal servers or VMs.</p></li>
+<li><p><strong>HPC Executor</strong> runs containers as Singularity containers on HPC systems, managing them as Slurm jobs.</p></li>
+</ol>
+<p>As the <em>function specification</em> is identical, meaning that we can easily switch between these 3 types of executors.
+To run containers, we first need to create a Dockerfile with the following content:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">docker.io/tensorflow/tensorflow:2.13.0-gpu</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>wget<span class="w"> </span>vim<span class="w"> </span>git<span class="w"> </span>fish<span class="w"> </span>libgl1-mesa-glx<span class="w"> </span>libglib2.0-0
+<span class="k">RUN</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>pycolonies<span class="w"> </span>opencv-python<span class="w"> </span>tqdm<span class="w"> </span>Pillow<span class="w"> </span>scikit-learn<span class="w"> </span>keras<span class="w"> </span>matplotlib<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>Build and publish the Dockerfile and publish the Docker image at public Docker registry.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">docker build -t johan/hackaton .</span>
+<span class="go">docker push johan/hackaton</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">johan/hackaton</span></code> Docker image has already been published at DockerHub.</p>
+</section>
+<section id="training-the-model">
+<h1>Training the model<a class="headerlink" href="#training-the-model" title="Link to this heading"></a></h1>
+<p>Now that we have uploaded the dataset and created a Docker container, it’s time to proceed with training the model.</p>
+<section id="setup-a-pollinator-project">
+<h2>Setup a Pollinator project<a class="headerlink" href="#setup-a-pollinator-project" title="Link to this heading"></a></h2>
+<p>Create a new Pollinator project (or use the one you already created when uploading the dataset).
+In the example, we assumed the <code class="docutils literal notranslate"><span class="pre">water_dataset</span></code> in available in Colonies CFS under the label <code class="docutils literal notranslate"><span class="pre">/water</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir waterml</span>
+<span class="go">cd waterml</span>
+<span class="go">pollinator new -n leonardo-booster</span>
+</pre></div>
+</div>
+<p>Edit the <code class="docutils literal notranslate"><span class="pre">project.yaml</span></code> file. Change the Docker image to <code class="docutils literal notranslate"><span class="pre">johan/hackaton</span></code>, increase required memory to
+<code class="docutils literal notranslate"><span class="pre">30000Mi</span></code>, use 4 CPU cores (<code class="docutils literal notranslate"><span class="pre">4000m</span></code>).</p>
+<p>Walltime defined the maximum time the process may run. In this case, it has to finish in <code class="docutils literal notranslate"><span class="pre">2000</span></code> seconds.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">559ac0c3a834594b337d10ebedf3134ea0ca3142cceab26b1aa5c17ba141999d</span>
+<span class="nt">conditions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">executorType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leonardo-booster-hpcexecutor</span>
+<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">processesPerNode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000m</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000Mi</span>
+<span class="w">  </span><span class="nt">walltime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">johan/hackaton</span>
+<span class="w">  </span><span class="nt">rebuildImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
+<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main.py</span>
+</pre></div>
+</div>
+</section>
+<section id="replace-main-py">
+<h2>Replace main.py<a class="headerlink" href="#replace-main-py" title="Link to this heading"></a></h2>
+<p>Download source code from this <a class="reference external" href="https://github.com/johankristianss/colonyoshackaton/blob/main/src/main.py">GitHub repo</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd cfs/src</span>
+<span class="go">wget https://raw.githubusercontent.com/johankristianss/colonyoshackaton/main/src/main.py .</span>
+</pre></div>
+</div>
+<p>At line 132, change epochs to e.g 30.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p>Note that the Python code saves the training result and a random prediction example in the result directory, which is
+automatically synchronized back to the client after process completion.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">projdir</span> <span class="o">+</span> <span class="s1">&#39;/result/res_&#39;</span> <span class="o">+</span> <span class="n">processid</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">projdir</span> <span class="o">+</span> <span class="s1">&#39;/result/samples_&#39;</span> <span class="o">+</span> <span class="n">processid</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls cfs/result</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">.rw-r--r--  55k johan 12 Dec 21:40 res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png</span>
+<span class="go">.rw-r--r-- 266k johan 12 Dec 21:40 samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png</span>
+</pre></div>
+</div>
+</section>
+<section id="train-the-model">
+<h2>Train the model<a class="headerlink" href="#train-the-model" title="Link to this heading"></a></h2>
+<p>Pollinator will automatically synchronize the <code class="docutils literal notranslate"><span class="pre">cfs/src</span></code>, <code class="docutils literal notranslate"><span class="pre">cfs/data</span></code>, and <code class="docutils literal notranslate"><span class="pre">cfs/result</span></code> directories to Colonies CFS, generate
+a <em>function specification</em> and then submit the <em>function specification</em>, follow the process execution, and upon completion, synchronize the
+project files back to your local computer.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator run --follow</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">67/67 [==============================] - 1s 18ms/step - loss: 0.3434 - accuracy: 0.7024 - val_loss: 0.3263 - val_accuracy: 0.7038</span>
+<span class="go">Epoch 25/30</span>
+<span class="go">67/67 [==============================] - 1s 17ms/step - loss: 0.3307 - accuracy: 0.7092 - val_loss: 0.3146 - val_accuracy: 0.7121</span>
+<span class="go">Epoch 26/30</span>
+<span class="go">67/67 [==============================] - 1s 18ms/step - loss: 0.3139 - accuracy: 0.7140 - val_loss: 0.2947 - val_accuracy: 0.7249</span>
+<span class="go">Epoch 27/30</span>
+<span class="go">67/67 [==============================] - 1s 17ms/step - loss: 0.3226 - accuracy: 0.7110 - val_loss: 0.3027 - val_accuracy: 0.7244</span>
+<span class="go">Epoch 28/30</span>
+<span class="go">67/67 [==============================] - 1s 17ms/step - loss: 0.2994 - accuracy: 0.7208 - val_loss: 0.2910 - val_accuracy: 0.7259</span>
+<span class="go">Epoch 29/30</span>
+<span class="go">67/67 [==============================] - 1s 17ms/step - loss: 0.2910 - accuracy: 0.7239 - val_loss: 0.2781 - val_accuracy: 0.7261</span>
+<span class="go">Epoch 30/30</span>
+<span class="go">67/67 [==============================] - 1s 17ms/step - loss: 0.2856 - accuracy: 0.7258 - val_loss: 0.2733 - val_accuracy: 0.7313</span>
+<span class="go">23/23 [==============================] - 0s 4ms/step</span>
+
+<span class="go">INFO[0141] Process finished successfully                 ProcessID=61e597845ed3df4456c5be7d358e35141b8dc4c1f76a89d7caad0f31f792106c</span>
+<span class="go">Downloading samples_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (5.0 MB/s)</span>
+<span class="go">Downloading res_076e273a1d082dd2886892dfd7d1723e12c747cf2899f2c2ede27ceb55e06ae2.png 100% [===============] (1.7 MB/s)</span>
+</pre></div>
+</div>
+<p>We can now open the sample and training plot pictures.</p>
+<img alt="_images/prediction_example.png" src="_images/prediction_example.png" />
+<img alt="_images/training_result.png" src="_images/training_result.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial2.html" class="btn btn-neutral float-left" title="Nvidia systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="colonies-cli.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

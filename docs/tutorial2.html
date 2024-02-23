@@ -7,7 +7,7 @@
   <title>Nvidia systems &mdash; ColonyOS  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
@@ -93,7 +93,6 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
 <ul class="current">
@@ -131,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
 <ul>
@@ -200,13 +200,14 @@ libraries will not be available in the container as intended.</p>
 </section>
 <section id="simple-python-example">
 <h2>Simple Python example<a class="headerlink" href="#simple-python-example" title="Link to this heading"></a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator new -e ice-kubeexecutor</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pollinator new -n icekube</span>
 </pre></div>
 </div>
 <p>Update <code class="docutils literal notranslate"><span class="pre">project.yaml</span></code> file:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gputest</span>
 <span class="nt">conditions</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">executorType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ice-kubeexecutor</span>
+<span class="w">  </span><span class="nt">executorNames</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icekube</span>
 <span class="w">  </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">processesPerNode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000m</span>

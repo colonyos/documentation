@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; ColonyOS  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/minipres.js?v=a0d29692"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Container Executors" href="executors.html" />
+    <link rel="prev" title="Getting started" href="colonies-cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ColonyOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">What is ColonyOS?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colonies-servers">Colonies servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#security">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html#meta-filesystem">Meta-filesystem</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#production-server">Production server</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Developing an executor</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#connecting-to-a-colonies-server">Connecting to a Colonies server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#registering-an-executor">Registering an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#process-assignments">Process assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#complete-example">Complete example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial0.html#excercises">Excercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Executing containers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Nvidia systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html#amd-rocm-systems">AMD/ROCm systems</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorial - Image processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#upload-dataset">Upload dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#docker-container">Docker container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html#training-the-model">Training the model</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Colonies CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#colony">Colony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#users">Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#executors">Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#functions">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#processes">Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#logs">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#attributes">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#workflows">Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#function-specs">Function specs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keyword-arguments">Keyword arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#failure-management">Failure management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#labels">Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-specs">Workflow specs</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Executors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Container Executors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pollinator</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ColonyOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/colonyos/content/blob/main/content/funcwf.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<section id="function-specs">
+<h2>Function specs<a class="headerlink" href="#function-specs" title="Link to this heading"></a></h2>
+<p>A <em>function specification</em> defines a function that should be executed by an executor in the future. Below is a basic
+example of a function specification.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mycolony&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld-executor&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>funcname</strong> defines the <em>name</em> of the function that should be executed.
+<strong>conditions</strong> defines requirements that must be fullfilled by targeting executors. In the example, the
+<strong>executortype</strong> of an executor must be of the type <em>helloworld-executor</em>, only executors of that type will be eligible to be assigned this function. <strong>colonyname</strong> definies that name of the colony where this function should be executed. The <strong>colonyname</strong> is automatically set if using the Colonies CLI.</p>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Link to this heading"></a></h3>
+<p>It is also possible to pass arguments to a function.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mycolony&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sleep&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;10&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="keyword-arguments">
+<h3>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Link to this heading"></a></h3>
+<p>Alternatively, it is also possible to specify keyword arguments.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mycolony&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;desc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello world example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;str1_kw&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;str1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;str2_kw&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;str2&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="failure-management">
+<h3>Failure management<a class="headerlink" href="#failure-management" title="Link to this heading"></a></h3>
+<p><strong>maxwaittime</strong> sets the limit for how long a process can stay in the queue at the Colonies server before being marked as failed if not executed. <strong>maxexectime</strong> determines the maximum time an executor can spend executing a process before it is unassigned and returned to the queue. <strong>maxretries</strong> specifies the number of times a process can be reassigned for execution before being automatically set as failed. These parameters are crucial for efficient process management and failure management. For instance, if an executor crashes, <strong>maxexectime</strong> ensures the process is reassigned, maintaining workload continuity.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sleep&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;20&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;maxwaittime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Link to this heading"></a></h3>
+<p>A <strong>label</strong> can be set to more easily look up the process in the Colonies server database.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mycolony&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld-executor&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mylabel&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="hardware-requirements">
+<h3>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading"></a></h3>
+<p>The <strong>conditions</strong> may also include hardware requirements needed to execute the function.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w"> </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mycolony&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld-executor&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000m&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10G&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10G&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_name1&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11G&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nodecount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mylabel&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>TODO</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w"> </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_name&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_func&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">     </span><span class="s2">&quot;test_arg&quot;</span>
+<span class="w"> </span><span class="p">],</span>
+<span class="w"> </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_arg&quot;</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;maxwaittime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;maxexectime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;maxretries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;colonyname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e4b9f76c1d9488601c80c61e4cac860565087f568f7d6240dfac3bda215c30e7&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;executorids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="s2">&quot;36d211b0e4665ffbb72847810d124b2123ea85726220967362046a373db35b9f&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="s2">&quot;b8d1b6b0721b248a5d2d66f1125a657a4b5f8a353279a7f857e9907a098ee4d2&quot;</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_executor_type&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="s2">&quot;test_name2&quot;</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000m&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10G&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10G&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_name1&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11G&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;nodecount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nt">&quot;walltime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_label&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;fs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;mount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/cfs&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">&quot;snapshots&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">             </span><span class="nt">&quot;snapshotid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_snapshotid1&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_label1&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_dir1&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepsnapshot&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">             </span><span class="nt">&quot;snapshotid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_snapshotid2&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_label2&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_dir2&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepsnapshot&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">     </span><span class="p">],</span>
+<span class="w">     </span><span class="nt">&quot;dirs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">             </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_label1&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_dir1&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;onconflicts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                 </span><span class="nt">&quot;onstart&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                 </span><span class="p">},</span>
+<span class="w">                 </span><span class="nt">&quot;onclose&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                 </span><span class="p">}</span>
+<span class="w">             </span><span class="p">}</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">             </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_label2&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_dir2&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;keepfiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;onconflicts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                 </span><span class="nt">&quot;onstart&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                 </span><span class="p">},</span>
+<span class="w">                 </span><span class="nt">&quot;onclose&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;keeplocal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                 </span><span class="p">}</span>
+<span class="w">             </span><span class="p">}</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">     </span><span class="p">]</span>
+<span class="w"> </span><span class="p">},</span>
+<span class="w"> </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">&quot;test_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_value&quot;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="workflow-specs">
+<h2>Workflow specs<a class="headerlink" href="#workflow-specs" title="Link to this heading"></a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_b&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_c&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_a&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;nodename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_d&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;funcname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;task_d&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cli&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;task_b&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;task_c&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="colonies-cli.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="executors.html" class="btn btn-neutral float-right" title="Container Executors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, RISE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   <title>Introduction &mdash; ColonyOS  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
@@ -93,7 +93,6 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
 <ul>
@@ -130,6 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
 <ul>
@@ -230,6 +230,10 @@ Then, upload to the dataset files to Colonies CFS.</p>
 The code below will download the dataset on the Leonardo HPC system.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container-executor&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="nt">&quot;executornames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">             </span><span class="s2">&quot;leonardo-booster&quot;</span>
+<span class="w">         </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leonardo-booster-hpcexecutor&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -273,14 +277,14 @@ The code below will download the dataset on the Leonardo HPC system.</p>
 <section id="method-2-pollinator">
 <h2>Method 2 - Pollinator<a class="headerlink" href="#method-2-pollinator" title="Link to this heading"></a></h2>
 <p>First, find a target executor.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+----------------------+------------------------------+------------------------+</span>
-<span class="go">|         NAME         |             TYPE             |        LOCATION        |</span>
-<span class="go">+----------------------+------------------------------+------------------------+</span>
-<span class="go">| icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |</span>
-<span class="go">| lumi                 | lumi-small-hpcexecutor       | CSC, Finland           |</span>
-<span class="go">| garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |</span>
-<span class="go">| leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy          |</span>
-<span class="go">+----------------------+------------------------------+------------------------+</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">╭──────────────────┬────────────────────┬────────────────┬─────────────────────╮</span>
+<span class="go">│ NAME             │ TYPE               │ LOCATION       │ LAST HEARD FROM     │</span>
+<span class="go">├──────────────────┼────────────────────┼────────────────┼─────────────────────┤</span>
+<span class="go">│ icekube          │ container-executor │ RISE, Sweden   │ 2024-02-23 12:35:39 │</span>
+<span class="go">│ dev              │ container-executor │ Rutvik, Sweden │ 2024-02-23 12:35:39 │</span>
+<span class="go">│ lumi-standard    │ container-executor │ CSC, Finland   │ 2024-02-23 12:35:41 │</span>
+<span class="go">│ leonardo-booster │ container-executor │ Cineca, Italy  │ 2024-02-23 12:34:44 │</span>
+<span class="go">╰──────────────────┴────────────────────┴────────────────┴─────────────────────╯</span>
 </pre></div>
 </div>
 <p>Generate an empty working, targeting the LUMI HPC system. Note that the target executor type
@@ -362,7 +366,7 @@ To run containers, we first need to create a Dockerfile with the following conte
 In the example, we assumed the <code class="docutils literal notranslate"><span class="pre">water_dataset</span></code> in available in Colonies CFS under the label <code class="docutils literal notranslate"><span class="pre">/water</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir waterml</span>
 <span class="go">cd waterml</span>
-<span class="go">pollinator new -e leonardo-booster-hpcexecutor</span>
+<span class="go">pollinator new -n leonardo-booster</span>
 </pre></div>
 </div>
 <p>Edit the <code class="docutils literal notranslate"><span class="pre">project.yaml</span></code> file. Change the Docker image to <code class="docutils literal notranslate"><span class="pre">johan/hackaton</span></code>, increase required memory to

@@ -101,7 +101,6 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">What is a container?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#execute-containers">Execute containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html#managing-data">Managing data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html#pollinator">Pollinator</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - GPUs</span></p>
 <ul>
@@ -129,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#crons">Crons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#generators">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#filesystem">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colonies-cli.html#security">Security</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions &amp; Workflows</span></p>
 <ul>
@@ -198,7 +198,7 @@ In short:</p>
 </pre></div>
 </div>
 <p>The library assumes <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> is installed in <code class="docutils literal notranslate"><span class="pre">/usr/local/lib</span></code> or available in the LD library path. However, it is also possible to set the path to the <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> using an environmental variable.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export CRYPTOLIB=&quot;./lib/cryptolib.so&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export CRYPTOLIB=&quot;./lib/libcryptolib.so&quot;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> is available in the <a class="reference external" href="https://github.com/colonyos/pycolonies">PyColonies github repo</a> in the <code class="docutils literal notranslate"><span class="pre">lib</span></code> directory.</p>
@@ -260,8 +260,8 @@ following environmental variables:</p>
     <span class="n">executor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_executor</span><span class="p">(</span><span class="n">executor</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">approve_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colonyname</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">executorname</span><span class="p">,</span>
-                               <span class="n">colonyname</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">colonies</span><span class="o">.</span><span class="n">add_function</span><span class="p">(</span><span class="n">colonyname</span><span class="p">,</span>
+                               <span class="n">executorname</span><span class="p">,</span>
                                <span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
                                <span class="n">executor_prvkey</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>

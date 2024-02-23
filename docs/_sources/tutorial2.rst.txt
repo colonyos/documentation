@@ -30,7 +30,7 @@ Simple Python example
 
 .. code-block:: console 
     
-    pollinator new -e ice-kubeexecutor
+    pollinator new -n icekube
 
 Update ``project.yaml`` file:
 
@@ -38,7 +38,8 @@ Update ``project.yaml`` file:
 
    projectname: gputest
    conditions:
-     executorType: ice-kubeexecutor
+     executorNames:
+     - icekube
      nodes: 1
      processesPerNode: 1
      cpu: 5000m

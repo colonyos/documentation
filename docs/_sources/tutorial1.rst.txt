@@ -1,6 +1,5 @@
 What is a container?
 ====================
-
 A container is a lightweight, standalone, executable package that includes everything needed to run a piece of software, such as the code, a runtime, binaries, libraries, environment variables, and config files. Numerous container technologies have been developed to meet different requirements.
 
 `Docker <https://www.docker.com>`_ containers are extensively used in a variety of computing environments. `Kubernetes <https://kubernetes.io>`_ a de facto standard container orchestration system, uses a container technology called `Containerd <https://containerd.io>`_ as a low-level interface for container management. Containerd is also utilized internally by Docker. In High-Performance Computing (HPC) environments, `Singularity <https://sylabs.io>`_ containers are often preferred for their specific features that is designed to meet specific HPC needs. Generally, different container technologies offer distinct toolsets and APIs.
@@ -32,30 +31,31 @@ Let's check which executors are currently available.
 
 .. code-block:: console
 
-   +----------------------+------------------------------+------------------------+
-   |         NAME         |             TYPE             |        LOCATION        |
-   +----------------------+------------------------------+------------------------+
-   | lumi                 | lumi-small-hpcexecutor       | CSC, Finland           |
-   | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy          |
-   | icekube              | ice-kubeexecutor             | ICE Datacenter, Sweden |
-   | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden         |
-   +----------------------+------------------------------+------------------------+
+    ╭──────────────────┬────────────────────┬────────────────┬─────────────────────╮
+    │ NAME             │ TYPE               │ LOCATION       │ LAST HEARD FROM     │
+    ├──────────────────┼────────────────────┼────────────────┼─────────────────────┤
+    │ icekube          │ container-executor │ RISE, Sweden   │ 2024-02-22 18:27:15 │
+    │ leonardo-booster │ container-executor │ Cineca, Italy  │ 2024-02-22 18:27:43 │
+    │ dev              │ container-executor │ Rutvik, Sweden │ 2024-02-22 18:27:43 │
+    │ lumi-small       │ container-executor │ CSC, Finland   │ 2024-02-22 18:28:28 │
+    ╰──────────────────┴────────────────────┴────────────────┴─────────────────────╯
 
 A *container executor* takes a Unix command, a list of arguments, and a Docker image as input. It then launches a container that executes the specified command. 
 For example, to run the command ``echo "hello", "world"`` on an Ubuntu container we need to specify the following information:
 
 .. code-block:: json 
 
-    "funcname": "execute",
-    "kwargs": {
-        "cmd": "echo",
-        "docker-image": "ubuntu:20.04"
-        "rebuild-image": false,
-        "args": [
-            "hello", "world"
-        ]
+    {
+        "funcname": "execute",
+        "kwargs": {
+            "cmd": "echo",
+            "docker-image": "ubuntu:20.04"
+            "rebuild-image": false,
+            "args": [
+                "hello", "world"
+            ]
+        }
     }
-
 
 To submit a *function specification*, we also need to specify requirements, so-called ``conditions``, on the executors that will execute the function. 
 Additionally, we also need to define constraints on the execution, such as the expected execution time of the container. 
@@ -79,7 +79,10 @@ Now, let's execute the *echo* command specifed above.
 
    {
        "conditions": {
-           "executortype": "lumi-small-hpcexecutor",
+           "executortype": "container-executor",
+	        "executornames": [
+                "lumi-small"
+            ],
            "nodes": 1,
            "processes-per-node": 1,
            "mem": "1Gi",
@@ -106,84 +109,84 @@ Now, let's execute the *echo* command specifed above.
 
    colonies function submit --spec echo.json --follow
 
-The function will be execute by the ``lumi-small-hpcexecutor`` running on the LUMI supercomputer in Finland. If we change the ``executortype`` to
+The function will be execute by ``container-executor`` with the name ``lumi-small`` running on the LUMI supercomputer in Finland. If we change the ``executortype`` to
 ``ice-kubeexecutor`` it would instead run on a Kubernetes cluster at the ICE Datacenter in Sweden. 
 
 .. code-block:: console
 
-   INFO[0000] Process submitted                             ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
-   INFO[0000] Printing logs from process                    ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
-   hello world
-   INFO[0007] Process finished successfully                 ProcessId=50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+    INFO[0000] Process submitted                             ProcessId=326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb
+    INFO[0000] Printing logs from process                    ProcessId=326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb
+    hello world
+    INFO[0252] Process finished successfully                 ProcessId=326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb
+
 
 We can also lookup the process by typing the following command: 
 
 .. code-block:: console
-  
-    colonies process get -p 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+
+   colonies process get -p 326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb                                                    18:41:51
 
 .. code-block:: console
 
-   Process:
-   +--------------------+------------------------------------------------------------------+
-   | ID                 | 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8 |
-   | IsAssigned         | True                                                             |
-   | InitiatorID        | bcaeac1a507036f7fed0be9d38c43ba973be7c0064d1b0b010ede2f088093b3f |
-   | InitiatorName      | johan                                                            |
-   | AssignedExecutorID | e3e212278eda2ce8b527f832d0bb6e4976938f6f9fc2ee5fdecabf7ccc3b9da1 |
-   | State              | Successful                                                       |
-   | PriorityTime       | 1702460233177327634                                              |
-   | SubmissionTime     | 2023-12-13 10:37:13                                              |
-   | StartTime          | 2023-12-13 10:37:13                                              |
-   | EndTime            | 2023-12-13 10:37:19                                              |
-   | WaitDeadline       | 0001-01-01 00:53:28                                              |
-   | ExecDeadline       | 2023-12-13 10:38:53                                              |
-   | WaitingTime        | 17.103ms                                                         |
-   | ProcessingTime     | 6.336683s                                                        |
-   | Retries            | 0                                                                |
-   | Input              |                                                                  |
-   | Output             |                                                                  |
-   | Errors             |                                                                  |
-   +--------------------+------------------------------------------------------------------+
-   
-   FunctionSpec:
-   +-------------+--------------------------------+
-   | Func        | execute                        |
-   | Args        | None                           |
-   | KwArgs      | args:[hello world] cmd:echo    |
-   |             | docker-image:ubuntu:20...      |
-   | MaxWaitTime | -1                             |
-   | MaxExecTime | 100                            |
-   | MaxRetries  | 3                              |
-   | Priority    | 0                              |
-   +-------------+--------------------------------+
-   
-   Conditions:
-   +------------------+------------------------+
-   | ColonyName       | hpc                    |
-   | ExecutorIDs      | None                   |
-   | ExecutorType     | lumi-small-hpcexecutor |
-   | Dependencies     |                        |
-   | Nodes            | 1                      |
-   | CPU              | 500m                   |
-   | Memmory          | 1Gi                    |
-   | Processes        | 0                      |
-   | ProcessesPerNode | 1                      |
-   | Storage          |                        |
-   | Walltime         | 200                    |
-   | GPU              |                        |
-   | GPUs             | 0                      |
-   | GPUMemory        |                        |
-   +------------------+------------------------+
-   
-   Attributes:
-   No attributes found
+    ╭───────────────────────────────────────────────────────────────────────────────────────╮
+    │ Process                                                                               │
+    ├────────────────────┬──────────────────────────────────────────────────────────────────┤
+    │ Id                 │ 326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb │
+    │ IsAssigned         │ True                                                             │
+    │ InitiatorID        │ bcaeac1a507036f7fed0be9d38c43ba973be7c0064d1b0b010ede2f088093b3f │
+    │ Initiator          │ johan                                                            │
+    │ AssignedExecutorID │ 13233dbd76811bc1c0d1f1118a90e5d42aa6cf8b23ee51fea915136127221aa1 │
+    │ AssignedExecutorID │ Successful                                                       │
+    │ PriorityTime       │ 1708623299332590772                                              │
+    │ SubmissionTime     │ 2024-02-22 18:34:59                                              │
+    │ StartTime          │ 2024-02-22 18:34:59                                              │
+    │ EndTime            │ 2024-02-22 18:34:59                                              │
+    │ WaitDeadline       │ 0001-01-01 00:53:28                                              │
+    │ ExecDeadline       │ 2024-02-22 18:40:01                                              │
+    │ WaitingTime        │ 3m21.80712s                                                      │
+    │ ProcessingTime     │ 53.002228s                                                       │
+    │ Retries            │ 2                                                                │
+    │ Input              │                                                                  │
+    │ Output             │                                                                  │
+    │ Errors             │                                                                  │
+    ╰────────────────────┴──────────────────────────────────────────────────────────────────╯
+    ╭─────────────────────────────────────────────────────────────────────╮
+    │ Function Specification                                              │
+    ├─────────────┬───────────────────────────────────────────────────────┤
+    │ Func        │ execute                                               │
+    │ Args        │ None                                                  │
+    │ KwArgs      │ args:[hello world] cmd:echo docker-image:ubuntu:20... │
+    │ MaxWaitTime │ -1                                                    │
+    │ MaxExecTime │ 100                                                   │
+    │ MaxRetries  │ 3                                                     │
+    │ Priority    │ 0                                                     │
+    ╰─────────────┴───────────────────────────────────────────────────────╯
+    ╭───────────────────────────────────────╮
+    │ Conditions                            │
+    ├──────────────────┬────────────────────┤
+    │ Colony           │ hpc                │
+    │ ExecutorNames    │ lumi-small         │
+    │ ExecutorType     │ container-executor │
+    │ Dependencies     │                    │
+    │ Nodes            │ 1                  │
+    │ CPU              │ 500m               │
+    │ Memory           │ 1024Mi             │
+    │ Processes        │ 0                  │
+    │ ProcessesPerNode │ 1                  │
+    │ Storage          │ 0Mi                │
+    │ Walltime         │ 200                │
+    │ GPUName          │                    │
+    │ GPUs             │ 0                  │
+    │ GPUPerNode       │ 0                  │
+    │ GPUMemory        │ 0Mi                │
+    ╰──────────────────┴────────────────────╯
+
 
 As ColonyOS stores process execution history in a database, we can also fetch the logs after process has finished.
 
 .. code-block:: console
 
-    colonies log get -p 50edc8ef92230aa984ed1cbc90c49c0834c3fad4766d6c88f3ceda24630cb0f8
+    colonies log get -p 326a94608eba9a113ab875bab1a91db96156ab5abb0f6b556d9317ac81146fdb 
 
 .. code-block:: console
 
@@ -202,20 +205,20 @@ For example. the command below list the last 10 successful processes:
 
 .. code-block:: console
 
-   +----------+------+-------------------------+---------------------+------------------------------+----------------+
-   | FUNCNAME | ARGS |         KWARGS          |      END TIME       |        EXECUTOR TYPE         | INITIATOR NAME |
-   +----------+------+-------------------------+---------------------+------------------------------+----------------+
-   | execute  |      | args:[30] cmd:sleep ... | 2023-12-13 10:51:47 | lumi-small-hpcexecutor       | johan          |
-   | execute  |      | args:[hello world] c... | 2023-12-13 10:37:13 | lumi-small-hpcexecutor       | johan          |
-   | execute  |      | args:[hello world] c... | 2023-12-13 10:37:09 | lumi-small-hpcexecutor       | johan          |
-   | execute  |      | args:[hello world] c... | 2023-12-13 10:24:50 | ice-kubeexecutor             | johan          |
-   | execute  |      | args:[hello  world] ... | 2023-12-13 09:56:07 | ice-kubeexecutor             | johan          |
-   | execute  |      | docker-image:ubuntu:... | 2023-12-13 09:28:05 | ice-kubeexecutor             | johan          |
-   | execute  |      | docker-image:ubuntu:... | 2023-12-13 09:27:23 | ice-kubeexecutor             | johan          |
-   | execute  |      | args:[/cfs/fc752fe20... | 2023-12-12 22:29:26 | leonardo-booster-hpcexecutor | johan          |
-   | execute  |      | cmd:python3 docker-i... | 2023-12-12 22:29:22 | leonardo-booster-hpcexecutor | johan          |
-   | execute  |      | cmd:python3 docker-i... | 2023-12-12 22:29:25 | leonardo-booster-hpcexecutor | johan          |
-   +----------+------+-------------------------+---------------------+------------------------------+----------------+
+    ╭──────────┬──────┬─────────────────────────┬─────────────────────┬──────────────────┬────────────────────┬───────────┬────────────╮
+    │ FUNCNAME │ ARGS │ KWARGS                  │ SUBMSSION TIME      │ EXECUTOR NAME    │ EXECUTOR TYPE      │ INITIATOR │ LABEL      │
+    ├──────────┼──────┼─────────────────────────┼─────────────────────┼──────────────────┼────────────────────┼───────────┼────────────┤
+    │ execute  │      │ docker-image:ubuntu:... │ 2024-02-22 18:34:59 │ lumi-small       │ container-executor │ johan     │            │
+    │ execute  │      │ docker-image:tensorf... │ 2024-02-20 11:30:47 │ leonardo-booster │ container-executor │ johan     │            │
+    │ execute  │      │ args:[] cmd:nvidia-s... │ 2024-02-20 11:30:42 │ leonardo-booster │ container-executor │ johan     │            │
+    │ execute  │      │ args:[/cfs/03ca98d67... │ 2024-02-20 11:28:00 │ leonardo-booster │ container-executor │ johan     │ test_label │
+    │ execute  │      │ cmd:python3 docker-i... │ 2024-02-20 09:37:21 │ lumi-small       │ container-executor │ johan     │ test_label │
+    │ execute  │      │ args:[/cfs/e20ebf4b2... │ 2024-02-20 09:34:53 │ icekube          │ container-executor │ johan     │ test_label │
+    │ execute  │      │ cmd:sleep 8 docker-i... │ 2024-02-20 09:27:38 │ lumi-small-g     │ container-executor │ johan     │            │
+    │ execute  │      │ args:[/cfs/e20ebf4b2... │ 2024-02-20 09:31:58 │ icekube          │ container-executor │ johan     │ test_label │
+    │ execute  │      │ cmd:sleep 8 docker-i... │ 2024-02-20 09:27:38 │ lumi-small-g     │ container-executor │ johan     │            │
+    │ execute  │      │ cmd:sleep 8 docker-i... │ 2024-02-20 09:27:38 │ lumi-small-g     │ container-executor │ johan     │            │
+    ╰──────────┴──────┴─────────────────────────┴─────────────────────┴──────────────────┴────────────────────┴───────────┴────────────╯
 
 Alternativly, ``colonies process ps`` lists running processes, and ``colonies process psw`` lists waiting processes, and finally
 ``colonies process psf`` lists failed processes.
@@ -249,18 +252,13 @@ The command below uploads all files in the ``myfiles`` directory to CFS under th
 
 .. code-block:: console
 
-   /myfiles:
-   =========
-   These files will be uploaded:
-   +-----------+-------+----------+
-   |   FILE    | SIZE  |  LABEL   |
-   +-----------+-------+----------+
-   | hello.txt | 0 KiB | /myfiles |
-   +-----------+-------+----------+
-   No files will be downloaded
-   
-   Are you sure you want to continue? (yes,no): yes
-    Uploading hello.txt 100% [===============] (46 kB/s)
+    INFO[0000] Calculating sync plans
+    Analyzing /home/johan/b/myfiles          ... done!
+    INFO[0000] Sync plans completed                          Conflict resolution=replace-remote Conflicts=0 Download=0 Upload=1
+    INFO[0000] Add --syncplan flag to view the sync plan in more detail
+
+    Are you sure you want to continue? (yes,no):
+
 
 Let's list all labels on CFS.
 
@@ -270,11 +268,11 @@ Let's list all labels on CFS.
 
 .. code-block:: console
 
-   +---------------+-----------------+
-   |     LABEL     | NUMBER OF FILES |
-   +---------------+-----------------+
-   | /myfiles      | 1               |
-   +---------------+-----------------+
+    ╭─────────────────────────────────────────────────────────────────────────────────────┬───────╮
+    │ LABEL                                                                               │ FILES │
+    ├─────────────────────────────────────────────────────────────────────────────────────┼───────┤
+    │ /myfiles                                                                            │ 1     │
+    ╰─────────────────────────────────────────────────────────────────────────────────────┴───────╯
 
 To download the ``/myfiles`` label, for example on another computer: 
     
@@ -290,7 +288,10 @@ The ``/myfiles`` label will be synchronized to ``/cfs/myfiles``. This synchroniz
 
    {
        "conditions": {
-           "executortype": "lumi-small-hpcexecutor",
+            "executortype": "container-executor",
+    	    "executornames": [
+            	"lumi-small"
+            ],
            "nodes": 1,
            "processes-per-node": 1,
            "mem": "1Gi",
@@ -341,7 +342,3 @@ The ``/myfiles`` label will be synchronized to ``/cfs/myfiles``. This synchroniz
    INFO[0000] Printing logs from process                    ProcessId=b3a15b7822651cbbd34f7299d266f78de806505a0836a89033d513ade038ab13
    Hello world
    INFO[0003] Process finished successfully                 ProcessId=b3a15b7822651cbbd34f7299d266f78de806505a0836a89033d513ade038ab13
-
-Pollinator
-==========
-
