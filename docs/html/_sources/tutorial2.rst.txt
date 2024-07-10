@@ -81,7 +81,10 @@ Running nvidia-smi
 
     {
         "conditions": {
-            "executortype": "ice-kubeexecutor",
+            "executortype": "container-executor",
+            "executornames": [
+                "dev-docker"
+            ],
             "nodes": 2,
             "processes-per-node": 2,
             "mem": "2000Mi",
@@ -215,7 +218,10 @@ Running rocm-smi
 
    {
        "conditions": {
-           "executortype": "lumi-standard-gpu-hpcexecutor",
+           "executortype": "container-executor",
+           "executornames": [
+               "dev-docker"
+           ],
            "nodes": 1,
            "processes-per-node": 1,
            "mem": "10Gi",

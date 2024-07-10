@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; ColonyOS  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css?v=4194e21c" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
       <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
       <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
@@ -23,7 +24,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
@@ -37,7 +38,6 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting started" href="python.html" />
     <link rel="prev" title="Container Executors" href="executors.html" /> 
 </head>
 
@@ -73,9 +73,8 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html#production-server">Production server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - Developing an executor</span></p>
 <ul>
@@ -140,13 +139,6 @@
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
-</ul>
 
         </div>
       </div>
@@ -174,12 +166,10 @@
              
   <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
-<p><strong>Pollinator</strong> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Platform_as_a_service">Platform-as-a-Service</a>  (PaaS) tool,
-much like <a class="reference external" href="https://www.heroku.com">Heroku</a>, but is based on ColonyOS to execute containers across platforms.</p>
-<p>While Heroku mainly targets deployment of web applications in the Cloud, <strong>Pollinator</strong> is designed to simplify and
+<p><strong>Pollinator</strong> is an application that simplifies the execution of jobs across different platforms. Pollinator is designed to simplify and
 streamline job execution across platforms, e.g executing AI computations on HPC, Edge, or Kubernetes platforms.
-<strong>Pollinator</strong> is also designed to ensure uniform workload execution across these diverse platforms.</p>
-<p><strong>Pollinator</strong> significantly simplifies interactions with HPC or Kubernetes systems. For instance, it completely
+<strong>Pollinator</strong> is also designed to ensure uniform and portable workload execution across these diverse platforms.</p>
+<p><strong>Pollinator</strong> can significantly simplifies interactions with HPC or Kubernetes systems. For instance, it completely
 eliminates the need to manually login to HPC nodes to run Slurm jobs. It seamlessly synchronizes and transfers data from the
 user’s local filesystem to remote Executors, offering the convenience of a local development environment while
 harnessing powerful supercomputers and cloud platforms. With <strong>Pollinator</strong>, users are no longer required to have
@@ -264,20 +254,10 @@ to the LUMI standard CPU partition.</p>
 <h2>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Link to this heading"></a></h2>
 <p>As an example, we are going to run some Python code at the <a class="reference external" href="https:///www.lumi-supercomputer.eu">LUMI</a> supercomputer in Finland.
 When creating a new project, we must specify an <strong>executor type</strong>. Let’s list which executor is available in the colony:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+----------------------+------------------------------+----------------+</span>
-<span class="go">|         NAME         |             TYPE             |    LOCATION    |</span>
-<span class="go">+----------------------+------------------------------+----------------+</span>
-<span class="go">| icekube              | ice-kubeexecutor             | ICE Datacenter |</span>
-<span class="go">| lumi                 | lumi-small-hpcexecutor       | CSC, Finland   |</span>
-<span class="go">| garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden |</span>
-<span class="go">| leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy  |</span>
-<span class="go">+----------------------+------------------------------+----------------+</span>
-</pre></div>
-</div>
-<p>Next, let’s generate a new <strong>Pollinator</strong> project with <strong>lumi-small-hpcexecutor</strong> as target executor.</p>
+<p>Next, let’s generate a new <strong>Pollinator</strong> project with <a href="#id1"><span class="problematic" id="id2">**</span></a>lumi-std* as target executor.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir lumi</span>
 <span class="go">cd lumi</span>
-<span class="go">pollinator new -e lumi-small-hpcexecutor</span>
+<span class="go">pollinator new -n lumi-std</span>
 </pre></div>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO[0000] Creating directory                            Dir=./cfs/src</span>
@@ -292,22 +272,31 @@ When creating a new project, we must specify an <strong>executor type</strong>. 
 Note that is possible to run <em>any</em> languge by using another Docker container.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">projectname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11bdf92c7560bee1d8c154504427bfbb9483aabf130b60f17de5d88a5d5f4ece</span>
 <span class="nt">conditions</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">executorType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lumi-small-hpcexecutor</span>
-<span class="w">  </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">processesPerNode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
-<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000Mi</span>
-<span class="w">  </span><span class="nt">walltime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="nt">environment</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:3.12-rc-bookworm</span>
-<span class="w">  </span><span class="nt">rebuildImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main.py</span>
+<span class="w">  </span><span class="nt">executorNames</span><span class="p">:</span>
 </pre></div>
 </div>
+<dl>
+<dt>┆      - lumi-std</dt><dd><blockquote>
+<div><p>odes: 1
+processesPerNode: 1
+cpu: 1000m
+mem: 1000Mi
+walltime: 600
+gpu:</p>
+<blockquote>
+<div><p>count: 0
+name: “”</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt>environment:</dt><dd><p>docker: python:3.12-rc-bookworm
+rebuildImage: false
+cmd: python3
+source: main.py</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p>The code shows generated example code in <strong>main.py</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">socket</span>
@@ -365,7 +354,6 @@ Note that is possible to run <em>any</em> languge by using another Docker contai
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="executors.html" class="btn btn-neutral float-left" title="Container Executors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="python.html" class="btn btn-neutral float-right" title="Getting started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

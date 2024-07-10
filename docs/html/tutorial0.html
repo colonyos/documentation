@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting started &mdash; ColonyOS  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=0c089442" />
+      <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css?v=4194e21c" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
       <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
       <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=0572569b" />
@@ -23,7 +24,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/clipboard.min.js?v=a7894cd8"></script>
         <script src="_static/copybutton.js?v=f281be69"></script>
@@ -73,9 +74,8 @@
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Docker-compose</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html#dev-server">Dev server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html#production-server">Production server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#building-from-source">Building from source</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorial - Developing an executor</span></p>
 <ul class="current">
@@ -142,13 +142,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
-</ul>
 
         </div>
       </div>
@@ -197,14 +190,6 @@ In short:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip3 install pycolonies</span>
 </pre></div>
 </div>
-<p>The library assumes <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> is installed in <code class="docutils literal notranslate"><span class="pre">/usr/local/lib</span></code> or available in the LD library path. However, it is also possible to set the path to the <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> using an environmental variable.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">export CRYPTOLIB=&quot;./lib/libcryptolib.so&quot;</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">libcryptolib.so</span></code> is available in the <a class="reference external" href="https://github.com/colonyos/pycolonies">PyColonies github repo</a> in the <code class="docutils literal notranslate"><span class="pre">lib</span></code> directory.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/colonyos/pycolonies.git</span>
-</pre></div>
-</div>
 </section>
 </section>
 <section id="connecting-to-a-colonies-server">
@@ -242,7 +227,9 @@ following environmental variables:</p>
 <section id="registering-an-executor">
 <h1>Registering an executor<a class="headerlink" href="#registering-an-executor" title="Link to this heading"></a></h1>
 <p>The first step to register an executor is to create a new ECDSA key pair.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crypto</span> <span class="o">=</span> <span class="n">Crypto</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">Crypto</span>
+
+<span class="n">crypto</span> <span class="o">=</span> <span class="n">Crypto</span><span class="p">()</span>
 <span class="n">executor_prvkey</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">prvkey</span><span class="p">()</span>
 <span class="n">executorname</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="n">executor_prvkey</span><span class="p">)</span>
 </pre></div>
@@ -407,19 +394,20 @@ timeout how long time the call should block, in this case 10 seconds.</p>
 </div>
 <p>It is also possible to submit function specifications directly in Python. Save the Python code below to a
 new file called <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">func_spec</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">FuncSpec</span><span class="p">,</span> <span class="n">Conditions</span>
 <span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">colonies_client</span>
 
 <span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorname</span><span class="p">,</span> <span class="n">prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
 
-<span class="n">func_spec</span> <span class="o">=</span> <span class="n">func_spec</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
-                      <span class="n">args</span><span class="o">=</span><span class="p">[],</span>
-                      <span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">,</span>
-                      <span class="n">executortype</span><span class="o">=</span><span class="s2">&quot;helloworld-executor&quot;</span><span class="p">,</span>
-                      <span class="n">priority</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-                      <span class="n">maxexectime</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                      <span class="n">maxretries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-                      <span class="n">maxwaittime</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">func_spec</span> <span class="o">=</span> <span class="n">FuncSpec</span><span class="p">(</span>
+     <span class="n">funcname</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+     <span class="n">conditions</span> <span class="o">=</span> <span class="n">Conditions</span><span class="p">(</span>
+         <span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">,</span>
+         <span class="n">executortype</span><span class="o">=</span><span class="s2">&quot;helloworld-executor&quot;</span>
+     <span class="p">),</span>
+     <span class="n">maxexectime</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+     <span class="n">maxretries</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
 
 <span class="c1"># submit the function spec to the colonies server</span>
 <span class="n">process</span> <span class="o">=</span> <span class="n">colonies</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">func_spec</span><span class="p">,</span> <span class="n">prvkey</span><span class="p">)</span>
@@ -458,30 +446,43 @@ new file called <code class="docutils literal notranslate"><span class="pre">hel
 the following shape.</p>
 <img alt="_images/workflow.png" src="_images/workflow.png" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">colonies_client</span>
-<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">func_spec</span>
-<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">Workflow</span>
+<span class="kn">from</span> <span class="nn">pycolonies</span> <span class="kn">import</span> <span class="n">Workflow</span><span class="p">,</span> <span class="n">FuncSpec</span><span class="p">,</span> <span class="n">Conditions</span>
 <span class="kn">import</span> <span class="nn">copy</span>
 
 <span class="n">colonies</span><span class="p">,</span> <span class="n">colonyname</span><span class="p">,</span> <span class="n">colony_prvkey</span><span class="p">,</span> <span class="n">executorid</span><span class="p">,</span> <span class="n">executor_prvkey</span> <span class="o">=</span> <span class="n">colonies_client</span><span class="p">()</span>
 
-<span class="n">func_spec</span> <span class="o">=</span> <span class="n">func_spec</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
-                      <span class="n">args</span><span class="o">=</span><span class="p">[],</span>
-                      <span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">,</span>
-                      <span class="n">executortype</span><span class="o">=</span><span class="s2">&quot;helloworld-executor&quot;</span><span class="p">,</span>
-                      <span class="n">maxexectime</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                      <span class="n">maxretries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-                      <span class="n">maxwaittime</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">hello1_func_spec</span> <span class="o">=</span> <span class="n">FuncSpec</span><span class="p">(</span>
+     <span class="n">funcname</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+     <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;hello1&quot;</span><span class="p">,</span>
+     <span class="n">conditions</span> <span class="o">=</span> <span class="n">Conditions</span><span class="p">(</span>
+         <span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">,</span>
+         <span class="n">executortype</span><span class="o">=</span><span class="s2">&quot;helloworld-executor&quot;</span>
+     <span class="p">),</span>
+     <span class="n">maxexectime</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+     <span class="n">maxretries</span><span class="o">=</span><span class="mi">3</span>
+ <span class="p">)</span>
 
-<span class="n">wf</span> <span class="o">=</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">colonyname</span><span class="p">)</span>
-<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">func_spec</span><span class="p">,</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;hello1&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[])</span>
-<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">func_spec</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;hello2&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hello1&quot;</span><span class="p">])</span>
-<span class="n">wf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">func_spec</span><span class="p">),</span> <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;hello3&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hello1&quot;</span><span class="p">])</span>
+ <span class="n">hello2_func_spec</span> <span class="o">=</span> <span class="n">FuncSpec</span><span class="p">(</span>
+     <span class="n">funcname</span><span class="o">=</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span>
+     <span class="n">nodename</span><span class="o">=</span><span class="s2">&quot;hello1&quot;</span><span class="p">,</span>
+     <span class="n">conditions</span> <span class="o">=</span> <span class="n">Conditions</span><span class="p">(</span>
+         <span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">,</span>
+         <span class="n">executortype</span><span class="o">=</span><span class="s2">&quot;helloworld-executor&quot;</span>
+         <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hello1&quot;</span><span class="p">]</span>
+     <span class="p">),</span>
+     <span class="n">maxexectime</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+     <span class="n">maxretries</span><span class="o">=</span><span class="mi">3</span>
+ <span class="p">)</span>
 
-<span class="n">colonies</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">executor_prvkey</span><span class="p">)</span>
+ <span class="n">wf</span> <span class="o">=</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">colonyname</span><span class="o">=</span><span class="n">colonyname</span><span class="p">)</span>
+ <span class="n">wf</span><span class="o">.</span><span class="n">functionspecs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hello1_func_spec</span><span class="p">)</span>
+ <span class="n">wf</span><span class="o">.</span><span class="n">functionspecs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hello2_func_spec</span><span class="p">)</span>
+
+ <span class="n">processgraph</span> <span class="o">=</span> <span class="n">colonies</span><span class="o">.</span><span class="n">submit_workflow</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">prvkey</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Workflow&quot;</span><span class="p">,</span> <span class="n">processgraph</span><span class="o">.</span><span class="n">processgraphid</span><span class="p">,</span> <span class="s2">&quot;submitted&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">hello1</span></code> node must execute before <code class="docutils literal notranslate"><span class="pre">hello2</span></code> and <code class="docutils literal notranslate"><span class="pre">hello3</span></code> nodes can run. Note that each node may call a function
-in any executor part of the same colony. This feature enables implementation of cross-platform workflows that
+<p>The <code class="docutils literal notranslate"><span class="pre">hello1</span></code> node must execute before the <code class="docutils literal notranslate"><span class="pre">hello2</span></code> process can run. Note that each process may call a function on any executor part of the same colony. This feature enables implementation of cross-platform workflows that
 operate seamlessly across a <em>continuum</em> of executors</p>
 </section>
 <section id="excercises">

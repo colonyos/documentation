@@ -64,10 +64,3 @@ ColonyOS is a Meta-OS designed to facilite implementation and deployment of dist
    :caption: Pollinator
    
    pollinator
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Python SDK
-
-   python 
-
