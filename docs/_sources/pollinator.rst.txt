@@ -1,13 +1,10 @@
 Introduction
 ============
-**Pollinator** is a `Platform-as-a-Service <https://en.wikipedia.org/wiki/Platform_as_a_service>`_  (PaaS) tool, 
-much like `Heroku <https://www.heroku.com>`_, but is based on ColonyOS to execute containers across platforms. 
-
-While Heroku mainly targets deployment of web applications in the Cloud, **Pollinator** is designed to simplify and 
+**Pollinator** is an application that simplifies the execution of jobs across different platforms. Pollinator is designed to simplify and 
 streamline job execution across platforms, e.g executing AI computations on HPC, Edge, or Kubernetes platforms. 
-**Pollinator** is also designed to ensure uniform workload execution across these diverse platforms.
+**Pollinator** is also designed to ensure uniform and portable workload execution across these diverse platforms.
 
-**Pollinator** significantly simplifies interactions with HPC or Kubernetes systems. For instance, it completely 
+**Pollinator** can significantly simplifies interactions with HPC or Kubernetes systems. For instance, it completely 
 eliminates the need to manually login to HPC nodes to run Slurm jobs. It seamlessly synchronizes and transfers data from the 
 user's local filesystem to remote Executors, offering the convenience of a local development environment while 
 harnessing powerful supercomputers and cloud platforms. With **Pollinator**, users are no longer required to have 
@@ -81,23 +78,23 @@ As an example, we are going to run some Python code at the `LUMI <https:///www.l
 When creating a new project, we must specify an **executor type**. Let's list which executor is available in the colony:
 
 .. code-block:: console
+    ╭──────────────────┬────────────────────┬────────────────┬─────────────────────╮
+    │ NAME             │ TYPE               │ LOCATION       │ LAST HEARD FROM     │
+    ├──────────────────┼────────────────────┼────────────────┼─────────────────────┤
+    │ leonardo-booster │ container-executor │ Cineca, Italy  │ 2024-07-10 08:11:22 │
+    │ lumi-std         │ container-executor │ CSC, Finland   │ 2024-07-10 08:11:29 │
+    │ icekube          │ container-executor │ RISE, Sweden   │ 2024-07-10 08:12:11 │
+    │ dev              │ container-executor │ Rutvik, Sweden │ 2024-07-10 08:12:23 │
+    │ python-executor  │ container-executor │                │ 2024-04-16 13:09:01 │
+    ╰──────────────────┴────────────────────┴────────────────┴─────────────────────╯
 
-    +----------------------+------------------------------+----------------+
-    |         NAME         |             TYPE             |    LOCATION    |
-    +----------------------+------------------------------+----------------+
-    | icekube              | ice-kubeexecutor             | ICE Datacenter |
-    | lumi                 | lumi-small-hpcexecutor       | CSC, Finland   |
-    | garage-supercomputer | dev-hpcexecutor              | Rutvik, Sweden |
-    | leonardo             | leonardo-booster-hpcexecutor | Cineca, Italy  |
-    +----------------------+------------------------------+----------------+
-
-Next, let's generate a new **Pollinator** project with **lumi-small-hpcexecutor** as target executor.
+Next, let's generate a new **Pollinator** project with **lumi-std* as target executor.
 
 .. code-block:: console
 
     mkdir lumi
     cd lumi
-    pollinator new -e lumi-small-hpcexecutor
+    pollinator new -n lumi-std
 
 .. code-block:: console
 
@@ -115,8 +112,9 @@ Note that is possible to run *any* languge by using another Docker container.
 
      projectname: 11bdf92c7560bee1d8c154504427bfbb9483aabf130b60f17de5d88a5d5f4ece
      conditions:
-       executorType: lumi-small-hpcexecutor
-       nodes: 1
+       executorNames:
+┆      - lumi-std
+       odes: 1
        processesPerNode: 1
        cpu: 1000m
        mem: 1000Mi
@@ -129,7 +127,6 @@ Note that is possible to run *any* languge by using another Docker container.
        rebuildImage: false
        cmd: python3
        source: main.py
-
 
 The code shows generated example code in **main.py**.
 
@@ -166,7 +163,6 @@ The code shows generated example code in **main.py**.
     
 Run the code
 ------------
-
 .. code-block:: console
 
     pollinator run --follow

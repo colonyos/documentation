@@ -144,13 +144,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pollinator.html">Introduction</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Python SDK</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#developing-an-executor">Developing an executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-cross-platform-workflows">Example - Cross-platform workflows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html#example-secure-multi-party-computation">Example - Secure Multi-party Computation</a></li>
-</ul>
 
         </div>
       </div>
@@ -244,7 +237,10 @@ libraries will not be available in the container as intended.</p>
 <h2>Running nvidia-smi<a class="headerlink" href="#running-nvidia-smi" title="Link to this heading"></a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ice-kubeexecutor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container-executor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executornames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;dev-docker&quot;</span>
+<span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2000Mi&quot;</span><span class="p">,</span>
@@ -362,7 +358,10 @@ libraries will not be available in the container as intended.</p>
 <h2>Running rocm-smi<a class="headerlink" href="#running-rocm-smi" title="Link to this heading"></a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;conditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lumi-standard-gpu-hpcexecutor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executortype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container-executor&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;executornames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;dev-docker&quot;</span>
+<span class="w">        </span><span class="p">],</span>
 <span class="w">        </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;processes-per-node&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10Gi&quot;</span><span class="p">,</span>
