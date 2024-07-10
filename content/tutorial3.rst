@@ -1,6 +1,5 @@
 Introduction
 ============
-
 In this tutorial, we will train a machine learning model to identify water in Sentinel-2 satellite images. 
 We will be using code from `this GitHub repo <https://github.com/msoczi/unet_water_bodies_segmentation>`_ using 
 this `dataset <https://www.kaggle.com/datasets/franciscoescobar/satellite-images-of-water-bodies/>`_.

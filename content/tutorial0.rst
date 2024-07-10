@@ -28,18 +28,6 @@ Note that the SDK has only be tested on Linux and MacOS.
     
     pip3 install pycolonies
 
-The library assumes ``libcryptolib.so`` is installed in ``/usr/local/lib`` or available in the LD library path. However, it is also possible to set the path to the ``libcryptolib.so`` using an environmental variable.
-
-.. code-block:: console
-
-    export CRYPTOLIB="./lib/libcryptolib.so"
-
-The ``libcryptolib.so`` is available in the `PyColonies github repo <https://github.com/colonyos/pycolonies>`_ in the ``lib`` directory.
-
-.. code-block:: console
-
-    git clone https://github.com/colonyos/pycolonies.git
-
 Connecting to a Colonies server
 ===============================
 The code below configures a Python client to connect to a Colonies server running at ``localhost:50080``.
@@ -81,7 +69,9 @@ Registering an executor
 The first step to register an executor is to create a new ECDSA key pair.
 
 .. code-block:: python
-        
+       
+    from pycolonies import Crypto
+
     crypto = Crypto()
     executor_prvkey = crypto.prvkey()
     executorname = crypto.id(executor_prvkey)
@@ -269,19 +259,20 @@ new file called ``helloworld.py``.
 
 .. code-block:: python
 
-   from pycolonies import func_spec
+   from pycolonies import FuncSpec, Conditions
    from pycolonies import colonies_client
    
    colonies, colonyname, colony_prvkey, executorname, prvkey = colonies_client()
    
-   func_spec = func_spec(func="helloworld", 
-                         args=[], 
-                         colonyname=colonyname, 
-                         executortype="helloworld-executor",
-                         priority=200,
-                         maxexectime=10,
-                         maxretries=3,
-                         maxwaittime=100)
+   func_spec = FuncSpec(
+        funcname="helloworld",
+        conditions = Conditions(
+            colonyname=colonyname,
+            executortype="helloworld-executor"
+        ),
+        maxexectime=100,
+        maxretries=3
+   )
    
    # submit the function spec to the colonies server
    process = colonies.submit(func_spec, prvkey)
@@ -326,29 +317,42 @@ the following shape.
 .. code-block:: python 
 
    from pycolonies import colonies_client
-   from pycolonies import func_spec
-   from pycolonies import Workflow
+   from pycolonies import Workflow, FuncSpec, Conditions
    import copy
-   
+  
    colonies, colonyname, colony_prvkey, executorid, executor_prvkey = colonies_client()
+  
+   hello1_func_spec = FuncSpec(
+        funcname="helloworld",
+        nodename="hello1",
+        conditions = Conditions(
+            colonyname=colonyname,
+            executortype="helloworld-executor"
+        ),
+        maxexectime=100,
+        maxretries=3
+    )
    
-   func_spec = func_spec(func="helloworld", 
-                         args=[], 
-                         colonyname=colonyname, 
-                         executortype="helloworld-executor",
-                         maxexectime=10,
-                         maxretries=3,
-                         maxwaittime=100)
-   
-   wf = Workflow(colonyname)
-   wf.add(func_spec, nodename="hello1", dependencies=[])
-   wf.add(copy.deepcopy(func_spec), nodename="hello2", dependencies=["hello1"])
-   wf.add(copy.deepcopy(func_spec), nodename="hello3", dependencies=["hello1"])
-   
-   colonies.submit(wf, executor_prvkey)
+    hello2_func_spec = FuncSpec(
+        funcname="helloworld",
+        nodename="hello1",
+        conditions = Conditions(
+            colonyname=colonyname,
+            executortype="helloworld-executor"
+            dependencies=["hello1"]
+        ),
+        maxexectime=100,
+        maxretries=3
+    )
 
-The ``hello1`` node must execute before ``hello2`` and ``hello3`` nodes can run. Note that each node may call a function
-in any executor part of the same colony. This feature enables implementation of cross-platform workflows that 
+    wf = Workflow(colonyname=colonyname)
+    wf.functionspecs.append(hello1_func_spec)
+    wf.functionspecs.append(hello2_func_spec)
+   
+    processgraph = colonies.submit_workflow(wf, prvkey)
+    print("Workflow", processgraph.processgraphid, "submitted")
+
+The ``hello1`` node must execute before the ``hello2`` process can run. Note that each process may call a function on any executor part of the same colony. This feature enables implementation of cross-platform workflows that 
 operate seamlessly across a *continuum* of executors
 
 Excercises
