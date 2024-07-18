@@ -84,7 +84,7 @@ Now, let's execute the *echo* command specifed above.
                 "lumi-small"
             ],
            "nodes": 1,
-           "processes-per-node": 1,
+           "processespernode": 1,
            "mem": "1Gi",
            "cpu": "500m",
            "walltime": 200,
@@ -293,7 +293,7 @@ The ``/myfiles`` label will be synchronized to ``/cfs/myfiles``. This synchroniz
             	"lumi-small"
             ],
            "nodes": 1,
-           "processes-per-node": 1,
+           "processespernode": 1,
            "mem": "1Gi",
            "cpu": "500m",
            "walltime": 200,

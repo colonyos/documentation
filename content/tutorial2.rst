@@ -86,7 +86,7 @@ Running nvidia-smi
                 "dev-docker"
             ],
             "nodes": 2,
-            "processes-per-node": 2,
+            "processespernode": 2,
             "mem": "2000Mi",
             "cpu": "500m",
             "gpu": {
@@ -223,7 +223,7 @@ Running rocm-smi
                "dev-docker"
            ],
            "nodes": 1,
-           "processes-per-node": 1,
+           "processespernode": 1,
            "mem": "10Gi",
            "cpu": "1000m",
            "gpu": {
