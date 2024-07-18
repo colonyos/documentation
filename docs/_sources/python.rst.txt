@@ -37,7 +37,7 @@ Example - Cross-platform workflows
          "conditions": {
              "executortype": executortype,
              "nodes": 1,
-             "processes-per-node": 1,
+             "processespernode": 1,
              "mem": "500Mi",
              "cpu": "1000m",
              "gpu": {

@@ -73,7 +73,7 @@ The code below will download the dataset on the Leonardo HPC system.
             ],
            "executortype": "leonardo-booster-hpcexecutor",
            "nodes": 1,
-           "processes-per-node": 1,
+           "processespernode": 1,
            "cpu": "1000m",
            "mem": "30Gi",
            "gpu": {

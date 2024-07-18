@@ -914,7 +914,7 @@ Or as JSON instead of tables.
           "nodes": 0,
           "cpu": "0m",
           "processes": 0,
-          "processes-per-node": 0,
+          "processespernode": 0,
           "mem": "0Ki",
           "storage": "0Ki",
           "gpu": {

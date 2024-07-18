@@ -109,7 +109,7 @@ The **conditions** may also include hardware requirements needed to execute the 
         "nodes": 10,
         "cpu": "1000m",
         "processes": 10,
-        "processes-per-node": 1,
+        "processespernode": 1,
         "mem": "10G",
         "storage": "10G",
         "gpu": {
@@ -154,7 +154,7 @@ TODO
         "nodes": 10,
         "cpu": "1000m",
         "processes": 10,
-        "processes-per-node": 1,
+        "processespernode": 1,
         "mem": "10G",
         "storage": "10G",
         "gpu": {
